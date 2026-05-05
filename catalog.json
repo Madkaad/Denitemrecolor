@@ -1,5 +1,9 @@
 [
   {
+    "name": "World Map",
+    "file": "svgs/World-map.svg"
+  },
+  {
     "name": "Friendship Crates",
     "file": "svgs/friendship-crates.svg"
   },
