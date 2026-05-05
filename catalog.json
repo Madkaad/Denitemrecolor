@@ -1,7 +1,19 @@
 [
   {
+    "name": "Felinegalaxys Garden Stake",
+    "file": "svgs/Felinegalaxys-Garden-Stake.svg"
+  },
+  {
+    "name": "Fishy20002s Succulent Garden Sphere",
+    "file": "svgs/Fishy20002s-Succulent-Garden-Sphere.svg"
+  },
+  {
     "name": "Lantern",
     "file": "svgs/Lantern.svg"
+  },
+  {
+    "name": "Pagoda Garden Lanterns",
+    "file": "svgs/Pagoda-Garden-Lanterns.svg"
   },
   {
     "name": "Rare Music Sequencer",
@@ -16,8 +28,64 @@
     "file": "svgs/ball.svg"
   },
   {
+    "name": "Flowering Garden Bush",
+    "file": "svgs/flowering-garden-bush.svg"
+  },
+  {
     "name": "Friendship Crates",
     "file": "svgs/friendship-crates.svg"
+  },
+  {
+    "name": "Garden Archway",
+    "file": "svgs/garden-archway.svg"
+  },
+  {
+    "name": "Garden Bench",
+    "file": "svgs/garden-bench.svg"
+  },
+  {
+    "name": "Garden Bush 1",
+    "file": "svgs/garden-bush-1.svg"
+  },
+  {
+    "name": "Garden Bush 2",
+    "file": "svgs/garden-bush-2.svg"
+  },
+  {
+    "name": "Garden Chair",
+    "file": "svgs/garden-chair.svg"
+  },
+  {
+    "name": "Garden Lantern",
+    "file": "svgs/garden-lantern.svg"
+  },
+  {
+    "name": "Garden Plot",
+    "file": "svgs/garden-plot.svg"
+  },
+  {
+    "name": "Garden Standing Stones 2",
+    "file": "svgs/garden-standing-stones-2.svg"
+  },
+  {
+    "name": "Garden Standing Stones 3",
+    "file": "svgs/garden-standing-stones-3.svg"
+  },
+  {
+    "name": "Garden Standing Stones",
+    "file": "svgs/garden-standing-stones.svg"
+  },
+  {
+    "name": "Garden Table",
+    "file": "svgs/garden-table.svg"
+  },
+  {
+    "name": "Garden Trellis",
+    "file": "svgs/garden-trellis.svg"
+  },
+  {
+    "name": "Garden Umbrella",
+    "file": "svgs/garden-umbrella.svg"
   },
   {
     "name": "Giant Musical Note",
@@ -26,6 +94,10 @@
   {
     "name": "Heart Tree Door",
     "file": "svgs/heart-tree-door.svg"
+  },
+  {
+    "name": "Ice Garden",
+    "file": "svgs/ice-garden.svg"
   },
   {
     "name": "Luck Skunk Chaise Lounge",
@@ -76,6 +148,22 @@
     "file": "svgs/postal-drop-box.svg"
   },
   {
+    "name": "Rectangular Garden Hedge",
+    "file": "svgs/rectangular-garden-hedge.svg"
+  },
+  {
+    "name": "Rose Garden",
+    "file": "svgs/rose-garden.svg"
+  },
+  {
+    "name": "Royal Garden",
+    "file": "svgs/royal-garden.svg"
+  },
+  {
+    "name": "Sand Garden",
+    "file": "svgs/sand-garden.svg"
+  },
+  {
     "name": "Stone Column",
     "file": "svgs/stone-column.svg"
   },
@@ -88,7 +176,31 @@
     "file": "svgs/tiki-torch.svg"
   },
   {
+    "name": "Wall Garden",
+    "file": "svgs/wall-garden.svg"
+  },
+  {
     "name": "Window",
     "file": "svgs/window.svg"
+  },
+  {
+    "name": "Yard Castle Den Bush",
+    "file": "svgs/yard-castle-den-bush.svg"
+  },
+  {
+    "name": "Yard Castle Den Flower 1",
+    "file": "svgs/yard-castle-den-flower-1.svg"
+  },
+  {
+    "name": "Yard Castle Den Flower 2",
+    "file": "svgs/yard-castle-den-flower-2.svg"
+  },
+  {
+    "name": "Yard Castle Den Flower 3",
+    "file": "svgs/yard-castle-den-flower-3.svg"
+  },
+  {
+    "name": "Yard Castle Den Wall",
+    "file": "svgs/yard-castle-den-wall.svg"
   }
 ]
