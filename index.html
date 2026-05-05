@@ -724,25 +724,34 @@
   }
 
   // ── HIGHLIGHT ─────────────────────────────────────────────────────────────
+
   async function showHighlight(els) {
     if (!svgEl || !els.length) return;
-    // Match highlight canvas resolution to preview canvas
     const w = previewCanvas.width;
     const h = previewCanvas.height;
     highlightCanvas.width  = w;
     highlightCanvas.height = h;
 
     const clone = svgEl.cloneNode(true);
+    // Preserve the original viewBox so shapes render in the same coordinate space.
+    // Set width/height to the canvas pixel size so drawImage(img,0,0,w,h) maps 1:1.
+    const vb = svgEl.getAttribute('viewBox');
+    if (vb) {
+      clone.setAttribute('viewBox', vb);
+    } else {
+      // No viewBox — set a viewBox based on original width/height so scaling works
+      const ow = parseFloat(svgEl.getAttribute('width')) || w;
+      const oh = parseFloat(svgEl.getAttribute('height')) || h;
+      clone.setAttribute('viewBox', `0 0 ${ow} ${oh}`);
+    }
     clone.setAttribute('width', w);
     clone.setAttribute('height', h);
 
-    // Hide all shapes
     clone.querySelectorAll('path, rect, circle, ellipse, polygon, polyline').forEach(s => {
       s.setAttribute('fill', 'none');
       s.setAttribute('stroke', 'none');
     });
 
-    // Show only hovered shapes with red outline
     els.forEach(origEl => {
       const idx = Array.from(svgEl.querySelectorAll('path, rect, circle, ellipse, polygon, polyline')).indexOf(origEl);
       const target = clone.querySelectorAll('path, rect, circle, ellipse, polygon, polyline')[idx];
@@ -757,19 +766,17 @@
     });
 
     const xml = new XMLSerializer().serializeToString(clone);
-    const blob = new Blob([xml], { type: 'image/svg+xml' });
-    const url  = URL.createObjectURL(blob);
+    const encoded = btoa(unescape(encodeURIComponent(xml)));
     await new Promise(res => {
       const img = new Image();
       img.onload = () => {
         const ctx = highlightCanvas.getContext('2d');
         ctx.clearRect(0, 0, w, h);
         ctx.drawImage(img, 0, 0, w, h);
-        URL.revokeObjectURL(url);
         res();
       };
-      img.onerror = () => { URL.revokeObjectURL(url); res(); };
-      img.src = url;
+      img.onerror = () => res();
+      img.src = 'data:image/svg+xml;base64,' + encoded;
     });
     highlightCanvas.style.opacity = '1';
   }
