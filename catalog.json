@@ -4,12 +4,24 @@
     "file": "svgs/Lantern.svg"
   },
   {
+    "name": "Rare Music Sequencer",
+    "file": "svgs/Rare-Music-Sequencer.svg"
+  },
+  {
     "name": "World Map",
     "file": "svgs/World-map.svg"
   },
   {
+    "name": "Ball",
+    "file": "svgs/ball.svg"
+  },
+  {
     "name": "Friendship Crates",
     "file": "svgs/friendship-crates.svg"
+  },
+  {
+    "name": "Giant Musical Note",
+    "file": "svgs/giant-musical-note.svg"
   },
   {
     "name": "Heart Tree Door",
@@ -30,6 +42,30 @@
   {
     "name": "Lucky Skunk Window",
     "file": "svgs/lucky-skunk-window.svg"
+  },
+  {
+    "name": "Music Camp Drump Couch",
+    "file": "svgs/music-camp-drump-couch.svg"
+  },
+  {
+    "name": "Music Camp Giant Metronome",
+    "file": "svgs/music-camp-giant-metronome.svg"
+  },
+  {
+    "name": "Music Camp Performance Stage",
+    "file": "svgs/music-camp-performance-stage.svg"
+  },
+  {
+    "name": "Music Camp Piano Rug",
+    "file": "svgs/music-camp-piano-rug.svg"
+  },
+  {
+    "name": "Music Camp Practice Area",
+    "file": "svgs/music-camp-practice-area.svg"
+  },
+  {
+    "name": "Musical Staff Wall Art",
+    "file": "svgs/musical-staff-wall-art.svg"
   },
   {
     "name": "Post Office",
