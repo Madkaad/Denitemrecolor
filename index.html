@@ -734,18 +734,6 @@
 
     const clone = svgEl.cloneNode(true);
     // Preserve the original viewBox so shapes render in the same coordinate space.
-    // Set width/height to the canvas pixel size so drawImage(img,0,0,w,h) maps 1:1.
-    const vb = svgEl.getAttribute('viewBox');
-    if (vb) {
-      clone.setAttribute('viewBox', vb);
-    } else {
-      // No viewBox — set a viewBox based on original width/height so scaling works
-      const ow = parseFloat(svgEl.getAttribute('width')) || w;
-      const oh = parseFloat(svgEl.getAttribute('height')) || h;
-      clone.setAttribute('viewBox', `0 0 ${ow} ${oh}`);
-    }
-    clone.setAttribute('width', w);
-    clone.setAttribute('height', h);
 
     clone.querySelectorAll('path, rect, circle, ellipse, polygon, polyline').forEach(s => {
       s.setAttribute('fill', 'none');
@@ -758,7 +746,7 @@
       if (target) {
         target.setAttribute('fill', 'rgba(232,0,13,0.15)');
         target.setAttribute('stroke', '#e8000d');
-        target.setAttribute('stroke-width', '4');
+        target.setAttribute('stroke-width', '2');
         target.setAttribute('stroke-linejoin', 'round');
         target.removeAttribute('display');
         target.style.display = '';
