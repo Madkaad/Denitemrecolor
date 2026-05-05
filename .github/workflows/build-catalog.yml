@@ -1,0 +1,29 @@
+name: Build Catalog
+
+on:
+  push:
+    paths:
+      - 'svgs/**'
+      - 'names.json'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Set up Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: Generate catalog.json
+        run: node scripts/build-catalog.js
+
+      - name: Commit catalog
+        run: |
+          git config user.name "github-actions"
+          git config user.email "actions@github.com"
+          git add catalog.json
+          git commit -m "Auto-update catalog.json" || exit 0
+          git push
