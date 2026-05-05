@@ -949,28 +949,27 @@ elements.forEach((el, i) => {
       item.appendChild(label);
       item.appendChild(eye);
 
-      // Highlight on hover (only when not dragging)
-      item.addEventListener('mouseenter', () => {
-        if (!dragging) showHighlight([el]);
-        if (dragging) {
-          // apply drag state to this item too
-          setLayerVisible(el, item, eye, dragTargetState);
-        }
-      });
       item.addEventListener('mouseleave', () => { if (!dragging) clearHighlight(); });
 
-      // Click = toggle
-      item.addEventListener('click', () => {
-        setLayerVisible(el, item, eye, !item._visible);
-        refreshPreview();
+      // mousedown: start drag, record intent but don't toggle yet
+      item.addEventListener('mousedown', (e) => {
+        e.preventDefault();
+        dragging = true;
+        dragTargetState = !item._visible;
       });
 
-      // Drag to toggle: mousedown starts drag, mouseup ends it
-      item.addEventListener('mousedown', (e) => {
-        e.preventDefault(); // prevent text selection
-        dragging = true;
-        dragTargetState = !item._visible; // dragging sets everything to opposite of what you started on
+      // mouseenter while dragging: apply to this item
+      item.addEventListener('mouseenter', () => {
+        if (!dragging) { showHighlight([el]); return; }
         setLayerVisible(el, item, eye, dragTargetState);
+      });
+
+      // mouseup on same item = simple click toggle
+      item.addEventListener('mouseup', () => {
+        if (dragging && dragTargetState !== null) {
+          setLayerVisible(el, item, eye, dragTargetState);
+          refreshPreview();
+        }
       });
 
       layersList.appendChild(item);
