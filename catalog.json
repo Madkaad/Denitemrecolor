@@ -1,0 +1,8 @@
+[
+  { "name": "Cat", "file": "svgs/cat.svg" },
+  { "name": "Dog", "file": "svgs/dog.svg" },
+  { "name": "Fox", "file": "svgs/fox.svg" },
+  { "name": "Bear", "file": "svgs/bear.svg" },
+  { "name": "Rabbit", "file": "svgs/rabbit.svg" },
+  { "name": "Deer", "file": "svgs/deer.svg" }
+]
