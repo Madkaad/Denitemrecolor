@@ -14,5 +14,9 @@
   {
     "name": "Lucky Skunk Window",
     "file": "svgs/lucky-skunk-window.svg"
+  },
+  {
+    "name": "Post Office",
+    "file": "svgs/post-office.svg"
   }
 ]
