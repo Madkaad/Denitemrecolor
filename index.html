@@ -604,11 +604,13 @@
     const elements = svgEl.querySelectorAll('[fill], stop');
     const colorMap = new Map();
 
-    elements.forEach((el, i) => {
-      const attr = el.getAttribute('fill') || el.getAttribute('stop-color');
-      if (!attr) return;
-      const hex = rgbToHex(attr.toLowerCase());
-      if (!hex || hex === '#000000' || hex === '#ffffff') return;
+elements.forEach((el, i) => {
+  const attr = el.getAttribute('fill') || el.getAttribute('stop-color');
+  if (!attr) return;
+  const opacity = parseFloat(el.getAttribute('fill-opacity') || el.getAttribute('stop-opacity') || '1');
+  if (opacity < 1) return;
+  const hex = rgbToHex(attr.toLowerCase());
+  if (!hex || hex === '#000000' || hex === '#ffffff') return;
       const uid = `cid-${i}`;
       el.setAttribute('data-color-id', uid);
       if (!colorMap.has(hex)) colorMap.set(hex, []);
