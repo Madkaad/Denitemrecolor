@@ -20,12 +20,28 @@
     "file": "svgs/Rare-Music-Sequencer.svg"
   },
   {
+    "name": "Royal Archway",
+    "file": "svgs/Royal-Archway.svg"
+  },
+  {
     "name": "World Map",
     "file": "svgs/World-map.svg"
   },
   {
+    "name": "Arched Metal Entryway",
+    "file": "svgs/arched-metal-entryway.svg"
+  },
+  {
+    "name": "Autumn Archway",
+    "file": "svgs/autumn-archway.svg"
+  },
+  {
     "name": "Ball",
     "file": "svgs/ball.svg"
+  },
+  {
+    "name": "Crystal Waterfall Archway",
+    "file": "svgs/crystal-waterfall-archway.svg"
   },
   {
     "name": "Flowering Garden Bush",
@@ -88,6 +104,10 @@
     "file": "svgs/garden-umbrella.svg"
   },
   {
+    "name": "Gem Encrusted Stone Archway",
+    "file": "svgs/gem-encrusted-stone-archway.svg"
+  },
+  {
     "name": "Giant Musical Note",
     "file": "svgs/giant-musical-note.svg"
   },
@@ -102,6 +122,10 @@
   {
     "name": "Ice Garden",
     "file": "svgs/ice-garden.svg"
+  },
+  {
+    "name": "Kelp Archway",
+    "file": "svgs/kelp-archway.svg"
   },
   {
     "name": "Luck Skunk Chaise Lounge",
@@ -144,6 +168,34 @@
     "file": "svgs/musical-staff-wall-art.svg"
   },
   {
+    "name": "Nature Archway1",
+    "file": "svgs/nature-archway1.svg"
+  },
+  {
+    "name": "Nature Archway2",
+    "file": "svgs/nature-archway2.svg"
+  },
+  {
+    "name": "Nature Archway3",
+    "file": "svgs/nature-archway3.svg"
+  },
+  {
+    "name": "Nature Archway4",
+    "file": "svgs/nature-archway4.svg"
+  },
+  {
+    "name": "Nature Archway5",
+    "file": "svgs/nature-archway5.svg"
+  },
+  {
+    "name": "Pastel Rainbow Archway",
+    "file": "svgs/pastel-rainbow-archway.svg"
+  },
+  {
+    "name": "Phantom Archway",
+    "file": "svgs/phantom-archway.svg"
+  },
+  {
     "name": "Post Office",
     "file": "svgs/post-office.svg"
   },
@@ -182,6 +234,26 @@
   {
     "name": "Wall Garden",
     "file": "svgs/wall-garden.svg"
+  },
+  {
+    "name": "Waterfall Arch1",
+    "file": "svgs/waterfall-arch1.svg"
+  },
+  {
+    "name": "Waterfall Arch2",
+    "file": "svgs/waterfall-arch2.svg"
+  },
+  {
+    "name": "Waterfall Arch3",
+    "file": "svgs/waterfall-arch3.svg"
+  },
+  {
+    "name": "Waterfall Arch4",
+    "file": "svgs/waterfall-arch4.svg"
+  },
+  {
+    "name": "Waterfall Arch5",
+    "file": "svgs/waterfall-arch5.svg"
   },
   {
     "name": "Window",
