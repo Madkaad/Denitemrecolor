@@ -1,5 +1,9 @@
 [
   {
+    "name": "Lantern",
+    "file": "svgs/Lantern.svg"
+  },
+  {
     "name": "World Map",
     "file": "svgs/World-map.svg"
   },
