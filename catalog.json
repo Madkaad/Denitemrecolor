@@ -104,6 +104,46 @@
     "file": "svgs/Royal-Archway.svg"
   },
   {
+    "name": "Vet Examination Table",
+    "file": "svgs/Vet-Examination-Table.svg"
+  },
+  {
+    "name": "Vet Holding Pen",
+    "file": "svgs/Vet-Holding-Pen.svg"
+  },
+  {
+    "name": "Vet Multi Pet Kennel",
+    "file": "svgs/Vet-Multi-Pet-Kennel.svg"
+  },
+  {
+    "name": "Vet Supply Shelf",
+    "file": "svgs/Vet-Supply-Shelf.svg"
+  },
+  {
+    "name": "Vet Tools",
+    "file": "svgs/Vet-Tools.svg"
+  },
+  {
+    "name": "Vet Treat Bin",
+    "file": "svgs/Vet-Treat-Bin.svg"
+  },
+  {
+    "name": "Vet Waiting Room Chair",
+    "file": "svgs/Vet-Waiting-Room-Chair.svg"
+  },
+  {
+    "name": "Vet Waiting Room Table",
+    "file": "svgs/Vet-Waiting-Room-Table.svg"
+  },
+  {
+    "name": "Vet Wall Charts",
+    "file": "svgs/Vet-Wall-Charts.svg"
+  },
+  {
+    "name": "Vet Washing Station",
+    "file": "svgs/Vet-Washing-Station.svg"
+  },
+  {
     "name": "World Map",
     "file": "svgs/World-map.svg"
   },
