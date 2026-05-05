@@ -510,6 +510,9 @@
         <div class="palette-grid" id="controls"></div>
       </div>
       <div class="tab-content" id="pane-layers">
+        <div style="padding:8px 10px 4px;">
+          <button id="invert-layers-btn" style="width:100%;padding:7px 10px;background:rgba(255,255,255,0.15);border:1.5px solid rgba(255,255,255,0.3);border-radius:8px;color:#fff;font-family:'Nunito',sans-serif;font-size:13px;font-weight:700;cursor:pointer;transition:background 0.15s;" onmouseover="this.style.background='rgba(255,255,255,0.25)'" onmouseout="this.style.background='rgba(255,255,255,0.15)'">⇅ Invert Visibility</button>
+        </div>
         <div class="layers-list" id="layers-list"></div>
       </div>
     </div>
@@ -894,74 +897,109 @@ elements.forEach((el, i) => {
   }
 
   // ── LAYERS ────────────────────────────────────────────────────────────────
+  const EYE_ON  = `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>`;
+  const EYE_OFF = `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94"/><path d="M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19"/><line x1="1" y1="1" x2="23" y2="23"/></svg>`;
+
+  function setLayerVisible(el, item, eye, visible) {
+    el.style.display = visible ? '' : 'none';
+    item.classList.toggle('hidden-layer', !visible);
+    eye.innerHTML = visible ? EYE_ON : EYE_OFF;
+    item._visible = visible;
+  }
+
   function initLayers() {
     layersList.innerHTML = '';
 
-    // Grab all direct path/shape children that have a fill
     const shapes = Array.from(svgEl.querySelectorAll('path, rect, circle, ellipse, polygon, polyline'));
     if (shapes.length === 0) {
       layersList.innerHTML = '<div style="color:rgba(255,255,255,0.5);font-size:13px;padding:8px;">No layers found.</div>';
       return;
     }
 
+    // drag-toggle state
+    let dragging = false;
+    let dragTargetState = null; // true = show, false = hide
+
     shapes.forEach((el, i) => {
       const fill = el.getAttribute('fill');
       const isNoneFill = !fill || fill === 'none';
       const isUrl = fill && fill.startsWith('url');
 
-      // Assign a layer id
       const lid = `lid-${i}`;
       el.setAttribute('data-layer-id', lid);
 
       const item = document.createElement('div');
       item.className = 'layer-item';
-      item.title = 'Click to toggle visibility';
+      item.title = 'Click or drag to toggle visibility';
+      item._visible = true;
 
-      // Swatch
       const swatch = document.createElement('div');
       swatch.className = 'layer-swatch';
       swatch.style.background = (!isNoneFill && !isUrl) ? fill : 'rgba(255,255,255,0.15)';
 
-      // Label
       const label = document.createElement('span');
       label.className = 'layer-label';
       label.textContent = `Shape ${i + 1}`;
 
-      // Eye icon (SVG)
       const eye = document.createElement('span');
       eye.className = 'layer-eye';
-      eye.innerHTML = `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
-        <circle cx="12" cy="12" r="3"/>
-      </svg>`;
+      eye.innerHTML = EYE_ON;
 
       item.appendChild(swatch);
       item.appendChild(label);
       item.appendChild(eye);
 
-      let visible = true;
-      item.addEventListener('mouseenter', () => showHighlight([el]));
-      item.addEventListener('mouseleave', clearHighlight);
+      // Highlight on hover (only when not dragging)
+      item.addEventListener('mouseenter', () => {
+        if (!dragging) showHighlight([el]);
+        if (dragging) {
+          // apply drag state to this item too
+          setLayerVisible(el, item, eye, dragTargetState);
+        }
+      });
+      item.addEventListener('mouseleave', () => { if (!dragging) clearHighlight(); });
+
+      // Click = toggle
       item.addEventListener('click', () => {
-        visible = !visible;
-        el.style.display = visible ? '' : 'none';
-        item.classList.toggle('hidden-layer', !visible);
-        // Update eye icon
-        eye.innerHTML = visible
-          ? `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
-              <circle cx="12" cy="12" r="3"/>
-            </svg>`
-          : `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94"/>
-              <path d="M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19"/>
-              <line x1="1" y1="1" x2="23" y2="23"/>
-            </svg>`;
+        setLayerVisible(el, item, eye, !item._visible);
         refreshPreview();
+      });
+
+      // Drag to toggle: mousedown starts drag, mouseup ends it
+      item.addEventListener('mousedown', (e) => {
+        e.preventDefault(); // prevent text selection
+        dragging = true;
+        dragTargetState = !item._visible; // dragging sets everything to opposite of what you started on
+        setLayerVisible(el, item, eye, dragTargetState);
       });
 
       layersList.appendChild(item);
     });
+
+    // End drag on mouseup anywhere
+    document.addEventListener('mouseup', () => {
+      if (dragging) {
+        dragging = false;
+        dragTargetState = null;
+        refreshPreview();
+      }
+    });
+
+    // Invert button
+    document.getElementById('invert-layers-btn').onclick = () => {
+      layersList.querySelectorAll('.layer-item').forEach(item => {
+        const lid = item.querySelector('.layer-swatch') && item._visible !== undefined ? item : null;
+        if (!lid) return;
+        const eye = item.querySelector('.layer-eye');
+        const layerId = item.querySelector('[data-layer-id]');
+        // find the shape by index
+        const allItems = Array.from(layersList.querySelectorAll('.layer-item'));
+        const idx = allItems.indexOf(item);
+        const shape = shapes[idx];
+        if (shape && eye) setLayerVisible(shape, item, eye, !item._visible);
+      });
+      refreshPreview();
+    };
   }
 
   // ── DOWNLOAD ──────────────────────────────────────────────────────────────
