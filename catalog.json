@@ -1,5 +1,9 @@
 [
   {
+    "name": "Friendship Crates",
+    "file": "svgs/friendship-crates.svg"
+  },
+  {
     "name": "Heart Tree Door",
     "file": "svgs/heart-tree-door.svg"
   },
