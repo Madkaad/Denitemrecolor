@@ -1,7 +1,83 @@
 [
   {
+    "name": "Beta Armoire",
+    "file": "svgs/Beta-Armoire.svg"
+  },
+  {
+    "name": "Beta Blue Chest",
+    "file": "svgs/Beta-Blue-Chest.svg"
+  },
+  {
+    "name": "Beta Chair",
+    "file": "svgs/Beta-Chair.svg"
+  },
+  {
+    "name": "Beta Fence Gate",
+    "file": "svgs/Beta-Fence-Gate.svg"
+  },
+  {
+    "name": "Beta Fence",
+    "file": "svgs/Beta-Fence.svg"
+  },
+  {
+    "name": "Beta Green Couch",
+    "file": "svgs/Beta-Green-Couch.svg"
+  },
+  {
+    "name": "Beta Green Rug",
+    "file": "svgs/Beta-Green-Rug.svg"
+  },
+  {
+    "name": "Beta Microwave",
+    "file": "svgs/Beta-Microwave.svg"
+  },
+  {
+    "name": "Beta Mira Statue",
+    "file": "svgs/Beta-Mira-Statue.svg"
+  },
+  {
+    "name": "Beta Monkey Statue",
+    "file": "svgs/Beta-Monkey-Statue.svg"
+  },
+  {
+    "name": "Beta Pink Jar",
+    "file": "svgs/Beta-Pink-Jar.svg"
+  },
+  {
+    "name": "Beta Sink",
+    "file": "svgs/Beta-Sink.svg"
+  },
+  {
+    "name": "Beta Sofa",
+    "file": "svgs/Beta-Sofa.svg"
+  },
+  {
+    "name": "Beta TV",
+    "file": "svgs/Beta-TV.svg"
+  },
+  {
+    "name": "Beta Table",
+    "file": "svgs/Beta-Table.svg"
+  },
+  {
+    "name": "Beta Tiger Banner",
+    "file": "svgs/Beta-Tiger-Banner.svg"
+  },
+  {
+    "name": "Beta Welcome Mat",
+    "file": "svgs/Beta-Welcome-Mat.svg"
+  },
+  {
     "name": "Beta Window",
     "file": "svgs/Beta-Window.svg"
+  },
+  {
+    "name": "Beta Zios Banner",
+    "file": "svgs/Beta-Zios-Banner.svg"
+  },
+  {
+    "name": "Beta Zios Statue",
+    "file": "svgs/Beta-Zios-Statue.svg"
   },
   {
     "name": "Felinegalaxys Garden Stake",
@@ -42,6 +118,26 @@
   {
     "name": "Ball",
     "file": "svgs/ball.svg"
+  },
+  {
+    "name": "Beta Kitchen Countertop",
+    "file": "svgs/beta-kitchen-countertop.svg"
+  },
+  {
+    "name": "Beta Kitchen Faucet",
+    "file": "svgs/beta-kitchen-faucet.svg"
+  },
+  {
+    "name": "Beta Kitchen Fridge",
+    "file": "svgs/beta-kitchen-fridge.svg"
+  },
+  {
+    "name": "Beta Kitchen Oven",
+    "file": "svgs/beta-kitchen-oven.svg"
+  },
+  {
+    "name": "Beta Kitchen Shelves",
+    "file": "svgs/beta-kitchen-shelves.svg"
   },
   {
     "name": "Crystal Waterfall Archway",
