@@ -30,5 +30,13 @@
   {
     "name": "Postal Drop Box",
     "file": "svgs/postal-drop-box.svg"
+  },
+  {
+    "name": "Tiki Torch",
+    "file": "svgs/tiki-torch.svg"
+  },
+  {
+    "name": "Window",
+    "file": "svgs/window.svg"
   }
 ]
