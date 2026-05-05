@@ -727,7 +727,7 @@ elements.forEach((el, i) => {
   const opacity = parseFloat(el.getAttribute('fill-opacity') || el.getAttribute('stop-opacity') || '1');
   if (opacity < 1) return;
   const hex = rgbToHex(attr.toLowerCase());
-  if (!hex || hex === '#000000' || hex === '#ffffff') return;
+  if (!hex || hex === '#ffffff') return;
       const uid = `cid-${i}`;
       el.setAttribute('data-color-id', uid);
       if (!colorMap.has(hex)) colorMap.set(hex, []);
