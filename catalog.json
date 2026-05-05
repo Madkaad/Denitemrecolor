@@ -1,5 +1,9 @@
 [
   {
+    "name": "Heart Tree Door",
+    "file": "svgs/heart-tree-door.svg"
+  },
+  {
     "name": "Luck Skunk Chaise Lounge",
     "file": "svgs/luck-skunk-chaise-lounge.svg"
   },
