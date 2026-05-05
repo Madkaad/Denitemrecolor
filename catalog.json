@@ -1,5 +1,9 @@
 [
   {
+    "name": "Lucky Skunk Table",
+    "file": "svgs/lucky-skunk-table.svg"
+  },
+  {
     "name": "Test Item",
     "file": "svgs/test-item.svg"
   }
