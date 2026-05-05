@@ -1,5 +1,57 @@
 [
   {
+    "name": " Cake Bake Kitchen",
+    "file": "svgs/ Cake Bake Kitchen.svg"
+  },
+  {
+    "name": "Ancient Phantom Wall Ruins1",
+    "file": "svgs/Ancient Phantom Wall Ruins1.svg"
+  },
+  {
+    "name": "Ancient Phantom Wall Ruins2",
+    "file": "svgs/Ancient Phantom Wall Ruins2.svg"
+  },
+  {
+    "name": "Ancient Phantom Wall Ruins3",
+    "file": "svgs/Ancient Phantom Wall Ruins3.svg"
+  },
+  {
+    "name": "Ancient Phantom Wall Ruins4",
+    "file": "svgs/Ancient Phantom Wall Ruins4.svg"
+  },
+  {
+    "name": "Ancient Ruins",
+    "file": "svgs/Ancient Ruins.svg"
+  },
+  {
+    "name": "Bakers Oven",
+    "file": "svgs/Bakers Oven.svg"
+  },
+  {
+    "name": "Bakers Window",
+    "file": "svgs/Bakers Window.svg"
+  },
+  {
+    "name": "BakersWorkStation",
+    "file": "svgs/BakersWorkStation.svg"
+  },
+  {
+    "name": "Bakery Chair",
+    "file": "svgs/Bakery Chair.svg"
+  },
+  {
+    "name": "Bakery Display",
+    "file": "svgs/Bakery Display.svg"
+  },
+  {
+    "name": "Bakery Table",
+    "file": "svgs/Bakery Table.svg"
+  },
+  {
+    "name": "Baking Counter",
+    "file": "svgs/Baking Counter.svg"
+  },
+  {
     "name": "Beta Armoire",
     "file": "svgs/Beta-Armoire.svg"
   },
@@ -80,6 +132,22 @@
     "file": "svgs/Beta-Zios-Statue.svg"
   },
   {
+    "name": "Dig Site Canopy",
+    "file": "svgs/Dig Site Canopy.svg"
+  },
+  {
+    "name": "Dig Site Tools",
+    "file": "svgs/Dig Site Tools.svg"
+  },
+  {
+    "name": "Dig Site",
+    "file": "svgs/Dig Site.svg"
+  },
+  {
+    "name": "Digital Art Station",
+    "file": "svgs/Digital Art Station.svg"
+  },
+  {
     "name": "Felinegalaxys Garden Stake",
     "file": "svgs/Felinegalaxys-Garden-Stake.svg"
   },
@@ -88,8 +156,20 @@
     "file": "svgs/Fishy20002s-Succulent-Garden-Sphere.svg"
   },
   {
+    "name": "Kitchen Fridge",
+    "file": "svgs/Kitchen Fridge.svg"
+  },
+  {
+    "name": "KitchenShelves",
+    "file": "svgs/KitchenShelves.svg"
+  },
+  {
     "name": "Lantern",
     "file": "svgs/Lantern.svg"
+  },
+  {
+    "name": "Mossy Ruins",
+    "file": "svgs/Mossy Ruins.svg"
   },
   {
     "name": "Pagoda Garden Lanterns",
@@ -102,6 +182,22 @@
   {
     "name": "Royal Archway",
     "file": "svgs/Royal-Archway.svg"
+  },
+  {
+    "name": "Ruin Path Piece",
+    "file": "svgs/Ruin Path Piece.svg"
+  },
+  {
+    "name": "Ruin Wall Piece",
+    "file": "svgs/Ruin Wall Piece.svg"
+  },
+  {
+    "name": "Ruined Stairs 2",
+    "file": "svgs/Ruined Stairs 2.svg"
+  },
+  {
+    "name": "Ruined Stairs1",
+    "file": "svgs/Ruined Stairs1.svg"
   },
   {
     "name": "Vet Examination Table",
