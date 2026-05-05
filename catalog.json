@@ -4,19 +4,19 @@
     "file": "svgs/ Cake Bake Kitchen.svg"
   },
   {
-    "name": "Ancient Phantom Wall Ruins1",
+    "name": "Ancient Phantom Wall Ruins 1",
     "file": "svgs/Ancient Phantom Wall Ruins1.svg"
   },
   {
-    "name": "Ancient Phantom Wall Ruins2",
+    "name": "Ancient Phantom Wall Ruins 2",
     "file": "svgs/Ancient Phantom Wall Ruins2.svg"
   },
   {
-    "name": "Ancient Phantom Wall Ruins3",
+    "name": "Ancient Phantom Wall Ruins 3",
     "file": "svgs/Ancient Phantom Wall Ruins3.svg"
   },
   {
-    "name": "Ancient Phantom Wall Ruins4",
+    "name": "Ancient Phantom Wall Ruins 4",
     "file": "svgs/Ancient Phantom Wall Ruins4.svg"
   },
   {
@@ -32,7 +32,7 @@
     "file": "svgs/Bakers Window.svg"
   },
   {
-    "name": "BakersWorkStation",
+    "name": "Bakers Work Station",
     "file": "svgs/BakersWorkStation.svg"
   },
   {
@@ -156,11 +156,15 @@
     "file": "svgs/Fishy20002s-Succulent-Garden-Sphere.svg"
   },
   {
+    "name": "Jamaa Schoolroom Flag",
+    "file": "svgs/Jamaa-Schoolroom-Flag.svg"
+  },
+  {
     "name": "Kitchen Fridge",
     "file": "svgs/Kitchen Fridge.svg"
   },
   {
-    "name": "KitchenShelves",
+    "name": "Kitchen Shelves",
     "file": "svgs/KitchenShelves.svg"
   },
   {
@@ -172,8 +176,16 @@
     "file": "svgs/Mossy Ruins.svg"
   },
   {
+    "name": "Old School Boom Box",
+    "file": "svgs/OldSchoolBoomBox.svg"
+  },
+  {
     "name": "Pagoda Garden Lanterns",
     "file": "svgs/Pagoda-Garden-Lanterns.svg"
+  },
+  {
+    "name": "Pet School Bus",
+    "file": "svgs/PetSchoolBus.svg"
   },
   {
     "name": "Rare Music Sequencer",
@@ -192,12 +204,104 @@
     "file": "svgs/Ruin Wall Piece.svg"
   },
   {
-    "name": "Ruined Stairs 2",
+    "name": "Ruined Stairs  2",
     "file": "svgs/Ruined Stairs 2.svg"
   },
   {
-    "name": "Ruined Stairs1",
+    "name": "Ruined Stairs 1",
     "file": "svgs/Ruined Stairs1.svg"
+  },
+  {
+    "name": "School Bell",
+    "file": "svgs/School-Bell.svg"
+  },
+  {
+    "name": "School Chemistry Set",
+    "file": "svgs/School-Chemistry-Set.svg"
+  },
+  {
+    "name": "School Desk 1",
+    "file": "svgs/School-Desk-1.svg"
+  },
+  {
+    "name": "School Desk 2",
+    "file": "svgs/School-Desk-2.svg"
+  },
+  {
+    "name": "School Desk 3",
+    "file": "svgs/School-Desk-3.svg"
+  },
+  {
+    "name": "School Desk 4",
+    "file": "svgs/School-Desk-4.svg"
+  },
+  {
+    "name": "School Desk 5",
+    "file": "svgs/School-Desk-5.svg"
+  },
+  {
+    "name": "School Desk 6",
+    "file": "svgs/School-Desk-6.svg"
+  },
+  {
+    "name": "School Desk 7",
+    "file": "svgs/School-Desk-7.svg"
+  },
+  {
+    "name": "School Desk 8",
+    "file": "svgs/School-Desk-8.svg"
+  },
+  {
+    "name": "School Desk 9",
+    "file": "svgs/School-Desk-9.svg"
+  },
+  {
+    "name": "School Apple Rug",
+    "file": "svgs/SchoolAppleRug.svg"
+  },
+  {
+    "name": "School Calculator",
+    "file": "svgs/SchoolCalculator.svg"
+  },
+  {
+    "name": "School Clock",
+    "file": "svgs/SchoolClock.svg"
+  },
+  {
+    "name": "School Group Desk",
+    "file": "svgs/SchoolGroupDesk.svg"
+  },
+  {
+    "name": "School Lockers",
+    "file": "svgs/SchoolLockers.svg"
+  },
+  {
+    "name": "School Rug",
+    "file": "svgs/SchoolRug.svg"
+  },
+  {
+    "name": "Schoolroom Chalkboard",
+    "file": "svgs/SchoolroomChalkboard.svg"
+  },
+  {
+    "name": "Schoolroom Easel",
+    "file": "svgs/SchoolroomEasel.svg"
+  },
+  {
+    "name": "Schoolroom Science Fair Table",
+    "file": "svgs/SchoolroomScienceFairTable.svg"
+  },
+  {
+    "name": "Schoolroom Sink",
+    "file": "svgs/SchoolroomSink.svg"
+  },
+  {
+    "name": "Schoolteachers Desk",
+    "file": "svgs/SchoolteachersDesk.svg"
+  },
+  {
+    "name": "Schoolyard Window",
+    "file": "svgs/SchoolyardWindow.svg"
   },
   {
     "name": "Vet Examination Table",
