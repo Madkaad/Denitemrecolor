@@ -524,15 +524,14 @@
     previewCanvas.style.opacity = '0';
     controls.innerHTML = '';
 
-    try {
-      let svgText;
-      if (item.svg) {
-        // Inline SVG from catalog.json
-        svgText = item.svg;
-      } else {
-        const res = await fetch(item.file);
-        svgText = await res.text();
-      }
+  if (item.svg) {
+  svgText = item.svg;
+} else if (item.file && item.file.trim().startsWith('<')) {
+  svgText = item.file;
+} else {
+  const res = await fetch(item.file);
+  svgText = await res.text();
+}
 
       const parser = new DOMParser();
       const doc = parser.parseFromString(svgText, 'image/svg+xml');
