@@ -36,6 +36,10 @@
     "file": "svgs/postal-drop-box.svg"
   },
   {
+    "name": "Sturdy Table",
+    "file": "svgs/sturdy-table.svg"
+  },
+  {
     "name": "Tiki Torch",
     "file": "svgs/tiki-torch.svg"
   },
