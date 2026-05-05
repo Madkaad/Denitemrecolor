@@ -40,6 +40,10 @@
     "file": "svgs/postal-drop-box.svg"
   },
   {
+    "name": "Stone Column",
+    "file": "svgs/stone-column.svg"
+  },
+  {
     "name": "Sturdy Table",
     "file": "svgs/sturdy-table.svg"
   },
