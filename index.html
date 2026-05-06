@@ -921,7 +921,26 @@ elements.forEach((el, i) => {
       wrap.appendChild(label);
 
       wrap.addEventListener('mouseenter', () => {
-        const els = ids.map(id => svgEl.querySelector(`[data-color-id="${id}"]`)).filter(Boolean);
+        const els = ids.flatMap(id => {
+          const el = svgEl.querySelector(`[data-color-id="${id}"]`);
+          if (!el) return [];
+          // If it's a stop, find shapes that use its parent gradient
+          if (el.tagName === 'stop') {
+            const grad = el.closest('linearGradient, radialGradient');
+            if (!grad) return [];
+            const gradId = grad.getAttribute('id');
+            // Also check xlink:href chaining
+            const allGradIds = new Set([gradId]);
+            svgEl.querySelectorAll('linearGradient[xlink\\:href], radialGradient[xlink\\:href]').forEach(g => {
+              if (g.getAttribute('xlink:href') === '#' + gradId) allGradIds.add(g.getAttribute('id'));
+            });
+            return Array.from(svgEl.querySelectorAll('path, rect, circle, ellipse, polygon, polyline')).filter(shape => {
+              const fill = shape.getAttribute('fill') || '';
+              return Array.from(allGradIds).some(gid => fill.includes(gid));
+            });
+          }
+          return [el];
+        }).filter(Boolean);
         showHighlight(els);
       });
       wrap.addEventListener('mouseleave', clearHighlight);
