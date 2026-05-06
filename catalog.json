@@ -56,8 +56,16 @@
     "file": "svgs/AncientSteppingStones.svg"
   },
   {
+    "name": "Appondale Doghouse",
+    "file": "svgs/AppondaleDoghouse.svg"
+  },
+  {
     "name": "Autumn Stepping Stones",
     "file": "svgs/AutumnSteppingStones.svg"
+  },
+  {
+    "name": "Bag Of Dog Food",
+    "file": "svgs/BagOfDogFood.svg"
   },
   {
     "name": "Bakers Oven",
@@ -86,6 +94,10 @@
   {
     "name": "Baking Counter",
     "file": "svgs/Baking Counter.svg"
+  },
+  {
+    "name": "Balloosh Doghouse",
+    "file": "svgs/BallooshDoghouse.svg"
   },
   {
     "name": "Bamboo Fence",
@@ -416,6 +428,18 @@
     "file": "svgs/DelicateTable.svg"
   },
   {
+    "name": "Deluxe Dog Bowl",
+    "file": "svgs/DeluxeDogBowl.svg"
+  },
+  {
+    "name": "Deluxe Dog Pillow",
+    "file": "svgs/DeluxeDogPillow.svg"
+  },
+  {
+    "name": "Deluxe Waterfall Pool",
+    "file": "svgs/DeluxeWaterfallPool.svg"
+  },
+  {
     "name": "Dig Site Canopy",
     "file": "svgs/Dig Site Canopy.svg"
   },
@@ -430,6 +454,54 @@
   {
     "name": "Digital Art Station",
     "file": "svgs/Digital Art Station.svg"
+  },
+  {
+    "name": "Dog Bone",
+    "file": "svgs/DogBone.svg"
+  },
+  {
+    "name": "Dog Bowl",
+    "file": "svgs/DogBowl.svg"
+  },
+  {
+    "name": "Dog Couch",
+    "file": "svgs/DogCouch.svg"
+  },
+  {
+    "name": "Dog House",
+    "file": "svgs/DogHouse.svg"
+  },
+  {
+    "name": "Dog Lamp",
+    "file": "svgs/DogLamp.svg"
+  },
+  {
+    "name": "Dog Mat",
+    "file": "svgs/DogMat.svg"
+  },
+  {
+    "name": "Dog Playpen",
+    "file": "svgs/DogPlaypen.svg"
+  },
+  {
+    "name": "Dog Rug",
+    "file": "svgs/DogRug.svg"
+  },
+  {
+    "name": "Dog Sled",
+    "file": "svgs/DogSled.svg"
+  },
+  {
+    "name": "Dog Table",
+    "file": "svgs/DogTable.svg"
+  },
+  {
+    "name": "Dog Toy",
+    "file": "svgs/DogToy.svg"
+  },
+  {
+    "name": "Doggy Door",
+    "file": "svgs/DoggyDoor.svg"
   },
   {
     "name": "Dusty Scattered Books",
@@ -584,6 +656,10 @@
     "file": "svgs/GiantCrystal.svg"
   },
   {
+    "name": "Giant Dog Bone",
+    "file": "svgs/GiantDogBone.svg"
+  },
+  {
     "name": "Giant Open Book",
     "file": "svgs/GiantOpenBook.svg"
   },
@@ -620,6 +696,10 @@
     "file": "svgs/HauntedBookshelf.svg"
   },
   {
+    "name": "Haunted Doghouse",
+    "file": "svgs/HauntedDoghouse.svg"
+  },
+  {
     "name": "Haunted Fence",
     "file": "svgs/HauntedFence.svg"
   },
@@ -636,12 +716,32 @@
     "file": "svgs/HeartFenceGate.svg"
   },
   {
+    "name": "Horseshoe Doghouse",
+    "file": "svgs/HorseshoeDoghouse.svg"
+  },
+  {
+    "name": "Hot Dog Cart",
+    "file": "svgs/HotDogCart.svg"
+  },
+  {
+    "name": "Hot Dog Photo Stand",
+    "file": "svgs/HotDogPhotoStand.svg"
+  },
+  {
     "name": "Ice Fence",
     "file": "svgs/IceFence.svg"
   },
   {
     "name": "Jamaa Schoolroom Flag",
     "file": "svgs/Jamaa-Schoolroom-Flag.svg"
+  },
+  {
+    "name": "Jamaa Doghouse",
+    "file": "svgs/JamaaDoghouse.svg"
+  },
+  {
+    "name": "Jamaaliday Doghouse",
+    "file": "svgs/JamaalidayDoghouse.svg"
   },
   {
     "name": "Jamaaliday Fence",
@@ -686,6 +786,10 @@
   {
     "name": "Jolly Gingerbread Stepping Stones",
     "file": "svgs/JollyGingerbreadSteppingStones.svg"
+  },
+  {
+    "name": "Kimbara Doghouse",
+    "file": "svgs/KimbaraDoghouse.svg"
   },
   {
     "name": "Kitchen Fridge",
@@ -746,6 +850,10 @@
   {
     "name": "Lilyofthe Valley Bouquet",
     "file": "svgs/LilyoftheValleyBouquet.svg"
+  },
+  {
+    "name": "Log Cabin Doghouse",
+    "file": "svgs/LogCabinDoghouse.svg"
   },
   {
     "name": "Lollipop Fence",
@@ -818,6 +926,10 @@
   {
     "name": "Mossy Zios Statue",
     "file": "svgs/MossyZiosStatue.svg"
+  },
+  {
+    "name": "Mt Shiveer Doghouse",
+    "file": "svgs/MtShiveerDoghouse.svg"
   },
   {
     "name": "Multi Colored Pencil Fence",
@@ -1124,6 +1236,10 @@
     "file": "svgs/SecretDoorBookcase.svg"
   },
   {
+    "name": "Shamrock Doghouse",
+    "file": "svgs/ShamrockDoghouse.svg"
+  },
+  {
     "name": "Shamrock Stepping Stones",
     "file": "svgs/ShamrockSteppingStones.svg"
   },
@@ -1156,12 +1272,20 @@
     "file": "svgs/SnowFence.svg"
   },
   {
+    "name": "Snow Fort Doghouse",
+    "file": "svgs/SnowFortDoghouse.svg"
+  },
+  {
     "name": "Snowflake Bookshelf",
     "file": "svgs/SnowflakeBookshelf.svg"
   },
   {
     "name": "Snowflake Stepping Stones",
     "file": "svgs/SnowflakeSteppingStones.svg"
+  },
+  {
+    "name": "Spiked Birthday Doghouse",
+    "file": "svgs/SpikedBirthdayDoghouse.svg"
   },
   {
     "name": "Spooky Fence",
@@ -1178,6 +1302,10 @@
   {
     "name": "Spooky Wood Fence",
     "file": "svgs/SpookyWoodFence.svg"
+  },
+  {
+    "name": "Spring Doghouse",
+    "file": "svgs/SpringDoghouse.svg"
   },
   {
     "name": "Spring Egg Stepping Stones",
@@ -1282,6 +1410,10 @@
   {
     "name": "Sugar Cookie Stepping Stones",
     "file": "svgs/SugarCookieSteppingStones.svg"
+  },
+  {
+    "name": "Temple Of Zios Doghouse",
+    "file": "svgs/TempleOfZiosDoghouse.svg"
   },
   {
     "name": "Test Tubes",
