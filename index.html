@@ -1744,6 +1744,7 @@
   let sceneMultiSel = new Set();
   let sceneNextId = 1;
   let clipboard = [];
+  let huePopupVisible = false;
 
   // ── UNDO / REDO ────────────────────────────────────────────────────────────
   let undoStack = [], redoStack = [];
@@ -1935,7 +1936,8 @@
     document.getElementById('scene-recolor-hint').style.display = 'block';
     document.getElementById('scene-color-grid').innerHTML = '';
     document.getElementById('scene-floatbtns').classList.remove('visible');
-    if (typeof huePopup !== 'undefined') huePopup.classList.remove('visible');
+    const hp = document.getElementById('scene-hue-popup');
+    if (hp) { hp.classList.remove('visible'); }
     huePopupVisible = false;
     renderSceneLayers();
   }
@@ -2357,7 +2359,6 @@
 
   // ── HUE POPUP ──────────────────────────────────────────────────────────────
   const huePopup = document.getElementById('scene-hue-popup');
-  let huePopupVisible = false;
   // Store original colors per obj id for HSB adjustment
   const hueOriginals = new Map(); // objId -> [{el, attr, origColor}]
 
