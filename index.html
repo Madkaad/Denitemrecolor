@@ -1493,6 +1493,15 @@
           renderSaveSlots();
           renderSceneItemsList();
         });
+        // Click slot to re-load the saved design into the editor
+        slot.addEventListener('click', () => {
+          const fakeItem = { name: entry.name, svg: entry.svgXml };
+          selectedItem = fakeItem;
+          searchInput.value = entry.name;
+          openEditor(fakeItem);
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+        slot.title = 'Click to edit this design';
         slot.appendChild(img); slot.appendChild(name); slot.appendChild(del);
       } else {
         slot.innerHTML = '<span style="font-size:24px;opacity:0.25;">+</span>';
@@ -1584,16 +1593,20 @@
     const parser = new DOMParser();
     const svgNode = parser.parseFromString(entry.svgXml, 'image/svg+xml').querySelector('svg');
     const id = sceneNextId++;
-    const size = 160;
-    const wsRect = sceneWorkspace.getBoundingClientRect();
-    const x = Math.random() * Math.max(20, wsRect.width - size - 40) + 20;
-    const y = Math.random() * Math.max(20, wsRect.height - size - 40) + 20;
 
-    const obj = { id, svgEl: svgNode, x, y, w: size, h: size, rot: 0, flipX: false, name: entry.name, thumbnail: entry.thumbnail };
+    // Respect the SVG's aspect ratio so items aren't stretched
+    const maxSize = 160;
+    const { w: natW, h: natH } = getAspect(maxSize, svgNode);
+
+    const wsRect = sceneWorkspace.getBoundingClientRect();
+    const x = Math.random() * Math.max(20, wsRect.width - natW - 40) + 20;
+    const y = Math.random() * Math.max(20, wsRect.height - natH - 40) + 20;
+
+    const obj = { id, svgEl: svgNode, x, y, w: natW, h: natH, rot: 0, flipX: false, name: entry.name, thumbnail: entry.thumbnail };
 
     const domEl = document.createElement('div');
     domEl.className = 'scene-object';
-    domEl.style.cssText = `left:${x}px;top:${y}px;width:${size}px;height:${size}px;`;
+    domEl.style.cssText = `left:${x}px;top:${y}px;width:${natW}px;height:${natH}px;`;
 
     const imgEl = document.createElement('img');
     imgEl.className = 'scene-obj-img';
