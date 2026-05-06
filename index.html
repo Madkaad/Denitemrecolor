@@ -1012,7 +1012,7 @@
 
   <!-- PICKER -->
   <div class="panel">
-    <div class="panel-title">Choose a Den Item</div>
+    <div class="panel-title" style="display:flex;align-items:center;gap:10px;">Choose a Den Item <span id="item-count" style="font-family:'Nunito',sans-serif;font-size:13px;font-weight:700;color:var(--blue-light);opacity:0.8;"></span></div>
     <div class="select-wrap" id="select-wrap">
       <input id="search-input" type="text" placeholder="Search for a den item…" autocomplete="off" readonly/>
       <svg class="select-arrow" width="16" height="16" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
@@ -1326,6 +1326,8 @@
       const res = await fetch('catalog.json');
       catalog = await res.json();
       catalog.sort((a, b) => a.name.localeCompare(b.name));
+      const countEl = document.getElementById('item-count');
+      if (countEl) countEl.textContent = `(${catalog.length} items)`;
       filteredItems = [...catalog];
     } catch (e) {
       dropdownList.innerHTML = '<div class="dropdown-empty">Could not load catalog.json</div>';
