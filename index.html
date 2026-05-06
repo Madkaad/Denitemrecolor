@@ -2095,6 +2095,8 @@
       e.preventDefault();
       duplicateSelected();
     }
+
+    if ((e.metaKey || e.ctrlKey) && e.key === 'c') {
       clipboard = sceneObjects.filter(o => sceneMultiSel.has(o.id)).map(o => ({
         svgXml: new XMLSerializer().serializeToString(o.svgEl),
         name: o.name, thumbnail: o.thumbnail,
