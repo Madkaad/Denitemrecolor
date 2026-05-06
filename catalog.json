@@ -212,6 +212,10 @@
     "file": "svgs/BrokenHeartSteppingStones.svg"
   },
   {
+    "name": "Cascading Lily",
+    "file": "svgs/CascadingLily.svg"
+  },
+  {
     "name": "Cave Crystals",
     "file": "svgs/CaveCrystals.svg"
   },
@@ -368,6 +372,18 @@
     "file": "svgs/DeepSeaCrystals.svg"
   },
   {
+    "name": "Delicate Chair",
+    "file": "svgs/DelicateChair.svg"
+  },
+  {
+    "name": "Delicate Gazebo",
+    "file": "svgs/DelicateGazebo.svg"
+  },
+  {
+    "name": "Delicate Table",
+    "file": "svgs/DelicateTable.svg"
+  },
+  {
     "name": "Dig Site Canopy",
     "file": "svgs/Dig Site Canopy.svg"
   },
@@ -404,6 +420,38 @@
     "file": "svgs/FancyBookChair.svg"
   },
   {
+    "name": "Fancy Booth",
+    "file": "svgs/FancyBooth.svg"
+  },
+  {
+    "name": "Fancy Bouquet",
+    "file": "svgs/FancyBouquet.svg"
+  },
+  {
+    "name": "Fancy Fireplace",
+    "file": "svgs/FancyFireplace.svg"
+  },
+  {
+    "name": "Fancy Pedestal",
+    "file": "svgs/FancyPedestal.svg"
+  },
+  {
+    "name": "Fancy Pottery Wheel",
+    "file": "svgs/FancyPotteryWheel.svg"
+  },
+  {
+    "name": "Fancy Sectional Piece Back End",
+    "file": "svgs/FancySectionalPieceBackEnd.svg"
+  },
+  {
+    "name": "Fancy Sectional Piece Corner",
+    "file": "svgs/FancySectionalPieceCorner.svg"
+  },
+  {
+    "name": "Fancy Sectional Piece Front End",
+    "file": "svgs/FancySectionalPieceFrontEnd.svg"
+  },
+  {
     "name": "Fancy Stone Chair 1",
     "file": "svgs/FancyStoneChair1.svg"
   },
@@ -428,6 +476,18 @@
     "file": "svgs/FancyStoneTable.svg"
   },
   {
+    "name": "Fancy Table",
+    "file": "svgs/FancyTable.svg"
+  },
+  {
+    "name": "Fancy Tall Candelabra",
+    "file": "svgs/FancyTallCandelabra.svg"
+  },
+  {
+    "name": "Fancy Telescope",
+    "file": "svgs/FancyTelescope.svg"
+  },
+  {
     "name": "Fantasy Stepping Stones",
     "file": "svgs/FantasySteppingStones.svg"
   },
@@ -438,6 +498,10 @@
   {
     "name": "Fishy20002s Succulent Garden Sphere",
     "file": "svgs/Fishy20002s-Succulent-Garden-Sphere.svg"
+  },
+  {
+    "name": "Floating Lily Lantern",
+    "file": "svgs/FloatingLilyLantern.svg"
   },
   {
     "name": "Flying Disc Stepping Stones",
@@ -458,6 +522,10 @@
   {
     "name": "Galaxy Star Stepping Stones",
     "file": "svgs/GalaxyStarSteppingStones.svg"
+  },
+  {
+    "name": "Giant Blooming Lily",
+    "file": "svgs/GiantBloomingLily.svg"
   },
   {
     "name": "Giant Crystal",
@@ -558,6 +626,30 @@
   {
     "name": "Large Stone Planter",
     "file": "svgs/LargeStonePlanter.svg"
+  },
+  {
+    "name": "Lily Pad",
+    "file": "svgs/LilyPad.svg"
+  },
+  {
+    "name": "Lily Pad Chair",
+    "file": "svgs/LilyPadChair.svg"
+  },
+  {
+    "name": "Lily Pad Table",
+    "file": "svgs/LilyPadTable.svg"
+  },
+  {
+    "name": "Lily Rug",
+    "file": "svgs/LilyRug.svg"
+  },
+  {
+    "name": "Lilyofthe Valley",
+    "file": "svgs/LilyoftheValley.svg"
+  },
+  {
+    "name": "Lilyofthe Valley Bouquet",
+    "file": "svgs/LilyoftheValleyBouquet.svg"
   },
   {
     "name": "Lucky Stone Pathway",
@@ -1030,6 +1122,22 @@
   {
     "name": "Test Tubes",
     "file": "svgs/TestTubes.svg"
+  },
+  {
+    "name": "Trellis 1",
+    "file": "svgs/Trellis1.svg"
+  },
+  {
+    "name": "Trellis 2",
+    "file": "svgs/Trellis2.svg"
+  },
+  {
+    "name": "Trellis 3",
+    "file": "svgs/Trellis3.svg"
+  },
+  {
+    "name": "Trellis 4",
+    "file": "svgs/Trellis4.svg"
   },
   {
     "name": "Tulip Stone Pathway",
