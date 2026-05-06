@@ -20,6 +20,10 @@
     "file": "svgs/8BitBookshelf.svg"
   },
   {
+    "name": "8Bit Fence",
+    "file": "svgs/8BitFence.svg"
+  },
+  {
     "name": "Alpha Stepping Stones",
     "file": "svgs/AlphaSteppingStones.svg"
   },
@@ -82,6 +86,10 @@
   {
     "name": "Baking Counter",
     "file": "svgs/Baking Counter.svg"
+  },
+  {
+    "name": "Bamboo Fence",
+    "file": "svgs/BambooFence.svg"
   },
   {
     "name": "Beta Armoire",
@@ -212,6 +220,22 @@
     "file": "svgs/BrokenHeartSteppingStones.svg"
   },
   {
+    "name": "Bunny Fence",
+    "file": "svgs/BunnyFence.svg"
+  },
+  {
+    "name": "Cactus Fence",
+    "file": "svgs/CactusFence.svg"
+  },
+  {
+    "name": "Candy Shop Fence",
+    "file": "svgs/CandyShopFence.svg"
+  },
+  {
+    "name": "Carrot Stick Fence",
+    "file": "svgs/CarrotStickFence.svg"
+  },
+  {
     "name": "Cascading Lily",
     "file": "svgs/CascadingLily.svg"
   },
@@ -230,6 +254,14 @@
   {
     "name": "Classic Pink Jar",
     "file": "svgs/ClassicPinkJar.svg"
+  },
+  {
+    "name": "Clover Fence",
+    "file": "svgs/CloverFence.svg"
+  },
+  {
+    "name": "Coral Fence",
+    "file": "svgs/CoralFence.svg"
   },
   {
     "name": "Crystal Armoire",
@@ -496,6 +528,26 @@
     "file": "svgs/Felinegalaxys-Garden-Stake.svg"
   },
   {
+    "name": "Fence",
+    "file": "svgs/Fence.svg"
+  },
+  {
+    "name": "Fence Gate Sand Sculpture",
+    "file": "svgs/FenceGateSandSculpture.svg"
+  },
+  {
+    "name": "Fence Sand Sculpture",
+    "file": "svgs/FenceSandSculpture.svg"
+  },
+  {
+    "name": "Festive Jamaaliday Fence",
+    "file": "svgs/FestiveJamaalidayFence.svg"
+  },
+  {
+    "name": "Festive Jamaaliday Fence Gate",
+    "file": "svgs/FestiveJamaalidayFenceGate.svg"
+  },
+  {
     "name": "Fishy20002s Succulent Garden Sphere",
     "file": "svgs/Fishy20002s-Succulent-Garden-Sphere.svg"
   },
@@ -540,6 +592,10 @@
     "file": "svgs/GiftSteppingStones.svg"
   },
   {
+    "name": "Gingerbread Fence Gate",
+    "file": "svgs/GingerbreadFenceGate.svg"
+  },
+  {
     "name": "Gingerbread Stepping Stones",
     "file": "svgs/GingerbreadSteppingStones.svg"
   },
@@ -564,8 +620,36 @@
     "file": "svgs/HauntedBookshelf.svg"
   },
   {
+    "name": "Haunted Fence",
+    "file": "svgs/HauntedFence.svg"
+  },
+  {
+    "name": "Haunted Fence Gate",
+    "file": "svgs/HauntedFenceGate.svg"
+  },
+  {
+    "name": "Heart Fence",
+    "file": "svgs/HeartFence.svg"
+  },
+  {
+    "name": "Heart Fence Gate",
+    "file": "svgs/HeartFenceGate.svg"
+  },
+  {
+    "name": "Ice Fence",
+    "file": "svgs/IceFence.svg"
+  },
+  {
     "name": "Jamaa Schoolroom Flag",
     "file": "svgs/Jamaa-Schoolroom-Flag.svg"
+  },
+  {
+    "name": "Jamaaliday Fence",
+    "file": "svgs/JamaalidayFence.svg"
+  },
+  {
+    "name": "Jamaaliday Gift Fence",
+    "file": "svgs/JamaalidayGiftFence.svg"
   },
   {
     "name": "Jar 1",
@@ -592,6 +676,14 @@
     "file": "svgs/JasmineSteppingStones.svg"
   },
   {
+    "name": "Jolly Gingerbread Fence",
+    "file": "svgs/JollyGingerbreadFence.svg"
+  },
+  {
+    "name": "Jolly Gingerbread Fence Gate",
+    "file": "svgs/JollyGingerbreadFenceGate.svg"
+  },
+  {
     "name": "Jolly Gingerbread Stepping Stones",
     "file": "svgs/JollyGingerbreadSteppingStones.svg"
   },
@@ -606,6 +698,10 @@
   {
     "name": "LYCrystal Ball",
     "file": "svgs/LYCrystalBall.svg"
+  },
+  {
+    "name": "LYFence",
+    "file": "svgs/LYFence.svg"
   },
   {
     "name": "LYStone Chair",
@@ -652,6 +748,14 @@
     "file": "svgs/LilyoftheValleyBouquet.svg"
   },
   {
+    "name": "Lollipop Fence",
+    "file": "svgs/LollipopFence.svg"
+  },
+  {
+    "name": "Lollipop Fence Gate",
+    "file": "svgs/LollipopFenceGate.svg"
+  },
+  {
     "name": "Lucky Stone Pathway",
     "file": "svgs/LuckyStonePathway.svg"
   },
@@ -666,6 +770,10 @@
   {
     "name": "Maple Leaf Stepping Stones",
     "file": "svgs/MapleLeafSteppingStones.svg"
+  },
+  {
+    "name": "Mechanized Fence Gate",
+    "file": "svgs/MechanizedFenceGate.svg"
   },
   {
     "name": "Messy Bookshelf",
@@ -712,6 +820,10 @@
     "file": "svgs/MossyZiosStatue.svg"
   },
   {
+    "name": "Multi Colored Pencil Fence",
+    "file": "svgs/MultiColoredPencilFence.svg"
+  },
+  {
     "name": "Mystical Irish Standing Stone",
     "file": "svgs/MysticalIrishStandingStone.svg"
   },
@@ -756,6 +868,14 @@
     "file": "svgs/PiSteppingStones.svg"
   },
   {
+    "name": "Picket Fence",
+    "file": "svgs/PicketFence.svg"
+  },
+  {
+    "name": "Pigget Fence",
+    "file": "svgs/PiggetFence.svg"
+  },
+  {
     "name": "Polished Stone Egg",
     "file": "svgs/PolishedStoneEgg.svg"
   },
@@ -786,6 +906,18 @@
   {
     "name": "Rat Stepping Stones",
     "file": "svgs/RatSteppingStones.svg"
+  },
+  {
+    "name": "Rat Zhangzi Fence",
+    "file": "svgs/RatZhangziFence.svg"
+  },
+  {
+    "name": "Rod Iron Fence",
+    "file": "svgs/RodIronFence.svg"
+  },
+  {
+    "name": "Rod Iron Fence Gate",
+    "file": "svgs/RodIronFenceGate.svg"
   },
   {
     "name": "Rooster Stepping Stones",
@@ -870,6 +1002,10 @@
   {
     "name": "Rustic Stone Fence 2",
     "file": "svgs/RusticStoneFence2.svg"
+  },
+  {
+    "name": "Scary Fence",
+    "file": "svgs/ScaryFence.svg"
   },
   {
     "name": "Scary Things In Jars",
@@ -1000,12 +1136,24 @@
     "file": "svgs/SirGilbertsBookshelf.svg"
   },
   {
+    "name": "Skeleton Fence",
+    "file": "svgs/SkeletonFence.svg"
+  },
+  {
     "name": "Slice Of Bread Stepping Stones",
     "file": "svgs/SliceOfBreadSteppingStones.svg"
   },
   {
     "name": "Small Irish Standing Stone",
     "file": "svgs/SmallIrishStandingStone.svg"
+  },
+  {
+    "name": "Snow Covered Fence",
+    "file": "svgs/SnowCoveredFence.svg"
+  },
+  {
+    "name": "Snow Fence",
+    "file": "svgs/SnowFence.svg"
   },
   {
     "name": "Snowflake Bookshelf",
@@ -1016,12 +1164,28 @@
     "file": "svgs/SnowflakeSteppingStones.svg"
   },
   {
+    "name": "Spooky Fence",
+    "file": "svgs/SpookyFence.svg"
+  },
+  {
     "name": "Spooky Stone Fence",
     "file": "svgs/SpookyStoneFence.svg"
   },
   {
+    "name": "Spooky Tree Fence",
+    "file": "svgs/SpookyTreeFence.svg"
+  },
+  {
+    "name": "Spooky Wood Fence",
+    "file": "svgs/SpookyWoodFence.svg"
+  },
+  {
     "name": "Spring Egg Stepping Stones",
     "file": "svgs/SpringEggSteppingStones.svg"
+  },
+  {
+    "name": "Spring Tulip Fence",
+    "file": "svgs/SpringTulipFence.svg"
   },
   {
     "name": "Square Stone Planter",
