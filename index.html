@@ -34,7 +34,11 @@
       flex-direction: column;
       align-items: center;
       padding: 0 0 60px;
+      user-select: none;
+      -webkit-user-select: none;
     }
+
+    input, textarea { user-select: text; -webkit-user-select: text; }
 
     header {
       width: 100%;
@@ -1105,7 +1109,6 @@
     <div class="shortcut-row"><span>Multi-select colors</span><span class="shortcut-key">Ctrl Click</span></div>
     <div class="shortcut-row"><span>Drag-toggle layers</span><span class="shortcut-key">Click + Drag</span></div>
   </div>
-</div>
 </div>
 
 <!-- POPUP -->
@@ -2188,20 +2191,54 @@
 
   function startResize(e, obj, corner) {
     e.preventDefault(); e.stopPropagation();
+    const selected = sceneObjects.filter(o => sceneMultiSel.has(o.id));
+    // If only one object selected (or this object not in selection), resize just this one
+    if (selected.length <= 1 || !sceneMultiSel.has(obj.id)) {
+      const startX = e.clientX, startY = e.clientY;
+      const startW = obj.w, startH = obj.h, startObjX = obj.x, startObjY = obj.y;
+      const aspect = startW / startH;
+      const onMove = e => {
+        let dx = e.clientX - startX, dy = e.clientY - startY;
+        let delta = Math.abs(dx) > Math.abs(dy) ? dx : dy;
+        if (corner === 'tl' || corner === 'bl') delta = -delta;
+        const newW = Math.max(40, startW + delta);
+        const newH = newW / aspect;
+        if (corner === 'tl') { obj.x = startObjX + (startW - newW); obj.y = startObjY + (startH - newH); }
+        if (corner === 'tr') { obj.y = startObjY + (startH - newH); }
+        if (corner === 'bl') { obj.x = startObjX + (startW - newW); }
+        obj.w = newW; obj.h = newH;
+        updateSceneObjTransform(obj);
+      };
+      const onUp = () => { pushUndo(); window.removeEventListener('mousemove', onMove); window.removeEventListener('mouseup', onUp); };
+      window.addEventListener('mousemove', onMove);
+      window.addEventListener('mouseup', onUp);
+      return;
+    }
+    // Group resize: scale all selected objects proportionally around their collective center
     const startX = e.clientX, startY = e.clientY;
-    const startW = obj.w, startH = obj.h, startObjX = obj.x, startObjY = obj.y;
-    const aspect = startW / startH;
+    const startStates = selected.map(o => ({ obj: o, x: o.x, y: o.y, w: o.w, h: o.h }));
+    // Compute group bounding box center
+    const minX = Math.min(...selected.map(o => o.x));
+    const minY = Math.min(...selected.map(o => o.y));
+    const maxX = Math.max(...selected.map(o => o.x + o.w));
+    const maxY = Math.max(...selected.map(o => o.y + o.h));
+    const groupCx = (minX + maxX) / 2;
+    const groupCy = (minY + maxY) / 2;
+    const groupW = maxX - minX;
     const onMove = e => {
       let dx = e.clientX - startX, dy = e.clientY - startY;
       let delta = Math.abs(dx) > Math.abs(dy) ? dx : dy;
       if (corner === 'tl' || corner === 'bl') delta = -delta;
-      const newW = Math.max(40, startW + delta);
-      const newH = newW / aspect;
-      if (corner === 'tl') { obj.x = startObjX + (startW - newW); obj.y = startObjY + (startH - newH); }
-      if (corner === 'tr') { obj.y = startObjY + (startH - newH); }
-      if (corner === 'bl') { obj.x = startObjX + (startW - newW); }
-      obj.w = newW; obj.h = newH;
-      updateSceneObjTransform(obj);
+      const scale = Math.max(0.1, (groupW + delta) / groupW);
+      startStates.forEach(({ obj, x, y, w, h }) => {
+        // Scale position relative to group center
+        obj.w = Math.max(20, w * scale);
+        obj.h = Math.max(20, h * scale);
+        obj.x = groupCx + (x + w/2 - groupCx) * scale - obj.w/2;
+        obj.y = groupCy + (y + h/2 - groupCy) * scale - obj.h/2;
+        updateSceneObjTransform(obj);
+      });
+      positionFloatBtns();
     };
     const onUp = () => { pushUndo(); window.removeEventListener('mousemove', onMove); window.removeEventListener('mouseup', onUp); };
     window.addEventListener('mousemove', onMove);
@@ -2229,6 +2266,31 @@
 
     if (e.key === 'Backspace' || e.key === 'Delete') {
       if (sceneMultiSel.size) { e.preventDefault(); deleteSelected(); }
+    }
+
+    if (e.shiftKey && (e.key === 'ArrowUp' || e.key === 'ArrowDown')) {
+      e.preventDefault();
+      if (!sceneMultiSel.size) return;
+      pushUndo();
+      const movingUp = e.key === 'ArrowUp'; // ArrowUp = bring forward (higher index)
+      if (movingUp) {
+        // Move from top of array downward so we don't cascade
+        for (let i = sceneObjects.length - 2; i >= 0; i--) {
+          if (sceneMultiSel.has(sceneObjects[i].id) && !sceneMultiSel.has(sceneObjects[i+1].id)) {
+            [sceneObjects[i], sceneObjects[i+1]] = [sceneObjects[i+1], sceneObjects[i]];
+          }
+        }
+      } else {
+        // Move from bottom of array upward
+        for (let i = 1; i < sceneObjects.length; i++) {
+          if (sceneMultiSel.has(sceneObjects[i].id) && !sceneMultiSel.has(sceneObjects[i-1].id)) {
+            [sceneObjects[i], sceneObjects[i-1]] = [sceneObjects[i-1], sceneObjects[i]];
+          }
+        }
+      }
+      sceneObjects.forEach(o => sceneContainer.appendChild(o.domEl));
+      renderSceneLayers();
+      return;
     }
 
     if ((e.metaKey || e.ctrlKey) && e.key === 'z') {
@@ -2617,7 +2679,19 @@
 
   document.getElementById('hp-reset').addEventListener('click', () => {
     ['hp-hue','hp-sat','hp-bri'].forEach(id => document.getElementById(id).value = 0);
-    applyHuePopup();
+    document.getElementById('hp-hue-val').textContent = '0°';
+    document.getElementById('hp-sat-val').textContent = '0%';
+    document.getElementById('hp-bri-val').textContent = '0%';
+    // Restore to the colors captured when the popup was opened
+    const objs = sceneObjects.filter(o => sceneMultiSel.has(o.id));
+    objs.forEach(obj => {
+      const originals = hueOriginals.get(obj.id);
+      if (!originals) return;
+      originals.forEach(({ el, attr, origColor }) => {
+        el.setAttribute(attr, origColor);
+      });
+      refreshSceneObjImage(obj);
+    });
   });
 
   // ── SHORTCUTS POPUP ────────────────────────────────────────────────────────
