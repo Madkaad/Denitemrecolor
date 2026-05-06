@@ -264,13 +264,13 @@
     #download-btn:active { box-shadow: 0 2px 0 #1560a8; }
 
     #save-to-bank-btn {
-      background: linear-gradient(180deg, #5bb3ff 0%, var(--blue) 100%);
-      color: #fff;
-      border-color: var(--blue-dark);
-      box-shadow: 0 4px 0 #1560a8, 0 6px 14px rgba(0,0,0,0.12);
+      background: linear-gradient(180deg, #ffe570 0%, var(--gold) 100%);
+      color: #7a4500;
+      border-color: var(--gold-dark);
+      box-shadow: 0 4px 0 #a07020, 0 6px 14px rgba(0,0,0,0.12);
     }
-    #save-to-bank-btn:hover { box-shadow: 0 6px 0 #1560a8, 0 10px 18px rgba(0,0,0,0.15); }
-    #save-to-bank-btn:active { box-shadow: 0 2px 0 #1560a8; }
+    #save-to-bank-btn:hover { box-shadow: 0 6px 0 #a07020, 0 10px 18px rgba(0,0,0,0.15); }
+    #save-to-bank-btn:active { box-shadow: 0 2px 0 #a07020; }
 
     .palette-panel { flex: 1; min-width: 240px; }
 
@@ -560,7 +560,7 @@
     #scene-overlay {
       position: fixed;
       inset: 0;
-      background: #1a2a3a;
+      background: #f0f6ff;
       z-index: 1000;
       display: none;
       flex-direction: column;
@@ -578,6 +578,17 @@
       flex-shrink: 0;
     }
 
+    .scene-header {
+      background: var(--blue);
+      border-bottom: 3px solid var(--blue-dark);
+      padding: 10px 18px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-shrink: 0;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+    }
+
     .scene-title {
       font-family: 'Fredoka One', cursive;
       font-size: 20px;
@@ -590,8 +601,8 @@
       font-size: 13px;
       padding: 7px 16px;
       border-radius: 9px;
-      border: 2px solid rgba(255,255,255,0.18);
-      background: rgba(255,255,255,0.1);
+      border: 2px solid rgba(255,255,255,0.4);
+      background: rgba(255,255,255,0.18);
       color: #fff;
       cursor: pointer;
       transition: background 0.15s;
@@ -599,25 +610,26 @@
       align-items: center;
       gap: 5px;
     }
-    .scene-hbtn:hover { background: rgba(255,255,255,0.2); }
-    .scene-hbtn.gold { background: var(--blue); color: #fff; border-color: var(--blue-dark); }
-    .scene-hbtn.gold:hover { background: var(--blue-dark); }
-    .scene-hbtn.danger { background: rgba(200,40,40,0.3); border-color: rgba(200,40,40,0.5); }
-    .scene-hbtn.danger:hover { background: rgba(200,40,40,0.55); }
+    .scene-hbtn:hover { background: rgba(255,255,255,0.32); }
+    .scene-hbtn.export-btn { background: #fff; color: var(--blue-dark); border-color: #fff; }
+    .scene-hbtn.export-btn:hover { background: #e8f4ff; }
+    .scene-hbtn.danger { background: rgba(200,40,40,0.25); border-color: rgba(255,255,255,0.3); }
+    .scene-hbtn.danger:hover { background: rgba(200,40,40,0.5); }
 
     .scene-body { display: flex; flex: 1; overflow: hidden; }
 
     .scene-sidebar {
       width: 255px;
       flex-shrink: 0;
-      background: #0d1b28;
-      border-right: 3px solid #060f18;
+      background: #fff;
+      border-right: 3px solid #d0e4f7;
       display: flex;
       flex-direction: column;
       overflow: hidden;
+      box-shadow: 2px 0 8px rgba(0,0,0,0.06);
     }
 
-    .scene-sidebar-tabs { display: flex; border-bottom: 2px solid #060f18; }
+    .scene-sidebar-tabs { display: flex; border-bottom: 2px solid #d0e4f7; background: #f5f9ff; }
 
     .scene-stab {
       flex: 1;
@@ -626,34 +638,36 @@
       padding: 10px 4px;
       text-align: center;
       cursor: pointer;
-      color: rgba(255,255,255,0.45);
+      color: #8aabcc;
       border: none;
       background: none;
       border-bottom: 3px solid transparent;
       transition: color 0.15s, border-color 0.15s;
     }
-    .scene-stab.active { color: var(--blue-light); border-bottom-color: var(--blue-light); }
-    .scene-stab:hover:not(.active) { color: rgba(255,255,255,0.75); }
+    .scene-stab.active { color: var(--blue-dark); border-bottom-color: var(--blue); }
+    .scene-stab:hover:not(.active) { color: var(--blue-dark); }
 
     .scene-spane { display: none; flex: 1; overflow-y: auto; padding: 10px; flex-direction: column; gap: 7px; }
     .scene-spane.active { display: flex; }
     .scene-spane::-webkit-scrollbar { width: 4px; }
-    .scene-spane::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.15); border-radius: 4px; }
+    .scene-spane::-webkit-scrollbar-thumb { background: #c0d8f0; border-radius: 4px; }
 
-    .scene-empty-msg { font-family: 'Nunito', sans-serif; font-size: 12px; color: rgba(255,255,255,0.3); text-align: center; padding: 18px 10px; line-height: 1.5; }
+    .scene-empty-msg { font-family: 'Nunito', sans-serif; font-size: 12px; color: #a0bcd8; text-align: center; padding: 18px 10px; line-height: 1.5; }
 
     .scene-item-card {
-      background: rgba(255,255,255,0.07);
-      border: 2px solid rgba(255,255,255,0.1);
+      background: #f5f9ff;
+      border: 2px solid #d0e4f7;
       border-radius: 11px;
       padding: 9px 10px;
       display: flex;
       align-items: center;
       gap: 9px;
       flex-shrink: 0;
+      transition: border-color 0.15s, background 0.15s;
     }
+    .scene-item-card:hover { background: #eaf3ff; border-color: var(--blue-light); }
     .scene-item-card img { width: 40px; height: 40px; object-fit: contain; flex-shrink: 0; }
-    .scene-item-card-name { font-family: 'Nunito', sans-serif; font-size: 11px; font-weight: 700; color: #fff; flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .scene-item-card-name { font-family: 'Nunito', sans-serif; font-size: 11px; font-weight: 700; color: var(--text-dark); flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
     .scene-add-btn {
       font-family: 'Fredoka One', cursive;
       font-size: 11px;
@@ -674,12 +688,12 @@
     }
 
     .scene-color-item { display: flex; flex-direction: column; align-items: center; gap: 4px; }
-    .scene-color-item input[type="color"] { width: 46px; height: 46px; border-radius: 10px; }
-    .scene-color-item .hex-text { font-size: 8px; }
+    .scene-color-item input[type="color"] { width: 46px; height: 46px; border-radius: 10px; border-color: rgba(0,0,0,0.15); }
+    .scene-color-item .hex-text { font-size: 8px; color: #6a9abf; }
 
     .scene-layer-row {
-      background: rgba(255,255,255,0.07);
-      border: 2px solid rgba(255,255,255,0.1);
+      background: #f5f9ff;
+      border: 2px solid #d0e4f7;
       border-radius: 10px;
       padding: 7px 9px;
       display: flex;
@@ -689,18 +703,18 @@
       cursor: pointer;
       transition: background 0.12s;
     }
-    .scene-layer-row:hover { background: rgba(255,255,255,0.12); }
-    .scene-layer-row.sel { border-color: var(--blue-light); background: rgba(91,179,255,0.14); }
+    .scene-layer-row:hover { background: #eaf3ff; }
+    .scene-layer-row.sel { border-color: var(--blue); background: #ddeeff; }
     .scene-layer-thumb { width: 26px; height: 26px; object-fit: contain; flex-shrink: 0; }
-    .scene-layer-name { font-family: 'Nunito', sans-serif; font-size: 11px; font-weight: 700; color: rgba(255,255,255,0.8); flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .scene-layer-name { font-family: 'Nunito', sans-serif; font-size: 11px; font-weight: 700; color: var(--text-dark); flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
     .scene-layer-btns { display: flex; gap: 3px; flex-shrink: 0; }
 
     .slbtn {
       width: 22px; height: 22px;
       border-radius: 5px;
-      border: 1.5px solid rgba(255,255,255,0.18);
-      background: rgba(255,255,255,0.09);
-      color: #fff;
+      border: 1.5px solid #c0d8f0;
+      background: #e8f2fc;
+      color: var(--text-dark);
       font-size: 11px;
       cursor: pointer;
       display: flex;
@@ -708,21 +722,21 @@
       justify-content: center;
       transition: background 0.1s;
     }
-    .slbtn:hover { background: rgba(255,255,255,0.22); }
-    .slbtn.del { background: rgba(200,40,40,0.25); border-color: rgba(200,40,40,0.4); }
-    .slbtn.del:hover { background: rgba(200,40,40,0.6) !important; }
+    .slbtn:hover { background: #cce0f8; }
+    .slbtn.del { background: #ffe8e8; border-color: #f0b0b0; color: #c03030; }
+    .slbtn.del:hover { background: #ffc8c8 !important; }
 
     /* ── WORKSPACE ── */
     .scene-workspace {
       flex: 1;
       position: relative;
       overflow: hidden;
-      background-color: #243040;
+      background-color: #e8f0f8;
       background-image:
-        linear-gradient(45deg, #2a3a4a 25%, transparent 25%),
-        linear-gradient(-45deg, #2a3a4a 25%, transparent 25%),
-        linear-gradient(45deg, transparent 75%, #2a3a4a 75%),
-        linear-gradient(-45deg, transparent 75%, #2a3a4a 75%);
+        linear-gradient(45deg, #dde8f4 25%, transparent 25%),
+        linear-gradient(-45deg, #dde8f4 25%, transparent 25%),
+        linear-gradient(45deg, transparent 75%, #dde8f4 75%),
+        linear-gradient(-45deg, transparent 75%, #dde8f4 75%);
       background-size: 24px 24px;
       background-position: 0 0, 0 12px, 12px -12px, -12px 0px;
     }
@@ -769,48 +783,10 @@
       left: 50%;
       transform: translateX(-50%);
       cursor: grab;
-      background: var(--blue);
-      border-color: var(--blue-dark);
+      background: var(--gold);
+      border-color: var(--gold-dark);
       border-radius: 50%;
     }
-
-    .scene-obj-handle.mirror-btn, .scene-obj-handle.reset-btn {
-      width: auto;
-      height: 22px;
-      padding: 0 7px;
-      border-radius: 6px;
-      font-size: 11px;
-      font-family: 'Nunito', sans-serif;
-      font-weight: 800;
-      cursor: pointer;
-      pointer-events: all;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      white-space: nowrap;
-      letter-spacing: 0.02em;
-    }
-
-    .scene-obj-handle.mirror-btn {
-      bottom: -32px;
-      left: 50%;
-      transform: translateX(-70px);
-      background: var(--blue);
-      border-color: var(--blue-dark);
-      color: #fff;
-    }
-
-    .scene-obj-handle.reset-btn {
-      bottom: -32px;
-      left: 50%;
-      transform: translateX(4px);
-      background: rgba(255,255,255,0.92);
-      border-color: var(--blue-dark);
-      color: var(--blue-dark);
-    }
-
-    .scene-obj-handle.mirror-btn:hover { background: var(--blue-dark); }
-    .scene-obj-handle.reset-btn:hover { background: #fff; }
 
     .scene-ws-hint {
       position: absolute;
@@ -821,11 +797,52 @@
       justify-content: center;
       gap: 10px;
       pointer-events: none;
-      opacity: 0.3;
+      opacity: 0.35;
     }
 
     .scene-ws-hint-icon { font-size: 52px; }
-    .scene-ws-hint-text { font-family: 'Fredoka One', cursive; font-size: 18px; color: #fff; }
+    .scene-ws-hint-text { font-family: 'Fredoka One', cursive; font-size: 18px; color: var(--text-dark); }
+
+    .scene-obj-handle.rot {
+      top: -32px;
+      left: 50%;
+      transform: translateX(-50%);
+      cursor: grab;
+      background: var(--blue);
+      border-color: var(--blue-dark);
+      border-radius: 50%;
+    }
+
+    /* Mirror/Reset float independently outside the transformed domEl */
+    .scene-obj-floatbtns {
+      position: absolute;
+      display: none;
+      gap: 5px;
+      z-index: 10;
+      pointer-events: all;
+    }
+    .scene-obj-floatbtns.visible { display: flex; }
+
+    .scene-floatbtn {
+      font-family: 'Fredoka One', cursive;
+      font-size: 11px;
+      padding: 4px 10px;
+      height: 24px;
+      border-radius: 6px;
+      border: 2px solid;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      white-space: nowrap;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+      transition: transform 0.1s;
+    }
+    .scene-floatbtn:hover { transform: translateY(-1px); }
+    .scene-floatbtn:active { transform: translateY(1px); }
+    .scene-floatbtn.mirror { background: var(--blue); color: #fff; border-color: var(--blue-dark); }
+    .scene-floatbtn.mirror:hover { background: var(--blue-dark); }
+    .scene-floatbtn.reset { background: #fff; color: var(--text-dark); border-color: #c0d0e0; }
+    .scene-floatbtn.reset:hover { background: #eaf3ff; border-color: var(--blue-light); }
 
     @keyframes popIn {
       from { opacity: 0; transform: scale(0.94) translateY(10px); }
@@ -871,8 +888,8 @@
         <canvas id="preview-canvas"></canvas>
         <canvas id="highlight-canvas" style="position:absolute;pointer-events:none;opacity:0;transition:opacity 0.1s;"></canvas>
       </div>
-      <button class="tool-btn" id="download-btn">⬇ Download PNG</button>
-      <button class="tool-btn" id="save-to-bank-btn">🎨 Save to Design Bank</button>
+      <button class="tool-btn" id="download-btn">Download PNG</button>
+      <button class="tool-btn" id="save-to-bank-btn">Save to Design Bank</button>
     </div>
 
     <div class="panel palette-panel">
@@ -922,14 +939,14 @@
       <div class="bank-header">
         <div class="bank-title-block">
           <div class="bank-title">
-            🎨 Design Bank
-            <span class="bank-count" id="bank-count-label">0 / 15</span>
+            Design Bank
+            <span class="bank-count" id="bank-count-label">0 / 20</span>
           </div>
           <div class="bank-desc">Save your recolors here, then combine them in the Scene Builder!</div>
         </div>
         <div class="bank-action-row">
-          <button class="bank-btn bank-btn-scene" id="open-scene-btn">🏗 Scene Builder</button>
-          <button class="bank-btn bank-btn-clear" id="clear-bank-btn">🗑 Clear All</button>
+          <button class="bank-btn bank-btn-scene" id="open-scene-btn">Scene Builder</button>
+          <button class="bank-btn bank-btn-clear" id="clear-bank-btn">Clear All</button>
         </div>
       </div>
       <div class="save-slots" id="save-slots"></div>
@@ -941,7 +958,7 @@
 <!-- POPUP -->
 <div class="popup-overlay" id="popup-overlay" style="display:none;" onclick="closePopup()">
   <div class="popup-box" onclick="event.stopPropagation()">
-    <div class="popup-icon" id="popup-icon">⚠️</div>
+    <div class="popup-icon" id="popup-icon"></div>
     <div class="popup-title" id="popup-title">Bank Full!</div>
     <div class="popup-msg" id="popup-msg">Your design bank is full. Delete one of your saved designs to make room.</div>
     <button class="popup-btn" onclick="closePopup()">Got it!</button>
@@ -952,8 +969,8 @@
 <div id="scene-overlay">
   <div class="scene-header">
     <div class="scene-title">Den Item Builder</div>
-    <button class="scene-hbtn gold" id="scene-export-btn">⬇ Export PNG</button>
-    <button class="scene-hbtn danger" id="scene-close-btn">✕ Close</button>
+    <button class="scene-hbtn export-btn" id="scene-export-btn">Export PNG</button>
+    <button class="scene-hbtn danger" id="scene-close-btn">Close</button>
   </div>
   <div class="scene-body">
     <div class="scene-sidebar">
@@ -975,8 +992,11 @@
 
     <div class="scene-workspace" id="scene-workspace">
       <div id="scene-canvas-container"></div>
+      <div id="scene-floatbtns" class="scene-obj-floatbtns">
+        <button class="scene-floatbtn mirror" id="scene-mirror-btn">Mirror</button>
+        <button class="scene-floatbtn reset" id="scene-reset-btn">Reset</button>
+      </div>
       <div class="scene-ws-hint" id="scene-ws-hint">
-        <div class="scene-ws-hint-icon">🪑</div>
         <div class="scene-ws-hint-text">Click items on the left to place them!</div>
       </div>
     </div>
@@ -986,7 +1006,7 @@
 <canvas id="export-canvas" style="display:none;"></canvas>
 
 <script>
-  const MAX_BANK = 15;
+  const MAX_BANK = 20;
   let catalog = [];
   let svgEl = null;
   let selectedItem = null;
@@ -1495,7 +1515,7 @@
       return;
     }
     const btn = document.getElementById('save-to-bank-btn');
-    btn.textContent = '⏳ Saving…'; btn.style.opacity = '0.75';
+    btn.textContent = 'Saving…'; btn.style.opacity = '0.75';
     const svgXml = new XMLSerializer().serializeToString(svgEl);
     const thumbnail = await generateThumbnail(svgEl);
     designBank.push({ name: selectedItem.name, svgXml, thumbnail });
@@ -1503,8 +1523,8 @@
     renderSaveSlots();
     renderSceneItemsList();
     saveBankSection.classList.add('active');
-    btn.textContent = '✅ Saved!';
-    setTimeout(() => { btn.textContent = '🎨 Save to Design Bank'; btn.style.opacity = '1'; }, 1400);
+    btn.textContent = 'Saved!';
+    setTimeout(() => { btn.textContent = 'Save to Design Bank'; btn.style.opacity = '1'; }, 1400);
   });
 
   document.getElementById('clear-bank-btn').addEventListener('click', () => {
@@ -1595,31 +1615,6 @@
     rotH.addEventListener('mousedown', e => startRotate(e, obj));
     handles.appendChild(rotH);
 
-    const mirrorH = document.createElement('div');
-    mirrorH.className = 'scene-obj-handle mirror-btn';
-    mirrorH.title = 'Flip horizontal';
-    mirrorH.textContent = '⇄ Mirror';
-    mirrorH.addEventListener('mousedown', e => { e.preventDefault(); e.stopPropagation(); });
-    mirrorH.addEventListener('click', e => {
-      e.stopPropagation();
-      obj.flipX = !obj.flipX;
-      updateSceneObjTransform(obj);
-    });
-    handles.appendChild(mirrorH);
-
-    const resetH = document.createElement('div');
-    resetH.className = 'scene-obj-handle reset-btn';
-    resetH.title = 'Reset orientation';
-    resetH.textContent = '↺ Reset';
-    resetH.addEventListener('mousedown', e => { e.preventDefault(); e.stopPropagation(); });
-    resetH.addEventListener('click', e => {
-      e.stopPropagation();
-      obj.rot = 0;
-      obj.flipX = false;
-      updateSceneObjTransform(obj);
-    });
-    handles.appendChild(resetH);
-
     domEl.appendChild(imgEl);
     domEl.appendChild(handles);
 
@@ -1655,6 +1650,7 @@
     obj.domEl.style.height = obj.h + 'px';
     const flip = obj.flipX ? ' scaleX(-1)' : '';
     obj.domEl.style.transform = `rotate(${obj.rot}deg)${flip}`;
+    if (sceneSelected && sceneSelected.id === obj.id) positionFloatBtns();
   }
 
   function selectSceneObj(obj) {
@@ -1663,13 +1659,14 @@
     obj.domEl.classList.add('selected');
     renderSceneRecolor(obj);
     renderSceneLayers();
-    switchSceneTab('recolor');
+    positionFloatBtns();
   }
 
   function deselectSceneObj() {
     if (sceneSelected) { sceneSelected.domEl.classList.remove('selected'); sceneSelected = null; }
     document.getElementById('scene-recolor-hint').style.display = 'block';
     document.getElementById('scene-color-grid').innerHTML = '';
+    document.getElementById('scene-floatbtns').classList.remove('visible');
     renderSceneLayers();
   }
 
@@ -1820,58 +1817,55 @@
     });
   }
 
+  // ── FLOAT BUTTONS (Mirror / Reset) ────────────────────────────────────────
+  const sceneFloatBtns = document.getElementById('scene-floatbtns');
+
+  function positionFloatBtns() {
+    if (!sceneSelected) { sceneFloatBtns.classList.remove('visible'); return; }
+    const obj = sceneSelected;
+    const wsRect = sceneWorkspace.getBoundingClientRect();
+    const domRect = obj.domEl.getBoundingClientRect();
+    // Position relative to workspace, below the object's bounding box
+    const left = domRect.left - wsRect.left + domRect.width / 2 - sceneFloatBtns.offsetWidth / 2;
+    const top  = domRect.bottom - wsRect.top + 8;
+    sceneFloatBtns.style.left = Math.max(4, left) + 'px';
+    sceneFloatBtns.style.top  = top + 'px';
+    sceneFloatBtns.classList.add('visible');
+  }
+
+  document.getElementById('scene-mirror-btn').addEventListener('click', () => {
+    if (!sceneSelected) return;
+    sceneSelected.flipX = !sceneSelected.flipX;
+    updateSceneObjTransform(sceneSelected);
+    positionFloatBtns();
+  });
+
+  document.getElementById('scene-reset-btn').addEventListener('click', () => {
+    if (!sceneSelected) return;
+    sceneSelected.rot = 0;
+    sceneSelected.flipX = false;
+    updateSceneObjTransform(sceneSelected);
+    positionFloatBtns();
+  });
+
   // ── SCENE EXPORT ──────────────────────────────────────────────────────────
   document.getElementById('scene-export-btn').addEventListener('click', async () => {
     const btn = document.getElementById('scene-export-btn');
-    btn.textContent = '⏳ Rendering…';
-
+    btn.textContent = 'Rendering…';
     const wsRect = sceneWorkspace.getBoundingClientRect();
-
-    // Compute the actual bounding box of all objects in workspace coords
-    let minX = Infinity, minY = Infinity, maxX = -Infinity, maxY = -Infinity;
-    for (const obj of sceneObjects) {
-      // Get the four corners of the (possibly rotated) object
-      const cx = obj.x + obj.w / 2, cy = obj.y + obj.h / 2;
-      const hw = obj.w / 2, hh = obj.h / 2;
-      const rad = obj.rot * Math.PI / 180;
-      const cos = Math.cos(rad), sin = Math.sin(rad);
-      const corners = [[-hw,-hh],[hw,-hh],[hw,hh],[-hw,hh]];
-      for (const [lx, ly] of corners) {
-        const wx = cx + lx * cos - ly * sin;
-        const wy = cy + lx * sin + ly * cos;
-        minX = Math.min(minX, wx); minY = Math.min(minY, wy);
-        maxX = Math.max(maxX, wx); maxY = Math.max(maxY, wy);
-      }
-    }
-
-    if (!isFinite(minX)) { btn.textContent = '⬇ Export PNG'; return; }
-
-    const pad = 0; // no padding — snug crop
-    minX -= pad; minY -= pad; maxX += pad; maxY += pad;
-    const contentW = maxX - minX, contentH = maxY - minY;
-
-    // Always 1500px wide, height scaled proportionally
-    const EXPORT_W = 1500;
-    const scale = EXPORT_W / contentW;
-    const EXPORT_H = Math.round(contentH * scale);
-
+    const scale = 2;
+    const W = wsRect.width * scale, H = wsRect.height * scale;
     const canvas = document.createElement('canvas');
-    canvas.width = EXPORT_W;
-    canvas.height = EXPORT_H;
+    canvas.width = W; canvas.height = H;
     const ctx = canvas.getContext('2d');
-
     for (const obj of sceneObjects) {
       await new Promise(res => {
         const img = new Image();
         img.onload = () => {
           ctx.save();
-          // Translate to object center in export space
-          const cx = (obj.x + obj.w / 2 - minX) * scale;
-          const cy = (obj.y + obj.h / 2 - minY) * scale;
-          ctx.translate(cx, cy);
+          ctx.translate((obj.x + obj.w/2)*scale, (obj.y + obj.h/2)*scale);
           ctx.rotate(obj.rot * Math.PI / 180);
-          if (obj.flipX) ctx.scale(-1, 1);
-          ctx.drawImage(img, -obj.w / 2 * scale, -obj.h / 2 * scale, obj.w * scale, obj.h * scale);
+          ctx.drawImage(img, -obj.w/2*scale, -obj.h/2*scale, obj.w*scale, obj.h*scale);
           ctx.restore();
           res();
         };
@@ -1879,12 +1873,11 @@
         img.src = svgToDataUrl(obj.svgEl);
       });
     }
-
     const link = document.createElement('a');
     link.download = 'den-scene.png';
     link.href = canvas.toDataURL('image/png');
     link.click();
-    btn.textContent = '⬇ Export PNG';
+    btn.textContent = 'Export PNG';
   });
 
   // ── BOOT ──────────────────────────────────────────────────────────────────
