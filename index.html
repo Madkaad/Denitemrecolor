@@ -264,13 +264,13 @@
     #download-btn:active { box-shadow: 0 2px 0 #1560a8; }
 
     #save-to-bank-btn {
-      background: linear-gradient(180deg, #ffe570 0%, var(--gold) 100%);
-      color: #7a4500;
-      border-color: var(--gold-dark);
-      box-shadow: 0 4px 0 #a07020, 0 6px 14px rgba(0,0,0,0.12);
+      background: linear-gradient(180deg, #5bb3ff 0%, var(--blue) 100%);
+      color: #fff;
+      border-color: var(--blue-dark);
+      box-shadow: 0 4px 0 #1560a8, 0 6px 14px rgba(0,0,0,0.12);
     }
-    #save-to-bank-btn:hover { box-shadow: 0 6px 0 #a07020, 0 10px 18px rgba(0,0,0,0.15); }
-    #save-to-bank-btn:active { box-shadow: 0 2px 0 #a07020; }
+    #save-to-bank-btn:hover { box-shadow: 0 6px 0 #1560a8, 0 10px 18px rgba(0,0,0,0.15); }
+    #save-to-bank-btn:active { box-shadow: 0 2px 0 #1560a8; }
 
     .palette-panel { flex: 1; min-width: 240px; }
 
@@ -600,8 +600,8 @@
       gap: 5px;
     }
     .scene-hbtn:hover { background: rgba(255,255,255,0.2); }
-    .scene-hbtn.gold { background: var(--gold); color: #7a4500; border-color: var(--gold-dark); }
-    .scene-hbtn.gold:hover { background: #ffe566; }
+    .scene-hbtn.gold { background: var(--blue); color: #fff; border-color: var(--blue-dark); }
+    .scene-hbtn.gold:hover { background: var(--blue-dark); }
     .scene-hbtn.danger { background: rgba(200,40,40,0.3); border-color: rgba(200,40,40,0.5); }
     .scene-hbtn.danger:hover { background: rgba(200,40,40,0.55); }
 
@@ -769,10 +769,48 @@
       left: 50%;
       transform: translateX(-50%);
       cursor: grab;
-      background: var(--gold);
-      border-color: var(--gold-dark);
+      background: var(--blue);
+      border-color: var(--blue-dark);
       border-radius: 50%;
     }
+
+    .scene-obj-handle.mirror-btn, .scene-obj-handle.reset-btn {
+      width: auto;
+      height: 22px;
+      padding: 0 7px;
+      border-radius: 6px;
+      font-size: 11px;
+      font-family: 'Nunito', sans-serif;
+      font-weight: 800;
+      cursor: pointer;
+      pointer-events: all;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      white-space: nowrap;
+      letter-spacing: 0.02em;
+    }
+
+    .scene-obj-handle.mirror-btn {
+      bottom: -32px;
+      left: 50%;
+      transform: translateX(-70px);
+      background: var(--blue);
+      border-color: var(--blue-dark);
+      color: #fff;
+    }
+
+    .scene-obj-handle.reset-btn {
+      bottom: -32px;
+      left: 50%;
+      transform: translateX(4px);
+      background: rgba(255,255,255,0.92);
+      border-color: var(--blue-dark);
+      color: var(--blue-dark);
+    }
+
+    .scene-obj-handle.mirror-btn:hover { background: var(--blue-dark); }
+    .scene-obj-handle.reset-btn:hover { background: #fff; }
 
     .scene-ws-hint {
       position: absolute;
@@ -913,7 +951,7 @@
 <!-- SCENE BUILDER -->
 <div id="scene-overlay">
   <div class="scene-header">
-    <div class="scene-title">🏗 Scene Builder</div>
+    <div class="scene-title">Den Item Builder</div>
     <button class="scene-hbtn gold" id="scene-export-btn">⬇ Export PNG</button>
     <button class="scene-hbtn danger" id="scene-close-btn">✕ Close</button>
   </div>
@@ -1531,7 +1569,7 @@
     const x = Math.random() * Math.max(20, wsRect.width - size - 40) + 20;
     const y = Math.random() * Math.max(20, wsRect.height - size - 40) + 20;
 
-    const obj = { id, svgEl: svgNode, x, y, w: size, h: size, rot: 0, name: entry.name, thumbnail: entry.thumbnail };
+    const obj = { id, svgEl: svgNode, x, y, w: size, h: size, rot: 0, flipX: false, name: entry.name, thumbnail: entry.thumbnail };
 
     const domEl = document.createElement('div');
     domEl.className = 'scene-object';
@@ -1556,6 +1594,31 @@
     rotH.title = 'Rotate';
     rotH.addEventListener('mousedown', e => startRotate(e, obj));
     handles.appendChild(rotH);
+
+    const mirrorH = document.createElement('div');
+    mirrorH.className = 'scene-obj-handle mirror-btn';
+    mirrorH.title = 'Flip horizontal';
+    mirrorH.textContent = '⇄ Mirror';
+    mirrorH.addEventListener('mousedown', e => { e.preventDefault(); e.stopPropagation(); });
+    mirrorH.addEventListener('click', e => {
+      e.stopPropagation();
+      obj.flipX = !obj.flipX;
+      updateSceneObjTransform(obj);
+    });
+    handles.appendChild(mirrorH);
+
+    const resetH = document.createElement('div');
+    resetH.className = 'scene-obj-handle reset-btn';
+    resetH.title = 'Reset orientation';
+    resetH.textContent = '↺ Reset';
+    resetH.addEventListener('mousedown', e => { e.preventDefault(); e.stopPropagation(); });
+    resetH.addEventListener('click', e => {
+      e.stopPropagation();
+      obj.rot = 0;
+      obj.flipX = false;
+      updateSceneObjTransform(obj);
+    });
+    handles.appendChild(resetH);
 
     domEl.appendChild(imgEl);
     domEl.appendChild(handles);
@@ -1590,7 +1653,8 @@
     obj.domEl.style.top    = obj.y + 'px';
     obj.domEl.style.width  = obj.w + 'px';
     obj.domEl.style.height = obj.h + 'px';
-    obj.domEl.style.transform = `rotate(${obj.rot}deg)`;
+    const flip = obj.flipX ? ' scaleX(-1)' : '';
+    obj.domEl.style.transform = `rotate(${obj.rot}deg)${flip}`;
   }
 
   function selectSceneObj(obj) {
@@ -1760,20 +1824,54 @@
   document.getElementById('scene-export-btn').addEventListener('click', async () => {
     const btn = document.getElementById('scene-export-btn');
     btn.textContent = '⏳ Rendering…';
+
     const wsRect = sceneWorkspace.getBoundingClientRect();
-    const scale = 2;
-    const W = wsRect.width * scale, H = wsRect.height * scale;
+
+    // Compute the actual bounding box of all objects in workspace coords
+    let minX = Infinity, minY = Infinity, maxX = -Infinity, maxY = -Infinity;
+    for (const obj of sceneObjects) {
+      // Get the four corners of the (possibly rotated) object
+      const cx = obj.x + obj.w / 2, cy = obj.y + obj.h / 2;
+      const hw = obj.w / 2, hh = obj.h / 2;
+      const rad = obj.rot * Math.PI / 180;
+      const cos = Math.cos(rad), sin = Math.sin(rad);
+      const corners = [[-hw,-hh],[hw,-hh],[hw,hh],[-hw,hh]];
+      for (const [lx, ly] of corners) {
+        const wx = cx + lx * cos - ly * sin;
+        const wy = cy + lx * sin + ly * cos;
+        minX = Math.min(minX, wx); minY = Math.min(minY, wy);
+        maxX = Math.max(maxX, wx); maxY = Math.max(maxY, wy);
+      }
+    }
+
+    if (!isFinite(minX)) { btn.textContent = '⬇ Export PNG'; return; }
+
+    const pad = 0; // no padding — snug crop
+    minX -= pad; minY -= pad; maxX += pad; maxY += pad;
+    const contentW = maxX - minX, contentH = maxY - minY;
+
+    // Always 1500px wide, height scaled proportionally
+    const EXPORT_W = 1500;
+    const scale = EXPORT_W / contentW;
+    const EXPORT_H = Math.round(contentH * scale);
+
     const canvas = document.createElement('canvas');
-    canvas.width = W; canvas.height = H;
+    canvas.width = EXPORT_W;
+    canvas.height = EXPORT_H;
     const ctx = canvas.getContext('2d');
+
     for (const obj of sceneObjects) {
       await new Promise(res => {
         const img = new Image();
         img.onload = () => {
           ctx.save();
-          ctx.translate((obj.x + obj.w/2)*scale, (obj.y + obj.h/2)*scale);
+          // Translate to object center in export space
+          const cx = (obj.x + obj.w / 2 - minX) * scale;
+          const cy = (obj.y + obj.h / 2 - minY) * scale;
+          ctx.translate(cx, cy);
           ctx.rotate(obj.rot * Math.PI / 180);
-          ctx.drawImage(img, -obj.w/2*scale, -obj.h/2*scale, obj.w*scale, obj.h*scale);
+          if (obj.flipX) ctx.scale(-1, 1);
+          ctx.drawImage(img, -obj.w / 2 * scale, -obj.h / 2 * scale, obj.w * scale, obj.h * scale);
           ctx.restore();
           res();
         };
@@ -1781,6 +1879,7 @@
         img.src = svgToDataUrl(obj.svgEl);
       });
     }
+
     const link = document.createElement('a');
     link.download = 'den-scene.png';
     link.href = canvas.toDataURL('image/png');
