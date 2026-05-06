@@ -843,6 +843,8 @@
     .scene-floatbtn.mirror:hover { background: var(--blue-dark); }
     .scene-floatbtn.reset { background: #fff; color: var(--text-dark); border-color: #c0d0e0; }
     .scene-floatbtn.reset:hover { background: #eaf3ff; border-color: var(--blue-light); }
+    .scene-floatbtn.deletebtn { background: #fff0f0; color: #c03030; border-color: #f0b0b0; }
+    .scene-floatbtn.deletebtn:hover { background: #ffd8d8; border-color: #e05555; }
 
     @keyframes popIn {
       from { opacity: 0; transform: scale(0.94) translateY(10px); }
@@ -995,6 +997,7 @@
       <div id="scene-floatbtns" class="scene-obj-floatbtns">
         <button class="scene-floatbtn mirror" id="scene-mirror-btn">Mirror</button>
         <button class="scene-floatbtn reset" id="scene-reset-btn">Reset</button>
+        <button class="scene-floatbtn deletebtn" id="scene-delete-btn">Delete</button>
       </div>
       <div class="scene-ws-hint" id="scene-ws-hint">
         <div class="scene-ws-hint-text">Click items on the left to place them!</div>
@@ -1547,8 +1550,10 @@
 
   // ── SCENE BUILDER ─────────────────────────────────────────────────────────
   let sceneObjects = [];
-  let sceneSelected = null;
+  let sceneSelected = null;       // primary selected obj (for recolor/single ops)
+  let sceneMultiSel = new Set();  // all selected obj ids
   let sceneNextId = 1;
+  let clipboard = [];
 
   const sceneOverlay   = document.getElementById('scene-overlay');
   const sceneWorkspace = document.getElementById('scene-workspace');
@@ -1556,7 +1561,7 @@
   const sceneWsHint    = document.getElementById('scene-ws-hint');
 
   document.getElementById('open-scene-btn').addEventListener('click', () => { sceneOverlay.classList.add('active'); renderSceneItemsList(); renderSceneLayers(); });
-  document.getElementById('scene-close-btn').addEventListener('click', () => { sceneOverlay.classList.remove('active'); deselectSceneObj(); });
+  document.getElementById('scene-close-btn').addEventListener('click', () => { sceneOverlay.classList.remove('active'); clearSelection(); });
 
   function switchSceneTab(name) {
     document.querySelectorAll('.scene-stab').forEach(t => t.classList.remove('active'));
@@ -1593,51 +1598,43 @@
     const parser = new DOMParser();
     const svgNode = parser.parseFromString(entry.svgXml, 'image/svg+xml').querySelector('svg');
     const id = sceneNextId++;
-
-    // Respect the SVG's aspect ratio so items aren't stretched
     const maxSize = 160;
     const { w: natW, h: natH } = getAspect(maxSize, svgNode);
-
     const wsRect = sceneWorkspace.getBoundingClientRect();
     const x = Math.random() * Math.max(20, wsRect.width - natW - 40) + 20;
     const y = Math.random() * Math.max(20, wsRect.height - natH - 40) + 20;
-
     const obj = { id, svgEl: svgNode, x, y, w: natW, h: natH, rot: 0, flipX: false, name: entry.name, thumbnail: entry.thumbnail };
-
     const domEl = document.createElement('div');
     domEl.className = 'scene-object';
     domEl.style.cssText = `left:${x}px;top:${y}px;width:${natW}px;height:${natH}px;`;
-
     const imgEl = document.createElement('img');
     imgEl.className = 'scene-obj-img';
     imgEl.src = svgToDataUrl(svgNode);
-
     const handles = document.createElement('div');
     handles.className = 'scene-obj-handles';
-
     ['tl','tr','bl','br'].forEach(pos => {
       const h = document.createElement('div');
       h.className = `scene-obj-handle ${pos}`;
       h.addEventListener('mousedown', e => startResize(e, obj, pos));
       handles.appendChild(h);
     });
-
     const rotH = document.createElement('div');
     rotH.className = 'scene-obj-handle rot';
     rotH.title = 'Rotate';
     rotH.addEventListener('mousedown', e => startRotate(e, obj));
     handles.appendChild(rotH);
-
     domEl.appendChild(imgEl);
     domEl.appendChild(handles);
-
     domEl.addEventListener('mousedown', e => {
       if (e.target.classList.contains('scene-obj-handle')) return;
       e.preventDefault();
-      selectSceneObj(obj);
-      startDrag(e, obj);
+      if (e.shiftKey) {
+        toggleMultiSelect(obj);
+      } else {
+        if (!sceneMultiSel.has(obj.id)) selectSceneObj(obj);
+        startDragMulti(e);
+      }
     });
-
     obj.domEl = domEl;
     obj.imgEl = imgEl;
     sceneObjects.push(obj);
@@ -1647,47 +1644,122 @@
     renderSceneLayers();
   }
 
-  function svgToDataUrl(node) {
-    const xml = new XMLSerializer().serializeToString(node);
-    return 'data:image/svg+xml;base64,' + btoa(unescape(encodeURIComponent(xml)));
-  }
-
-  function refreshSceneObjImage(obj) {
-    obj.imgEl.src = svgToDataUrl(obj.svgEl);
-  }
-
-  function updateSceneObjTransform(obj) {
-    obj.domEl.style.left   = obj.x + 'px';
-    obj.domEl.style.top    = obj.y + 'px';
-    obj.domEl.style.width  = obj.w + 'px';
-    obj.domEl.style.height = obj.h + 'px';
-    const flip = obj.flipX ? ' scaleX(-1)' : '';
-    obj.domEl.style.transform = `rotate(${obj.rot}deg)${flip}`;
-    if (sceneSelected && sceneSelected.id === obj.id) positionFloatBtns();
-  }
-
-  function selectSceneObj(obj) {
-    deselectSceneObj();
+  // ── SELECTION ──────────────────────────────────────────────────────────────
+  function selectSceneObj(obj, addToMulti = false) {
+    if (!addToMulti) clearSelection();
     sceneSelected = obj;
+    sceneMultiSel.add(obj.id);
     obj.domEl.classList.add('selected');
     renderSceneRecolor(obj);
     renderSceneLayers();
     positionFloatBtns();
   }
 
-  function deselectSceneObj() {
-    if (sceneSelected) { sceneSelected.domEl.classList.remove('selected'); sceneSelected = null; }
+  function toggleMultiSelect(obj) {
+    if (sceneMultiSel.has(obj.id)) {
+      sceneMultiSel.delete(obj.id);
+      obj.domEl.classList.remove('selected');
+      // Set primary to another selected obj if any
+      const remaining = sceneObjects.filter(o => sceneMultiSel.has(o.id));
+      sceneSelected = remaining.length ? remaining[remaining.length - 1] : null;
+    } else {
+      sceneMultiSel.add(obj.id);
+      obj.domEl.classList.add('selected');
+      sceneSelected = obj;
+    }
+    if (sceneSelected) {
+      renderSceneRecolor(sceneSelected);
+    } else {
+      document.getElementById('scene-recolor-hint').style.display = 'block';
+      document.getElementById('scene-color-grid').innerHTML = '';
+    }
+    renderSceneLayers();
+    positionFloatBtns();
+  }
+
+  function clearSelection() {
+    sceneObjects.forEach(o => o.domEl.classList.remove('selected'));
+    sceneSelected = null;
+    sceneMultiSel.clear();
     document.getElementById('scene-recolor-hint').style.display = 'block';
     document.getElementById('scene-color-grid').innerHTML = '';
     document.getElementById('scene-floatbtns').classList.remove('visible');
     renderSceneLayers();
   }
 
+  function deleteSelected() {
+    const toDelete = sceneObjects.filter(o => sceneMultiSel.has(o.id));
+    toDelete.forEach(o => o.domEl.remove());
+    sceneObjects = sceneObjects.filter(o => !sceneMultiSel.has(o.id));
+    clearSelection();
+    if (!sceneObjects.length) sceneWsHint.style.display = 'flex';
+    renderSceneLayers();
+  }
+
+  // ── WORKSPACE MOUSEDOWN: drag-select or deselect ───────────────────────────
+  let dragSelRect = null;
+  const dragSelEl = (() => {
+    const el = document.createElement('div');
+    el.style.cssText = 'position:absolute;border:2px dashed var(--blue);background:rgba(39,158,255,0.08);pointer-events:none;display:none;z-index:5;border-radius:3px;';
+    sceneWorkspace.appendChild(el);
+    return el;
+  })();
+
   sceneWorkspace.addEventListener('mousedown', e => {
-    if (e.target === sceneWorkspace || e.target === sceneContainer || e.target === sceneWsHint || e.target.classList.contains('scene-ws-hint-icon') || e.target.classList.contains('scene-ws-hint-text')) {
-      deselectSceneObj();
-    }
+    const isBackground = e.target === sceneWorkspace || e.target === sceneContainer || e.target === sceneWsHint || e.target.classList.contains('scene-ws-hint-text');
+    if (!isBackground) return;
+    if (!e.shiftKey) clearSelection();
+    // Start drag-select
+    const wsRect = sceneWorkspace.getBoundingClientRect();
+    const startX = e.clientX - wsRect.left, startY = e.clientY - wsRect.top;
+    dragSelRect = { startX, startY };
+    dragSelEl.style.cssText += 'display:block;left:' + startX + 'px;top:' + startY + 'px;width:0;height:0;';
+
+    const onMove = e => {
+      const curX = e.clientX - wsRect.left, curY = e.clientY - wsRect.top;
+      const rx = Math.min(startX, curX), ry = Math.min(startY, curY);
+      const rw = Math.abs(curX - startX), rh = Math.abs(curY - startY);
+      dragSelEl.style.left = rx + 'px'; dragSelEl.style.top = ry + 'px';
+      dragSelEl.style.width = rw + 'px'; dragSelEl.style.height = rh + 'px';
+      // Highlight objects within rect
+      sceneObjects.forEach(obj => {
+        const cx = obj.x + obj.w / 2, cy = obj.y + obj.h / 2;
+        const inside = cx >= rx && cx <= rx + rw && cy >= ry && cy <= ry + rh;
+        if (inside) { obj.domEl.classList.add('selected'); sceneMultiSel.add(obj.id); }
+        else if (!e.shiftKey) { obj.domEl.classList.remove('selected'); sceneMultiSel.delete(obj.id); }
+      });
+      const sel = sceneObjects.filter(o => sceneMultiSel.has(o.id));
+      sceneSelected = sel.length ? sel[sel.length - 1] : null;
+      positionFloatBtns();
+    };
+    const onUp = () => {
+      dragSelEl.style.display = 'none';
+      dragSelRect = null;
+      window.removeEventListener('mousemove', onMove);
+      window.removeEventListener('mouseup', onUp);
+      const sel = sceneObjects.filter(o => sceneMultiSel.has(o.id));
+      if (sel.length) { sceneSelected = sel[sel.length - 1]; renderSceneRecolor(sceneSelected); }
+      renderSceneLayers();
+      positionFloatBtns();
+    };
+    window.addEventListener('mousemove', onMove);
+    window.addEventListener('mouseup', onUp);
   });
+
+  // ── DRAG (multi-aware) ────────────────────────────────────────────────────
+  function startDragMulti(e) {
+    const selected = sceneObjects.filter(o => sceneMultiSel.has(o.id));
+    const startPositions = selected.map(o => ({ obj: o, startX: e.clientX - o.x, startY: e.clientY - o.y }));
+    const onMove = e => {
+      startPositions.forEach(({ obj, startX, startY }) => {
+        obj.x = e.clientX - startX; obj.y = e.clientY - startY;
+        updateSceneObjTransform(obj);
+      });
+    };
+    const onUp = () => { window.removeEventListener('mousemove', onMove); window.removeEventListener('mouseup', onUp); };
+    window.addEventListener('mousemove', onMove);
+    window.addEventListener('mouseup', onUp);
+  }
 
   function startDrag(e, obj) {
     const startX = e.clientX - obj.x, startY = e.clientY - obj.y;
@@ -1732,17 +1804,106 @@
     window.addEventListener('mouseup', onUp);
   }
 
+  // ── KEYBOARD SHORTCUTS ────────────────────────────────────────────────────
+  document.addEventListener('keydown', e => {
+    if (!sceneOverlay.classList.contains('active')) return;
+    // Don't fire if user is typing in an input
+    if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+
+    if (e.key === 'Backspace' || e.key === 'Delete') {
+      if (sceneMultiSel.size) { e.preventDefault(); deleteSelected(); }
+    }
+
+    if ((e.metaKey || e.ctrlKey) && e.key === 'c') {
+      clipboard = sceneObjects.filter(o => sceneMultiSel.has(o.id)).map(o => ({
+        svgXml: new XMLSerializer().serializeToString(o.svgEl),
+        name: o.name, thumbnail: o.thumbnail,
+        w: o.w, h: o.h, rot: o.rot, flipX: o.flipX,
+        offX: o.x, offY: o.y
+      }));
+    }
+
+    if ((e.metaKey || e.ctrlKey) && e.key === 'v') {
+      if (!clipboard.length) return;
+      e.preventDefault();
+      clearSelection();
+      // Paste with a small offset
+      clipboard.forEach(c => {
+        const parser = new DOMParser();
+        const svgNode = parser.parseFromString(c.svgXml, 'image/svg+xml').querySelector('svg');
+        const id = sceneNextId++;
+        const x = c.offX + 20, y = c.offY + 20;
+        const obj = { id, svgEl: svgNode, x, y, w: c.w, h: c.h, rot: c.rot, flipX: c.flipX, name: c.name, thumbnail: c.thumbnail };
+        const domEl = document.createElement('div');
+        domEl.className = 'scene-object';
+        domEl.style.cssText = `left:${x}px;top:${y}px;width:${c.w}px;height:${c.h}px;`;
+        const imgEl = document.createElement('img');
+        imgEl.className = 'scene-obj-img';
+        imgEl.src = svgToDataUrl(svgNode);
+        const handles = document.createElement('div');
+        handles.className = 'scene-obj-handles';
+        ['tl','tr','bl','br'].forEach(pos => {
+          const h = document.createElement('div');
+          h.className = `scene-obj-handle ${pos}`;
+          h.addEventListener('mousedown', ev => startResize(ev, obj, pos));
+          handles.appendChild(h);
+        });
+        const rotH = document.createElement('div');
+        rotH.className = 'scene-obj-handle rot';
+        rotH.addEventListener('mousedown', ev => startRotate(ev, obj));
+        handles.appendChild(rotH);
+        domEl.appendChild(imgEl); domEl.appendChild(handles);
+        domEl.addEventListener('mousedown', ev => {
+          if (ev.target.classList.contains('scene-obj-handle')) return;
+          ev.preventDefault();
+          if (ev.shiftKey) { toggleMultiSelect(obj); }
+          else { if (!sceneMultiSel.has(obj.id)) selectSceneObj(obj); startDragMulti(ev); }
+        });
+        obj.domEl = domEl; obj.imgEl = imgEl;
+        sceneObjects.push(obj);
+        sceneContainer.appendChild(domEl);
+        sceneWsHint.style.display = 'none';
+        // Select pasted objects
+        sceneMultiSel.add(id);
+        domEl.classList.add('selected');
+        sceneSelected = obj;
+        // Update clipboard offset for next paste
+        c.offX += 20; c.offY += 20;
+      });
+      const flip = sceneSelected.flipX ? ' scaleX(-1)' : '';
+      sceneSelected.domEl.style.transform = `rotate(${sceneSelected.rot}deg)${flip}`;
+      renderSceneLayers();
+      positionFloatBtns();
+    }
+  });
+
+  function svgToDataUrl(node) {
+    const xml = new XMLSerializer().serializeToString(node);
+    return 'data:image/svg+xml;base64,' + btoa(unescape(encodeURIComponent(xml)));
+  }
+
+  function refreshSceneObjImage(obj) {
+    obj.imgEl.src = svgToDataUrl(obj.svgEl);
+  }
+
+  function updateSceneObjTransform(obj) {
+    obj.domEl.style.left   = obj.x + 'px';
+    obj.domEl.style.top    = obj.y + 'px';
+    obj.domEl.style.width  = obj.w + 'px';
+    obj.domEl.style.height = obj.h + 'px';
+    const flip = obj.flipX ? ' scaleX(-1)' : '';
+    obj.domEl.style.transform = `rotate(${obj.rot}deg)${flip}`;
+    if (sceneSelected && sceneSelected.id === obj.id) positionFloatBtns();
+  }
+
   // ── SCENE RECOLOR ─────────────────────────────────────────────────────────
   function renderSceneRecolor(obj) {
     const hint = document.getElementById('scene-recolor-hint');
     const grid = document.getElementById('scene-color-grid');
     hint.style.display = 'none';
     grid.innerHTML = '';
-
     const colorMap = buildColorMap(obj.svgEl, `sc${obj.id}`);
-
     if (!colorMap.size) { hint.style.display = 'block'; hint.textContent = 'No recolorable parts found.'; return; }
-
     colorMap.forEach((ids, originalHex) => {
       const wrap = document.createElement('div');
       wrap.className = 'scene-color-item';
@@ -1774,21 +1935,16 @@
     list.innerHTML = '';
     if (!sceneObjects.length) { hint.style.display = 'block'; return; }
     hint.style.display = 'none';
-
     [...sceneObjects].reverse().forEach((obj, revIdx) => {
       const realIdx = sceneObjects.length - 1 - revIdx;
       const row = document.createElement('div');
-      row.className = 'scene-layer-row' + (sceneSelected && sceneSelected.id === obj.id ? ' sel' : '');
-
+      row.className = 'scene-layer-row' + (sceneMultiSel.has(obj.id) ? ' sel' : '');
       const thumb = document.createElement('img');
       thumb.className = 'scene-layer-thumb'; thumb.src = obj.thumbnail; thumb.alt = obj.name;
-
       const name = document.createElement('div');
       name.className = 'scene-layer-name'; name.textContent = obj.name;
-
       const btns = document.createElement('div');
       btns.className = 'scene-layer-btns';
-
       const upBtn = document.createElement('button');
       upBtn.className = 'slbtn'; upBtn.title = 'Bring forward'; upBtn.textContent = '↑';
       upBtn.addEventListener('click', e => {
@@ -1799,7 +1955,6 @@
           renderSceneLayers();
         }
       });
-
       const downBtn = document.createElement('button');
       downBtn.className = 'slbtn'; downBtn.title = 'Send back'; downBtn.textContent = '↓';
       downBtn.addEventListener('click', e => {
@@ -1810,55 +1965,66 @@
           renderSceneLayers();
         }
       });
-
       const delBtn = document.createElement('button');
       delBtn.className = 'slbtn del'; delBtn.title = 'Remove'; delBtn.textContent = '✕';
       delBtn.addEventListener('click', e => {
         e.stopPropagation();
         obj.domEl.remove();
         sceneObjects.splice(sceneObjects.indexOf(obj), 1);
-        if (sceneSelected && sceneSelected.id === obj.id) deselectSceneObj();
+        sceneMultiSel.delete(obj.id);
+        if (sceneSelected && sceneSelected.id === obj.id) {
+          const rem = sceneObjects.filter(o => sceneMultiSel.has(o.id));
+          sceneSelected = rem.length ? rem[rem.length-1] : null;
+        }
         if (!sceneObjects.length) sceneWsHint.style.display = 'flex';
+        positionFloatBtns();
         renderSceneLayers();
       });
-
       btns.appendChild(upBtn); btns.appendChild(downBtn); btns.appendChild(delBtn);
       row.appendChild(thumb); row.appendChild(name); row.appendChild(btns);
-
-      row.addEventListener('click', e => { if (e.target.tagName === 'BUTTON') return; selectSceneObj(obj); });
+      row.addEventListener('click', e => {
+        if (e.target.tagName === 'BUTTON') return;
+        if (e.shiftKey) toggleMultiSelect(obj);
+        else selectSceneObj(obj);
+      });
       list.appendChild(row);
     });
   }
 
-  // ── FLOAT BUTTONS (Mirror / Reset) ────────────────────────────────────────
+  // ── FLOAT BUTTONS (Mirror / Reset / Delete) ────────────────────────────────
   const sceneFloatBtns = document.getElementById('scene-floatbtns');
 
   function positionFloatBtns() {
-    if (!sceneSelected) { sceneFloatBtns.classList.remove('visible'); return; }
-    const obj = sceneSelected;
+    if (!sceneSelected && sceneMultiSel.size === 0) { sceneFloatBtns.classList.remove('visible'); return; }
+    if (sceneMultiSel.size === 0) { sceneFloatBtns.classList.remove('visible'); return; }
+    // Position below the bounding box of ALL selected objects
     const wsRect = sceneWorkspace.getBoundingClientRect();
-    const domRect = obj.domEl.getBoundingClientRect();
-    // Position relative to workspace, below the object's bounding box
-    const left = domRect.left - wsRect.left + domRect.width / 2 - sceneFloatBtns.offsetWidth / 2;
-    const top  = domRect.bottom - wsRect.top + 8;
+    let maxBottom = -Infinity, sumCx = 0, count = 0;
+    sceneObjects.filter(o => sceneMultiSel.has(o.id)).forEach(o => {
+      const r = o.domEl.getBoundingClientRect();
+      maxBottom = Math.max(maxBottom, r.bottom - wsRect.top);
+      sumCx += r.left - wsRect.left + r.width / 2;
+      count++;
+    });
+    const avgCx = sumCx / count;
+    const left = avgCx - sceneFloatBtns.offsetWidth / 2;
     sceneFloatBtns.style.left = Math.max(4, left) + 'px';
-    sceneFloatBtns.style.top  = top + 'px';
+    sceneFloatBtns.style.top  = (maxBottom + 8) + 'px';
     sceneFloatBtns.classList.add('visible');
   }
 
   document.getElementById('scene-mirror-btn').addEventListener('click', () => {
-    if (!sceneSelected) return;
-    sceneSelected.flipX = !sceneSelected.flipX;
-    updateSceneObjTransform(sceneSelected);
+    sceneObjects.filter(o => sceneMultiSel.has(o.id)).forEach(o => { o.flipX = !o.flipX; updateSceneObjTransform(o); });
     positionFloatBtns();
   });
 
   document.getElementById('scene-reset-btn').addEventListener('click', () => {
-    if (!sceneSelected) return;
-    sceneSelected.rot = 0;
-    sceneSelected.flipX = false;
-    updateSceneObjTransform(sceneSelected);
+    sceneObjects.filter(o => sceneMultiSel.has(o.id)).forEach(o => { o.rot = 0; o.flipX = false; updateSceneObjTransform(o); });
     positionFloatBtns();
+  });
+
+  document.getElementById('scene-delete-btn').addEventListener('click', () => {
+    deleteSelected();
   });
 
   // ── SCENE EXPORT ──────────────────────────────────────────────────────────
