@@ -16,6 +16,10 @@
     "file": "svgs/2025SnakeSteppingStones.svg"
   },
   {
+    "name": "8Bit Bookshelf",
+    "file": "svgs/8BitBookshelf.svg"
+  },
+  {
     "name": "Alpha Stepping Stones",
     "file": "svgs/AlphaSteppingStones.svg"
   },
@@ -168,6 +172,34 @@
     "file": "svgs/BlackCatSteppingStones.svg"
   },
   {
+    "name": "Book Chaise Lounge",
+    "file": "svgs/BookChaiseLounge.svg"
+  },
+  {
+    "name": "Book Chest",
+    "file": "svgs/BookChest.svg"
+  },
+  {
+    "name": "Book Fountain",
+    "file": "svgs/BookFountain.svg"
+  },
+  {
+    "name": "Book Lamp",
+    "file": "svgs/BookLamp.svg"
+  },
+  {
+    "name": "Book Shelf",
+    "file": "svgs/BookShelf.svg"
+  },
+  {
+    "name": "Book Shelf Wavy",
+    "file": "svgs/BookShelfWavy.svg"
+  },
+  {
+    "name": "Books Blue",
+    "file": "svgs/BooksBlue.svg"
+  },
+  {
     "name": "Box OChocolates Stepping Stones",
     "file": "svgs/BoxOChocolatesSteppingStones.svg"
   },
@@ -312,7 +344,7 @@
     "file": "svgs/CrystalZiosOrnamentNM.svg"
   },
   {
-    "name": "Crystals Decor",
+    "name": "Crystals2Decor Pink_ 2",
     "file": "svgs/Crystals2DecorPink_2.svg"
   },
   {
@@ -348,12 +380,24 @@
     "file": "svgs/Digital Art Station.svg"
   },
   {
+    "name": "Dusty Scattered Books",
+    "file": "svgs/DustyScatteredBooks.svg"
+  },
+  {
     "name": "Embroidered Stone Table",
     "file": "svgs/EmbroideredStoneTable.svg"
   },
   {
+    "name": "Epic Book Sofa",
+    "file": "svgs/EpicBookSofa.svg"
+  },
+  {
     "name": "Epic Crystal Ball",
     "file": "svgs/EpicCrystalBall.svg"
+  },
+  {
+    "name": "Fancy Book Chair",
+    "file": "svgs/FancyBookChair.svg"
   },
   {
     "name": "Fancy Stone Chair 1",
@@ -416,6 +460,10 @@
     "file": "svgs/GiantCrystal.svg"
   },
   {
+    "name": "Giant Open Book",
+    "file": "svgs/GiantOpenBook.svg"
+  },
+  {
     "name": "Gift Stepping Stones",
     "file": "svgs/GiftSteppingStones.svg"
   },
@@ -424,8 +472,24 @@
     "file": "svgs/GingerbreadSteppingStones.svg"
   },
   {
+    "name": "Glitch Bookshelf",
+    "file": "svgs/GlitchBookshelf.svg"
+  },
+  {
     "name": "Golden Shamrock Stepping Stones",
     "file": "svgs/GoldenShamrockSteppingStones.svg"
+  },
+  {
+    "name": "Greely Bookshelf",
+    "file": "svgs/GreelyBookshelf.svg"
+  },
+  {
+    "name": "Hanging Vines",
+    "file": "svgs/HangingVines.svg"
+  },
+  {
+    "name": "Haunted Bookshelf",
+    "file": "svgs/HauntedBookshelf.svg"
   },
   {
     "name": "Jamaa Schoolroom Flag",
@@ -480,6 +544,10 @@
     "file": "svgs/Lantern.svg"
   },
   {
+    "name": "Large Book Table",
+    "file": "svgs/LargeBookTable.svg"
+  },
+  {
     "name": "Large Irish Standing Stone",
     "file": "svgs/LargeIrishStandingStone.svg"
   },
@@ -492,16 +560,44 @@
     "file": "svgs/LuckyStonePathway.svg"
   },
   {
+    "name": "Lynx Book",
+    "file": "svgs/LynxBook.svg"
+  },
+  {
+    "name": "Magic Spell Book",
+    "file": "svgs/MagicSpellBook.svg"
+  },
+  {
     "name": "Maple Leaf Stepping Stones",
     "file": "svgs/MapleLeafSteppingStones.svg"
+  },
+  {
+    "name": "Messy Bookshelf",
+    "file": "svgs/MessyBookshelf.svg"
+  },
+  {
+    "name": "Messy Bookshelf 2",
+    "file": "svgs/MessyBookshelf2.svg"
   },
   {
     "name": "Mirror Crystal",
     "file": "svgs/MirrorCrystal.svg"
   },
   {
+    "name": "Mocking Crow Bookcase",
+    "file": "svgs/MockingCrowBookcase.svg"
+  },
+  {
     "name": "Mossy Ruins",
     "file": "svgs/Mossy Ruins.svg"
+  },
+  {
+    "name": "Mossy Fountain",
+    "file": "svgs/MossyFountain.svg"
+  },
+  {
+    "name": "Mossy Pond",
+    "file": "svgs/MossyPond.svg"
   },
   {
     "name": "Mossy Stone Bench",
@@ -510,6 +606,14 @@
   {
     "name": "Mossy Stone Pathway",
     "file": "svgs/MossyStonePathway.svg"
+  },
+  {
+    "name": "Mossy Wall",
+    "file": "svgs/MossyWall.svg"
+  },
+  {
+    "name": "Mossy Zios Statue",
+    "file": "svgs/MossyZiosStatue.svg"
   },
   {
     "name": "Mystical Irish Standing Stone",
@@ -544,6 +648,10 @@
     "file": "svgs/PhantomSteppingStone.svg"
   },
   {
+    "name": "Phantom Vines",
+    "file": "svgs/PhantomVines.svg"
+  },
+  {
     "name": "Phantomized Stepping Stones",
     "file": "svgs/PhantomizedSteppingStones.svg"
   },
@@ -558,6 +666,10 @@
   {
     "name": "Poodle Stepping Stones",
     "file": "svgs/PoodleSteppingStones.svg"
+  },
+  {
+    "name": "Pop Up Carnival Story Book",
+    "file": "svgs/PopUpCarnivalStoryBook.svg"
   },
   {
     "name": "Puddle Stepping Stones",
@@ -668,6 +780,22 @@
     "file": "svgs/ScaryThingsInJars.svg"
   },
   {
+    "name": "Scattered Books 1",
+    "file": "svgs/ScatteredBooks1.svg"
+  },
+  {
+    "name": "Scattered Books 2",
+    "file": "svgs/ScatteredBooks2.svg"
+  },
+  {
+    "name": "Scattered Books 3",
+    "file": "svgs/ScatteredBooks3.svg"
+  },
+  {
+    "name": "Scattered Books 4",
+    "file": "svgs/ScatteredBooks4.svg"
+  },
+  {
     "name": "School Bell",
     "file": "svgs/School-Bell.svg"
   },
@@ -760,8 +888,20 @@
     "file": "svgs/SchoolyardWindow.svg"
   },
   {
+    "name": "Secret Door Bookcase",
+    "file": "svgs/SecretDoorBookcase.svg"
+  },
+  {
     "name": "Shamrock Stepping Stones",
     "file": "svgs/ShamrockSteppingStones.svg"
+  },
+  {
+    "name": "Shamrock Wall Vines",
+    "file": "svgs/ShamrockWallVines.svg"
+  },
+  {
+    "name": "Sir Gilberts Bookshelf",
+    "file": "svgs/SirGilbertsBookshelf.svg"
   },
   {
     "name": "Slice Of Bread Stepping Stones",
@@ -770,6 +910,10 @@
   {
     "name": "Small Irish Standing Stone",
     "file": "svgs/SmallIrishStandingStone.svg"
+  },
+  {
+    "name": "Snowflake Bookshelf",
+    "file": "svgs/SnowflakeBookshelf.svg"
   },
   {
     "name": "Snowflake Stepping Stones",
@@ -804,11 +948,11 @@
     "file": "svgs/StoneCarvedCouch.svg"
   },
   {
-    "name": "Stone Carved Oven",
+    "name": "Stone Carved Oven_ 2",
     "file": "svgs/StoneCarvedOven_2.svg"
   },
   {
-    "name": "Stone Carved Table",
+    "name": "Stone Carved Table_ 2",
     "file": "svgs/StoneCarvedTable_2.svg"
   },
   {
@@ -872,8 +1016,16 @@
     "file": "svgs/StoneWallCosmo.svg"
   },
   {
+    "name": "Strength Test Game",
+    "file": "svgs/StrengthTestGame.svg"
+  },
+  {
     "name": "Sugar Cookie Stepping Stones",
     "file": "svgs/SugarCookieSteppingStones.svg"
+  },
+  {
+    "name": "Test Tubes",
+    "file": "svgs/TestTubes.svg"
   },
   {
     "name": "Tulip Stone Pathway",
@@ -924,6 +1076,22 @@
     "file": "svgs/Vet-Washing-Station.svg"
   },
   {
+    "name": "Vine Flower Lamp",
+    "file": "svgs/VineFlowerLamp.svg"
+  },
+  {
+    "name": "Vine Lamp",
+    "file": "svgs/VineLamp.svg"
+  },
+  {
+    "name": "Vine Lamp Post",
+    "file": "svgs/VineLampPost.svg"
+  },
+  {
+    "name": "Vine Rug",
+    "file": "svgs/VineRug.svg"
+  },
+  {
     "name": "World Map",
     "file": "svgs/World-map.svg"
   },
@@ -962,6 +1130,10 @@
   {
     "name": "Crystal Waterfall Archway",
     "file": "svgs/crystal-waterfall-archway.svg"
+  },
+  {
+    "name": "E Bookshelf",
+    "file": "svgs/eBookshelf.svg"
   },
   {
     "name": "Flowering Garden Bush",
