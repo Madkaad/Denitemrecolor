@@ -4,6 +4,26 @@
     "file": "svgs/ Cake Bake Kitchen.svg"
   },
   {
+    "name": "2023Rabbit Stepping Stones",
+    "file": "svgs/2023RabbitSteppingStones.svg"
+  },
+  {
+    "name": "2024Dragon Stepping Stones",
+    "file": "svgs/2024DragonSteppingStones.svg"
+  },
+  {
+    "name": "2025Snake Stepping Stones",
+    "file": "svgs/2025SnakeSteppingStones.svg"
+  },
+  {
+    "name": "Alpha Stepping Stones",
+    "file": "svgs/AlphaSteppingStones.svg"
+  },
+  {
+    "name": "Alpha Stone Green",
+    "file": "svgs/AlphaStoneGreen.svg"
+  },
+  {
     "name": "Ancient Phantom Wall Ruins 1",
     "file": "svgs/Ancient Phantom Wall Ruins1.svg"
   },
@@ -22,6 +42,14 @@
   {
     "name": "Ancient Ruins",
     "file": "svgs/Ancient Ruins.svg"
+  },
+  {
+    "name": "Ancient Stepping Stones",
+    "file": "svgs/AncientSteppingStones.svg"
+  },
+  {
+    "name": "Autumn Stepping Stones",
+    "file": "svgs/AutumnSteppingStones.svg"
   },
   {
     "name": "Bakers Oven",
@@ -132,6 +160,22 @@
     "file": "svgs/Beta-Zios-Statue.svg"
   },
   {
+    "name": "Bird Feather Stepping Stones",
+    "file": "svgs/BirdFeatherSteppingStones.svg"
+  },
+  {
+    "name": "Black Cat Stepping Stones",
+    "file": "svgs/BlackCatSteppingStones.svg"
+  },
+  {
+    "name": "Box OChocolates Stepping Stones",
+    "file": "svgs/BoxOChocolatesSteppingStones.svg"
+  },
+  {
+    "name": "Broken Heart Stepping Stones",
+    "file": "svgs/BrokenHeartSteppingStones.svg"
+  },
+  {
     "name": "Cave Crystals",
     "file": "svgs/CaveCrystals.svg"
   },
@@ -142,6 +186,10 @@
   {
     "name": "Cavern Crystal Cluster",
     "file": "svgs/CavernCrystalCluster.svg"
+  },
+  {
+    "name": "Classic Pink Jar",
+    "file": "svgs/ClassicPinkJar.svg"
   },
   {
     "name": "Crystal Armoire",
@@ -268,6 +316,18 @@
     "file": "svgs/Crystals2DecorPink_2.svg"
   },
   {
+    "name": "Daisy Stepping Stones",
+    "file": "svgs/DaisySteppingStones.svg"
+  },
+  {
+    "name": "Daisy Stone Pathway",
+    "file": "svgs/DaisyStonePathway.svg"
+  },
+  {
+    "name": "Decorative Stone Rug",
+    "file": "svgs/DecorativeStoneRug.svg"
+  },
+  {
     "name": "Deep Sea Crystals",
     "file": "svgs/DeepSeaCrystals.svg"
   },
@@ -288,8 +348,40 @@
     "file": "svgs/Digital Art Station.svg"
   },
   {
+    "name": "Embroidered Stone Table",
+    "file": "svgs/EmbroideredStoneTable.svg"
+  },
+  {
     "name": "Epic Crystal Ball",
     "file": "svgs/EpicCrystalBall.svg"
+  },
+  {
+    "name": "Fancy Stone Chair 1",
+    "file": "svgs/FancyStoneChair1.svg"
+  },
+  {
+    "name": "Fancy Stone Chair 2",
+    "file": "svgs/FancyStoneChair2.svg"
+  },
+  {
+    "name": "Fancy Stone Couch",
+    "file": "svgs/FancyStoneCouch.svg"
+  },
+  {
+    "name": "Fancy Stone End Table",
+    "file": "svgs/FancyStoneEndTable.svg"
+  },
+  {
+    "name": "Fancy Stone Lamp",
+    "file": "svgs/FancyStoneLamp.svg"
+  },
+  {
+    "name": "Fancy Stone Table",
+    "file": "svgs/FancyStoneTable.svg"
+  },
+  {
+    "name": "Fantasy Stepping Stones",
+    "file": "svgs/FantasySteppingStones.svg"
   },
   {
     "name": "Felinegalaxys Garden Stake",
@@ -300,12 +392,72 @@
     "file": "svgs/Fishy20002s-Succulent-Garden-Sphere.svg"
   },
   {
+    "name": "Flying Disc Stepping Stones",
+    "file": "svgs/FlyingDiscSteppingStones.svg"
+  },
+  {
+    "name": "Flying Pig Stepping Stones",
+    "file": "svgs/FlyingPigSteppingStones.svg"
+  },
+  {
+    "name": "Freedom Stepping Stones",
+    "file": "svgs/FreedomSteppingStones.svg"
+  },
+  {
+    "name": "Frozen Stepping Stones",
+    "file": "svgs/FrozenSteppingStones.svg"
+  },
+  {
+    "name": "Galaxy Star Stepping Stones",
+    "file": "svgs/GalaxyStarSteppingStones.svg"
+  },
+  {
     "name": "Giant Crystal",
     "file": "svgs/GiantCrystal.svg"
   },
   {
+    "name": "Gift Stepping Stones",
+    "file": "svgs/GiftSteppingStones.svg"
+  },
+  {
+    "name": "Gingerbread Stepping Stones",
+    "file": "svgs/GingerbreadSteppingStones.svg"
+  },
+  {
+    "name": "Golden Shamrock Stepping Stones",
+    "file": "svgs/GoldenShamrockSteppingStones.svg"
+  },
+  {
     "name": "Jamaa Schoolroom Flag",
     "file": "svgs/Jamaa-Schoolroom-Flag.svg"
+  },
+  {
+    "name": "Jar 1",
+    "file": "svgs/Jar1.svg"
+  },
+  {
+    "name": "Jar 3",
+    "file": "svgs/Jar3.svg"
+  },
+  {
+    "name": "Jar 4",
+    "file": "svgs/Jar4.svg"
+  },
+  {
+    "name": "Jar Full Of Love",
+    "file": "svgs/JarFullOfLove.svg"
+  },
+  {
+    "name": "Jar Of Peanuts",
+    "file": "svgs/JarOfPeanuts.svg"
+  },
+  {
+    "name": "Jasmine Stepping Stones",
+    "file": "svgs/JasmineSteppingStones.svg"
+  },
+  {
+    "name": "Jolly Gingerbread Stepping Stones",
+    "file": "svgs/JollyGingerbreadSteppingStones.svg"
   },
   {
     "name": "Kitchen Fridge",
@@ -320,8 +472,28 @@
     "file": "svgs/LYCrystalBall.svg"
   },
   {
+    "name": "LYStone Chair",
+    "file": "svgs/LYStoneChair.svg"
+  },
+  {
     "name": "Lantern",
     "file": "svgs/Lantern.svg"
+  },
+  {
+    "name": "Large Irish Standing Stone",
+    "file": "svgs/LargeIrishStandingStone.svg"
+  },
+  {
+    "name": "Large Stone Planter",
+    "file": "svgs/LargeStonePlanter.svg"
+  },
+  {
+    "name": "Lucky Stone Pathway",
+    "file": "svgs/LuckyStonePathway.svg"
+  },
+  {
+    "name": "Maple Leaf Stepping Stones",
+    "file": "svgs/MapleLeafSteppingStones.svg"
   },
   {
     "name": "Mirror Crystal",
@@ -332,20 +504,84 @@
     "file": "svgs/Mossy Ruins.svg"
   },
   {
+    "name": "Mossy Stone Bench",
+    "file": "svgs/MossyStoneBench.svg"
+  },
+  {
+    "name": "Mossy Stone Pathway",
+    "file": "svgs/MossyStonePathway.svg"
+  },
+  {
+    "name": "Mystical Irish Standing Stone",
+    "file": "svgs/MysticalIrishStandingStone.svg"
+  },
+  {
     "name": "Old School Boom Box",
     "file": "svgs/OldSchoolBoomBox.svg"
+  },
+  {
+    "name": "Ox Stepping Stones",
+    "file": "svgs/OxSteppingStones.svg"
   },
   {
     "name": "Pagoda Garden Lanterns",
     "file": "svgs/Pagoda-Garden-Lanterns.svg"
   },
   {
+    "name": "Penguin Paw Print Stepping Stones",
+    "file": "svgs/PenguinPawPrintSteppingStones.svg"
+  },
+  {
     "name": "Pet School Bus",
     "file": "svgs/PetSchoolBus.svg"
   },
   {
+    "name": "Pet Stone Chair",
+    "file": "svgs/PetStoneChair.svg"
+  },
+  {
+    "name": "Phantom Stepping Stone",
+    "file": "svgs/PhantomSteppingStone.svg"
+  },
+  {
+    "name": "Phantomized Stepping Stones",
+    "file": "svgs/PhantomizedSteppingStones.svg"
+  },
+  {
+    "name": "Pi Stepping Stones",
+    "file": "svgs/PiSteppingStones.svg"
+  },
+  {
+    "name": "Polished Stone Egg",
+    "file": "svgs/PolishedStoneEgg.svg"
+  },
+  {
+    "name": "Poodle Stepping Stones",
+    "file": "svgs/PoodleSteppingStones.svg"
+  },
+  {
+    "name": "Puddle Stepping Stones",
+    "file": "svgs/PuddleSteppingStones.svg"
+  },
+  {
+    "name": "Pumpkin Stepping Stones",
+    "file": "svgs/PumpkinSteppingStones.svg"
+  },
+  {
+    "name": "Rainbow Stepping Stones",
+    "file": "svgs/RainbowSteppingStones.svg"
+  },
+  {
     "name": "Rare Music Sequencer",
     "file": "svgs/Rare-Music-Sequencer.svg"
+  },
+  {
+    "name": "Rat Stepping Stones",
+    "file": "svgs/RatSteppingStones.svg"
+  },
+  {
+    "name": "Rooster Stepping Stones",
+    "file": "svgs/RoosterSteppingStones.svg"
   },
   {
     "name": "Royal Archway",
@@ -400,6 +636,10 @@
     "file": "svgs/RoyalCrystalWindow.svg"
   },
   {
+    "name": "Royal Owl Stepping Stones",
+    "file": "svgs/RoyalOwlSteppingStones.svg"
+  },
+  {
     "name": "Ruin Path Piece",
     "file": "svgs/Ruin Path Piece.svg"
   },
@@ -414,6 +654,18 @@
   {
     "name": "Ruined Stairs 1",
     "file": "svgs/Ruined Stairs1.svg"
+  },
+  {
+    "name": "Rustic Stone Fence 1",
+    "file": "svgs/RusticStoneFence1.svg"
+  },
+  {
+    "name": "Rustic Stone Fence 2",
+    "file": "svgs/RusticStoneFence2.svg"
+  },
+  {
+    "name": "Scary Things In Jars",
+    "file": "svgs/ScaryThingsInJars.svg"
   },
   {
     "name": "School Bell",
@@ -506,6 +758,130 @@
   {
     "name": "Schoolyard Window",
     "file": "svgs/SchoolyardWindow.svg"
+  },
+  {
+    "name": "Shamrock Stepping Stones",
+    "file": "svgs/ShamrockSteppingStones.svg"
+  },
+  {
+    "name": "Slice Of Bread Stepping Stones",
+    "file": "svgs/SliceOfBreadSteppingStones.svg"
+  },
+  {
+    "name": "Small Irish Standing Stone",
+    "file": "svgs/SmallIrishStandingStone.svg"
+  },
+  {
+    "name": "Snowflake Stepping Stones",
+    "file": "svgs/SnowflakeSteppingStones.svg"
+  },
+  {
+    "name": "Spooky Stone Fence",
+    "file": "svgs/SpookyStoneFence.svg"
+  },
+  {
+    "name": "Spring Egg Stepping Stones",
+    "file": "svgs/SpringEggSteppingStones.svg"
+  },
+  {
+    "name": "Square Stone Planter",
+    "file": "svgs/SquareStonePlanter.svg"
+  },
+  {
+    "name": "Star Stepping Stones",
+    "file": "svgs/StarSteppingStones.svg"
+  },
+  {
+    "name": "Stone Bench",
+    "file": "svgs/StoneBench.svg"
+  },
+  {
+    "name": "Stone Carved Chair",
+    "file": "svgs/StoneCarvedChair.svg"
+  },
+  {
+    "name": "Stone Carved Couch",
+    "file": "svgs/StoneCarvedCouch.svg"
+  },
+  {
+    "name": "Stone Carved Oven_ 2",
+    "file": "svgs/StoneCarvedOven_2.svg"
+  },
+  {
+    "name": "Stone Carved Table_ 2",
+    "file": "svgs/StoneCarvedTable_2.svg"
+  },
+  {
+    "name": "Stone Carved Tool Bench",
+    "file": "svgs/StoneCarvedToolBench.svg"
+  },
+  {
+    "name": "Stone Chair",
+    "file": "svgs/StoneChair.svg"
+  },
+  {
+    "name": "Stone Circle",
+    "file": "svgs/StoneCircle.svg"
+  },
+  {
+    "name": "Stone Lamp",
+    "file": "svgs/StoneLamp.svg"
+  },
+  {
+    "name": "Stone Oven",
+    "file": "svgs/StoneOven.svg"
+  },
+  {
+    "name": "Stone Planter",
+    "file": "svgs/StonePlanter.svg"
+  },
+  {
+    "name": "Stone Sink",
+    "file": "svgs/StoneSink.svg"
+  },
+  {
+    "name": "Stone Stool",
+    "file": "svgs/StoneStool.svg"
+  },
+  {
+    "name": "Stone Throne",
+    "file": "svgs/StoneThrone.svg"
+  },
+  {
+    "name": "Stone Vanity",
+    "file": "svgs/StoneVanity.svg"
+  },
+  {
+    "name": "Stone Wall 1",
+    "file": "svgs/StoneWall1.svg"
+  },
+  {
+    "name": "Stone Wall 2",
+    "file": "svgs/StoneWall2.svg"
+  },
+  {
+    "name": "Stone Wall 3",
+    "file": "svgs/StoneWall3.svg"
+  },
+  {
+    "name": "Stone Wall 4",
+    "file": "svgs/StoneWall4.svg"
+  },
+  {
+    "name": "Stone Wall Cosmo",
+    "file": "svgs/StoneWallCosmo.svg"
+  },
+  {
+    "name": "Sugar Cookie Stepping Stones",
+    "file": "svgs/SugarCookieSteppingStones.svg"
+  },
+  {
+    "name": "Tulip Stone Pathway",
+    "file": "svgs/TulipStonePathway.svg"
+  },
+  {
+    "name": "Valentine Stepping Stones",
+    "file": "svgs/ValentineSteppingStones.svg"
   },
   {
     "name": "Vet Examination Table",
