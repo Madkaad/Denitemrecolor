@@ -556,7 +556,14 @@
     .popup-btn { font-family: 'Fredoka One', cursive; font-size: 16px; padding: 10px 28px; border-radius: 10px; border: 2px solid var(--blue-dark); background: var(--blue); color: #fff; cursor: pointer; box-shadow: 0 3px 0 #1560a8; }
     .popup-btn:hover { background: var(--blue-dark); }
 
-    /* ── SCENE BUILDER ── */
+    .color-item.multi-selected {
+      outline: 3px solid #fff;
+      outline-offset: 2px;
+      border-radius: 10px;
+      box-shadow: 0 0 0 5px rgba(39,158,255,0.5);
+    }
+
+    #main-shortcuts-popup.hidden { display: none !important; }
     #scene-overlay {
       position: fixed;
       inset: 0;
@@ -1086,8 +1093,19 @@
 
 </div>
 
-<!-- POPUP -->
-<div class="popup-overlay" id="popup-overlay" style="display:none;" onclick="closePopup()">
+<!-- MAIN PAGE SHORTCUTS POPUP -->
+<div id="main-shortcuts-popup" style="position:fixed;bottom:22px;right:22px;z-index:500;">
+  <div id="main-shortcuts-box" style="background:#fff;border:2px solid #d0e4f7;border-radius:14px;box-shadow:0 4px 18px rgba(0,0,0,0.13);padding:14px 16px 12px;width:226px;animation:popIn 0.2s cubic-bezier(.34,1.56,.64,1);">
+    <div class="shortcuts-header">
+      <span class="shortcuts-title">Keyboard Shortcuts</span>
+      <button class="shortcuts-close" id="main-shortcuts-close">✕</button>
+    </div>
+    <div class="shortcut-row"><span>Undo</span><span class="shortcut-key">Ctrl Z</span></div>
+    <div class="shortcut-row"><span>Redo</span><span class="shortcut-key">Ctrl Y</span></div>
+    <div class="shortcut-row"><span>Multi-select colors</span><span class="shortcut-key">Ctrl Click</span></div>
+    <div class="shortcut-row"><span>Drag-toggle layers</span><span class="shortcut-key">Click + Drag</span></div>
+  </div>
+</div>
   <div class="popup-box" onclick="event.stopPropagation()">
     <div class="popup-icon" id="popup-icon"></div>
     <div class="popup-title" id="popup-title">Bank Full!</div>
@@ -1207,6 +1225,74 @@
   let filteredItems = [];
   let designBank = [];
 
+  // ── MAIN PAGE UNDO / REDO ──────────────────────────────────────────────────
+  let mainUndoStack = [], mainRedoStack = [];
+
+  function snapshotMain() {
+    if (!svgEl) return null;
+    // Capture all fill/stop-color values and layer visibility
+    const fills = [];
+    svgEl.querySelectorAll('[data-cid]').forEach(el => {
+      fills.push({ cid: el.getAttribute('data-cid'), fill: el.getAttribute('fill'), stopColor: el.getAttribute('stop-color') });
+    });
+    const layers = [];
+    Array.from(layersList.querySelectorAll('.layer-item')).forEach((item, i) => {
+      layers.push({ idx: i, visible: item._visible !== false });
+    });
+    return { fills, layers };
+  }
+
+  function pushMainUndo() {
+    const snap = snapshotMain();
+    if (!snap) return;
+    mainUndoStack.push(snap);
+    if (mainUndoStack.length > 60) mainUndoStack.shift();
+    mainRedoStack = [];
+  }
+
+  function restoreMainSnapshot(snap) {
+    if (!snap || !svgEl) return;
+    // Restore fills
+    snap.fills.forEach(({ cid, fill, stopColor }) => {
+      const el = svgEl.querySelector(`[data-cid="${cid}"]`);
+      if (!el) return;
+      if (stopColor !== null && stopColor !== undefined) el.setAttribute('stop-color', stopColor);
+      if (fill !== null && fill !== undefined) el.setAttribute('fill', fill);
+    });
+    // Restore layer visibility
+    const items = Array.from(layersList.querySelectorAll('.layer-item'));
+    const shapes = Array.from(svgEl.querySelectorAll('path, rect, circle, ellipse, polygon, polyline'));
+    snap.layers.forEach(({ idx, visible }) => {
+      const item = items[idx], el = shapes[idx];
+      if (!item || !el) return;
+      const eye = item.querySelector('.layer-eye');
+      setLayerVisible(el, item, eye, visible);
+    });
+    // Sync palette inputs to restored colors
+    originalPaletteColors.forEach(({ ids, input, label }) => {
+      const el = svgEl.querySelector(`[data-cid="${ids[0]}"]`);
+      if (!el || !input) return;
+      const color = el.getAttribute('fill') || el.getAttribute('stop-color') || '';
+      if (color.startsWith('#')) { input.value = color; label.textContent = color.toUpperCase(); }
+    });
+    refreshPreview();
+  }
+
+  document.addEventListener('keydown', e => {
+    // Only fire on main page (not scene overlay)
+    const sceneActive = document.getElementById('scene-overlay').classList.contains('active');
+    if (sceneActive) return;
+    if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+    if ((e.metaKey || e.ctrlKey) && e.key === 'z') {
+      e.preventDefault();
+      if (mainUndoStack.length) { mainRedoStack.push(snapshotMain()); restoreMainSnapshot(mainUndoStack.pop()); }
+    }
+    if ((e.metaKey || e.ctrlKey) && (e.key === 'y' || (e.shiftKey && e.key === 'z'))) {
+      e.preventDefault();
+      if (mainRedoStack.length) { mainUndoStack.push(snapshotMain()); restoreMainSnapshot(mainRedoStack.pop()); }
+    }
+  });
+
   const selectWrap      = document.getElementById('select-wrap');
   const searchInput     = document.getElementById('search-input');
   const dropdownList    = document.getElementById('dropdown-list');
@@ -1307,6 +1393,8 @@
     loadingOverlay.style.display = 'flex';
     previewCanvas.style.opacity = '0';
     controls.innerHTML = '';
+    mainUndoStack = []; mainRedoStack = [];
+    clearColorSelection();
     try {
       let svgText;
       if (item.svg) { svgText = item.svg; }
@@ -1448,11 +1536,17 @@
     return colorMap;
   }
 
-  let originalPaletteColors = [];
+  let selectedColorItems = new Set(); // set of wrap elements
+
+  function clearColorSelection() {
+    selectedColorItems.forEach(w => w.classList.remove('multi-selected'));
+    selectedColorItems.clear();
+  }
 
   function initPalette() {
     controls.innerHTML = '';
     originalPaletteColors = [];
+    selectedColorItems.clear();
     ['slider-hue','slider-sat','slider-bri'].forEach(id => { const el = document.getElementById(id); if (el) el.value = 0; });
     ['val-hue','val-sat','val-bri'].forEach((id, i) => { const el = document.getElementById(id); if (el) el.textContent = i === 0 ? '0°' : '0%'; });
 
@@ -1461,6 +1555,8 @@
     colorMap.forEach((ids, originalHex) => {
       const wrap = document.createElement('div');
       wrap.className = 'color-item';
+      wrap._ids = ids;
+      wrap._originalHex = originalHex;
       const input = document.createElement('input');
       input.type = 'color';
       input.value = originalHex;
@@ -1468,15 +1564,61 @@
       label.className = 'hex-text';
       label.textContent = originalHex.toUpperCase();
 
-      let t;
+      // Ctrl+click to multi-select
+      wrap.addEventListener('click', e => {
+        if (e.ctrlKey || e.metaKey) {
+          e.preventDefault();
+          if (selectedColorItems.has(wrap)) {
+            selectedColorItems.delete(wrap);
+            wrap.classList.remove('multi-selected');
+          } else {
+            selectedColorItems.add(wrap);
+            wrap.classList.add('multi-selected');
+          }
+        } else {
+          clearColorSelection();
+        }
+      });
+
+      let t, _pushedUndo = false;
+      input.addEventListener('mousedown', () => { _pushedUndo = false; });
       input.addEventListener('input', e => {
+        if (!_pushedUndo) { pushMainUndo(); _pushedUndo = true; }
         const newColor = e.target.value;
         label.textContent = newColor.toUpperCase();
-        ids.forEach(id => {
-          const el = svgEl.querySelector(`[data-cid="${id}"]`);
-          if (!el) return;
-          el.getAttribute('stop-color') !== null ? el.setAttribute('stop-color', newColor) : el.setAttribute('fill', newColor);
-        });
+
+        // Apply to this color's ids
+        const applyToIds = (applyIds) => {
+          applyIds.forEach(id => {
+            const el = svgEl.querySelector(`[data-cid="${id}"]`);
+            if (!el) return;
+            el.getAttribute('stop-color') !== null ? el.setAttribute('stop-color', newColor) : el.setAttribute('fill', newColor);
+          });
+        };
+
+        applyToIds(ids);
+
+        // Also apply relative hue shift to all multi-selected colors
+        if (selectedColorItems.size > 1 && selectedColorItems.has(wrap)) {
+          const [bh, bs, bl] = hexToHsl(originalHex);
+          const [nh, ns, nl] = hexToHsl(newColor);
+          const dh = nh - bh, ds = ns - bs, dl = nl - bl;
+          selectedColorItems.forEach(w => {
+            if (w === wrap) return;
+            const [wh, ws, wl] = hexToHsl(w._originalHex);
+            const shifted = hslToHex(wh + dh, ws + ds, wl + dl);
+            w.querySelector('input').value = shifted;
+            w.querySelector('.hex-text').textContent = shifted.toUpperCase();
+            applyToIds(w._ids);
+            // Also update the SVG elements for the other selected items
+            w._ids.forEach(id => {
+              const el = svgEl.querySelector(`[data-cid="${id}"]`);
+              if (!el) return;
+              el.getAttribute('stop-color') !== null ? el.setAttribute('stop-color', shifted) : el.setAttribute('fill', shifted);
+            });
+          });
+        }
+
         clearTimeout(t);
         t = setTimeout(refreshPreview, 80);
       });
@@ -1546,7 +1688,13 @@
     document.getElementById('val-hue').textContent = (dh>=0?'+':'')+dh+'°';
     document.getElementById('val-sat').textContent = (ds>=0?'+':'')+ds+'%';
     document.getElementById('val-bri').textContent = (db>=0?'+':'')+db+'%';
-    originalPaletteColors.forEach(({ids, hex, input, label}) => {
+
+    // Apply only to selected colors if any, otherwise all
+    const targets = selectedColorItems.size > 0
+      ? originalPaletteColors.filter(e => selectedColorItems.has(e.input.closest('.color-item') || e.input.parentElement))
+      : originalPaletteColors;
+
+    targets.forEach(({ids, hex, input, label}) => {
       const [h,s,l] = hexToHsl(hex);
       const newHex = hslToHex(h+dh, s+ds, l+db);
       if (input) { input.value = newHex; label.textContent = newHex.toUpperCase(); }
@@ -1559,9 +1707,18 @@
     refreshPreview();
   }
 
+  let originalPaletteColors = [];
+
   function initHsbSliders() {
-    ['slider-hue','slider-sat','slider-bri'].forEach(id => { const el = document.getElementById(id); if (el) el.addEventListener('input', applyHsbAdjust); });
+    let _hsbPushedUndo = false;
+    ['slider-hue','slider-sat','slider-bri'].forEach(id => {
+      const el = document.getElementById(id);
+      if (!el) return;
+      el.addEventListener('mousedown', () => { _hsbPushedUndo = false; });
+      el.addEventListener('input', () => { if (!_hsbPushedUndo) { pushMainUndo(); _hsbPushedUndo = true; } applyHsbAdjust(); });
+    });
     document.getElementById('reset-colors-btn').addEventListener('click', () => {
+      pushMainUndo();
       ['slider-hue','slider-sat','slider-bri'].forEach(id => { const el = document.getElementById(id); if (el) el.value = 0; });
       ['val-hue','val-sat','val-bri'].forEach((id,i) => { const el = document.getElementById(id); if (el) el.textContent = i===0?'0°':'0%'; });
       originalPaletteColors.forEach(({ids, hex, input, label}) => {
@@ -1575,8 +1732,6 @@
       refreshPreview();
     });
   }
-
-  // ── LAYERS ────────────────────────────────────────────────────────────────
   const EYE_ON  = `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>`;
   const EYE_OFF = `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94"/><path d="M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19"/><line x1="1" y1="1" x2="23" y2="23"/></svg>`;
 
@@ -1610,7 +1765,7 @@
       eye.innerHTML = EYE_ON;
       item.appendChild(swatch); item.appendChild(label); item.appendChild(eye);
       item.addEventListener('mouseleave', () => { if (!dragging) clearHighlight(); });
-      item.addEventListener('mousedown', e => { e.preventDefault(); dragging = true; dragTargetState = !item._visible; });
+      item.addEventListener('mousedown', e => { e.preventDefault(); pushMainUndo(); dragging = true; dragTargetState = !item._visible; });
       item.addEventListener('mouseenter', () => { if (!dragging) { showHighlight([el]); return; } setLayerVisible(el, item, eye, dragTargetState); });
       item.addEventListener('mouseup', () => { if (dragging && dragTargetState !== null) { setLayerVisible(el, item, eye, dragTargetState); refreshPreview(); } });
       layersList.appendChild(item);
@@ -1619,6 +1774,7 @@
     document.addEventListener('mouseup', () => { if (dragging) { dragging = false; dragTargetState = null; refreshPreview(); } });
 
     document.getElementById('invert-layers-btn').onclick = () => {
+      pushMainUndo();
       const allItems = Array.from(layersList.querySelectorAll('.layer-item'));
       allItems.forEach((item, idx) => {
         const eye = item.querySelector('.layer-eye');
@@ -2526,6 +2682,15 @@
     link.href = canvas.toDataURL('image/png');
     link.click();
     btn.textContent = 'Export PNG';
+  });
+
+  // ── MAIN SHORTCUTS POPUP ──────────────────────────────────────────────────
+  const mainShortcutsKey = 'denMainShortcutsDismissed';
+  const mainShortcutsPopup = document.getElementById('main-shortcuts-popup');
+  if (localStorage.getItem(mainShortcutsKey)) mainShortcutsPopup.classList.add('hidden');
+  document.getElementById('main-shortcuts-close').addEventListener('click', () => {
+    mainShortcutsPopup.classList.add('hidden');
+    localStorage.setItem(mainShortcutsKey, '1');
   });
 
   // ── BOOT ──────────────────────────────────────────────────────────────────
