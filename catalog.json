@@ -132,6 +132,146 @@
     "file": "svgs/Beta-Zios-Statue.svg"
   },
   {
+    "name": "Cave Crystals",
+    "file": "svgs/CaveCrystals.svg"
+  },
+  {
+    "name": "Cavern Crystal",
+    "file": "svgs/CavernCrystal.svg"
+  },
+  {
+    "name": "Cavern Crystal Cluster",
+    "file": "svgs/CavernCrystalCluster.svg"
+  },
+  {
+    "name": "Crystal Armoire",
+    "file": "svgs/CrystalArmoire.svg"
+  },
+  {
+    "name": "Crystal Ball Ornament NM",
+    "file": "svgs/CrystalBallOrnamentNM.svg"
+  },
+  {
+    "name": "Crystal Carrot",
+    "file": "svgs/CrystalCarrot.svg"
+  },
+  {
+    "name": "Crystal Chair",
+    "file": "svgs/CrystalChair.svg"
+  },
+  {
+    "name": "Crystal Chaise Lounge",
+    "file": "svgs/CrystalChaiseLounge.svg"
+  },
+  {
+    "name": "Crystal Couch",
+    "file": "svgs/CrystalCouch.svg"
+  },
+  {
+    "name": "Crystal Feast Table",
+    "file": "svgs/CrystalFeastTable.svg"
+  },
+  {
+    "name": "Crystal Fireplace",
+    "file": "svgs/CrystalFireplace.svg"
+  },
+  {
+    "name": "Crystal Icicle Lights M",
+    "file": "svgs/CrystalIcicleLightsM.svg"
+  },
+  {
+    "name": "Crystal Icicle Lights NM",
+    "file": "svgs/CrystalIcicleLightsNM.svg"
+  },
+  {
+    "name": "Crystal Koi Pond",
+    "file": "svgs/CrystalKoiPond.svg"
+  },
+  {
+    "name": "Crystal Mira Ornament M",
+    "file": "svgs/CrystalMiraOrnamentM.svg"
+  },
+  {
+    "name": "Crystal Mira Statue",
+    "file": "svgs/CrystalMiraStatue.svg"
+  },
+  {
+    "name": "Crystal Sands Waterslide Cake",
+    "file": "svgs/CrystalSandsWaterslideCake.svg"
+  },
+  {
+    "name": "Crystal Sconce",
+    "file": "svgs/CrystalSconce.svg"
+  },
+  {
+    "name": "Crystal Sofa",
+    "file": "svgs/CrystalSofa.svg"
+  },
+  {
+    "name": "Crystal Star Topper NM",
+    "file": "svgs/CrystalStarTopperNM.svg"
+  },
+  {
+    "name": "Crystal Statue Cosmo",
+    "file": "svgs/CrystalStatueCosmo.svg"
+  },
+  {
+    "name": "Crystal Statue Gilbert",
+    "file": "svgs/CrystalStatueGilbert.svg"
+  },
+  {
+    "name": "Crystal Statue Graham",
+    "file": "svgs/CrystalStatueGraham.svg"
+  },
+  {
+    "name": "Crystal Statue Greely",
+    "file": "svgs/CrystalStatueGreely.svg"
+  },
+  {
+    "name": "Crystal Statue Liza",
+    "file": "svgs/CrystalStatueLiza.svg"
+  },
+  {
+    "name": "Crystal Statue Peck",
+    "file": "svgs/CrystalStatuePeck.svg"
+  },
+  {
+    "name": "Crystal Table",
+    "file": "svgs/CrystalTable.svg"
+  },
+  {
+    "name": "Crystal Throne",
+    "file": "svgs/CrystalThrone.svg"
+  },
+  {
+    "name": "Crystal Treasure",
+    "file": "svgs/CrystalTreasure.svg"
+  },
+  {
+    "name": "Crystal Tree",
+    "file": "svgs/CrystalTree.svg"
+  },
+  {
+    "name": "Crystal Vanity",
+    "file": "svgs/CrystalVanity.svg"
+  },
+  {
+    "name": "Crystal Window",
+    "file": "svgs/CrystalWindow.svg"
+  },
+  {
+    "name": "Crystal Zios Ornament NM",
+    "file": "svgs/CrystalZiosOrnamentNM.svg"
+  },
+  {
+    "name": "Crystals2Decor Pink_ 2",
+    "file": "svgs/Crystals2DecorPink_2.svg"
+  },
+  {
+    "name": "Deep Sea Crystals",
+    "file": "svgs/DeepSeaCrystals.svg"
+  },
+  {
     "name": "Dig Site Canopy",
     "file": "svgs/Dig Site Canopy.svg"
   },
@@ -146,6 +286,10 @@
   {
     "name": "Digital Art Station",
     "file": "svgs/Digital Art Station.svg"
+  },
+  {
+    "name": "Epic Crystal Ball",
+    "file": "svgs/EpicCrystalBall.svg"
   },
   {
     "name": "Felinegalaxys Garden Stake",
@@ -168,8 +312,16 @@
     "file": "svgs/KitchenShelves.svg"
   },
   {
+    "name": "LYCrystal Ball",
+    "file": "svgs/LYCrystalBall.svg"
+  },
+  {
     "name": "Lantern",
     "file": "svgs/Lantern.svg"
+  },
+  {
+    "name": "Mirror Crystal",
+    "file": "svgs/MirrorCrystal.svg"
   },
   {
     "name": "Mossy Ruins",
@@ -194,6 +346,54 @@
   {
     "name": "Royal Archway",
     "file": "svgs/Royal-Archway.svg"
+  },
+  {
+    "name": "Royal Crystal Archway",
+    "file": "svgs/RoyalCrystalArchway.svg"
+  },
+  {
+    "name": "Royal Crystal Carriage",
+    "file": "svgs/RoyalCrystalCarriage.svg"
+  },
+  {
+    "name": "Royal Crystal Chair",
+    "file": "svgs/RoyalCrystalChair.svg"
+  },
+  {
+    "name": "Royal Crystal Clock",
+    "file": "svgs/RoyalCrystalClock.svg"
+  },
+  {
+    "name": "Royal Crystal Couch",
+    "file": "svgs/RoyalCrystalCouch.svg"
+  },
+  {
+    "name": "Royal Crystal Lamp",
+    "file": "svgs/RoyalCrystalLamp.svg"
+  },
+  {
+    "name": "Royal Crystal Pillow",
+    "file": "svgs/RoyalCrystalPillow.svg"
+  },
+  {
+    "name": "Royal Crystal Rug",
+    "file": "svgs/RoyalCrystalRug.svg"
+  },
+  {
+    "name": "Royal Crystal Sun Umbrella",
+    "file": "svgs/RoyalCrystalSunUmbrella.svg"
+  },
+  {
+    "name": "Royal Crystal Table",
+    "file": "svgs/RoyalCrystalTable.svg"
+  },
+  {
+    "name": "Royal Crystal Trunk",
+    "file": "svgs/RoyalCrystalTrunk.svg"
+  },
+  {
+    "name": "Royal Crystal Window",
+    "file": "svgs/RoyalCrystalWindow.svg"
   },
   {
     "name": "Ruin Path Piece",
