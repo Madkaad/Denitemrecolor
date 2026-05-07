@@ -24,6 +24,14 @@
     "file": "svgs/8BitFence.svg"
   },
   {
+    "name": "8Bit Window",
+    "file": "svgs/8BitWindow.svg"
+  },
+  {
+    "name": "Abstract Window",
+    "file": "svgs/AbstractWindow.svg"
+  },
+  {
     "name": "Alpha Stepping Stones",
     "file": "svgs/AlphaSteppingStones.svg"
   },
@@ -56,8 +64,20 @@
     "file": "svgs/AncientSteppingStones.svg"
   },
   {
+    "name": "Antique Window",
+    "file": "svgs/AntiqueWindow.svg"
+  },
+  {
     "name": "Appondale Doghouse",
     "file": "svgs/AppondaleDoghouse.svg"
+  },
+  {
+    "name": "Aquarium Window",
+    "file": "svgs/AquariumWindow.svg"
+  },
+  {
+    "name": "Arctic Fox Tail Window",
+    "file": "svgs/ArcticFoxTailWindow.svg"
   },
   {
     "name": "Autumn Stepping Stones",
@@ -102,6 +122,10 @@
   {
     "name": "Bamboo Fence",
     "file": "svgs/BambooFence.svg"
+  },
+  {
+    "name": "Best Friends Window",
+    "file": "svgs/BestFriendsWindow.svg"
   },
   {
     "name": "Beta Armoire",
@@ -188,12 +212,24 @@
     "file": "svgs/BirdFeatherSteppingStones.svg"
   },
   {
+    "name": "Bird Feather Window",
+    "file": "svgs/BirdFeatherWindow.svg"
+  },
+  {
     "name": "Black Cat Stepping Stones",
     "file": "svgs/BlackCatSteppingStones.svg"
   },
   {
+    "name": "Black Cat Window",
+    "file": "svgs/BlackCatWindow.svg"
+  },
+  {
     "name": "Blooming Lily",
     "file": "svgs/BloomingLily.svg"
+  },
+  {
+    "name": "Boarded Up Window",
+    "file": "svgs/BoardedUpWindow.svg"
   },
   {
     "name": "Book Chaise Lounge",
@@ -240,8 +276,20 @@
     "file": "svgs/CactusFence.svg"
   },
   {
+    "name": "Candy Cane Window",
+    "file": "svgs/CandyCaneWindow.svg"
+  },
+  {
     "name": "Candy Shop Fence",
     "file": "svgs/CandyShopFence.svg"
+  },
+  {
+    "name": "Candy Shop Window",
+    "file": "svgs/CandyShopWindow.svg"
+  },
+  {
+    "name": "Cardboard Window",
+    "file": "svgs/CardboardWindow.svg"
   },
   {
     "name": "Carrot Stick Fence",
@@ -264,6 +312,22 @@
     "file": "svgs/CavernCrystalCluster.svg"
   },
   {
+    "name": "Celtic Window 1",
+    "file": "svgs/CelticWindow1.svg"
+  },
+  {
+    "name": "Celtic Window 2",
+    "file": "svgs/CelticWindow2.svg"
+  },
+  {
+    "name": "Celtic Window 3",
+    "file": "svgs/CelticWindow3.svg"
+  },
+  {
+    "name": "Chocolate Window",
+    "file": "svgs/ChocolateWindow.svg"
+  },
+  {
     "name": "Classic Pink Jar",
     "file": "svgs/ClassicPinkJar.svg"
   },
@@ -272,8 +336,20 @@
     "file": "svgs/CloverFence.svg"
   },
   {
+    "name": "Clover Window",
+    "file": "svgs/CloverWindow.svg"
+  },
+  {
     "name": "Coral Fence",
     "file": "svgs/CoralFence.svg"
+  },
+  {
+    "name": "Cotton Candy Window",
+    "file": "svgs/CottonCandyWindow.svg"
+  },
+  {
+    "name": "Crescent Moon Shaped Window",
+    "file": "svgs/CrescentMoonShapedWindow.svg"
   },
   {
     "name": "Crystal Armoire",
@@ -408,6 +484,10 @@
     "file": "svgs/DaisyStonePathway.svg"
   },
   {
+    "name": "Daisy Window",
+    "file": "svgs/DaisyWindow.svg"
+  },
+  {
     "name": "Decorative Stone Rug",
     "file": "svgs/DecorativeStoneRug.svg"
   },
@@ -508,6 +588,14 @@
     "file": "svgs/DustyScatteredBooks.svg"
   },
   {
+    "name": "Eagle Window",
+    "file": "svgs/EagleWindow.svg"
+  },
+  {
+    "name": "Egg Shaped Window",
+    "file": "svgs/EggShapedWindow.svg"
+  },
+  {
     "name": "Embroidered Stone Table",
     "file": "svgs/EmbroideredStoneTable.svg"
   },
@@ -518,6 +606,14 @@
   {
     "name": "Epic Crystal Ball",
     "file": "svgs/EpicCrystalBall.svg"
+  },
+  {
+    "name": "Epic Deep Space Ship Window",
+    "file": "svgs/EpicDeepSpaceShipWindow.svg"
+  },
+  {
+    "name": "Epic Spaceship Window",
+    "file": "svgs/EpicSpaceshipWindow.svg"
   },
   {
     "name": "Fancy Book Chair",
@@ -596,6 +692,10 @@
     "file": "svgs/FantasySteppingStones.svg"
   },
   {
+    "name": "Fantasy Window",
+    "file": "svgs/FantasyWindow.svg"
+  },
+  {
     "name": "Felinegalaxys Garden Stake",
     "file": "svgs/Felinegalaxys-Garden-Stake.svg"
   },
@@ -610,6 +710,10 @@
   {
     "name": "Fence Sand Sculpture",
     "file": "svgs/FenceSandSculpture.svg"
+  },
+  {
+    "name": "Ferocious Feline Window",
+    "file": "svgs/FerociousFelineWindow.svg"
   },
   {
     "name": "Festive Jamaaliday Fence",
@@ -640,12 +744,28 @@
     "file": "svgs/FreedomSteppingStones.svg"
   },
   {
+    "name": "Freedom Window",
+    "file": "svgs/FreedomWindow.svg"
+  },
+  {
+    "name": "Friendship Fortress Window",
+    "file": "svgs/FriendshipFortressWindow.svg"
+  },
+  {
     "name": "Frozen Stepping Stones",
     "file": "svgs/FrozenSteppingStones.svg"
   },
   {
     "name": "Galaxy Star Stepping Stones",
     "file": "svgs/GalaxyStarSteppingStones.svg"
+  },
+  {
+    "name": "Galaxy Star Window",
+    "file": "svgs/GalaxyStarWindow.svg"
+  },
+  {
+    "name": "Ghostly Window",
+    "file": "svgs/GhostlyWindow.svg"
   },
   {
     "name": "Giant Blooming Lily",
@@ -676,8 +796,16 @@
     "file": "svgs/GingerbreadSteppingStones.svg"
   },
   {
+    "name": "Gingerbread Window",
+    "file": "svgs/GingerbreadWindow.svg"
+  },
+  {
     "name": "Glitch Bookshelf",
     "file": "svgs/GlitchBookshelf.svg"
+  },
+  {
+    "name": "Goat Pasture Window",
+    "file": "svgs/GoatPastureWindow.svg"
   },
   {
     "name": "Golden Shamrock Stepping Stones",
@@ -686,6 +814,10 @@
   {
     "name": "Greely Bookshelf",
     "file": "svgs/GreelyBookshelf.svg"
+  },
+  {
+    "name": "Greenhouse Window",
+    "file": "svgs/GreenhouseWindow.svg"
   },
   {
     "name": "Hanging Vines",
@@ -716,6 +848,10 @@
     "file": "svgs/HeartFenceGate.svg"
   },
   {
+    "name": "Heart Shaped Window",
+    "file": "svgs/HeartShapedWindow.svg"
+  },
+  {
     "name": "Horseshoe Doghouse",
     "file": "svgs/HorseshoeDoghouse.svg"
   },
@@ -730,6 +866,14 @@
   {
     "name": "Ice Fence",
     "file": "svgs/IceFence.svg"
+  },
+  {
+    "name": "Ice Pop Window",
+    "file": "svgs/IcePopWindow.svg"
+  },
+  {
+    "name": "Jack OLantern Window",
+    "file": "svgs/JackOLanternWindow.svg"
   },
   {
     "name": "Jamaa Schoolroom Flag",
@@ -750,6 +894,10 @@
   {
     "name": "Jamaaliday Gift Fence",
     "file": "svgs/JamaalidayGiftFence.svg"
+  },
+  {
+    "name": "Jamaaliday Window",
+    "file": "svgs/JamaalidayWindow.svg"
   },
   {
     "name": "Jar 1",
@@ -776,6 +924,14 @@
     "file": "svgs/JasmineSteppingStones.svg"
   },
   {
+    "name": "Jellyfish Window",
+    "file": "svgs/JellyfishWindow.svg"
+  },
+  {
+    "name": "Jolly Candy Cane Window",
+    "file": "svgs/JollyCandyCaneWindow.svg"
+  },
+  {
     "name": "Jolly Gingerbread Fence",
     "file": "svgs/JollyGingerbreadFence.svg"
   },
@@ -788,8 +944,16 @@
     "file": "svgs/JollyGingerbreadSteppingStones.svg"
   },
   {
+    "name": "Jolly Gingerbread Window",
+    "file": "svgs/JollyGingerbreadWindow.svg"
+  },
+  {
     "name": "Kimbara Doghouse",
     "file": "svgs/KimbaraDoghouse.svg"
+  },
+  {
+    "name": "Kingdom Window",
+    "file": "svgs/KingdomWindow.svg"
   },
   {
     "name": "Kitchen Fridge",
@@ -864,6 +1028,26 @@
     "file": "svgs/LollipopFenceGate.svg"
   },
   {
+    "name": "Lovely Rose Window",
+    "file": "svgs/LovelyRoseWindow.svg"
+  },
+  {
+    "name": "Lucky Horseshoe Window",
+    "file": "svgs/LuckyHorseshoeWindow.svg"
+  },
+  {
+    "name": "Lucky Shamrock Window",
+    "file": "svgs/LuckyShamrockWindow.svg"
+  },
+  {
+    "name": "Lucky Shooting Star Window",
+    "file": "svgs/LuckyShootingStarWindow.svg"
+  },
+  {
+    "name": "Lucky Skunk Window",
+    "file": "svgs/LuckySkunkWindow.svg"
+  },
+  {
     "name": "Lucky Stone Pathway",
     "file": "svgs/LuckyStonePathway.svg"
   },
@@ -880,8 +1064,24 @@
     "file": "svgs/MapleLeafSteppingStones.svg"
   },
   {
+    "name": "Maple Leaf Window",
+    "file": "svgs/MapleLeafWindow.svg"
+  },
+  {
+    "name": "Mechanical Window",
+    "file": "svgs/MechanicalWindow.svg"
+  },
+  {
     "name": "Mechanized Fence Gate",
     "file": "svgs/MechanizedFenceGate.svg"
+  },
+  {
+    "name": "Mechanized Window",
+    "file": "svgs/MechanizedWindow.svg"
+  },
+  {
+    "name": "Medieval Stained Glass Window",
+    "file": "svgs/MedievalStainedGlassWindow.svg"
   },
   {
     "name": "Messy Bookshelf",
@@ -892,8 +1092,16 @@
     "file": "svgs/MessyBookshelf2.svg"
   },
   {
+    "name": "Meteor Shower Window",
+    "file": "svgs/MeteorShowerWindow.svg"
+  },
+  {
     "name": "Mirror Crystal",
     "file": "svgs/MirrorCrystal.svg"
+  },
+  {
+    "name": "Misshaped Window",
+    "file": "svgs/MisshapedWindow.svg"
   },
   {
     "name": "Mocking Crow Bookcase",
@@ -940,8 +1148,16 @@
     "file": "svgs/MysticalIrishStandingStone.svg"
   },
   {
+    "name": "New Years Party Window",
+    "file": "svgs/NewYearsPartyWindow.svg"
+  },
+  {
     "name": "Old School Boom Box",
     "file": "svgs/OldSchoolBoomBox.svg"
+  },
+  {
+    "name": "Origami Window",
+    "file": "svgs/OrigamiWindow.svg"
   },
   {
     "name": "Ox Stepping Stones",
@@ -950,6 +1166,22 @@
   {
     "name": "Pagoda Garden Lanterns",
     "file": "svgs/Pagoda-Garden-Lanterns.svg"
+  },
+  {
+    "name": "Pagoda Window",
+    "file": "svgs/PagodaWindow.svg"
+  },
+  {
+    "name": "Painters Window",
+    "file": "svgs/PaintersWindow.svg"
+  },
+  {
+    "name": "Panda Window",
+    "file": "svgs/PandaWindow.svg"
+  },
+  {
+    "name": "Paradise Window",
+    "file": "svgs/ParadiseWindow.svg"
   },
   {
     "name": "Penguin Paw Print Stepping Stones",
@@ -976,6 +1208,10 @@
     "file": "svgs/PhantomizedSteppingStones.svg"
   },
   {
+    "name": "Phantomized Window",
+    "file": "svgs/PhantomizedWindow.svg"
+  },
+  {
     "name": "Pi Stepping Stones",
     "file": "svgs/PiSteppingStones.svg"
   },
@@ -996,6 +1232,10 @@
     "file": "svgs/PoodleSteppingStones.svg"
   },
   {
+    "name": "Pool Window",
+    "file": "svgs/PoolWindow.svg"
+  },
+  {
     "name": "Pop Up Carnival Story Book",
     "file": "svgs/PopUpCarnivalStoryBook.svg"
   },
@@ -1008,8 +1248,16 @@
     "file": "svgs/PumpkinSteppingStones.svg"
   },
   {
+    "name": "Puzzle Piece Window",
+    "file": "svgs/PuzzlePieceWindow.svg"
+  },
+  {
     "name": "Rainbow Stepping Stones",
     "file": "svgs/RainbowSteppingStones.svg"
+  },
+  {
+    "name": "Rainy Day Window",
+    "file": "svgs/RainyDayWindow.svg"
   },
   {
     "name": "Rare Music Sequencer",
@@ -1034,6 +1282,18 @@
   {
     "name": "Rooster Stepping Stones",
     "file": "svgs/RoosterSteppingStones.svg"
+  },
+  {
+    "name": "Round Celtic Window 1",
+    "file": "svgs/RoundCelticWindow1.svg"
+  },
+  {
+    "name": "Round Celtic Window 2",
+    "file": "svgs/RoundCelticWindow2.svg"
+  },
+  {
+    "name": "Round Celtic Window 3",
+    "file": "svgs/RoundCelticWindow3.svg"
   },
   {
     "name": "Royal Archway",
@@ -1092,6 +1352,10 @@
     "file": "svgs/RoyalOwlSteppingStones.svg"
   },
   {
+    "name": "Royal Owl Window",
+    "file": "svgs/RoyalOwlWindow.svg"
+  },
+  {
     "name": "Ruin Path Piece",
     "file": "svgs/Ruin Path Piece.svg"
   },
@@ -1114,6 +1378,10 @@
   {
     "name": "Rustic Stone Fence 2",
     "file": "svgs/RusticStoneFence2.svg"
+  },
+  {
+    "name": "Sand Window",
+    "file": "svgs/SandWindow.svg"
   },
   {
     "name": "Scary Fence",
@@ -1232,6 +1500,10 @@
     "file": "svgs/SchoolyardWindow.svg"
   },
   {
+    "name": "Sea Foam Jellyfish Window",
+    "file": "svgs/SeaFoamJellyfishWindow.svg"
+  },
+  {
     "name": "Secret Door Bookcase",
     "file": "svgs/SecretDoorBookcase.svg"
   },
@@ -1248,6 +1520,10 @@
     "file": "svgs/ShamrockWallVines.svg"
   },
   {
+    "name": "Sheep Window",
+    "file": "svgs/SheepWindow.svg"
+  },
+  {
     "name": "Sir Gilberts Bookshelf",
     "file": "svgs/SirGilbertsBookshelf.svg"
   },
@@ -1262,6 +1538,10 @@
   {
     "name": "Small Irish Standing Stone",
     "file": "svgs/SmallIrishStandingStone.svg"
+  },
+  {
+    "name": "Small Window",
+    "file": "svgs/SmallWindow.svg"
   },
   {
     "name": "Snow Covered Fence",
@@ -1286,6 +1566,10 @@
   {
     "name": "Spiked Birthday Doghouse",
     "file": "svgs/SpikedBirthdayDoghouse.svg"
+  },
+  {
+    "name": "Spiked Birthday Window",
+    "file": "svgs/SpikedBirthdayWindow.svg"
   },
   {
     "name": "Spooky Fence",
@@ -1316,12 +1600,56 @@
     "file": "svgs/SpringTulipFence.svg"
   },
   {
+    "name": "Spring Tulip Window",
+    "file": "svgs/SpringTulipWindow.svg"
+  },
+  {
+    "name": "Spring Window 1",
+    "file": "svgs/SpringWindow1.svg"
+  },
+  {
+    "name": "Spring Window 2",
+    "file": "svgs/SpringWindow2.svg"
+  },
+  {
+    "name": "Spring Window 3",
+    "file": "svgs/SpringWindow3.svg"
+  },
+  {
+    "name": "Spring Window 4",
+    "file": "svgs/SpringWindow4.svg"
+  },
+  {
+    "name": "Spring Window 5",
+    "file": "svgs/SpringWindow5.svg"
+  },
+  {
+    "name": "Spring Window 6",
+    "file": "svgs/SpringWindow6.svg"
+  },
+  {
     "name": "Square Stone Planter",
     "file": "svgs/SquareStonePlanter.svg"
   },
   {
+    "name": "Stain Glass Window",
+    "file": "svgs/StainGlassWindow.svg"
+  },
+  {
     "name": "Star Stepping Stones",
     "file": "svgs/StarSteppingStones.svg"
+  },
+  {
+    "name": "Starfish Window",
+    "file": "svgs/StarfishWindow.svg"
+  },
+  {
+    "name": "Starry Window",
+    "file": "svgs/StarryWindow.svg"
+  },
+  {
+    "name": "Steampunk Window",
+    "file": "svgs/SteampunkWindow.svg"
   },
   {
     "name": "Stone Bench",
@@ -1404,6 +1732,10 @@
     "file": "svgs/StoneWallCosmo.svg"
   },
   {
+    "name": "Straw Window",
+    "file": "svgs/StrawWindow.svg"
+  },
+  {
     "name": "Strength Test Game",
     "file": "svgs/StrengthTestGame.svg"
   },
@@ -1412,12 +1744,28 @@
     "file": "svgs/SugarCookieSteppingStones.svg"
   },
   {
+    "name": "Sun Window",
+    "file": "svgs/SunWindow.svg"
+  },
+  {
+    "name": "Sus Window",
+    "file": "svgs/SusWindow.svg"
+  },
+  {
+    "name": "Sweet Window",
+    "file": "svgs/SweetWindow.svg"
+  },
+  {
     "name": "Temple Of Zios Doghouse",
     "file": "svgs/TempleOfZiosDoghouse.svg"
   },
   {
     "name": "Test Tubes",
     "file": "svgs/TestTubes.svg"
+  },
+  {
+    "name": "Three Heart Window",
+    "file": "svgs/ThreeHeartWindow.svg"
   },
   {
     "name": "Trellis 1",
@@ -1436,8 +1784,20 @@
     "file": "svgs/Trellis4.svg"
   },
   {
+    "name": "Triangle Window",
+    "file": "svgs/TriangleWindow.svg"
+  },
+  {
     "name": "Tulip Stone Pathway",
     "file": "svgs/TulipStonePathway.svg"
+  },
+  {
+    "name": "Upside Down Heart Window",
+    "file": "svgs/UpsideDownHeartWindow.svg"
+  },
+  {
+    "name": "Upside Down Window",
+    "file": "svgs/UpsideDownWindow.svg"
   },
   {
     "name": "Valentine Stepping Stones",
@@ -1500,8 +1860,40 @@
     "file": "svgs/VineRug.svg"
   },
   {
+    "name": "Whimsical Lights WIndow",
+    "file": "svgs/WhimsicalLightsWIndow.svg"
+  },
+  {
+    "name": "Window Curtain",
+    "file": "svgs/WindowCurtain.svg"
+  },
+  {
+    "name": "Window Ghost",
+    "file": "svgs/WindowGhost.svg"
+  },
+  {
+    "name": "Window Winter",
+    "file": "svgs/WindowWinter.svg"
+  },
+  {
+    "name": "Window With Cat Perch",
+    "file": "svgs/WindowWithCatPerch.svg"
+  },
+  {
+    "name": "Window With Full Moon",
+    "file": "svgs/WindowWithFullMoon.svg"
+  },
+  {
+    "name": "Wooden Burrow Window",
+    "file": "svgs/WoodenBurrowWindow.svg"
+  },
+  {
     "name": "World Map",
     "file": "svgs/World-map.svg"
+  },
+  {
+    "name": "Zios Window",
+    "file": "svgs/ZiosWindow.svg"
   },
   {
     "name": "Arched Metal Entryway",
