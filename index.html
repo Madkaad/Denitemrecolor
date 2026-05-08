@@ -1457,6 +1457,7 @@
     clearHighlight();
     await renderToCanvas(previewCanvas, w, h);
     syncHighlightCanvas();
+    if (typeof selectedColorItems !== 'undefined' && selectedColorItems.size > 0) showSelectionHighlight();
   }
 
   function syncHighlightCanvas() {
@@ -1707,17 +1708,18 @@
       controls.appendChild(wrap);
     });
 
-    document.addEventListener('mouseup', () => { colorDragging = false; });
-    document.addEventListener('mousedown', e => {
-      const grid = document.getElementById('controls');
-      const hsbPanel = document.getElementById('hsb-panel');
-      if (grid && !grid.contains(e.target) && hsbPanel && !hsbPanel.contains(e.target)) {
-        if (selectedColorItems.size > 0) clearColorSelection();
-      }
-    }, true);
-
     initHsbSliders();
   }
+
+  // Global listeners for color drag/deselect — registered once
+  document.addEventListener('mouseup', () => { colorDragging = false; });
+  document.addEventListener('mousedown', e => {
+    const grid = document.getElementById('controls');
+    const hsbPanel = document.getElementById('hsb-panel');
+    if (grid && !grid.contains(e.target) && hsbPanel && !hsbPanel.contains(e.target)) {
+      if (selectedColorItems.size > 0) clearColorSelection();
+    }
+  }, true);
 
   // ── HSB ───────────────────────────────────────────────────────────────────
   function hexToHsl(hex) {
