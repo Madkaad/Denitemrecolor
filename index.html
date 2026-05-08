@@ -1063,39 +1063,15 @@
               <input type="range" id="slider-bri" min="-100" max="100" value="0" style="flex:1;accent-color:#fff;">
               <span id="val-bri" style="width:32px;text-align:right;font-size:11px;color:#fff;">0%</span>
             </label>
-            <label style="font-family:'Nunito',sans-serif;font-size:11px;color:rgba(255,255,255,0.7);display:flex;align-items:center;gap:8px;">
-              <span style="width:16px;">A</span>
-              <input type="range" id="slider-opacity" min="0" max="1" step="0.01" value="1" style="flex:1;accent-color:#fff;">
-              <span id="val-opacity" style="width:32px;text-align:right;font-size:11px;color:#fff;">100%</span>
-            </label>
           </div>
         </div>
       </div>
       <div class="tab-content" id="pane-layers">
-        <div style="padding:8px 10px 4px;display:flex;gap:6px;">
-          <button id="invert-layers-btn" style="flex:1;padding:7px 10px;background:rgba(255,255,255,0.15);border:1.5px solid rgba(255,255,255,0.3);border-radius:8px;color:#fff;font-family:'Nunito',sans-serif;font-size:13px;font-weight:700;cursor:pointer;transition:background 0.15s;" onmouseover="this.style.background='rgba(255,255,255,0.25)'" onmouseout="this.style.background='rgba(255,255,255,0.15)'">⇅ Invert</button>
-          <button id="adv-layers-btn" onclick="handleAdvLayersToggle()" style="padding:7px 11px;background:rgba(255,255,255,0.1);border:1.5px solid rgba(255,255,255,0.25);border-radius:8px;color:rgba(255,255,255,0.65);font-family:'Nunito',sans-serif;font-size:12px;font-weight:700;cursor:pointer;transition:all 0.15s;">Adv</button>
+        <div style="padding:8px 10px 4px;">
+          <button id="invert-layers-btn" style="width:100%;padding:7px 10px;background:rgba(255,255,255,0.15);border:1.5px solid rgba(255,255,255,0.3);border-radius:8px;color:#fff;font-family:'Nunito',sans-serif;font-size:13px;font-weight:700;cursor:pointer;transition:background 0.15s;" onmouseover="this.style.background='rgba(255,255,255,0.25)'" onmouseout="this.style.background='rgba(255,255,255,0.15)'">⇅ Invert Visibility</button>
         </div>
-        <div id="layers-hint" style="padding:2px 10px 6px;font-family:'Nunito',sans-serif;font-size:11px;color:rgba(255,255,255,0.5);text-align:center;">click or drag to toggle multiple layers</div>
+        <div style="padding:2px 10px 6px;font-family:'Nunito',sans-serif;font-size:11px;color:rgba(255,255,255,0.5);text-align:center;">click or drag to toggle multiple layers</div>
         <div class="layers-list" id="layers-list"></div>
-      </div>
-    </div>
-  </div>
-
-
-  <!-- ADV LAYERS INFO POPUP -->
-  <div id="adv-layers-info" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.4);z-index:800;align-items:center;justify-content:center;">
-    <div style="background:#fff;border-radius:16px;box-shadow:0 8px 40px rgba(0,0,0,0.2);padding:26px 28px 22px;max-width:360px;width:90%;position:relative;">
-      <button onclick="document.getElementById('adv-layers-info').style.display='none'" style="position:absolute;top:12px;right:12px;width:22px;height:22px;border-radius:50%;border:1.5px solid #c0d8f0;background:#eaf3ff;color:#336699;font-size:11px;cursor:pointer;line-height:1;">✕</button>
-      <div style="font-family:'Fredoka One',cursive;font-size:17px;color:#1a4a7a;margin-bottom:10px;">Advanced Layer Mode</div>
-      <div style="font-family:'Nunito',sans-serif;font-size:13px;color:#5a7a9a;line-height:1.65;margin-bottom:14px;">
-        Regular layers show each shape as a single entry. Some shapes share the same fill and are controlled together.<br><br>
-        Advanced mode lists every shape completely on its own, including ones that are nested or share a fill with others. You get full individual control over each one.
-      </div>
-      <div style="font-family:'Nunito',sans-serif;font-size:11px;color:#90afc8;margin-bottom:16px;">Changes you make are kept when switching modes.</div>
-      <div style="display:flex;gap:8px;">
-        <button onclick="document.getElementById('adv-layers-info').style.display='none'" style="flex:1;padding:9px;background:#eaf3ff;border:1.5px solid #c0d8f0;border-radius:9px;color:#336699;font-family:'Nunito',sans-serif;font-size:13px;font-weight:700;cursor:pointer;">Cancel</button>
-        <button onclick="document.getElementById('adv-layers-info').style.display='none';advLayersMode=true;updateAdvBtn();initLayers();" style="flex:2;padding:9px;background:#2a7ad4;border:none;border-radius:9px;color:#fff;font-family:'Nunito',sans-serif;font-size:13px;font-weight:700;cursor:pointer;">Switch to Advanced</button>
       </div>
     </div>
   </div>
@@ -1429,7 +1405,6 @@
     controls.innerHTML = '';
     mainUndoStack = []; mainRedoStack = [];
     clearColorSelection();
-    advLayersMode = false;
     try {
       let svgText;
       if (item.svg) { svgText = item.svg; }
@@ -1640,12 +1615,8 @@
     originalPaletteColors = [];
     selectedColorItems.clear();
     colorDragging = false;
-    ['slider-hue','slider-sat','slider-bri','slider-opacity'].forEach(id => {
-      const el = document.getElementById(id);
-      if (el) el.value = id === 'slider-opacity' ? 1 : 0;
-    });
+    ['slider-hue','slider-sat','slider-bri'].forEach(id => { const el = document.getElementById(id); if (el) el.value = 0; });
     ['val-hue','val-sat','val-bri'].forEach((id, i) => { const el = document.getElementById(id); if (el) el.textContent = i === 0 ? '0°' : '0%'; });
-    const valOp = document.getElementById('val-opacity'); if (valOp) valOp.textContent = '100%';
 
     const colorMap = buildColorMap(svgEl, 'main');
 
@@ -1667,7 +1638,7 @@
       label.className = 'hex-text';
       label.textContent = originalHex.toUpperCase();
 
-      // Drag-select: mousedown starts selection
+      // Drag-select
       wrap.addEventListener('mousedown', e => {
         if (e.button !== 0) return;
         e.preventDefault();
@@ -1688,7 +1659,6 @@
           else { selectedColorItems.delete(wrap); wrap.classList.remove('multi-selected'); }
           showSelectionHighlight();
         } else {
-          // Hover highlight only when nothing selected
           if (selectedColorItems.size === 0) showHighlight(getHighlightEls(ids));
         }
       });
@@ -1737,10 +1707,7 @@
       controls.appendChild(wrap);
     });
 
-    // End color drag on mouseup
     document.addEventListener('mouseup', () => { colorDragging = false; });
-
-    // Click outside palette → deselect
     document.addEventListener('mousedown', e => {
       const grid = document.getElementById('controls');
       const hsbPanel = document.getElementById('hsb-panel');
@@ -1814,46 +1781,16 @@
       el.addEventListener('mousedown', () => { _hsbPushedUndo = false; });
       el.addEventListener('input', () => { if (!_hsbPushedUndo) { pushMainUndo(); _hsbPushedUndo = true; } applyHsbAdjust(); });
     });
-
-    // Opacity slider
-    const opEl = document.getElementById('slider-opacity');
-    const opVal = document.getElementById('val-opacity');
-    if (opEl) {
-      let _opUndo = false;
-      opEl.addEventListener('mousedown', () => { _opUndo = false; });
-      opEl.addEventListener('input', () => {
-        if (!_opUndo) { pushMainUndo(); _opUndo = true; }
-        const val = parseFloat(opEl.value);
-        if (opVal) opVal.textContent = Math.round(val * 100) + '%';
-        // Apply to selected colors only, or all if none selected
-        const targets = selectedColorItems.size > 0
-          ? Array.from(selectedColorItems).map(w => w._ids).filter(Boolean)
-          : originalPaletteColors.map(e => e.ids);
-        targets.forEach(ids => {
-          ids.forEach(id => {
-            const el = svgEl.querySelector(`[data-cid="${id}"]`);
-            if (!el) return;
-            el.tagName === 'stop'
-              ? el.setAttribute('stop-opacity', val)
-              : el.setAttribute('fill-opacity', val);
-          });
-        });
-        refreshPreview();
-      });
-    }
-
     document.getElementById('reset-colors-btn').addEventListener('click', () => {
       pushMainUndo();
       ['slider-hue','slider-sat','slider-bri'].forEach(id => { const el = document.getElementById(id); if (el) el.value = 0; });
       ['val-hue','val-sat','val-bri'].forEach((id,i) => { const el = document.getElementById(id); if (el) el.textContent = i===0?'0°':'0%'; });
-      if (opEl) opEl.value = 1; if (opVal) opVal.textContent = '100%';
       originalPaletteColors.forEach(({ids, hex, input, label}) => {
         if (input) { input.value = hex; label.textContent = hex.toUpperCase(); }
         ids.forEach(id => {
           const el = svgEl.querySelector(`[data-cid="${id}"]`);
           if (!el) return;
           el.getAttribute('stop-color') !== null ? el.setAttribute('stop-color', hex) : el.setAttribute('fill', hex);
-          el.removeAttribute('fill-opacity'); el.removeAttribute('stop-opacity');
         });
       });
       refreshPreview();
@@ -1869,89 +1806,18 @@
     item._visible = visible;
   }
 
-  let advLayersMode = false;
-
-  function handleAdvLayersToggle() {
-    if (advLayersMode) {
-      advLayersMode = false;
-      updateAdvBtn();
-      initLayers();
-    } else {
-      document.getElementById('adv-layers-info').style.display = 'flex';
-    }
-  }
-
-  function updateAdvBtn() {
-    const btn = document.getElementById('adv-layers-btn');
-    const hint = document.getElementById('layers-hint');
-    if (!btn) return;
-    if (advLayersMode) {
-      btn.textContent = 'Adv ON';
-      btn.style.background = 'rgba(255,220,50,0.2)';
-      btn.style.color = '#ffe066';
-      btn.style.borderColor = 'rgba(255,220,50,0.4)';
-      if (hint) hint.textContent = 'advanced mode — every shape is individual';
-    } else {
-      btn.textContent = 'Adv';
-      btn.style.background = 'rgba(255,255,255,0.1)';
-      btn.style.color = 'rgba(255,255,255,0.65)';
-      btn.style.borderColor = 'rgba(255,255,255,0.25)';
-      if (hint) hint.textContent = 'click or drag to toggle multiple layers';
-    }
-  }
-
   function initLayers() {
     layersList.innerHTML = '';
-    updateAdvBtn();
-
-    // In advanced mode, grab every single shape including inside <g> groups.
-    // In regular mode, grab top-level shapes (same as before).
-    const selector = 'path, rect, circle, ellipse, polygon, polyline, line';
-    const shapes = Array.from(svgEl.querySelectorAll(selector));
-
+    const shapes = Array.from(svgEl.querySelectorAll('path, rect, circle, ellipse, polygon, polyline'));
     if (!shapes.length) { layersList.innerHTML = '<div style="color:rgba(255,255,255,0.5);font-size:13px;padding:8px;">No layers found.</div>'; return; }
-
-    // In regular mode, deduplicate by parent <g> when all siblings share same fill
-    // Actually: regular mode = list all shapes (existing behavior, each path/rect is its own row)
-    // Advanced mode = additionally decompose any compound paths by splitting 'd' attr subpaths
-    let displayShapes = shapes;
-
-    if (advLayersMode) {
-      // Flatten compound paths: split multi-subpath 'd' attributes into individual shapes
-      const expanded = [];
-      shapes.forEach(el => {
-        if (el.tagName === 'path') {
-          const d = el.getAttribute('d') || '';
-          // Split on M/m that starts a new subpath (after the first)
-          const subpaths = d.split(/(?=[Mm])/).map(s => s.trim()).filter(s => s.length > 1);
-          if (subpaths.length > 1) {
-            subpaths.forEach((sub, si) => {
-              // Clone the element, set single subpath
-              const clone = el.cloneNode(true);
-              clone.setAttribute('d', sub);
-              clone.setAttribute('data-compound-source', el.getAttribute('data-layer-id') || '');
-              clone.setAttribute('data-compound-idx', si);
-              // Insert clone next to original in DOM so visibility works
-              el.parentNode.insertBefore(clone, el.nextSibling);
-              expanded.push(clone);
-            });
-            el.style.display = 'none'; // hide original compound path
-            return;
-          }
-        }
-        expanded.push(el);
-      });
-      displayShapes = expanded;
-    }
-
     let dragging = false, dragTargetState = null;
 
-    displayShapes.forEach((el, i) => {
-      const fill = el.getAttribute('fill') || '';
+    shapes.forEach((el, i) => {
+      const fill = el.getAttribute('fill');
       el.setAttribute('data-layer-id', `lid-${i}`);
       const item = document.createElement('div');
       item.className = 'layer-item';
-      item._visible = el.style.display !== 'none';
+      item._visible = true;
       const swatch = document.createElement('div');
       swatch.className = 'layer-swatch';
       swatch.style.background = (!fill || fill === 'none' || fill.startsWith('url')) ? 'rgba(255,255,255,0.15)' : fill;
@@ -1960,7 +1826,7 @@
       label.textContent = `Shape ${i + 1}`;
       const eye = document.createElement('span');
       eye.className = 'layer-eye';
-      eye.innerHTML = item._visible ? EYE_ON : EYE_OFF;
+      eye.innerHTML = EYE_ON;
       item.appendChild(swatch); item.appendChild(label); item.appendChild(eye);
       item.addEventListener('mouseleave', () => { if (!dragging) clearHighlight(); });
       item.addEventListener('mousedown', e => { e.preventDefault(); pushMainUndo(); dragging = true; dragTargetState = !item._visible; setLayerVisible(el, item, eye, dragTargetState); });
@@ -1976,7 +1842,7 @@
       const allItems = Array.from(layersList.querySelectorAll('.layer-item'));
       allItems.forEach((item, idx) => {
         const eye = item.querySelector('.layer-eye');
-        if (displayShapes[idx] && eye) setLayerVisible(displayShapes[idx], item, eye, !item._visible);
+        if (shapes[idx] && eye) setLayerVisible(shapes[idx], item, eye, !item._visible);
       });
       refreshPreview();
     };
