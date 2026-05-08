@@ -1656,13 +1656,7 @@
       });
 
       wrap.addEventListener('mouseenter', () => {
-        if (colorDragging) {
-          if (colorDragAdding) { selectedColorItems.add(wrap); wrap.classList.add('multi-selected'); }
-          else { selectedColorItems.delete(wrap); wrap.classList.remove('multi-selected'); }
-          showSelectionHighlight();
-        } else {
-          if (selectedColorItems.size === 0) showHighlight(getHighlightEls(ids));
-        }
+        if (!colorDragging && selectedColorItems.size === 0) showHighlight(getHighlightEls(ids));
       });
 
       wrap.addEventListener('mouseleave', () => {
@@ -1725,6 +1719,16 @@
   }
 
   // Global listeners for color drag/deselect — registered once
+  document.addEventListener('mousemove', e => {
+    if (!colorDragging) return;
+    const el = document.elementFromPoint(e.clientX, e.clientY);
+    if (!el) return;
+    const wrap = el.closest('.color-item');
+    if (!wrap) return;
+    if (colorDragAdding) { selectedColorItems.add(wrap); wrap.classList.add('multi-selected'); }
+    else { selectedColorItems.delete(wrap); wrap.classList.remove('multi-selected'); }
+    showSelectionHighlight();
+  });
   document.addEventListener('mouseup', () => { colorDragging = false; });
   document.addEventListener('mousedown', e => {
     const grid = document.getElementById('controls');
