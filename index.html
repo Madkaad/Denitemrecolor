@@ -1816,17 +1816,12 @@
     }
 
     let dragMoved = false;
-    let dragStartX = 0, dragStartY = 0;
-    const DRAG_DEAD_ZONE = 5; // px — must move this far before drag kicks in
-
     grid.addEventListener('pointerdown', e => {
       if (e.button !== 0) return;
       const wrap = e.target.closest('.color-item');
       if (!wrap) return;
       e.preventDefault();
       dragMoved = false;
-      dragStartX = e.clientX;
-      dragStartY = e.clientY;
 
       // In hide mode: toggle visibility on click/drag
       if (hideColorMode) {
@@ -1855,14 +1850,25 @@
       colorDragging = true;
 
       if (alreadySelected) {
-        // Starting on a selected item — do nothing yet, wait to see if it's a click or drag
+        if (e.ctrlKey || e.metaKey || e.shiftKey) {
+          // Cmd/ctrl click on selected → deselect just this one
+          colorDragAdding = false;
+          selectedColorItems.delete(wrap);
+          wrap.classList.remove('multi-selected');
+          showSelectionHighlight();
+          colorDragging = false;
+          return;
+        }
+        // Plain click on selected — wait to see if it's a click (open picker) or drag (deselect)
         colorDragAdding = false;
       } else if (e.ctrlKey || e.metaKey || e.shiftKey) {
+        // Ctrl/shift: add this item to selection
         colorDragAdding = true;
         selectedColorItems.add(wrap);
         wrap.classList.add('multi-selected');
         showSelectionHighlight();
       } else {
+        // Plain click on unselected: clear and start fresh
         clearColorSelection();
         selectedColorItems.add(wrap);
         wrap.classList.add('multi-selected');
@@ -1874,8 +1880,6 @@
 
     grid.addEventListener('pointermove', e => {
       if (!colorDragging) return;
-      const dx = e.clientX - dragStartX, dy = e.clientY - dragStartY;
-      if (!dragMoved && Math.sqrt(dx*dx + dy*dy) < DRAG_DEAD_ZONE) return;
       dragMoved = true;
       const item = hitItem(e.clientX, e.clientY);
       if (!item) return;
@@ -1894,26 +1898,28 @@
       colorDragging = false;
       grid.releasePointerCapture(e.pointerId);
       const wrap = hitItem(e.clientX, e.clientY);
-      if (wrap) {
-        if (!dragMoved) {
-          if (selectedColorItems.has(wrap)) {
-            // Pure click on selected item → open picker, keep full selection intact
-            const inp = wrap.querySelector('input[type="color"]');
-            if (inp) inp.click();
-          }
-          // Pure click on unselected was already handled in pointerdown
+      if (!dragMoved && wrap) {
+        if (selectedColorItems.has(wrap)) {
+          // Click on selected item (no drag) → open picker, keep selection
+          const inp = wrap.querySelector('input[type="color"]');
+          if (inp) inp.click();
         }
       }
     });
     grid.addEventListener('pointercancel', () => { colorDragging = false; });
   })();
 
-  // Deselect when clicking outside palette
+  // Deselect when clicking outside palette OR in empty space inside it
   document.addEventListener('mousedown', e => {
     const grid = document.getElementById('controls');
     const hsbPanel = document.getElementById('hsb-panel');
-    if (grid && !grid.contains(e.target) && hsbPanel && !hsbPanel.contains(e.target)) {
-      if (selectedColorItems.size > 0) clearColorSelection();
+    const palettePanel = document.querySelector('.palette-panel');
+    const clickedColorItem = e.target.closest('.color-item');
+    // Deselect if: clicking outside the whole palette panel, OR clicking inside it but not on a color swatch
+    if (selectedColorItems.size > 0) {
+      if (!palettePanel || !palettePanel.contains(e.target) || (!clickedColorItem && (grid && grid.contains(e.target)))) {
+        clearColorSelection();
+      }
     }
   }, true);
 
@@ -2877,7 +2883,6 @@
   });
 
   document.getElementById('scene-delete-btn').addEventListener('click', () => deleteSelected());
-  document.getElementById('scene-dupe-btn').addEventListener('click', () => duplicateSelected());
 
   // ── DUPLICATE ──────────────────────────────────────────────────────────────
   function duplicateSelected() {
