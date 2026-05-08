@@ -889,6 +889,36 @@
       border-radius: 50%;
     }
 
+    /* Layer order buttons — appear to the right of the selected object bounding box */
+    #scene-layer-order-btns {
+      position: absolute;
+      display: none;
+      flex-direction: column;
+      gap: 3px;
+      z-index: 15;
+      pointer-events: all;
+    }
+    #scene-layer-order-btns.visible { display: flex; }
+    .scene-layer-order-btn {
+      width: 22px;
+      height: 22px;
+      border-radius: 6px;
+      border: 2px solid var(--blue-dark);
+      background: #fff;
+      color: var(--blue-dark);
+      font-size: 13px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+      transition: background 0.1s, transform 0.1s;
+      line-height: 1;
+    }
+    .scene-layer-order-btn:hover { background: var(--blue-bg); transform: scale(1.1); }
+    .scene-layer-order-btn:active { transform: scale(0.95); }
+    .scene-layer-order-btn:disabled { opacity: 0.3; cursor: default; transform: none; }
+
     /* Mirror/Reset float independently outside the transformed domEl */
     .scene-obj-floatbtns {
       position: absolute;
@@ -1105,7 +1135,7 @@
         <span style="font-family:'Fredoka One',cursive;font-size:15px;color:rgba(255,255,255,0.85);letter-spacing:0.05em;">COLORS</span>
         <div style="display:flex;gap:6px;align-items:center;">
           <button id="tab-colors-btn" class="layer-tab-btn active" onclick="setColorTab('colors')">Colors</button>
-          <button id="tab-hide-btn" class="layer-tab-btn" onclick="setColorTab('hide')">Hide</button>
+          <button id="tab-hide-btn" class="layer-tab-btn" onclick="setColorTab('hide')">Hide Colors</button>
           <div id="hide-action-btns" style="display:none;gap:5px;display:none;">
             <button id="invert-colors-btn" class="layer-action-btn">Invert</button>
             <button id="unhide-all-btn" class="layer-action-btn">Unhide All</button>
@@ -1235,6 +1265,12 @@
 
     <div class="scene-workspace" id="scene-workspace">
       <div id="scene-canvas-container"></div>
+      <!-- Layer order buttons (right side of bounding box) -->
+      <div id="scene-layer-order-btns">
+        <button class="scene-layer-order-btn" id="scene-layer-up-btn" title="Bring forward">▲</button>
+        <button class="scene-layer-order-btn" id="scene-layer-down-btn" title="Send backward">▼</button>
+      </div>
+
       <div id="scene-floatbtns" class="scene-obj-floatbtns">
         <button class="scene-floatbtn dupebtn" id="scene-dupe-btn" title="Duplicate">⧉</button>
         <button class="scene-floatbtn mirror" id="scene-mirror-btn">Mirror</button>
@@ -2324,6 +2360,7 @@
     renderSceneRecolor(obj);
     renderSceneLayers();
     positionFloatBtns();
+    if (typeof positionLayerOrderBtns === 'function') positionLayerOrderBtns();
   }
 
   function toggleMultiSelect(obj) {
@@ -2346,6 +2383,7 @@
     }
     renderSceneLayers();
     positionFloatBtns();
+    if (typeof positionLayerOrderBtns === 'function') positionLayerOrderBtns();
   }
 
   function clearSelection() {
@@ -2359,6 +2397,7 @@
     if (hp) { hp.classList.remove('visible'); }
     huePopupVisible = false;
     renderSceneLayers();
+    if (typeof sceneLayerOrderBtns !== 'undefined') sceneLayerOrderBtns.classList.remove('visible');
   }
 
   function deleteSelected() {
@@ -2407,6 +2446,7 @@
       const sel = sceneObjects.filter(o => sceneMultiSel.has(o.id));
       sceneSelected = sel.length ? sel[sel.length - 1] : null;
       positionFloatBtns();
+      if (typeof positionLayerOrderBtns === 'function') positionLayerOrderBtns();
     };
     const onUp = () => {
       dragSelEl.style.display = 'none';
@@ -2417,6 +2457,7 @@
       if (sel.length) { sceneSelected = sel[sel.length - 1]; renderSceneRecolor(sceneSelected); }
       renderSceneLayers();
       positionFloatBtns();
+      if (typeof positionLayerOrderBtns === 'function') positionLayerOrderBtns();
     };
     window.addEventListener('mousemove', onMove);
     window.addEventListener('mouseup', onUp);
@@ -2432,14 +2473,14 @@
         updateSceneObjTransform(obj);
       });
     };
-    const onUp = () => { pushUndo(); window.removeEventListener('mousemove', onMove); window.removeEventListener('mouseup', onUp); };
+    const onUp = () => { pushUndo(); positionFloatBtns(); if (typeof positionLayerOrderBtns === 'function') positionLayerOrderBtns(); window.removeEventListener('mousemove', onMove); window.removeEventListener('mouseup', onUp); };
     window.addEventListener('mousemove', onMove);
     window.addEventListener('mouseup', onUp);
   }
 
   function startDrag(e, obj) {
     const startX = e.clientX - obj.x, startY = e.clientY - obj.y;
-    const onMove = e => { obj.x = e.clientX - startX; obj.y = e.clientY - startY; updateSceneObjTransform(obj); };
+    const onMove = e => { obj.x = e.clientX - startX; obj.y = e.clientY - startY; updateSceneObjTransform(obj); positionLayerOrderBtns && positionLayerOrderBtns(); };
     const onUp = () => { pushUndo(); window.removeEventListener('mousemove', onMove); window.removeEventListener('mouseup', onUp); };
     window.addEventListener('mousemove', onMove);
     window.addEventListener('mouseup', onUp);
@@ -2495,6 +2536,7 @@
         updateSceneObjTransform(obj);
       });
       positionFloatBtns();
+      if (typeof positionLayerOrderBtns === 'function') positionLayerOrderBtns();
     };
     const onUp = () => { pushUndo(); window.removeEventListener('mousemove', onMove); window.removeEventListener('mouseup', onUp); };
     window.addEventListener('mousemove', onMove);
@@ -2653,7 +2695,7 @@
     obj.domEl.style.height = obj.h + 'px';
     const flip = obj.flipX ? ' scaleX(-1)' : '';
     obj.domEl.style.transform = `rotate(${obj.rot}deg)${flip}`;
-    if (sceneSelected && sceneSelected.id === obj.id) positionFloatBtns();
+    if (sceneSelected && sceneSelected.id === obj.id) { positionFloatBtns(); if (typeof positionLayerOrderBtns === 'function') positionLayerOrderBtns(); }
   }
 
   // ── SCENE RECOLOR ─────────────────────────────────────────────────────────
@@ -2775,14 +2817,74 @@
     sceneFloatBtns.classList.add('visible');
   }
 
+  // ── LAYER ORDER BUTTONS (right side of bounding box) ─────────────────────
+  const sceneLayerOrderBtns = document.getElementById('scene-layer-order-btns');
+  const sceneLayerUpBtn     = document.getElementById('scene-layer-up-btn');
+  const sceneLayerDownBtn   = document.getElementById('scene-layer-down-btn');
+
+  function positionLayerOrderBtns() {
+    // Only show when exactly one object is selected (clearest UX for layer ordering)
+    // For multi-select we hide them since order is ambiguous
+    const sel = sceneObjects.filter(o => sceneMultiSel.has(o.id));
+    if (sel.length !== 1) { sceneLayerOrderBtns.classList.remove('visible'); return; }
+    const obj = sel[0];
+    const wsRect = sceneWorkspace.getBoundingClientRect();
+    const r = obj.domEl.getBoundingClientRect();
+    // Position to the right of the bounding box, vertically centred
+    const rightEdge = r.right - wsRect.left + 8;
+    const midY = r.top - wsRect.top + r.height / 2 - 23; // 23 = half of (22+3+22)
+    sceneLayerOrderBtns.style.left = rightEdge + 'px';
+    sceneLayerOrderBtns.style.top  = midY + 'px';
+    // Disable buttons if already at top/bottom
+    const idx = sceneObjects.indexOf(obj);
+    sceneLayerUpBtn.disabled   = (idx === sceneObjects.length - 1);
+    sceneLayerDownBtn.disabled = (idx === 0);
+    sceneLayerOrderBtns.classList.add('visible');
+  }
+
+  // Patch positionFloatBtns to also update layer order buttons
+  const _origPositionFloatBtns = positionFloatBtns;
+  function positionAllFloatUI() {
+    positionFloatBtns();
+    positionLayerOrderBtns();
+  }
+
+  sceneLayerUpBtn.addEventListener('click', () => {
+    const sel = sceneObjects.filter(o => sceneMultiSel.has(o.id));
+    if (sel.length !== 1) return;
+    pushUndo();
+    const idx = sceneObjects.indexOf(sel[0]);
+    if (idx < sceneObjects.length - 1) {
+      [sceneObjects[idx], sceneObjects[idx + 1]] = [sceneObjects[idx + 1], sceneObjects[idx]];
+      sceneObjects.forEach(o => sceneContainer.appendChild(o.domEl));
+      renderSceneLayers();
+      positionLayerOrderBtns();
+    }
+  });
+
+  sceneLayerDownBtn.addEventListener('click', () => {
+    const sel = sceneObjects.filter(o => sceneMultiSel.has(o.id));
+    if (sel.length !== 1) return;
+    pushUndo();
+    const idx = sceneObjects.indexOf(sel[0]);
+    if (idx > 0) {
+      [sceneObjects[idx], sceneObjects[idx - 1]] = [sceneObjects[idx - 1], sceneObjects[idx]];
+      sceneObjects.forEach(o => sceneContainer.appendChild(o.domEl));
+      renderSceneLayers();
+      positionLayerOrderBtns();
+    }
+  });
+
   document.getElementById('scene-mirror-btn').addEventListener('click', () => {
     sceneObjects.filter(o => sceneMultiSel.has(o.id)).forEach(o => { o.flipX = !o.flipX; updateSceneObjTransform(o); });
     positionFloatBtns();
+    if (typeof positionLayerOrderBtns === 'function') positionLayerOrderBtns();
   });
 
   document.getElementById('scene-reset-btn').addEventListener('click', () => {
     sceneObjects.filter(o => sceneMultiSel.has(o.id)).forEach(o => { o.rot = 0; o.flipX = false; updateSceneObjTransform(o); });
     positionFloatBtns();
+    if (typeof positionLayerOrderBtns === 'function') positionLayerOrderBtns();
   });
 
   document.getElementById('scene-delete-btn').addEventListener('click', () => deleteSelected());
@@ -2833,9 +2935,8 @@
     sceneWsHint.style.display = 'none';
     renderSceneLayers();
     positionFloatBtns();
+    if (typeof positionLayerOrderBtns === 'function') positionLayerOrderBtns();
   }
-
-  document.getElementById('scene-dupe-btn').addEventListener('click', () => duplicateSelected());
 
   // ── HUE POPUP ──────────────────────────────────────────────────────────────
   const huePopup = document.getElementById('scene-hue-popup');
