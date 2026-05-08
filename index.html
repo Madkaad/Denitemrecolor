@@ -1639,34 +1639,11 @@
       label.className = 'hex-text';
       label.textContent = originalHex.toUpperCase();
 
-      // Drag-select
-      wrap.addEventListener('mousedown', e => {
-        if (e.button !== 0) return;
-        if (e.target === input) return; // let native color picker open
-        e.preventDefault();
-        colorDragging = true;
-        colorDragAdding = !selectedColorItems.has(wrap);
-        if (e.ctrlKey || e.metaKey || e.shiftKey) {
-          if (selectedColorItems.has(wrap)) { selectedColorItems.delete(wrap); wrap.classList.remove('multi-selected'); }
-          else { selectedColorItems.add(wrap); wrap.classList.add('multi-selected'); }
-        } else {
-          if (!selectedColorItems.has(wrap)) { clearColorSelection(); selectedColorItems.add(wrap); wrap.classList.add('multi-selected'); }
-        }
-        showSelectionHighlight();
-      });
-
       wrap.addEventListener('mouseenter', () => {
-        if (colorDragging) {
-          if (colorDragAdding) { selectedColorItems.add(wrap); wrap.classList.add('multi-selected'); }
-          else { selectedColorItems.delete(wrap); wrap.classList.remove('multi-selected'); }
-          showSelectionHighlight();
-        } else if (selectedColorItems.size === 0) {
-          showHighlight(getHighlightEls(ids));
-        }
+        if (selectedColorItems.size === 0) showHighlight(getHighlightEls(ids));
       });
-
       wrap.addEventListener('mouseleave', () => {
-        if (!colorDragging && selectedColorItems.size === 0) clearHighlight();
+        if (selectedColorItems.size === 0) clearHighlight();
       });
 
       let t, _pushedUndo = false;
@@ -1680,10 +1657,7 @@
         showSelectionHighlight();
         _pushedUndo = false;
       });
-      input.addEventListener('click', () => {
-        // Hide white outline while color picker is open
-        clearHighlight();
-      });
+
       input.addEventListener('input', e => {
         if (!_pushedUndo) { pushMainUndo(); _pushedUndo = true; }
         const newColor = e.target.value;
@@ -1713,6 +1687,7 @@
             });
           });
         }
+        clearHighlight();
         clearTimeout(t); t = setTimeout(refreshPreview, 80);
       });
 
@@ -1725,24 +1700,60 @@
     initHsbSliders();
   }
 
-  // Global listeners for color drag/deselect — registered once
-  document.addEventListener('mousemove', e => {
-    if (!colorDragging) return;
-    // Use elementFromPoint but temporarily hide any overlay that might intercept
+  // Color grid drag-select — using pointer events on the grid itself
+  (function() {
     const grid = document.getElementById('controls');
     if (!grid) return;
-    const items = grid.querySelectorAll('.color-item');
-    let hit = null;
-    items.forEach(item => {
-      const r = item.getBoundingClientRect();
-      if (e.clientX >= r.left && e.clientX <= r.right && e.clientY >= r.top && e.clientY <= r.bottom) hit = item;
+
+    function itemUnderPointer(x, y) {
+      const items = grid.querySelectorAll('.color-item');
+      for (const item of items) {
+        const r = item.getBoundingClientRect();
+        if (x >= r.left && x <= r.right && y >= r.top && y <= r.bottom) return item;
+      }
+      return null;
+    }
+
+    function applyDragTo(item) {
+      if (!item) return;
+      if (colorDragAdding) { selectedColorItems.add(item); item.classList.add('multi-selected'); }
+      else { selectedColorItems.delete(item); item.classList.remove('multi-selected'); }
+      showSelectionHighlight();
+    }
+
+    grid.addEventListener('pointerdown', e => {
+      const wrap = e.target.closest('.color-item');
+      if (!wrap) return;
+      const inp = wrap.querySelector('input[type="color"]');
+      if (e.target === inp) return; // let color picker handle it
+      e.preventDefault();
+      colorDragging = true;
+      colorDragAdding = !selectedColorItems.has(wrap);
+      if (e.ctrlKey || e.metaKey || e.shiftKey) {
+        if (selectedColorItems.has(wrap)) { selectedColorItems.delete(wrap); wrap.classList.remove('multi-selected'); }
+        else { selectedColorItems.add(wrap); wrap.classList.add('multi-selected'); }
+      } else {
+        if (!selectedColorItems.has(wrap)) { clearColorSelection(); }
+        selectedColorItems.add(wrap); wrap.classList.add('multi-selected');
+      }
+      showSelectionHighlight();
+      grid.setPointerCapture(e.pointerId);
     });
-    if (!hit) return;
-    if (colorDragAdding) { selectedColorItems.add(hit); hit.classList.add('multi-selected'); }
-    else { selectedColorItems.delete(hit); hit.classList.remove('multi-selected'); }
-    showSelectionHighlight();
-  });
-  document.addEventListener('mouseup', () => { colorDragging = false; });
+
+    grid.addEventListener('pointermove', e => {
+      if (!colorDragging) return;
+      applyDragTo(itemUnderPointer(e.clientX, e.clientY));
+    });
+
+    grid.addEventListener('pointerup', e => {
+      colorDragging = false;
+      grid.releasePointerCapture(e.pointerId);
+    });
+
+    grid.addEventListener('pointercancel', () => { colorDragging = false; });
+  })();
+
+  // Deselect when clicking outside palette
   document.addEventListener('mousedown', e => {
     const grid = document.getElementById('controls');
     const hsbPanel = document.getElementById('hsb-panel');
