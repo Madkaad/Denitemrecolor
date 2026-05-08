@@ -28,6 +28,10 @@
     "file": "svgs/8BitWindow.svg"
   },
   {
+    "name": "AJAlpha Flag",
+    "file": "svgs/AJAlphaFlag.svg"
+  },
+  {
     "name": "Abstract Window",
     "file": "svgs/AbstractWindow.svg"
   },
@@ -60,6 +64,10 @@
     "file": "svgs/Ancient Ruins.svg"
   },
   {
+    "name": "Ancient Junos Flag",
+    "file": "svgs/AncientJunosFlag.svg"
+  },
+  {
     "name": "Ancient Stepping Stones",
     "file": "svgs/AncientSteppingStones.svg"
   },
@@ -74,6 +82,10 @@
   {
     "name": "Aquarium Window",
     "file": "svgs/AquariumWindow.svg"
+  },
+  {
+    "name": "Aquatic Television",
+    "file": "svgs/Aquatic Television.svg"
   },
   {
     "name": "Arctic Fox Tail Window",
@@ -268,6 +280,10 @@
     "file": "svgs/BrokenHeartSteppingStones.svg"
   },
   {
+    "name": "Bunny Ear TV",
+    "file": "svgs/BunnyEarTV.svg"
+  },
+  {
     "name": "Bunny Fence",
     "file": "svgs/BunnyFence.svg"
   },
@@ -292,12 +308,20 @@
     "file": "svgs/CardboardWindow.svg"
   },
   {
+    "name": "Carnival Flags",
+    "file": "svgs/CarnivalFlags.svg"
+  },
+  {
     "name": "Carrot Stick Fence",
     "file": "svgs/CarrotStickFence.svg"
   },
   {
     "name": "Cascading Lily",
     "file": "svgs/CascadingLily.svg"
+  },
+  {
+    "name": "Cauldron Pool",
+    "file": "svgs/CauldronPool.svg"
   },
   {
     "name": "Cave Crystals",
@@ -330,6 +354,10 @@
   {
     "name": "Classic Pink Jar",
     "file": "svgs/ClassicPinkJar.svg"
+  },
+  {
+    "name": "Classic TV",
+    "file": "svgs/ClassicTV.svg"
   },
   {
     "name": "Clover Fence",
@@ -476,6 +504,10 @@
     "file": "svgs/Crystals2DecorPink_2.svg"
   },
   {
+    "name": "Cupid Flag",
+    "file": "svgs/CupidFlag.svg"
+  },
+  {
     "name": "Daisy Stepping Stones",
     "file": "svgs/DaisySteppingStones.svg"
   },
@@ -590,6 +622,10 @@
   {
     "name": "Eagle Window",
     "file": "svgs/EagleWindow.svg"
+  },
+  {
+    "name": "Eel Lamp",
+    "file": "svgs/EelLamp.svg"
   },
   {
     "name": "Egg Shaped Window",
@@ -728,12 +764,20 @@
     "file": "svgs/Fishy20002s-Succulent-Garden-Sphere.svg"
   },
   {
+    "name": "Flag",
+    "file": "svgs/Flag.svg"
+  },
+  {
     "name": "Floating Lily Lantern",
     "file": "svgs/FloatingLilyLantern.svg"
   },
   {
     "name": "Flying Disc Stepping Stones",
     "file": "svgs/FlyingDiscSteppingStones.svg"
+  },
+  {
+    "name": "Flying Fish Flag",
+    "file": "svgs/FlyingFishFlag.svg"
   },
   {
     "name": "Flying Pig Stepping Stones",
@@ -748,8 +792,16 @@
     "file": "svgs/FreedomWindow.svg"
   },
   {
+    "name": "Friendship Day Flag",
+    "file": "svgs/FriendshipDayFlag.svg"
+  },
+  {
     "name": "Friendship Fortress Window",
     "file": "svgs/FriendshipFortressWindow.svg"
+  },
+  {
+    "name": "Frog TV",
+    "file": "svgs/FrogTV.svg"
   },
   {
     "name": "Frozen Stepping Stones",
@@ -780,6 +832,10 @@
     "file": "svgs/GiantDogBone.svg"
   },
   {
+    "name": "Giant Mouse Toy",
+    "file": "svgs/GiantMouseToy.svg"
+  },
+  {
     "name": "Giant Open Book",
     "file": "svgs/GiantOpenBook.svg"
   },
@@ -804,6 +860,10 @@
     "file": "svgs/GlitchBookshelf.svg"
   },
   {
+    "name": "Glitchy Tv",
+    "file": "svgs/GlitchyTv.svg"
+  },
+  {
     "name": "Goat Pasture Window",
     "file": "svgs/GoatPastureWindow.svg"
   },
@@ -818,6 +878,10 @@
   {
     "name": "Greenhouse Window",
     "file": "svgs/GreenhouseWindow.svg"
+  },
+  {
+    "name": "HD Tv",
+    "file": "svgs/HD-Tv.svg"
   },
   {
     "name": "Hanging Vines",
@@ -838,6 +902,10 @@
   {
     "name": "Haunted Fence Gate",
     "file": "svgs/HauntedFenceGate.svg"
+  },
+  {
+    "name": "Haunted TV",
+    "file": "svgs/HauntedTV.svg"
   },
   {
     "name": "Heart Fence",
@@ -872,6 +940,18 @@
     "file": "svgs/IcePopWindow.svg"
   },
   {
+    "name": "Inflatable Pool",
+    "file": "svgs/InflatablePool.svg"
+  },
+  {
+    "name": "Inflatable Pool Table",
+    "file": "svgs/InflatablePoolTable.svg"
+  },
+  {
+    "name": "Inflatable Pool Volleyball",
+    "file": "svgs/InflatablePoolVolleyball.svg"
+  },
+  {
     "name": "Jack OLantern Window",
     "file": "svgs/JackOLanternWindow.svg"
   },
@@ -882,6 +962,18 @@
   {
     "name": "Jamaa Doghouse",
     "file": "svgs/JamaaDoghouse.svg"
+  },
+  {
+    "name": "Jamaa Flag",
+    "file": "svgs/JamaaFlag.svg"
+  },
+  {
+    "name": "Jamaa Flagpole",
+    "file": "svgs/JamaaFlagpole.svg"
+  },
+  {
+    "name": "Jamaa Wall Flag",
+    "file": "svgs/JamaaWallFlag.svg"
   },
   {
     "name": "Jamaaliday Doghouse",
@@ -928,8 +1020,76 @@
     "file": "svgs/JellyfishWindow.svg"
   },
   {
+    "name": "Jolly Candy Cane Archway",
+    "file": "svgs/JollyCandyCaneArchway.svg"
+  },
+  {
+    "name": "Jolly Candy Cane Chair",
+    "file": "svgs/JollyCandyCaneChair.svg"
+  },
+  {
+    "name": "Jolly Candy Cane Chaise Lounge",
+    "file": "svgs/JollyCandyCaneChaiseLounge.svg"
+  },
+  {
+    "name": "Jolly Candy Cane Fountain",
+    "file": "svgs/JollyCandyCaneFountain.svg"
+  },
+  {
+    "name": "Jolly Candy Cane Lamp",
+    "file": "svgs/JollyCandyCaneLamp.svg"
+  },
+  {
+    "name": "Jolly Candy Cane Lantern",
+    "file": "svgs/JollyCandyCaneLantern.svg"
+  },
+  {
+    "name": "Jolly Candy Cane Pathway",
+    "file": "svgs/JollyCandyCanePathway.svg"
+  },
+  {
+    "name": "Jolly Candy Cane Rug",
+    "file": "svgs/JollyCandyCaneRug.svg"
+  },
+  {
+    "name": "Jolly Candy Cane Sconce",
+    "file": "svgs/JollyCandyCaneSconce.svg"
+  },
+  {
+    "name": "Jolly Candy Cane Sofa",
+    "file": "svgs/JollyCandyCaneSofa.svg"
+  },
+  {
+    "name": "Jolly Candy Cane Table",
+    "file": "svgs/JollyCandyCaneTable.svg"
+  },
+  {
     "name": "Jolly Candy Cane Window",
     "file": "svgs/JollyCandyCaneWindow.svg"
+  },
+  {
+    "name": "Jolly Candy Fire Pit",
+    "file": "svgs/JollyCandyFirePit.svg"
+  },
+  {
+    "name": "Jolly Giant Gingerbread Man",
+    "file": "svgs/JollyGiantGingerbreadMan.svg"
+  },
+  {
+    "name": "Jolly Gingerbread Cake",
+    "file": "svgs/JollyGingerbreadCake.svg"
+  },
+  {
+    "name": "Jolly Gingerbread Chair",
+    "file": "svgs/JollyGingerbreadChair.svg"
+  },
+  {
+    "name": "Jolly Gingerbread Chaise Lounge",
+    "file": "svgs/JollyGingerbreadChaiseLounge.svg"
+  },
+  {
+    "name": "Jolly Gingerbread Feast Table",
+    "file": "svgs/JollyGingerbreadFeastTable.svg"
   },
   {
     "name": "Jolly Gingerbread Fence",
@@ -940,12 +1100,120 @@
     "file": "svgs/JollyGingerbreadFenceGate.svg"
   },
   {
+    "name": "Jolly Gingerbread Firepit",
+    "file": "svgs/JollyGingerbreadFirepit.svg"
+  },
+  {
+    "name": "Jolly Gingerbread Fireplace",
+    "file": "svgs/JollyGingerbreadFireplace.svg"
+  },
+  {
+    "name": "Jolly Gingerbread Fountain",
+    "file": "svgs/JollyGingerbreadFountain.svg"
+  },
+  {
+    "name": "Jolly Gingerbread Garden",
+    "file": "svgs/JollyGingerbreadGarden.svg"
+  },
+  {
+    "name": "Jolly Gingerbread House",
+    "file": "svgs/JollyGingerbreadHouse.svg"
+  },
+  {
+    "name": "Jolly Gingerbread Locomotive",
+    "file": "svgs/JollyGingerbreadLocomotive.svg"
+  },
+  {
+    "name": "Jolly Gingerbread Mailbox",
+    "file": "svgs/JollyGingerbreadMailbox.svg"
+  },
+  {
+    "name": "Jolly Gingerbread Man Rug",
+    "file": "svgs/JollyGingerbreadManRug.svg"
+  },
+  {
+    "name": "Jolly Gingerbread Mira Statue",
+    "file": "svgs/JollyGingerbreadMiraStatue.svg"
+  },
+  {
+    "name": "Jolly Gingerbread Rocking Chair",
+    "file": "svgs/JollyGingerbreadRockingChair.svg"
+  },
+  {
+    "name": "Jolly Gingerbread Sled",
+    "file": "svgs/JollyGingerbreadSled.svg"
+  },
+  {
+    "name": "Jolly Gingerbread Sofa",
+    "file": "svgs/JollyGingerbreadSofa.svg"
+  },
+  {
     "name": "Jolly Gingerbread Stepping Stones",
     "file": "svgs/JollyGingerbreadSteppingStones.svg"
   },
   {
+    "name": "Jolly Gingerbread Streamer",
+    "file": "svgs/JollyGingerbreadStreamer.svg"
+  },
+  {
+    "name": "Jolly Gingerbread TV",
+    "file": "svgs/JollyGingerbreadTV.svg"
+  },
+  {
+    "name": "Jolly Gingerbread Throne",
+    "file": "svgs/JollyGingerbreadThrone.svg"
+  },
+  {
+    "name": "Jolly Gingerbread Train Car 1",
+    "file": "svgs/JollyGingerbreadTrainCar1.svg"
+  },
+  {
+    "name": "Jolly Gingerbread Train Car 2",
+    "file": "svgs/JollyGingerbreadTrainCar2.svg"
+  },
+  {
+    "name": "Jolly Gingerbread Train Car 3",
+    "file": "svgs/JollyGingerbreadTrainCar3.svg"
+  },
+  {
+    "name": "Jolly Gingerbread Train Car 4",
+    "file": "svgs/JollyGingerbreadTrainCar4.svg"
+  },
+  {
+    "name": "Jolly Gingerbread Tree House",
+    "file": "svgs/JollyGingerbreadTreeHouse.svg"
+  },
+  {
     "name": "Jolly Gingerbread Window",
     "file": "svgs/JollyGingerbreadWindow.svg"
+  },
+  {
+    "name": "Jolly Gingerbread Zios Statue",
+    "file": "svgs/JollyGingerbreadZiosStatue.svg"
+  },
+  {
+    "name": "Jolly Gumdrop Tree NM",
+    "file": "svgs/JollyGumdropTreeNM.svg"
+  },
+  {
+    "name": "Jolly Marshmallow Fire Pit Seat 1",
+    "file": "svgs/JollyMarshmallowFirePitSeat1.svg"
+  },
+  {
+    "name": "Jolly Marshmallow Fire Pit Seat 2",
+    "file": "svgs/JollyMarshmallowFirePitSeat2.svg"
+  },
+  {
+    "name": "Jolly Marshmallow Fire Pit Seat 3",
+    "file": "svgs/JollyMarshmallowFirePitSeat3.svg"
+  },
+  {
+    "name": "Jolly Marshmallow Fire Pit Seat 4",
+    "file": "svgs/JollyMarshmallowFirePitSeat4.svg"
+  },
+  {
+    "name": "Jolly Marshmallow Fire Pit Seat 5",
+    "file": "svgs/JollyMarshmallowFirePitSeat5.svg"
   },
   {
     "name": "Kimbara Doghouse",
@@ -990,6 +1258,10 @@
   {
     "name": "Large Stone Planter",
     "file": "svgs/LargeStonePlanter.svg"
+  },
+  {
+    "name": "Large TV",
+    "file": "svgs/LargeTV.svg"
   },
   {
     "name": "Lily Pad",
@@ -1100,6 +1372,10 @@
     "file": "svgs/MirrorCrystal.svg"
   },
   {
+    "name": "Miscellaneous Pool Toys",
+    "file": "svgs/MiscellaneousPoolToys.svg"
+  },
+  {
     "name": "Misshaped Window",
     "file": "svgs/MisshapedWindow.svg"
   },
@@ -1144,8 +1420,20 @@
     "file": "svgs/MultiColoredPencilFence.svg"
   },
   {
+    "name": "Musical Note Chair",
+    "file": "svgs/MusicalNoteChair.svg"
+  },
+  {
+    "name": "My Jolly Gingerbread Shop",
+    "file": "svgs/MyJollyGingerbreadShop.svg"
+  },
+  {
     "name": "Mystical Irish Standing Stone",
     "file": "svgs/MysticalIrishStandingStone.svg"
+  },
+  {
+    "name": "Nautical Flags",
+    "file": "svgs/NauticalFlags.svg"
   },
   {
     "name": "New Years Party Window",
@@ -1184,8 +1472,20 @@
     "file": "svgs/ParadiseWindow.svg"
   },
   {
+    "name": "Penguin Flag",
+    "file": "svgs/PenguinFlag.svg"
+  },
+  {
     "name": "Penguin Paw Print Stepping Stones",
     "file": "svgs/PenguinPawPrintSteppingStones.svg"
+  },
+  {
+    "name": "Penguin TV",
+    "file": "svgs/PenguinTV.svg"
+  },
+  {
+    "name": "Pet Pool Party",
+    "file": "svgs/PetPoolParty.svg"
   },
   {
     "name": "Pet School Bus",
@@ -1220,8 +1520,20 @@
     "file": "svgs/PicketFence.svg"
   },
   {
+    "name": "Pig Pool",
+    "file": "svgs/PigPool.svg"
+  },
+  {
+    "name": "Pig TV",
+    "file": "svgs/PigTV.svg"
+  },
+  {
     "name": "Pigget Fence",
     "file": "svgs/PiggetFence.svg"
+  },
+  {
+    "name": "Pirate Flag",
+    "file": "svgs/PirateFlag.svg"
   },
   {
     "name": "Polished Stone Egg",
@@ -1230,6 +1542,26 @@
   {
     "name": "Poodle Stepping Stones",
     "file": "svgs/PoodleSteppingStones.svg"
+  },
+  {
+    "name": "Pool",
+    "file": "svgs/Pool.svg"
+  },
+  {
+    "name": "Pool Rules Sign 1",
+    "file": "svgs/PoolRulesSign1.svg"
+  },
+  {
+    "name": "Pool Rules Sign 2",
+    "file": "svgs/PoolRulesSign2.svg"
+  },
+  {
+    "name": "Pool Table",
+    "file": "svgs/PoolTable.svg"
+  },
+  {
+    "name": "Pool Toy Archway",
+    "file": "svgs/PoolToyArchway.svg"
   },
   {
     "name": "Pool Window",
@@ -1380,6 +1712,10 @@
     "file": "svgs/RusticStoneFence2.svg"
   },
   {
+    "name": "Sand TV",
+    "file": "svgs/SandTV.svg"
+  },
+  {
     "name": "Sand Window",
     "file": "svgs/SandWindow.svg"
   },
@@ -1388,7 +1724,7 @@
     "file": "svgs/ScaryFence.svg"
   },
   {
-    "name": "Ghoulish Jars",
+    "name": "Scary Things In Jars",
     "file": "svgs/ScaryThingsInJars.svg"
   },
   {
@@ -1504,6 +1840,14 @@
     "file": "svgs/SeaFoamJellyfishWindow.svg"
   },
   {
+    "name": "Sea Foam Tide Pool Table",
+    "file": "svgs/SeaFoamTidePoolTable.svg"
+  },
+  {
+    "name": "Seashell Pool Rug",
+    "file": "svgs/SeashellPoolRug.svg"
+  },
+  {
     "name": "Secret Door Bookcase",
     "file": "svgs/SecretDoorBookcase.svg"
   },
@@ -1556,6 +1900,10 @@
     "file": "svgs/SnowFortDoghouse.svg"
   },
   {
+    "name": "Snow TV",
+    "file": "svgs/SnowTV.svg"
+  },
+  {
     "name": "Snowflake Bookshelf",
     "file": "svgs/SnowflakeBookshelf.svg"
   },
@@ -1594,6 +1942,10 @@
   {
     "name": "Spring Egg Stepping Stones",
     "file": "svgs/SpringEggSteppingStones.svg"
+  },
+  {
+    "name": "Spring Egg TV",
+    "file": "svgs/SpringEggTV.svg"
   },
   {
     "name": "Spring Tulip Fence",
@@ -1756,6 +2108,14 @@
     "file": "svgs/SweetWindow.svg"
   },
   {
+    "name": "TVand Speakers",
+    "file": "svgs/TVandSpeakers.svg"
+  },
+  {
+    "name": "Team Juno Flag",
+    "file": "svgs/TeamJunoFlag.svg"
+  },
+  {
     "name": "Temple Of Zios Doghouse",
     "file": "svgs/TempleOfZiosDoghouse.svg"
   },
@@ -1790,6 +2150,10 @@
   {
     "name": "Tulip Stone Pathway",
     "file": "svgs/TulipStonePathway.svg"
+  },
+  {
+    "name": "Underwater Pool Table",
+    "file": "svgs/UnderwaterPoolTable.svg"
   },
   {
     "name": "Upside Down Heart Window",
@@ -1904,7 +2268,7 @@
     "file": "svgs/autumn-archway.svg"
   },
   {
-    "name": "Beach Ball",
+    "name": "Ball",
     "file": "svgs/ball.svg"
   },
   {
