@@ -61,7 +61,7 @@
 
     .page-body {
       width: 100%;
-      max-width: 860px;
+      max-width: 1100px;
       padding: 36px 20px 0;
       display: flex;
       flex-direction: column;
@@ -276,12 +276,12 @@
     #save-to-bank-btn:hover { box-shadow: 0 6px 0 #a07020, 0 10px 18px rgba(0,0,0,0.15); }
     #save-to-bank-btn:active { box-shadow: 0 2px 0 #a07020; }
 
-    .palette-panel { flex: 1; min-width: 240px; }
+    .palette-panel { flex: 1; min-width: 340px; }
 
     .palette-grid {
       display: grid;
-      grid-template-columns: repeat(6, 1fr);
-      gap: 8px;
+      grid-template-columns: repeat(auto-fill, minmax(58px, 1fr));
+      gap: 10px;
       max-height: 420px;
       overflow-y: auto;
       padding: 4px 4px 4px 2px;
@@ -561,31 +561,13 @@
     .popup-btn:hover { background: var(--blue-dark); }
 
     .color-item.multi-selected {
-      outline: 2px solid rgba(255,255,255,0.9);
+      outline: 3px solid #fff;
       outline-offset: 2px;
       border-radius: 10px;
-      box-shadow: 0 0 8px 2px rgba(255,255,255,0.35);
+      box-shadow: 0 0 0 5px rgba(39,158,255,0.5);
     }
 
     #main-shortcuts-popup.hidden { display: none !important; }
-    #color-sel-popup {
-      position: absolute;
-      background: #fff;
-      border: 2px solid #d0e4f7;
-      border-radius: 12px;
-      box-shadow: 0 4px 18px rgba(0,0,0,0.15);
-      padding: 10px 13px 10px;
-      width: 190px;
-      z-index: 50;
-      display: none;
-    }
-    #color-sel-popup.visible { display: block; animation: popIn 0.15s cubic-bezier(.34,1.56,.64,1); }
-    #csp-count { font-family: 'Nunito', sans-serif; font-size: 11px; font-weight: 800; color: var(--blue-dark); margin-bottom: 8px; display: block; }
-    .csp-row { display: flex; align-items: center; gap: 7px; font-family: 'Nunito', sans-serif; font-size: 11px; color: #5a7a9a; margin-bottom: 5px; }
-    .csp-row span.lbl { width: 14px; flex-shrink: 0; font-weight: 800; color: var(--text-dark); }
-    .csp-row input[type=range] { flex: 1; accent-color: var(--blue); }
-    .csp-row span.val { width: 28px; text-align: right; font-size: 10px; font-weight: 700; color: var(--text-dark); }
-    .csp-color-row { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
     #scene-overlay {
       position: fixed;
       inset: 0;
@@ -1024,7 +1006,7 @@
 
 <header>
   <div class="site-title">Den Item Recolor Tool</div>
-  <div style="font-family:'Nunito',sans-serif;font-size:12px;font-weight:700;color:rgba(255,255,255,0.55);letter-spacing:0.3px;">by Madkaad</div>
+  <div style="font-family:'Nunito',sans-serif;font-size:12px;font-weight:700;color:rgba(255,255,255,0.5);letter-spacing:0.3px;">by Madkaad</div>
 </header>
 
 <div class="page-body">
@@ -1081,49 +1063,40 @@
               <input type="range" id="slider-bri" min="-100" max="100" value="0" style="flex:1;accent-color:#fff;">
               <span id="val-bri" style="width:32px;text-align:right;font-size:11px;color:#fff;">0%</span>
             </label>
+            <label style="font-family:'Nunito',sans-serif;font-size:11px;color:rgba(255,255,255,0.7);display:flex;align-items:center;gap:8px;">
+              <span style="width:16px;">A</span>
+              <input type="range" id="slider-opacity" min="0" max="1" step="0.01" value="1" style="flex:1;accent-color:#fff;">
+              <span id="val-opacity" style="width:32px;text-align:right;font-size:11px;color:#fff;">100%</span>
+            </label>
           </div>
         </div>
       </div>
       <div class="tab-content" id="pane-layers">
         <div style="padding:8px 10px 4px;display:flex;gap:6px;">
           <button id="invert-layers-btn" style="flex:1;padding:7px 10px;background:rgba(255,255,255,0.15);border:1.5px solid rgba(255,255,255,0.3);border-radius:8px;color:#fff;font-family:'Nunito',sans-serif;font-size:13px;font-weight:700;cursor:pointer;transition:background 0.15s;" onmouseover="this.style.background='rgba(255,255,255,0.25)'" onmouseout="this.style.background='rgba(255,255,255,0.15)'">⇅ Invert</button>
-          <button id="adv-layers-toggle" onclick="toggleAdvancedLayers()" style="padding:7px 10px;background:rgba(255,255,255,0.1);border:1.5px solid rgba(255,255,255,0.25);border-radius:8px;color:rgba(255,255,255,0.7);font-family:'Nunito',sans-serif;font-size:12px;font-weight:700;cursor:pointer;transition:background 0.15s;" title="Advanced mode: every shape individually">⚡ Adv</button>
+          <button id="adv-layers-btn" onclick="handleAdvLayersToggle()" style="padding:7px 11px;background:rgba(255,255,255,0.1);border:1.5px solid rgba(255,255,255,0.25);border-radius:8px;color:rgba(255,255,255,0.65);font-family:'Nunito',sans-serif;font-size:12px;font-weight:700;cursor:pointer;transition:all 0.15s;">Adv</button>
         </div>
-        <div style="padding:2px 10px 6px;font-family:'Nunito',sans-serif;font-size:11px;color:rgba(255,255,255,0.5);text-align:center;">click or drag to toggle multiple layers</div>
+        <div id="layers-hint" style="padding:2px 10px 6px;font-family:'Nunito',sans-serif;font-size:11px;color:rgba(255,255,255,0.5);text-align:center;">click or drag to toggle multiple layers</div>
         <div class="layers-list" id="layers-list"></div>
       </div>
     </div>
   </div>
 
-  <!-- COLOR SELECTION POPUP -->
-  <div style="position:relative;">
-    <div id="color-sel-popup">
-      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;">
-        <span id="csp-count">1 color selected</span>
-        <button onclick="clearColorSelection()" style="width:18px;height:18px;border-radius:50%;border:1.5px solid #c0d8f0;background:#eaf3ff;color:var(--text-dark);font-size:10px;cursor:pointer;display:flex;align-items:center;justify-content:center;">✕</button>
-      </div>
-      <div class="csp-color-row">
-        <input type="color" id="csp-flat-color" style="width:32px;height:28px;border:none;border-radius:6px;cursor:pointer;padding:1px;">
-        <button id="csp-flat-btn" style="flex:1;padding:4px 8px;background:var(--blue);border:none;border-radius:6px;color:#fff;font-family:'Nunito',sans-serif;font-size:11px;font-weight:700;cursor:pointer;">Apply to all</button>
-      </div>
-      <div class="csp-row"><span class="lbl">H</span><input type="range" id="csp-hue" min="-180" max="180" value="0"><span class="val" id="csp-hue-val">0°</span></div>
-      <div class="csp-row"><span class="lbl">S</span><input type="range" id="csp-sat" min="-100" max="100" value="0"><span class="val" id="csp-sat-val">0%</span></div>
-      <div class="csp-row"><span class="lbl">B</span><input type="range" id="csp-bri" min="-100" max="100" value="0"><span class="val" id="csp-bri-val">0%</span></div>
-      <div class="csp-row"><span class="lbl">A</span><input type="range" id="csp-opacity" min="0" max="1" step="0.01" value="1"><span class="val" id="csp-opacity-val">100%</span></div>
-    </div>
-  </div>
 
-  <!-- ADV LAYERS POPUP -->
-  <div id="adv-layers-popup" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.35);z-index:600;align-items:center;justify-content:center;">
-    <div style="background:#fff;border:2px solid #d0e4f7;border-radius:16px;box-shadow:0 8px 32px rgba(0,0,0,0.18);padding:24px 26px 20px;max-width:340px;position:relative;">
-      <button onclick="document.getElementById('adv-layers-popup').style.display='none'" style="position:absolute;top:12px;right:12px;width:22px;height:22px;border-radius:50%;border:1.5px solid #c0d8f0;background:#eaf3ff;color:var(--text-dark);font-size:11px;cursor:pointer;">✕</button>
-      <div style="font-family:'Fredoka One',cursive;font-size:18px;color:var(--blue-dark);margin-bottom:10px;">⚡ Advanced Layers</div>
-      <div style="font-family:'Nunito',sans-serif;font-size:13px;color:#5a7a9a;line-height:1.6;margin-bottom:14px;">
-        <b>Regular mode</b> groups shapes that share the same fill color — toggling one layer hides all shapes of that color.<br><br>
-        <b>Advanced mode</b> ungroups everything so every single shape is its own independent layer — giving you full precision control, even over shapes that share a color.
+  <!-- ADV LAYERS INFO POPUP -->
+  <div id="adv-layers-info" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.4);z-index:800;align-items:center;justify-content:center;">
+    <div style="background:#fff;border-radius:16px;box-shadow:0 8px 40px rgba(0,0,0,0.2);padding:26px 28px 22px;max-width:360px;width:90%;position:relative;">
+      <button onclick="document.getElementById('adv-layers-info').style.display='none'" style="position:absolute;top:12px;right:12px;width:22px;height:22px;border-radius:50%;border:1.5px solid #c0d8f0;background:#eaf3ff;color:#336699;font-size:11px;cursor:pointer;line-height:1;">✕</button>
+      <div style="font-family:'Fredoka One',cursive;font-size:17px;color:#1a4a7a;margin-bottom:10px;">Advanced Layer Mode</div>
+      <div style="font-family:'Nunito',sans-serif;font-size:13px;color:#5a7a9a;line-height:1.65;margin-bottom:14px;">
+        Regular layers show each shape as a single entry. Some shapes share the same fill and are controlled together.<br><br>
+        Advanced mode lists every shape completely on its own, including ones that are nested or share a fill with others. You get full individual control over each one.
       </div>
-      <div style="font-family:'Nunito',sans-serif;font-size:11px;color:#8aabbf;margin-bottom:14px;">Changes made in advanced mode are preserved when you switch back to regular mode.</div>
-      <button onclick="document.getElementById('adv-layers-popup').style.display='none';activateAdvancedLayers()" style="width:100%;padding:9px;background:var(--blue);border:none;border-radius:9px;color:#fff;font-family:'Fredoka One',cursive;font-size:15px;cursor:pointer;box-shadow:0 3px 0 #1560a8;">Switch to Advanced</button>
+      <div style="font-family:'Nunito',sans-serif;font-size:11px;color:#90afc8;margin-bottom:16px;">Changes you make are kept when switching modes.</div>
+      <div style="display:flex;gap:8px;">
+        <button onclick="document.getElementById('adv-layers-info').style.display='none'" style="flex:1;padding:9px;background:#eaf3ff;border:1.5px solid #c0d8f0;border-radius:9px;color:#336699;font-family:'Nunito',sans-serif;font-size:13px;font-weight:700;cursor:pointer;">Cancel</button>
+        <button onclick="document.getElementById('adv-layers-info').style.display='none';advLayersMode=true;updateAdvBtn();initLayers();" style="flex:2;padding:9px;background:#2a7ad4;border:none;border-radius:9px;color:#fff;font-family:'Nunito',sans-serif;font-size:13px;font-weight:700;cursor:pointer;">Switch to Advanced</button>
+      </div>
     </div>
   </div>
 
@@ -1156,9 +1129,9 @@
       <span class="shortcuts-title">Keyboard Shortcuts</span>
       <button class="shortcuts-close" id="main-shortcuts-close">✕</button>
     </div>
-    <div class="shortcut-row"><span>Undo</span><span class="shortcut-key">Ctrl / ⌘  Z</span></div>
-    <div class="shortcut-row"><span>Redo</span><span class="shortcut-key">Ctrl / ⌘  Y</span></div>
-    <div class="shortcut-row"><span>Multi-select colors</span><span class="shortcut-key">Ctrl / ⌘  Click or Drag</span></div>
+    <div class="shortcut-row"><span>Undo</span><span class="shortcut-key">Ctrl / ⌘ Z</span></div>
+    <div class="shortcut-row"><span>Redo</span><span class="shortcut-key">Ctrl / ⌘ Y</span></div>
+    <div class="shortcut-row"><span>Multi-select colors</span><span class="shortcut-key">Ctrl / ⌘ Click</span></div>
     <div class="shortcut-row"><span>Drag-toggle layers</span><span class="shortcut-key">Click + Drag</span></div>
   </div>
 </div>
@@ -1257,12 +1230,12 @@
           <span class="shortcuts-title">Keyboard Shortcuts</span>
           <button class="shortcuts-close" id="shortcuts-close-btn">✕</button>
         </div>
-        <div class="shortcut-row"><span>Select all</span><span class="shortcut-key">Ctrl / ⌘  A</span></div>
+        <div class="shortcut-row"><span>Select all</span><span class="shortcut-key">Ctrl / ⌘ A</span></div>
         <div class="shortcut-row"><span>Delete selected</span><span class="shortcut-key">Backspace</span></div>
-        <div class="shortcut-row"><span>Copy</span><span class="shortcut-key">Ctrl / ⌘  C</span></div>
-        <div class="shortcut-row"><span>Paste</span><span class="shortcut-key">Ctrl / ⌘  V</span></div>
-        <div class="shortcut-row"><span>Undo</span><span class="shortcut-key">Ctrl / ⌘  Z</span></div>
-        <div class="shortcut-row"><span>Redo</span><span class="shortcut-key">Ctrl / ⌘  Y</span></div>
+        <div class="shortcut-row"><span>Copy</span><span class="shortcut-key">Ctrl / ⌘ C</span></div>
+        <div class="shortcut-row"><span>Paste</span><span class="shortcut-key">Ctrl / ⌘ V</span></div>
+        <div class="shortcut-row"><span>Undo</span><span class="shortcut-key">Ctrl / ⌘ Z</span></div>
+        <div class="shortcut-row"><span>Redo</span><span class="shortcut-key">Ctrl / ⌘ Y</span></div>
         <div class="shortcut-row"><span>Multi-select</span><span class="shortcut-key">Shift Click</span></div>
         <div class="shortcut-row"><span>Drag select</span><span class="shortcut-key">Click + Drag</span></div>
       </div>
@@ -1456,10 +1429,7 @@
     controls.innerHTML = '';
     mainUndoStack = []; mainRedoStack = [];
     clearColorSelection();
-    hideColorPopup();
     advLayersMode = false;
-    const advBtn = document.getElementById('adv-layers-toggle');
-    if (advBtn) { advBtn.textContent = '⚡ Adv'; advBtn.style.background = 'rgba(255,255,255,0.1)'; advBtn.style.color = 'rgba(255,255,255,0.7)'; }
     try {
       let svgText;
       if (item.svg) { svgText = item.svg; }
@@ -1602,41 +1572,41 @@
   }
 
   let selectedColorItems = new Set(); // set of wrap elements
-  let colorDragging = false;
-  let colorDragAdding = true;
 
   function clearColorSelection() {
     selectedColorItems.forEach(w => w.classList.remove('multi-selected'));
     selectedColorItems.clear();
-    updateColorHighlight();
-    hideColorPopup();
+    clearHighlight();
   }
 
-  async function updateColorHighlight() {
-    if (!svgEl) return;
-    if (selectedColorItems.size === 0) { clearHighlight(); return; }
-    // Gather all shape els for selected color groups
+  let colorDragging = false, colorDragAdding = true;
+
+  function getHighlightEls(ids) {
+    return ids.flatMap(id => {
+      const el = svgEl.querySelector(`[data-cid="${id}"]`);
+      if (!el) return [];
+      if (el.tagName === 'stop') {
+        const grad = el.closest('linearGradient, radialGradient');
+        if (!grad) return [];
+        const gradId = grad.getAttribute('id');
+        const allGradIds = new Set([gradId]);
+        svgEl.querySelectorAll('linearGradient[xlink\\:href], radialGradient[xlink\\:href]').forEach(g => {
+          if (g.getAttribute('xlink:href') === '#' + gradId) allGradIds.add(g.getAttribute('id'));
+        });
+        return Array.from(svgEl.querySelectorAll('path, rect, circle, ellipse, polygon, polyline')).filter(shape => {
+          const fill = shape.getAttribute('fill') || '';
+          return Array.from(allGradIds).some(gid => fill.includes(gid));
+        });
+      }
+      return [el];
+    }).filter(Boolean);
+  }
+
+  async function showSelectionHighlight() {
+    if (!svgEl || selectedColorItems.size === 0) { clearHighlight(); return; }
     const els = [];
-    selectedColorItems.forEach(wrap => {
-      if (!wrap._ids) return;
-      wrap._ids.forEach(id => {
-        const el = svgEl.querySelector(`[data-cid="${id}"]`);
-        if (!el) return;
-        if (el.tagName === 'stop') {
-          const grad = el.closest('linearGradient, radialGradient');
-          if (!grad) return;
-          const gid = grad.getAttribute('id');
-          svgEl.querySelectorAll('path, rect, circle, ellipse, polygon, polyline').forEach(s => {
-            if ((s.getAttribute('fill') || '').includes(gid)) els.push(s);
-          });
-        } else { els.push(el); }
-      });
-    });
-    await showWhiteHighlight(els.filter(Boolean));
-  }
-
-  async function showWhiteHighlight(els) {
-    if (!svgEl || !els.length) { clearHighlight(); return; }
+    selectedColorItems.forEach(w => { if (w._ids) els.push(...getHighlightEls(w._ids)); });
+    if (!els.length) { clearHighlight(); return; }
     const w = previewCanvas.width, h = previewCanvas.height;
     highlightCanvas.width = w; highlightCanvas.height = h;
     const clone = svgEl.cloneNode(true);
@@ -1665,50 +1635,31 @@
     highlightCanvas.style.opacity = '1';
   }
 
-  // Color popup
-  let _colorPopupTarget = null;
-  function showColorPopupForSelected() {
-    if (selectedColorItems.size === 0) { hideColorPopup(); return; }
-    const popup = document.getElementById('color-sel-popup');
-    if (!popup) return;
-    // Position near first selected item
-    const first = Array.from(selectedColorItems)[0];
-    if (!first) return;
-    const rect = first.getBoundingClientRect();
-    const panelRect = document.querySelector('.palette-panel').getBoundingClientRect();
-    popup.style.top  = (rect.bottom - panelRect.top + 6) + 'px';
-    popup.style.left = Math.max(0, rect.left - panelRect.left) + 'px';
-    popup.classList.add('visible');
-    // Update label
-    const countEl = document.getElementById('csp-count');
-    if (countEl) countEl.textContent = selectedColorItems.size > 1 ? `${selectedColorItems.size} colors selected` : '1 color selected';
-  }
-
-  function hideColorPopup() {
-    const popup = document.getElementById('color-sel-popup');
-    if (popup) popup.classList.remove('visible');
-  }
-
   function initPalette() {
     controls.innerHTML = '';
     originalPaletteColors = [];
     selectedColorItems.clear();
-    ['slider-hue','slider-sat','slider-bri'].forEach(id => { const el = document.getElementById(id); if (el) el.value = 0; });
+    colorDragging = false;
+    ['slider-hue','slider-sat','slider-bri','slider-opacity'].forEach(id => {
+      const el = document.getElementById(id);
+      if (el) el.value = id === 'slider-opacity' ? 1 : 0;
+    });
     ['val-hue','val-sat','val-bri'].forEach((id, i) => { const el = document.getElementById(id); if (el) el.textContent = i === 0 ? '0°' : '0%'; });
+    const valOp = document.getElementById('val-opacity'); if (valOp) valOp.textContent = '100%';
 
     const colorMap = buildColorMap(svgEl, 'main');
 
     // Sort by hue
-    const sortedColors = Array.from(colorMap.entries()).sort(([hexA], [hexB]) => {
-      const hueOf = hex => { try { return hexToHsl(hex)[0]; } catch(e) { return 0; } };
-      return hueOf(hexA) - hueOf(hexB);
+    const sorted = Array.from(colorMap.entries()).sort(([a], [b]) => {
+      try { return hexToHsl(a)[0] - hexToHsl(b)[0]; } catch(e) { return 0; }
     });
 
-    sortedColors.forEach(([originalHex, ids]) => {
+    sorted.forEach(([originalHex, ids]) => {
       const wrap = document.createElement('div');
       wrap.className = 'color-item';
       wrap._ids = ids;
       wrap._originalHex = originalHex;
+
       const input = document.createElement('input');
       input.type = 'color';
       input.value = originalHex;
@@ -1716,43 +1667,42 @@
       label.className = 'hex-text';
       label.textContent = originalHex.toUpperCase();
 
-      // Drag-to-select state (shared via closure)
-      wrap._colorDragging = false;
+      // Drag-select: mousedown starts selection
       wrap.addEventListener('mousedown', e => {
         if (e.button !== 0) return;
         e.preventDefault();
         colorDragging = true;
-        // Toggle: if already selected, drag will deselect; else drag will select
         colorDragAdding = !selectedColorItems.has(wrap);
         if (e.ctrlKey || e.metaKey || e.shiftKey) {
-          // Ctrl/shift: add/remove this one
           if (selectedColorItems.has(wrap)) { selectedColorItems.delete(wrap); wrap.classList.remove('multi-selected'); }
           else { selectedColorItems.add(wrap); wrap.classList.add('multi-selected'); }
-        } else if (!selectedColorItems.has(wrap)) {
-          // Starting fresh drag on unselected — clear and start new selection
-          clearColorSelection();
-          selectedColorItems.add(wrap);
-          wrap.classList.add('multi-selected');
+        } else {
+          if (!selectedColorItems.has(wrap)) { clearColorSelection(); selectedColorItems.add(wrap); wrap.classList.add('multi-selected'); }
         }
-        updateColorHighlight();
-        showColorPopupForSelected();
+        showSelectionHighlight();
       });
+
       wrap.addEventListener('mouseenter', () => {
         if (colorDragging) {
           if (colorDragAdding) { selectedColorItems.add(wrap); wrap.classList.add('multi-selected'); }
           else { selectedColorItems.delete(wrap); wrap.classList.remove('multi-selected'); }
-          updateColorHighlight();
+          showSelectionHighlight();
+        } else {
+          // Hover highlight only when nothing selected
+          if (selectedColorItems.size === 0) showHighlight(getHighlightEls(ids));
         }
       });
 
+      wrap.addEventListener('mouseleave', () => {
+        if (!colorDragging && selectedColorItems.size === 0) clearHighlight();
+      });
+
       let t, _pushedUndo = false;
-      input.addEventListener('mousedown', () => { _pushedUndo = false; });
+      input.addEventListener('mousedown', e => { e.stopPropagation(); _pushedUndo = false; });
       input.addEventListener('input', e => {
         if (!_pushedUndo) { pushMainUndo(); _pushedUndo = true; }
         const newColor = e.target.value;
         label.textContent = newColor.toUpperCase();
-
-        // Apply to this color's ids
         const applyToIds = (applyIds) => {
           applyIds.forEach(id => {
             const el = svgEl.querySelector(`[data-cid="${id}"]`);
@@ -1760,22 +1710,17 @@
             el.getAttribute('stop-color') !== null ? el.setAttribute('stop-color', newColor) : el.setAttribute('fill', newColor);
           });
         };
-
         applyToIds(ids);
-
-        // Also apply relative hue shift to all multi-selected colors
         if (selectedColorItems.size > 1 && selectedColorItems.has(wrap)) {
           const [bh, bs, bl] = hexToHsl(originalHex);
           const [nh, ns, nl] = hexToHsl(newColor);
-          const dh = nh - bh, ds = ns - bs, dl = nl - bl;
+          const dh = nh-bh, ds = ns-bs, dl = nl-bl;
           selectedColorItems.forEach(w => {
             if (w === wrap) return;
             const [wh, ws, wl] = hexToHsl(w._originalHex);
-            const shifted = hslToHex(wh + dh, ws + ds, wl + dl);
-            w.querySelector('input').value = shifted;
+            const shifted = hslToHex(wh+dh, ws+ds, wl+dl);
+            w.querySelector('input[type="color"]').value = shifted;
             w.querySelector('.hex-text').textContent = shifted.toUpperCase();
-            applyToIds(w._ids);
-            // Also update the SVG elements for the other selected items
             w._ids.forEach(id => {
               const el = svgEl.querySelector(`[data-cid="${id}"]`);
               if (!el) return;
@@ -1783,64 +1728,27 @@
             });
           });
         }
-
-        clearTimeout(t);
-        t = setTimeout(refreshPreview, 80);
+        clearTimeout(t); t = setTimeout(refreshPreview, 80);
       });
 
       wrap.appendChild(input);
       wrap.appendChild(label);
-
-      wrap.addEventListener('mouseenter', () => {
-        if (colorDragging) return; // handled by mouseenter drag logic already
-        const els = ids.flatMap(id => {
-          const el = svgEl.querySelector(`[data-cid="${id}"]`);
-          if (!el) return [];
-          if (el.tagName === 'stop') {
-            const grad = el.closest('linearGradient, radialGradient');
-            if (!grad) return [];
-            const gradId = grad.getAttribute('id');
-            const allGradIds = new Set([gradId]);
-            svgEl.querySelectorAll('linearGradient[xlink\\:href], radialGradient[xlink\\:href]').forEach(g => {
-              if (g.getAttribute('xlink:href') === '#' + gradId) allGradIds.add(g.getAttribute('id'));
-            });
-            return Array.from(svgEl.querySelectorAll('path, rect, circle, ellipse, polygon, polyline')).filter(shape => {
-              const fill = shape.getAttribute('fill') || '';
-              return Array.from(allGradIds).some(gid => fill.includes(gid));
-            });
-          }
-          return [el];
-        }).filter(Boolean);
-        showHighlight(els);
-      });
-      wrap.addEventListener('mouseleave', () => { if (selectedColorItems.size > 0) updateColorHighlight(); else clearHighlight(); });
-
-      // Opacity slider
-      const opacityRow = document.createElement('div');
-      opacityRow.style.cssText = 'display:flex;align-items:center;gap:3px;width:100%;';
-      const opSlider = document.createElement('input');
-      opSlider.type = 'range'; opSlider.min = 0; opSlider.max = 1; opSlider.step = 0.01; opSlider.value = 1;
-      opSlider.style.cssText = 'flex:1;width:100%;accent-color:#fff;height:3px;';
-      opSlider.title = 'Opacity';
-      let _opUndo = false;
-      opSlider.addEventListener('mousedown', () => { _opUndo = false; });
-      opSlider.addEventListener('input', () => {
-        if (!_opUndo) { pushMainUndo(); _opUndo = true; }
-        const val = parseFloat(opSlider.value);
-        ids.forEach(id => {
-          const el = svgEl.querySelector(`[data-cid="${id}"]`);
-          if (!el) return;
-          el.setAttribute('fill-opacity', val);
-        });
-        clearTimeout(t);
-        t = setTimeout(refreshPreview, 80);
-      });
-      opacityRow.appendChild(opSlider);
-      wrap.appendChild(opacityRow);
-
       originalPaletteColors.push({ ids, hex: originalHex, input, label });
       controls.appendChild(wrap);
     });
+
+    // End color drag on mouseup
+    document.addEventListener('mouseup', () => { colorDragging = false; });
+
+    // Click outside palette → deselect
+    document.addEventListener('mousedown', e => {
+      const grid = document.getElementById('controls');
+      const hsbPanel = document.getElementById('hsb-panel');
+      if (grid && !grid.contains(e.target) && hsbPanel && !hsbPanel.contains(e.target)) {
+        if (selectedColorItems.size > 0) clearColorSelection();
+      }
+    }, true);
+
     initHsbSliders();
   }
 
@@ -1906,113 +1814,51 @@
       el.addEventListener('mousedown', () => { _hsbPushedUndo = false; });
       el.addEventListener('input', () => { if (!_hsbPushedUndo) { pushMainUndo(); _hsbPushedUndo = true; } applyHsbAdjust(); });
     });
+
+    // Opacity slider
+    const opEl = document.getElementById('slider-opacity');
+    const opVal = document.getElementById('val-opacity');
+    if (opEl) {
+      let _opUndo = false;
+      opEl.addEventListener('mousedown', () => { _opUndo = false; });
+      opEl.addEventListener('input', () => {
+        if (!_opUndo) { pushMainUndo(); _opUndo = true; }
+        const val = parseFloat(opEl.value);
+        if (opVal) opVal.textContent = Math.round(val * 100) + '%';
+        // Apply to selected colors only, or all if none selected
+        const targets = selectedColorItems.size > 0
+          ? Array.from(selectedColorItems).map(w => w._ids).filter(Boolean)
+          : originalPaletteColors.map(e => e.ids);
+        targets.forEach(ids => {
+          ids.forEach(id => {
+            const el = svgEl.querySelector(`[data-cid="${id}"]`);
+            if (!el) return;
+            el.tagName === 'stop'
+              ? el.setAttribute('stop-opacity', val)
+              : el.setAttribute('fill-opacity', val);
+          });
+        });
+        refreshPreview();
+      });
+    }
+
     document.getElementById('reset-colors-btn').addEventListener('click', () => {
       pushMainUndo();
       ['slider-hue','slider-sat','slider-bri'].forEach(id => { const el = document.getElementById(id); if (el) el.value = 0; });
       ['val-hue','val-sat','val-bri'].forEach((id,i) => { const el = document.getElementById(id); if (el) el.textContent = i===0?'0°':'0%'; });
+      if (opEl) opEl.value = 1; if (opVal) opVal.textContent = '100%';
       originalPaletteColors.forEach(({ids, hex, input, label}) => {
         if (input) { input.value = hex; label.textContent = hex.toUpperCase(); }
         ids.forEach(id => {
           const el = svgEl.querySelector(`[data-cid="${id}"]`);
           if (!el) return;
           el.getAttribute('stop-color') !== null ? el.setAttribute('stop-color', hex) : el.setAttribute('fill', hex);
+          el.removeAttribute('fill-opacity'); el.removeAttribute('stop-opacity');
         });
       });
       refreshPreview();
     });
   }
-  function initColorPopup() {
-    // HSB sliders in popup
-    const sliders = [
-      { id: 'csp-hue', valId: 'csp-hue-val', suffix: '°', prop: 'h' },
-      { id: 'csp-sat', valId: 'csp-sat-val', suffix: '%', prop: 's' },
-      { id: 'csp-bri', valId: 'csp-bri-val', suffix: '%', prop: 'l' },
-    ];
-    let _cspUndo = false;
-    sliders.forEach(({ id, valId, suffix }) => {
-      const el = document.getElementById(id);
-      if (!el) return;
-      el.addEventListener('mousedown', () => { _cspUndo = false; });
-      el.addEventListener('input', () => {
-        if (!_cspUndo) { pushMainUndo(); _cspUndo = true; }
-        const dh = parseFloat(document.getElementById('csp-hue').value);
-        const ds = parseFloat(document.getElementById('csp-sat').value);
-        const db = parseFloat(document.getElementById('csp-bri').value);
-        document.getElementById('csp-hue-val').textContent = (dh>=0?'+':'')+dh+'°';
-        document.getElementById('csp-sat-val').textContent = (ds>=0?'+':'')+ds+'%';
-        document.getElementById('csp-bri-val').textContent = (db>=0?'+':'')+db+'%';
-        selectedColorItems.forEach(wrap => {
-          if (!wrap._ids) return;
-          const hex = wrap._originalHex || '#808080';
-          const [h,s,l] = hexToHsl(hex);
-          const newHex = hslToHex(h+dh, s+ds, l+db);
-          const inp = wrap.querySelector('input[type="color"]');
-          const lbl = wrap.querySelector('.hex-text');
-          if (inp) inp.value = newHex;
-          if (lbl) lbl.textContent = newHex.toUpperCase();
-          wrap._ids.forEach(cid => {
-            const el = svgEl.querySelector(`[data-cid="${cid}"]`);
-            if (!el) return;
-            el.getAttribute('stop-color') !== null ? el.setAttribute('stop-color', newHex) : el.setAttribute('fill', newHex);
-          });
-        });
-        refreshPreview();
-      });
-    });
-
-    // Opacity slider in popup
-    const opEl = document.getElementById('csp-opacity');
-    if (opEl) {
-      let _opUndo2 = false;
-      opEl.addEventListener('mousedown', () => { _opUndo2 = false; });
-      opEl.addEventListener('input', () => {
-        if (!_opUndo2) { pushMainUndo(); _opUndo2 = true; }
-        const val = parseFloat(opEl.value);
-        document.getElementById('csp-opacity-val').textContent = Math.round(val*100)+'%';
-        selectedColorItems.forEach(wrap => {
-          if (!wrap._ids) return;
-          wrap._ids.forEach(cid => {
-            const el = svgEl.querySelector(`[data-cid="${cid}"]`);
-            if (el) el.setAttribute('fill-opacity', val);
-          });
-        });
-        refreshPreview();
-      });
-    }
-
-    // Flat color apply
-    const flatBtn = document.getElementById('csp-flat-btn');
-    const flatInput = document.getElementById('csp-flat-color');
-    if (flatBtn && flatInput) {
-      flatBtn.addEventListener('click', () => {
-        pushMainUndo();
-        const col = flatInput.value;
-        selectedColorItems.forEach(wrap => {
-          if (!wrap._ids) return;
-          const inp = wrap.querySelector('input[type="color"]');
-          const lbl = wrap.querySelector('.hex-text');
-          if (inp) inp.value = col;
-          if (lbl) lbl.textContent = col.toUpperCase();
-          wrap._ids.forEach(cid => {
-            const el = svgEl.querySelector(`[data-cid="${cid}"]`);
-            if (!el) return;
-            el.getAttribute('stop-color') !== null ? el.setAttribute('stop-color', col) : el.setAttribute('fill', col);
-          });
-        });
-        refreshPreview();
-      });
-    }
-
-    // Click outside popup → deselect
-    document.addEventListener('mousedown', e => {
-      const popup = document.getElementById('color-sel-popup');
-      const grid = document.getElementById('controls');
-      if (popup && !popup.contains(e.target) && grid && !grid.contains(e.target)) {
-        clearColorSelection();
-      }
-    }, true);
-  }
-
   const EYE_ON  = `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>`;
   const EYE_OFF = `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94"/><path d="M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19"/><line x1="1" y1="1" x2="23" y2="23"/></svg>`;
 
@@ -2025,41 +1871,83 @@
 
   let advLayersMode = false;
 
-  function toggleAdvancedLayers() {
-    if (!advLayersMode) {
-      // Show info popup first
-      document.getElementById('adv-layers-popup').style.display = 'flex';
-    } else {
+  function handleAdvLayersToggle() {
+    if (advLayersMode) {
       advLayersMode = false;
-      const btn = document.getElementById('adv-layers-toggle');
-      if (btn) { btn.textContent = '⚡ Adv'; btn.style.background = 'rgba(255,255,255,0.1)'; btn.style.color = 'rgba(255,255,255,0.7)'; }
+      updateAdvBtn();
       initLayers();
+    } else {
+      document.getElementById('adv-layers-info').style.display = 'flex';
     }
   }
 
-  function activateAdvancedLayers() {
-    advLayersMode = true;
-    const btn = document.getElementById('adv-layers-toggle');
-    if (btn) { btn.textContent = '⚡ Adv ON'; btn.style.background = 'rgba(255,220,50,0.25)'; btn.style.color = '#ffe066'; }
-    initLayers();
+  function updateAdvBtn() {
+    const btn = document.getElementById('adv-layers-btn');
+    const hint = document.getElementById('layers-hint');
+    if (!btn) return;
+    if (advLayersMode) {
+      btn.textContent = 'Adv ON';
+      btn.style.background = 'rgba(255,220,50,0.2)';
+      btn.style.color = '#ffe066';
+      btn.style.borderColor = 'rgba(255,220,50,0.4)';
+      if (hint) hint.textContent = 'advanced mode — every shape is individual';
+    } else {
+      btn.textContent = 'Adv';
+      btn.style.background = 'rgba(255,255,255,0.1)';
+      btn.style.color = 'rgba(255,255,255,0.65)';
+      btn.style.borderColor = 'rgba(255,255,255,0.25)';
+      if (hint) hint.textContent = 'click or drag to toggle multiple layers';
+    }
   }
 
   function initLayers() {
     layersList.innerHTML = '';
-    const shapes = Array.from(svgEl.querySelectorAll('path, rect, circle, ellipse, polygon, polyline'));
-    if (!shapes.length) { layersList.innerHTML = '<div style="color:rgba(255,255,255,0.5);font-size:13px;padding:8px;">No layers found.</div>'; return; }
-    let dragging = false, dragTargetState = null;
+    updateAdvBtn();
 
-    // In advanced mode, ungroup compound paths (use all shapes individually)
-    // In regular mode, group by shared fill color
+    // In advanced mode, grab every single shape including inside <g> groups.
+    // In regular mode, grab top-level shapes (same as before).
+    const selector = 'path, rect, circle, ellipse, polygon, polyline, line';
+    const shapes = Array.from(svgEl.querySelectorAll(selector));
+
+    if (!shapes.length) { layersList.innerHTML = '<div style="color:rgba(255,255,255,0.5);font-size:13px;padding:8px;">No layers found.</div>'; return; }
+
+    // In regular mode, deduplicate by parent <g> when all siblings share same fill
+    // Actually: regular mode = list all shapes (existing behavior, each path/rect is its own row)
+    // Advanced mode = additionally decompose any compound paths by splitting 'd' attr subpaths
     let displayShapes = shapes;
+
     if (advLayersMode) {
-      // Try to ungroup <g> children too
-      displayShapes = Array.from(svgEl.querySelectorAll('path, rect, circle, ellipse, polygon, polyline, line'));
+      // Flatten compound paths: split multi-subpath 'd' attributes into individual shapes
+      const expanded = [];
+      shapes.forEach(el => {
+        if (el.tagName === 'path') {
+          const d = el.getAttribute('d') || '';
+          // Split on M/m that starts a new subpath (after the first)
+          const subpaths = d.split(/(?=[Mm])/).map(s => s.trim()).filter(s => s.length > 1);
+          if (subpaths.length > 1) {
+            subpaths.forEach((sub, si) => {
+              // Clone the element, set single subpath
+              const clone = el.cloneNode(true);
+              clone.setAttribute('d', sub);
+              clone.setAttribute('data-compound-source', el.getAttribute('data-layer-id') || '');
+              clone.setAttribute('data-compound-idx', si);
+              // Insert clone next to original in DOM so visibility works
+              el.parentNode.insertBefore(clone, el.nextSibling);
+              expanded.push(clone);
+            });
+            el.style.display = 'none'; // hide original compound path
+            return;
+          }
+        }
+        expanded.push(el);
+      });
+      displayShapes = expanded;
     }
 
+    let dragging = false, dragTargetState = null;
+
     displayShapes.forEach((el, i) => {
-      const fill = el.getAttribute('fill') || el.style.fill || '';
+      const fill = el.getAttribute('fill') || '';
       el.setAttribute('data-layer-id', `lid-${i}`);
       const item = document.createElement('div');
       item.className = 'layer-item';
@@ -2069,10 +1957,10 @@
       swatch.style.background = (!fill || fill === 'none' || fill.startsWith('url')) ? 'rgba(255,255,255,0.15)' : fill;
       const label = document.createElement('span');
       label.className = 'layer-label';
-      label.textContent = advLayersMode ? `Shape ${i + 1}` : `Layer ${i + 1}`;
+      label.textContent = `Shape ${i + 1}`;
       const eye = document.createElement('span');
       eye.className = 'layer-eye';
-      eye.innerHTML = EYE_ON;
+      eye.innerHTML = item._visible ? EYE_ON : EYE_OFF;
       item.appendChild(swatch); item.appendChild(label); item.appendChild(eye);
       item.addEventListener('mouseleave', () => { if (!dragging) clearHighlight(); });
       item.addEventListener('mousedown', e => { e.preventDefault(); pushMainUndo(); dragging = true; dragTargetState = !item._visible; setLayerVisible(el, item, eye, dragTargetState); });
@@ -2082,7 +1970,6 @@
     });
 
     document.addEventListener('mouseup', () => { if (dragging) { dragging = false; dragTargetState = null; refreshPreview(); } });
-  document.addEventListener('mouseup', () => { if (colorDragging) { colorDragging = false; showColorPopupForSelected(); } });
 
     document.getElementById('invert-layers-btn').onclick = () => {
       pushMainUndo();
@@ -3077,7 +2964,6 @@
 
   // ── BOOT ──────────────────────────────────────────────────────────────────
   loadBankFromStorage();
-  initColorPopup();
   renderSaveSlots();
   if (designBank.length > 0) saveBankSection.classList.add('active');
   loadCatalog();
