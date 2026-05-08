@@ -1827,27 +1827,25 @@
 
       // Normal select mode
       const alreadySelected = selectedColorItems.has(wrap);
-      // Drag direction: if starting on a selected item → drag deselects; otherwise → drag selects
-      colorDragAdding = !alreadySelected;
       colorDragging = true;
 
-      if (e.ctrlKey || e.metaKey || e.shiftKey) {
-        // Ctrl/shift click: toggle this item
-        if (alreadySelected) { selectedColorItems.delete(wrap); wrap.classList.remove('multi-selected'); }
-        else { selectedColorItems.add(wrap); wrap.classList.add('multi-selected'); }
+      if (alreadySelected) {
+        // Starting on a selected item — don't touch selection, just prepare to open picker on click or drag-deselect
+        colorDragAdding = false;
+      } else if (e.ctrlKey || e.metaKey || e.shiftKey) {
+        // Ctrl/shift: add this item to selection
+        colorDragAdding = true;
+        selectedColorItems.add(wrap);
+        wrap.classList.add('multi-selected');
+        showSelectionHighlight();
       } else {
-        if (alreadySelected) {
-          // Starting on selected: will deselect on drag; on plain click will open picker (handled in pointerup)
-          colorDragAdding = false;
-        } else {
-          // Starting on unselected: clear and start fresh selection
-          clearColorSelection();
-          selectedColorItems.add(wrap);
-          wrap.classList.add('multi-selected');
-          colorDragAdding = true;
-        }
+        // Plain click on unselected: clear and start fresh
+        clearColorSelection();
+        selectedColorItems.add(wrap);
+        wrap.classList.add('multi-selected');
+        colorDragAdding = true;
+        showSelectionHighlight();
       }
-      showSelectionHighlight();
       grid.setPointerCapture(e.pointerId);
     });
 
@@ -1870,20 +1868,12 @@
       if (!colorDragging) return;
       colorDragging = false;
       grid.releasePointerCapture(e.pointerId);
-      if (!dragMoved) {
-        // Plain click (no drag)
-        const wrap = hitItem(e.clientX, e.clientY);
-        if (wrap) {
-          if (selectedColorItems.has(wrap) && selectedColorItems.size === 1) {
-            // Tap already-selected sole item → open picker
-            const inp = wrap.querySelector('input[type="color"]');
-            if (inp) inp.click();
-          } else if (selectedColorItems.has(wrap) && !colorDragAdding) {
-            // Was deselecting on click (started on selected) → deselect it
-            selectedColorItems.delete(wrap);
-            wrap.classList.remove('multi-selected');
-            showSelectionHighlight();
-          }
+      const wrap = hitItem(e.clientX, e.clientY);
+      if (!dragMoved && wrap) {
+        if (selectedColorItems.has(wrap)) {
+          // Click on selected item (no drag) → open picker, keep selection
+          const inp = wrap.querySelector('input[type="color"]');
+          if (inp) inp.click();
         }
       }
     });
