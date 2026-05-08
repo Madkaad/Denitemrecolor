@@ -1642,6 +1642,7 @@
       // Drag-select
       wrap.addEventListener('mousedown', e => {
         if (e.button !== 0) return;
+        if (e.target === input) return; // let native color picker open
         e.preventDefault();
         colorDragging = true;
         colorDragAdding = !selectedColorItems.has(wrap);
@@ -1669,7 +1670,19 @@
       });
 
       let t, _pushedUndo = false;
-      input.addEventListener('mousedown', e => { e.stopPropagation(); _pushedUndo = false; });
+      input.addEventListener('mousedown', e => {
+        // Handle selection when clicking the color swatch directly
+        if (e.ctrlKey || e.metaKey || e.shiftKey) {
+          if (selectedColorItems.has(wrap)) { selectedColorItems.delete(wrap); wrap.classList.remove('multi-selected'); }
+          else { selectedColorItems.add(wrap); wrap.classList.add('multi-selected'); }
+        } else {
+          if (!selectedColorItems.has(wrap)) { clearColorSelection(); selectedColorItems.add(wrap); wrap.classList.add('multi-selected'); }
+        }
+        showSelectionHighlight();
+        _pushedUndo = false;
+        // Don't stopPropagation — let it bubble so wrap mousedown fires too
+        // But wrap mousedown skips if target === input, so handle it here
+      });
       input.addEventListener('input', e => {
         if (!_pushedUndo) { pushMainUndo(); _pushedUndo = true; }
         const newColor = e.target.value;
