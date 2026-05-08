@@ -1595,7 +1595,7 @@
       if (target) {
         target.setAttribute('fill', 'rgba(255,255,255,0.12)');
         target.setAttribute('stroke', '#ffffff');
-        target.setAttribute('stroke-width', '1.5');
+        target.setAttribute('stroke-width', '0.75');
         target.setAttribute('stroke-linejoin', 'round');
         target.removeAttribute('display'); target.style.display = '';
       }
@@ -1656,7 +1656,13 @@
       });
 
       wrap.addEventListener('mouseenter', () => {
-        if (!colorDragging && selectedColorItems.size === 0) showHighlight(getHighlightEls(ids));
+        if (colorDragging) {
+          if (colorDragAdding) { selectedColorItems.add(wrap); wrap.classList.add('multi-selected'); }
+          else { selectedColorItems.delete(wrap); wrap.classList.remove('multi-selected'); }
+          showSelectionHighlight();
+        } else if (selectedColorItems.size === 0) {
+          showHighlight(getHighlightEls(ids));
+        }
       });
 
       wrap.addEventListener('mouseleave', () => {
@@ -1665,7 +1671,6 @@
 
       let t, _pushedUndo = false;
       input.addEventListener('mousedown', e => {
-        // Handle selection when clicking the color swatch directly
         if (e.ctrlKey || e.metaKey || e.shiftKey) {
           if (selectedColorItems.has(wrap)) { selectedColorItems.delete(wrap); wrap.classList.remove('multi-selected'); }
           else { selectedColorItems.add(wrap); wrap.classList.add('multi-selected'); }
@@ -1674,8 +1679,10 @@
         }
         showSelectionHighlight();
         _pushedUndo = false;
-        // Don't stopPropagation — let it bubble so wrap mousedown fires too
-        // But wrap mousedown skips if target === input, so handle it here
+      });
+      input.addEventListener('click', () => {
+        // Hide white outline while color picker is open
+        clearHighlight();
       });
       input.addEventListener('input', e => {
         if (!_pushedUndo) { pushMainUndo(); _pushedUndo = true; }
@@ -1721,12 +1728,18 @@
   // Global listeners for color drag/deselect — registered once
   document.addEventListener('mousemove', e => {
     if (!colorDragging) return;
-    const el = document.elementFromPoint(e.clientX, e.clientY);
-    if (!el) return;
-    const wrap = el.closest('.color-item');
-    if (!wrap) return;
-    if (colorDragAdding) { selectedColorItems.add(wrap); wrap.classList.add('multi-selected'); }
-    else { selectedColorItems.delete(wrap); wrap.classList.remove('multi-selected'); }
+    // Use elementFromPoint but temporarily hide any overlay that might intercept
+    const grid = document.getElementById('controls');
+    if (!grid) return;
+    const items = grid.querySelectorAll('.color-item');
+    let hit = null;
+    items.forEach(item => {
+      const r = item.getBoundingClientRect();
+      if (e.clientX >= r.left && e.clientX <= r.right && e.clientY >= r.top && e.clientY <= r.bottom) hit = item;
+    });
+    if (!hit) return;
+    if (colorDragAdding) { selectedColorItems.add(hit); hit.classList.add('multi-selected'); }
+    else { selectedColorItems.delete(hit); hit.classList.remove('multi-selected'); }
     showSelectionHighlight();
   });
   document.addEventListener('mouseup', () => { colorDragging = false; });
