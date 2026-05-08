@@ -1230,32 +1230,19 @@
     <div class="scene-sidebar">
       <div class="scene-sidebar-tabs">
         <button class="scene-stab active" onclick="switchSceneTab('items')" id="stab-items">Items</button>
-        <button class="scene-stab" onclick="switchSceneTab('recolor')" id="stab-recolor">Recolor</button>
         <button class="scene-stab" onclick="switchSceneTab('layers')" id="stab-layers">Layers</button>
       </div>
       <div class="scene-spane active" id="spane-items"></div>
-      <div class="scene-spane" id="spane-recolor">
-        <div class="scene-hsb-panel" id="scene-hsb-panel" style="display:none;">
-          <div class="scene-hsb-title">Adjust Colors</div>
-          <div class="scene-hsb-row">
-            <span class="lbl">H</span>
-            <input type="range" id="sc-slider-hue" min="-180" max="180" value="0">
-            <span class="val" id="sc-val-hue">0°</span>
-          </div>
-          <div class="scene-hsb-row">
-            <span class="lbl">S</span>
-            <input type="range" id="sc-slider-sat" min="-100" max="100" value="0">
-            <span class="val" id="sc-val-sat">0%</span>
-          </div>
-          <div class="scene-hsb-row">
-            <span class="lbl">B</span>
-            <input type="range" id="sc-slider-bri" min="-100" max="100" value="0">
-            <span class="val" id="sc-val-bri">0%</span>
-          </div>
-          <button class="scene-hsb-reset" id="sc-hsb-reset">Reset</button>
-        </div>
-        <div class="scene-empty-msg" id="scene-recolor-hint">Select an object in the scene to recolor it.</div>
-        <div class="scene-color-grid" id="scene-color-grid"></div>
+      <!-- Hidden HSB inputs used by the float hue popup — do not remove -->
+      <div style="display:none;">
+        <input type="range" id="sc-slider-hue" min="-180" max="180" value="0">
+        <input type="range" id="sc-slider-sat" min="-100" max="100" value="0">
+        <input type="range" id="sc-slider-bri" min="-100" max="100" value="0">
+        <span id="sc-val-hue"></span><span id="sc-val-sat"></span><span id="sc-val-bri"></span>
+        <div id="scene-recolor-hint"></div>
+        <div id="scene-color-grid"></div>
+        <div id="scene-hsb-panel"></div>
+        <button id="sc-hsb-reset"></button>
       </div>
       <div class="scene-spane" id="spane-layers">
         <div class="scene-empty-msg" id="scene-layer-hint">No objects yet. Add items from the Items tab!</div>
@@ -1341,15 +1328,13 @@
 
   function snapshotMain() {
     if (!svgEl) return null;
-    // Capture all fill/stop-color values and shape visibility
     const fills = [];
     svgEl.querySelectorAll('[data-cid]').forEach(el => {
       fills.push({ cid: el.getAttribute('data-cid'), fill: el.getAttribute('fill'), stopColor: el.getAttribute('stop-color') });
     });
-    // Capture which shapes are hidden
     const hiddenShapes = [];
     svgEl.querySelectorAll('path, rect, circle, ellipse, polygon, polyline').forEach((el, i) => {
-      hiddenShapes.push({ idx: i, hidden: el.style.display === 'none' });
+      hiddenShapes.push({ idx: i, hidden: el.style.visibility === 'hidden' });
     });
     return { fills, hiddenShapes };
   }
@@ -1375,9 +1360,8 @@
     if (snap.hiddenShapes) {
       const shapes = Array.from(svgEl.querySelectorAll('path, rect, circle, ellipse, polygon, polyline'));
       snap.hiddenShapes.forEach(({ idx, hidden }) => {
-        if (shapes[idx]) shapes[idx].style.display = hidden ? 'none' : '';
+        if (shapes[idx]) shapes[idx].style.visibility = hidden ? 'hidden' : '';
       });
-      // Sync color-item hidden state visually
       hiddenColorIds.clear();
       controls.querySelectorAll('.color-item').forEach(wrap => {
         wrap.classList.remove('color-hidden');
@@ -1385,7 +1369,7 @@
         if (!ids) return;
         const anyHidden = ids.some(id => {
           const el = svgEl.querySelector(`[data-cid="${id}"]`);
-          return el && el.style.display === 'none';
+          return el && el.style.visibility === 'hidden';
         });
         if (anyHidden) { hiddenColorIds.add(wrap); wrap.classList.add('color-hidden'); }
       });
@@ -2048,7 +2032,17 @@
       ids.forEach(id => {
         const el = svgEl.querySelector(`[data-cid="${id}"]`);
         if (!el) return;
-        el.style.display = '';
+        el.style.visibility = '';
+        // Also restore any gradient shapes
+        if (el.tagName === 'stop') {
+          const grad = el.closest('linearGradient, radialGradient');
+          if (!grad) return;
+          const gradId = grad.getAttribute('id');
+          svgEl.querySelectorAll('path, rect, circle, ellipse, polygon, polyline').forEach(shape => {
+            const fill = shape.getAttribute('fill') || '';
+            if (fill.includes(gradId)) shape.style.visibility = '';
+          });
+        }
       });
     } else {
       hiddenColorIds.add(wrap);
@@ -2056,11 +2050,9 @@
       ids.forEach(id => {
         const el = svgEl.querySelector(`[data-cid="${id}"]`);
         if (!el) return;
-        // Hide shapes using this color
         if (el.tagName !== 'stop') {
-          el.style.display = 'none';
+          el.style.visibility = 'hidden';
         } else {
-          // For gradient stops, hide all shapes using this gradient
           const grad = el.closest('linearGradient, radialGradient');
           if (!grad) return;
           const gradId = grad.getAttribute('id');
@@ -2070,7 +2062,7 @@
           });
           svgEl.querySelectorAll('path, rect, circle, ellipse, polygon, polyline').forEach(shape => {
             const fill = shape.getAttribute('fill') || '';
-            if (Array.from(allGradIds).some(gid => fill.includes(gid))) shape.style.display = 'none';
+            if (Array.from(allGradIds).some(gid => fill.includes(gid))) shape.style.visibility = 'hidden';
           });
         }
       });
@@ -2357,7 +2349,6 @@
     sceneSelected = obj;
     sceneMultiSel.add(obj.id);
     obj.domEl.classList.add('selected');
-    renderSceneRecolor(obj);
     renderSceneLayers();
     positionFloatBtns();
     if (typeof positionLayerOrderBtns === 'function') positionLayerOrderBtns();
@@ -2367,19 +2358,12 @@
     if (sceneMultiSel.has(obj.id)) {
       sceneMultiSel.delete(obj.id);
       obj.domEl.classList.remove('selected');
-      // Set primary to another selected obj if any
       const remaining = sceneObjects.filter(o => sceneMultiSel.has(o.id));
       sceneSelected = remaining.length ? remaining[remaining.length - 1] : null;
     } else {
       sceneMultiSel.add(obj.id);
       obj.domEl.classList.add('selected');
       sceneSelected = obj;
-    }
-    if (sceneSelected) {
-      renderSceneRecolor(sceneSelected);
-    } else {
-      document.getElementById('scene-recolor-hint').style.display = 'block';
-      document.getElementById('scene-color-grid').innerHTML = '';
     }
     renderSceneLayers();
     positionFloatBtns();
@@ -2390,11 +2374,9 @@
     sceneObjects.forEach(o => o.domEl.classList.remove('selected'));
     sceneSelected = null;
     sceneMultiSel.clear();
-    document.getElementById('scene-recolor-hint').style.display = 'block';
-    document.getElementById('scene-color-grid').innerHTML = '';
     document.getElementById('scene-floatbtns').classList.remove('visible');
     const hp = document.getElementById('scene-hue-popup');
-    if (hp) { hp.classList.remove('visible'); }
+    if (hp) hp.classList.remove('visible');
     huePopupVisible = false;
     renderSceneLayers();
     if (typeof sceneLayerOrderBtns !== 'undefined') sceneLayerOrderBtns.classList.remove('visible');
@@ -2454,7 +2436,7 @@
       window.removeEventListener('mousemove', onMove);
       window.removeEventListener('mouseup', onUp);
       const sel = sceneObjects.filter(o => sceneMultiSel.has(o.id));
-      if (sel.length) { sceneSelected = sel[sel.length - 1]; renderSceneRecolor(sceneSelected); }
+      if (sel.length) { sceneSelected = sel[sel.length - 1]; }
       renderSceneLayers();
       positionFloatBtns();
       if (typeof positionLayerOrderBtns === 'function') positionLayerOrderBtns();
@@ -2606,7 +2588,6 @@
       clearSelection();
       sceneObjects.forEach(o => { sceneMultiSel.add(o.id); o.domEl.classList.add('selected'); });
       sceneSelected = sceneObjects[sceneObjects.length - 1] || null;
-      if (sceneSelected) renderSceneRecolor(sceneSelected);
       renderSceneLayers();
       positionFloatBtns();
     }
@@ -2894,7 +2875,7 @@
     const toDupe = sceneObjects.filter(o => sceneMultiSel.has(o.id));
     if (!toDupe.length) return;
     pushUndo();
-    clearSelection();
+    clearSelection(); // safe now — toDupe already captured above
     toDupe.forEach(src => {
       const parser = new DOMParser();
       const svgNode = parser.parseFromString(new XMLSerializer().serializeToString(src.svgEl), 'image/svg+xml').querySelector('svg');
