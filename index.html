@@ -303,6 +303,8 @@
       padding: 2px;
       transition: border-color 0.15s, transform 0.15s;
       box-shadow: 0 3px 0 rgba(0,0,0,0.15);
+    
+      pointer-events: none;
     }
     input[type="color"]:hover { border-color: #fff; transform: scale(1.08); }
     input[type="color"]::-webkit-color-swatch-wrapper { padding: 0; }
@@ -1647,22 +1649,6 @@
       });
 
       let t, _pushedUndo = false;
-      input.addEventListener('mousedown', e => {
-        e.stopPropagation();
-        _pushedUndo = false;
-        // Only open picker if this color is already selected (clicking a selected swatch)
-        // If not selected yet, just select it — don't open picker
-        if (!selectedColorItems.has(wrap)) {
-          e.preventDefault();
-          if (e.ctrlKey || e.metaKey || e.shiftKey) {
-            selectedColorItems.add(wrap); wrap.classList.add('multi-selected');
-          } else {
-            clearColorSelection(); selectedColorItems.add(wrap); wrap.classList.add('multi-selected');
-          }
-          showSelectionHighlight();
-        }
-        // If already selected: fall through so browser opens native color picker
-      });
       input.addEventListener('input', e => {
         if (!_pushedUndo) { pushMainUndo(); _pushedUndo = true; }
         const newColor = e.target.value;
@@ -1718,33 +1704,21 @@
       return null;
     }
 
+    let dragMoved = false;
     grid.addEventListener('pointerdown', e => {
       if (e.button !== 0) return;
       const wrap = e.target.closest('.color-item');
       if (!wrap) return;
-      const inp = wrap.querySelector('input[type="color"]');
-      // If clicking the input of an already-selected item: let picker open, no drag
-      if (e.target === inp && selectedColorItems.has(wrap)) return;
-      // If clicking the input of an unselected item: select it, prevent picker
-      if (e.target === inp && !selectedColorItems.has(wrap)) {
-        e.preventDefault();
-        if (e.ctrlKey || e.metaKey || e.shiftKey) {
-          selectedColorItems.add(wrap); wrap.classList.add('multi-selected');
-        } else {
-          clearColorSelection(); selectedColorItems.add(wrap); wrap.classList.add('multi-selected');
-        }
-        showSelectionHighlight();
-        return;
-      }
-      // Clicking the wrap label/area: start drag
       e.preventDefault();
+      dragMoved = false;
+      const alreadySelected = selectedColorItems.has(wrap);
       colorDragging = true;
-      colorDragAdding = !selectedColorItems.has(wrap);
+      colorDragAdding = !alreadySelected;
       if (e.ctrlKey || e.metaKey || e.shiftKey) {
-        if (selectedColorItems.has(wrap)) { selectedColorItems.delete(wrap); wrap.classList.remove('multi-selected'); }
+        if (alreadySelected) { selectedColorItems.delete(wrap); wrap.classList.remove('multi-selected'); }
         else { selectedColorItems.add(wrap); wrap.classList.add('multi-selected'); }
       } else {
-        clearColorSelection();
+        if (!alreadySelected) { clearColorSelection(); }
         selectedColorItems.add(wrap); wrap.classList.add('multi-selected');
         colorDragAdding = true;
       }
@@ -1761,8 +1735,28 @@
       showSelectionHighlight();
     });
 
+    grid.addEventListener('pointermove', e => {
+      if (!colorDragging) return;
+      dragMoved = true;
+      const item = hitItem(e.clientX, e.clientY);
+      if (!item) return;
+      if (colorDragAdding) { selectedColorItems.add(item); item.classList.add('multi-selected'); }
+      else { selectedColorItems.delete(item); item.classList.remove('multi-selected'); }
+      showSelectionHighlight();
+    });
+
     grid.addEventListener('pointerup', e => {
-      if (colorDragging) { colorDragging = false; grid.releasePointerCapture(e.pointerId); }
+      if (!colorDragging) return;
+      colorDragging = false;
+      grid.releasePointerCapture(e.pointerId);
+      // If no drag movement and this was a click on an already-selected item → open picker
+      if (!dragMoved) {
+        const wrap = hitItem(e.clientX, e.clientY);
+        if (wrap && selectedColorItems.has(wrap)) {
+          const inp = wrap.querySelector('input[type="color"]');
+          if (inp) inp.click();
+        }
+      }
     });
     grid.addEventListener('pointercancel', () => { colorDragging = false; });
   })();
