@@ -792,6 +792,10 @@
     "file": "svgs/EyeballsVase.svg"
   },
   {
+    "name": "Fallen Lucky Shooting Star",
+    "file": "svgs/FallenLuckyShootingStar.svg"
+  },
+  {
     "name": "Fancy Book Chair",
     "file": "svgs/FancyBookChair.svg"
   },
@@ -1038,6 +1042,10 @@
   {
     "name": "Giant Open Book",
     "file": "svgs/GiantOpenBook.svg"
+  },
+  {
+    "name": "Giant Shamrock Cupcake",
+    "file": "svgs/GiantShamrockCupcake.svg"
   },
   {
     "name": "Gift Stepping Stones",
@@ -1556,6 +1564,78 @@
     "file": "svgs/LovelyRoseWindow.svg"
   },
   {
+    "name": "Lucky Armchair",
+    "file": "svgs/LuckyArmchair.svg"
+  },
+  {
+    "name": "Lucky Bear",
+    "file": "svgs/LuckyBear.svg"
+  },
+  {
+    "name": "Lucky Birdhouse",
+    "file": "svgs/LuckyBirdhouse.svg"
+  },
+  {
+    "name": "Lucky Candle Hat",
+    "file": "svgs/LuckyCandleHat.svg"
+  },
+  {
+    "name": "Lucky Cat Chair",
+    "file": "svgs/LuckyCatChair.svg"
+  },
+  {
+    "name": "Lucky Cat Lamp",
+    "file": "svgs/LuckyCatLamp.svg"
+  },
+  {
+    "name": "Lucky Cat Sofa",
+    "file": "svgs/LuckyCatSofa.svg"
+  },
+  {
+    "name": "Lucky Cat Table",
+    "file": "svgs/LuckyCatTable.svg"
+  },
+  {
+    "name": "Lucky Centerpiece",
+    "file": "svgs/LuckyCenterpiece.svg"
+  },
+  {
+    "name": "Lucky Clover Cake",
+    "file": "svgs/LuckyCloverCake.svg"
+  },
+  {
+    "name": "Lucky Clover Planter",
+    "file": "svgs/LuckyCloverPlanter.svg"
+  },
+  {
+    "name": "Lucky Clover Spotlight",
+    "file": "svgs/LuckyCloverSpotlight.svg"
+  },
+  {
+    "name": "Lucky Clover Streamer",
+    "file": "svgs/LuckyCloverStreamer.svg"
+  },
+  {
+    "name": "Lucky Clover Vanity",
+    "file": "svgs/LuckyCloverVanity.svg"
+  },
+  {
+    "name": "Lucky Coffee Table",
+    "file": "svgs/LuckyCoffeeTable.svg"
+  },
+  {
+    "name": "Lucky Coin",
+    "file": "svgs/LuckyCoin.svg"
+  },
+  {
+    "name": "Lucky Cookies",
+    "file": "svgs/LuckyCookies.svg"
+  },
+  {
+    "name": "Lucky Dinner Table",
+    "file": "svgs/LuckyDinnerTable.svg"
+  },
+  {
     "name": "Lucky Fireplace1Unreleased",
     "file": "svgs/LuckyFireplace1Unreleased.svg"
   },
@@ -1568,28 +1648,212 @@
     "file": "svgs/LuckyFireplace3.svg"
   },
   {
+    "name": "Lucky Horseshoe Archway",
+    "file": "svgs/LuckyHorseshoeArchway.svg"
+  },
+  {
+    "name": "Lucky Horseshoe Chair",
+    "file": "svgs/LuckyHorseshoeChair.svg"
+  },
+  {
+    "name": "Lucky Horseshoe Lamp",
+    "file": "svgs/LuckyHorseshoeLamp.svg"
+  },
+  {
+    "name": "Lucky Horseshoe Pond",
+    "file": "svgs/LuckyHorseshoePond.svg"
+  },
+  {
+    "name": "Lucky Horseshoe Sofa",
+    "file": "svgs/LuckyHorseshoeSofa.svg"
+  },
+  {
+    "name": "Lucky Horseshoe Table",
+    "file": "svgs/LuckyHorseshoeTable.svg"
+  },
+  {
     "name": "Lucky Horseshoe Window",
     "file": "svgs/LuckyHorseshoeWindow.svg"
+  },
+  {
+    "name": "Lucky Lamp",
+    "file": "svgs/LuckyLamp.svg"
+  },
+  {
+    "name": "Lucky Leprechaun Archway",
+    "file": "svgs/LuckyLeprechaunArchway.svg"
+  },
+  {
+    "name": "Lucky Leprechaun Rug",
+    "file": "svgs/LuckyLeprechaunRug.svg"
+  },
+  {
+    "name": "Lucky Leprechaun Streamer",
+    "file": "svgs/LuckyLeprechaunStreamer.svg"
+  },
+  {
+    "name": "Lucky Moon",
+    "file": "svgs/LuckyMoon.svg"
+  },
+  {
+    "name": "Lucky Ottoman",
+    "file": "svgs/LuckyOttoman.svg"
+  },
+  {
+    "name": "Lucky Pillow",
+    "file": "svgs/LuckyPillow.svg"
+  },
+  {
+    "name": "Lucky Pot OGold",
+    "file": "svgs/LuckyPotOGold.svg"
+  },
+  {
+    "name": "Lucky Rabbit Chair",
+    "file": "svgs/LuckyRabbitChair.svg"
+  },
+  {
+    "name": "Lucky Rabbit Couch",
+    "file": "svgs/LuckyRabbitCouch.svg"
+  },
+  {
+    "name": "Lucky Rabbit Lamp",
+    "file": "svgs/LuckyRabbitLamp.svg"
+  },
+  {
+    "name": "Lucky Rabbit Shelves",
+    "file": "svgs/LuckyRabbitShelves.svg"
+  },
+  {
+    "name": "Lucky Rabbit Throne",
+    "file": "svgs/LuckyRabbitThrone.svg"
+  },
+  {
+    "name": "Lucky Rainbow Fountain",
+    "file": "svgs/LuckyRainbowFountain.svg"
+  },
+  {
+    "name": "Lucky Rainbow Lamp",
+    "file": "svgs/LuckyRainbowLamp.svg"
+  },
+  {
+    "name": "Lucky Sconce",
+    "file": "svgs/LuckySconce.svg"
+  },
+  {
+    "name": "Lucky Seven Statue",
+    "file": "svgs/LuckySevenStatue.svg"
   },
   {
     "name": "Lucky Shamrock Window",
     "file": "svgs/LuckyShamrockWindow.svg"
   },
   {
+    "name": "Lucky Shoji Screen",
+    "file": "svgs/LuckyShojiScreen.svg"
+  },
+  {
+    "name": "Lucky Shooting Star Archway",
+    "file": "svgs/LuckyShootingStarArchway.svg"
+  },
+  {
+    "name": "Lucky Shooting Star Chair",
+    "file": "svgs/LuckyShootingStarChair.svg"
+  },
+  {
+    "name": "Lucky Shooting Star Lamp",
+    "file": "svgs/LuckyShootingStarLamp.svg"
+  },
+  {
+    "name": "Lucky Shooting Star Rug",
+    "file": "svgs/LuckyShootingStarRug.svg"
+  },
+  {
+    "name": "Lucky Shooting Star Sofa",
+    "file": "svgs/LuckyShootingStarSofa.svg"
+  },
+  {
     "name": "Lucky Shooting Star Window",
     "file": "svgs/LuckyShootingStarWindow.svg"
+  },
+  {
+    "name": "Lucky Skunk Archway",
+    "file": "svgs/LuckySkunkArchway.svg"
+  },
+  {
+    "name": "Lucky Skunk Chair",
+    "file": "svgs/LuckySkunkChair.svg"
   },
   {
     "name": "Lucky Skunk Chaise Lounge",
     "file": "svgs/LuckySkunkChaiseLounge.svg"
   },
   {
+    "name": "Lucky Skunk Fountain",
+    "file": "svgs/LuckySkunkFountain.svg"
+  },
+  {
+    "name": "Lucky Skunk Lamp",
+    "file": "svgs/LuckySkunkLamp.svg"
+  },
+  {
+    "name": "Lucky Skunk Perfume",
+    "file": "svgs/LuckySkunkPerfume.svg"
+  },
+  {
+    "name": "Lucky Skunk Rug",
+    "file": "svgs/LuckySkunkRug.svg"
+  },
+  {
+    "name": "Lucky Skunk Table",
+    "file": "svgs/LuckySkunkTable.svg"
+  },
+  {
+    "name": "Lucky Skunk Trash Can",
+    "file": "svgs/LuckySkunkTrashCan.svg"
+  },
+  {
+    "name": "Lucky Skunk Treasure Chest",
+    "file": "svgs/LuckySkunkTreasureChest.svg"
+  },
+  {
+    "name": "Lucky Skunk Well",
+    "file": "svgs/LuckySkunkWell.svg"
+  },
+  {
     "name": "Lucky Skunk Window",
     "file": "svgs/LuckySkunkWindow.svg"
   },
   {
+    "name": "Lucky Sofa",
+    "file": "svgs/LuckySofa.svg"
+  },
+  {
     "name": "Lucky Stone Pathway",
     "file": "svgs/LuckyStonePathway.svg"
+  },
+  {
+    "name": "Lucky Tea Set",
+    "file": "svgs/LuckyTeaSet.svg"
+  },
+  {
+    "name": "Lucky Teddy Bear",
+    "file": "svgs/LuckyTeddyBear.svg"
+  },
+  {
+    "name": "Lucky Throne",
+    "file": "svgs/LuckyThrone.svg"
+  },
+  {
+    "name": "Lucky Treasure Chest",
+    "file": "svgs/LuckyTreasureChest.svg"
+  },
+  {
+    "name": "Lucky Wardrobe",
+    "file": "svgs/LuckyWardrobe.svg"
+  },
+  {
+    "name": "Lucky Wishing Well",
+    "file": "svgs/LuckyWishingWell.svg"
   },
   {
     "name": "Lynx Book",
@@ -2140,12 +2404,64 @@
     "file": "svgs/SecretDoorBookcase.svg"
   },
   {
+    "name": "Shamrock Archway",
+    "file": "svgs/ShamrockArchway.svg"
+  },
+  {
+    "name": "Shamrock Bean Bag",
+    "file": "svgs/ShamrockBeanBag.svg"
+  },
+  {
+    "name": "Shamrock Chair 1",
+    "file": "svgs/ShamrockChair1.svg"
+  },
+  {
+    "name": "Shamrock Chair 2",
+    "file": "svgs/ShamrockChair2.svg"
+  },
+  {
+    "name": "Shamrock Couch",
+    "file": "svgs/ShamrockCouch.svg"
+  },
+  {
     "name": "Shamrock Doghouse",
     "file": "svgs/ShamrockDoghouse.svg"
   },
   {
+    "name": "Shamrock Door Wreath",
+    "file": "svgs/ShamrockDoorWreath.svg"
+  },
+  {
+    "name": "Shamrock Lamp",
+    "file": "svgs/ShamrockLamp.svg"
+  },
+  {
+    "name": "Shamrock Lamp Post",
+    "file": "svgs/ShamrockLampPost.svg"
+  },
+  {
+    "name": "Shamrock Plushie",
+    "file": "svgs/ShamrockPlushie.svg"
+  },
+  {
+    "name": "Shamrock Rug",
+    "file": "svgs/ShamrockRug.svg"
+  },
+  {
+    "name": "Shamrock Shelves",
+    "file": "svgs/ShamrockShelves.svg"
+  },
+  {
     "name": "Shamrock Stepping Stones",
     "file": "svgs/ShamrockSteppingStones.svg"
+  },
+  {
+    "name": "Shamrock Stool",
+    "file": "svgs/ShamrockStool.svg"
+  },
+  {
+    "name": "Shamrock Table",
+    "file": "svgs/ShamrockTable.svg"
   },
   {
     "name": "Shamrock Wall Vines",
@@ -2390,6 +2706,10 @@
   {
     "name": "Stone Wall Cosmo",
     "file": "svgs/StoneWallCosmo.svg"
+  },
+  {
+    "name": "Strand Of Shamrocks",
+    "file": "svgs/StrandOfShamrocks.svg"
   },
   {
     "name": "Straw Window",
