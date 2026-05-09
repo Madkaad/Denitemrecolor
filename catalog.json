@@ -304,6 +304,10 @@
     "file": "svgs/Beta-Zios-Statue.svg"
   },
   {
+    "name": "Big Stump",
+    "file": "svgs/BigStump.svg"
+  },
+  {
     "name": "Bird Feather Stepping Stones",
     "file": "svgs/BirdFeatherSteppingStones.svg"
   },
@@ -458,6 +462,10 @@
   {
     "name": "Cavern Crystal Cluster",
     "file": "svgs/CavernCrystalCluster.svg"
+  },
+  {
+    "name": "Cavern Mushrooms",
+    "file": "svgs/CavernMushrooms.svg"
   },
   {
     "name": "Celtic Window 1",
@@ -872,6 +880,10 @@
     "file": "svgs/EpicSpaceshipWindow.svg"
   },
   {
+    "name": "Epic Wild Waterslide Finish",
+    "file": "svgs/EpicWildWaterslideFinish.svg"
+  },
+  {
     "name": "Eyeballs Vase",
     "file": "svgs/EyeballsVase.svg"
   },
@@ -1080,6 +1092,30 @@
     "file": "svgs/FlyingPigSteppingStones.svg"
   },
   {
+    "name": "Forest Stained Glass",
+    "file": "svgs/ForestStainedGlass.svg"
+  },
+  {
+    "name": "Forest Tree 1",
+    "file": "svgs/ForestTree1.svg"
+  },
+  {
+    "name": "Forest Tree 2",
+    "file": "svgs/ForestTree2.svg"
+  },
+  {
+    "name": "Forest Tree 3",
+    "file": "svgs/ForestTree3.svg"
+  },
+  {
+    "name": "Forest Tree 4",
+    "file": "svgs/ForestTree4.svg"
+  },
+  {
+    "name": "Forest Tree 5",
+    "file": "svgs/ForestTree5.svg"
+  },
+  {
     "name": "Freedom Lamp",
     "file": "svgs/FreedomLamp.svg"
   },
@@ -1132,6 +1168,10 @@
     "file": "svgs/GardenRoses.svg"
   },
   {
+    "name": "Gazebo",
+    "file": "svgs/Gazebo.svg"
+  },
+  {
     "name": "Ghost Streamer",
     "file": "svgs/GhostStreamer.svg"
   },
@@ -1142,6 +1182,10 @@
   {
     "name": "Giant Arctic Fox Plushie",
     "file": "svgs/GiantArcticFoxPlushie.svg"
+  },
+  {
+    "name": "Giant Bag Of Wild Water Balloons",
+    "file": "svgs/GiantBagOfWildWaterBalloons.svg"
   },
   {
     "name": "Giant Blooming Lily",
@@ -1226,6 +1270,10 @@
   {
     "name": "Glitchy Tv",
     "file": "svgs/GlitchyTv.svg"
+  },
+  {
+    "name": "Glowing Mushroom Patch",
+    "file": "svgs/GlowingMushroomPatch.svg"
   },
   {
     "name": "Goat Bust",
@@ -2160,8 +2208,28 @@
     "file": "svgs/MultiColoredPencilFence.svg"
   },
   {
+    "name": "Mushroom Chair",
+    "file": "svgs/MushroomChair.svg"
+  },
+  {
     "name": "Mushroom Glowing Blue",
     "file": "svgs/MushroomGlowingBlue.svg"
+  },
+  {
+    "name": "Mushroom Table",
+    "file": "svgs/MushroomTable.svg"
+  },
+  {
+    "name": "Mushroom Throne",
+    "file": "svgs/MushroomThrone.svg"
+  },
+  {
+    "name": "Mushroom Water Feature",
+    "file": "svgs/MushroomWaterFeature.svg"
+  },
+  {
+    "name": "Mushrooms",
+    "file": "svgs/Mushrooms.svg"
   },
   {
     "name": "Musical Note Chair",
@@ -2280,8 +2348,24 @@
     "file": "svgs/PetStoneChair.svg"
   },
   {
+    "name": "Pet Wild Water Slide",
+    "file": "svgs/PetWildWaterSlide.svg"
+  },
+  {
     "name": "Phantom Stepping Stone",
     "file": "svgs/PhantomSteppingStone.svg"
+  },
+  {
+    "name": "Phantom Stump",
+    "file": "svgs/PhantomStump.svg"
+  },
+  {
+    "name": "Phantom Stump 2",
+    "file": "svgs/PhantomStump2.svg"
+  },
+  {
+    "name": "Phantom Stump 3",
+    "file": "svgs/PhantomStump3.svg"
   },
   {
     "name": "Phantom Vines",
@@ -2816,6 +2900,14 @@
     "file": "svgs/SmallIrishStandingStone.svg"
   },
   {
+    "name": "Small Stump",
+    "file": "svgs/SmallStump.svg"
+  },
+  {
+    "name": "Small Tree Stump",
+    "file": "svgs/SmallTreeStump.svg"
+  },
+  {
     "name": "Small Window",
     "file": "svgs/SmallWindow.svg"
   },
@@ -2842,6 +2934,10 @@
   {
     "name": "Snowflake Stepping Stones",
     "file": "svgs/SnowflakeSteppingStones.svg"
+  },
+  {
+    "name": "Snowy Stump Den",
+    "file": "svgs/SnowyStumpDen.svg"
   },
   {
     "name": "Spiked Birthday Doghouse",
@@ -2898,6 +2994,10 @@
   {
     "name": "Spring Egg TV",
     "file": "svgs/SpringEggTV.svg"
+  },
+  {
+    "name": "Spring Stump Den",
+    "file": "svgs/SpringStumpDen.svg"
   },
   {
     "name": "Spring Tulip Fence",
@@ -3120,6 +3220,22 @@
     "file": "svgs/TrainsetFireplace.svg"
   },
   {
+    "name": "Tree Stump",
+    "file": "svgs/TreeStump.svg"
+  },
+  {
+    "name": "Tree Stump Chair",
+    "file": "svgs/TreeStumpChair.svg"
+  },
+  {
+    "name": "Tree Stump Sink",
+    "file": "svgs/TreeStumpSink.svg"
+  },
+  {
+    "name": "Tree Stump Table",
+    "file": "svgs/TreeStumpTable.svg"
+  },
+  {
     "name": "Trellis 1",
     "file": "svgs/Trellis1.svg"
   },
@@ -3236,8 +3352,48 @@
     "file": "svgs/WaffleTable.svg"
   },
   {
+    "name": "Whimsical Lights Mushrooms",
+    "file": "svgs/WhimsicalLightsMushrooms.svg"
+  },
+  {
     "name": "Whimsical Lights WIndow",
     "file": "svgs/WhimsicalLightsWIndow.svg"
+  },
+  {
+    "name": "Wild Water Balloon Bean Bag Chair",
+    "file": "svgs/WildWaterBalloonBeanBagChair.svg"
+  },
+  {
+    "name": "Wild Water Balloon Bucket",
+    "file": "svgs/WildWaterBalloonBucket.svg"
+  },
+  {
+    "name": "Wild Water Slide Corner",
+    "file": "svgs/WildWaterSlideCorner.svg"
+  },
+  {
+    "name": "Wild Water Slide Corner 2",
+    "file": "svgs/WildWaterSlideCorner2.svg"
+  },
+  {
+    "name": "Wild Water Slide Corner 3",
+    "file": "svgs/WildWaterSlideCorner3.svg"
+  },
+  {
+    "name": "Wild Water Slide Corner 4",
+    "file": "svgs/WildWaterSlideCorner4.svg"
+  },
+  {
+    "name": "Wild Water Slide Straight",
+    "file": "svgs/WildWaterSlideStraight.svg"
+  },
+  {
+    "name": "Wild Works Mascot Plushie",
+    "file": "svgs/WildWorksMascotPlushie.svg"
+  },
+  {
+    "name": "Wildflower Bush",
+    "file": "svgs/WildflowerBush.svg"
   },
   {
     "name": "Window Curtain",
