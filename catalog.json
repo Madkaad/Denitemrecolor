@@ -64,12 +64,44 @@
     "file": "svgs/Ancient Ruins.svg"
   },
   {
+    "name": "Ancient Chaise Lounge",
+    "file": "svgs/AncientChaiseLounge.svg"
+  },
+  {
+    "name": "Ancient Junos Chaise Lounge",
+    "file": "svgs/AncientJunosChaiseLounge.svg"
+  },
+  {
     "name": "Ancient Junos Flag",
     "file": "svgs/AncientJunosFlag.svg"
   },
   {
     "name": "Ancient Stepping Stones",
     "file": "svgs/AncientSteppingStones.svg"
+  },
+  {
+    "name": "Antique Chair",
+    "file": "svgs/AntiqueChair.svg"
+  },
+  {
+    "name": "Antique Clock",
+    "file": "svgs/AntiqueClock.svg"
+  },
+  {
+    "name": "Antique Couch",
+    "file": "svgs/AntiqueCouch.svg"
+  },
+  {
+    "name": "Antique Lamp",
+    "file": "svgs/AntiqueLamp.svg"
+  },
+  {
+    "name": "Antique Rug",
+    "file": "svgs/AntiqueRug.svg"
+  },
+  {
+    "name": "Antique Table",
+    "file": "svgs/AntiqueTable.svg"
   },
   {
     "name": "Antique Window",
@@ -92,8 +124,16 @@
     "file": "svgs/ArcticFoxTailWindow.svg"
   },
   {
+    "name": "Aster Bouquet SEP",
+    "file": "svgs/AsterBouquetSEP.svg"
+  },
+  {
     "name": "Autumn Stepping Stones",
     "file": "svgs/AutumnSteppingStones.svg"
+  },
+  {
+    "name": "Backyard Fire Pit",
+    "file": "svgs/BackyardFirePit.svg"
   },
   {
     "name": "Bag Of Dog Food",
@@ -134,6 +174,14 @@
   {
     "name": "Bamboo Fence",
     "file": "svgs/BambooFence.svg"
+  },
+  {
+    "name": "Basket Of Firecrackers",
+    "file": "svgs/BasketOfFirecrackers.svg"
+  },
+  {
+    "name": "Beach Fire Pit",
+    "file": "svgs/BeachFirePit.svg"
   },
   {
     "name": "Best Friends Window",
@@ -240,6 +288,10 @@
     "file": "svgs/BloomingLily.svg"
   },
   {
+    "name": "Blue Fire Brazier",
+    "file": "svgs/BlueFireBrazier.svg"
+  },
+  {
     "name": "Boarded Up Window",
     "file": "svgs/BoardedUpWindow.svg"
   },
@@ -292,8 +344,16 @@
     "file": "svgs/CactusFence.svg"
   },
   {
+    "name": "Candy Cane Chaise Lounge",
+    "file": "svgs/CandyCaneChaiseLounge.svg"
+  },
+  {
     "name": "Candy Cane Window",
     "file": "svgs/CandyCaneWindow.svg"
+  },
+  {
+    "name": "Candy Fireplace",
+    "file": "svgs/CandyFireplace.svg"
   },
   {
     "name": "Candy Shop Fence",
@@ -306,6 +366,14 @@
   {
     "name": "Cardboard Window",
     "file": "svgs/CardboardWindow.svg"
+  },
+  {
+    "name": "Carnation Bouquet",
+    "file": "svgs/CarnationBouquet.svg"
+  },
+  {
+    "name": "Carnation Chaise Lounge",
+    "file": "svgs/CarnationChaiseLounge.svg"
   },
   {
     "name": "Carnival Flags",
@@ -352,6 +420,10 @@
     "file": "svgs/ChocolateWindow.svg"
   },
   {
+    "name": "Chrysanthemum Bouquet",
+    "file": "svgs/ChrysanthemumBouquet.svg"
+  },
+  {
     "name": "Classic Pink Jar",
     "file": "svgs/ClassicPinkJar.svg"
   },
@@ -374,6 +446,10 @@
   {
     "name": "Cotton Candy Window",
     "file": "svgs/CottonCandyWindow.svg"
+  },
+  {
+    "name": "Creepy Fireplace",
+    "file": "svgs/CreepyFireplace.svg"
   },
   {
     "name": "Crescent Moon Shaped Window",
@@ -508,6 +584,10 @@
     "file": "svgs/CupidFlag.svg"
   },
   {
+    "name": "Daffodil Bouquet",
+    "file": "svgs/DaffodilBouquet.svg"
+  },
+  {
     "name": "Daisy Stepping Stones",
     "file": "svgs/DaisySteppingStones.svg"
   },
@@ -518,6 +598,10 @@
   {
     "name": "Daisy Window",
     "file": "svgs/DaisyWindow.svg"
+  },
+  {
+    "name": "Decorative Jamaaliday Fireplace",
+    "file": "svgs/DecorativeJamaalidayFireplace.svg"
   },
   {
     "name": "Decorative Stone Rug",
@@ -616,6 +700,10 @@
     "file": "svgs/DoggyDoor.svg"
   },
   {
+    "name": "Dragon Fireworks Stand",
+    "file": "svgs/DragonFireworksStand.svg"
+  },
+  {
     "name": "Dusty Scattered Books",
     "file": "svgs/DustyScatteredBooks.svg"
   },
@@ -630,6 +718,54 @@
   {
     "name": "Egg Shaped Window",
     "file": "svgs/EggShapedWindow.svg"
+  },
+  {
+    "name": "Elegant Chair",
+    "file": "svgs/ElegantChair.svg"
+  },
+  {
+    "name": "Elegant Coffee Table",
+    "file": "svgs/ElegantCoffeeTable.svg"
+  },
+  {
+    "name": "Elegant Couch",
+    "file": "svgs/ElegantCouch.svg"
+  },
+  {
+    "name": "Elegant Curtains",
+    "file": "svgs/ElegantCurtains.svg"
+  },
+  {
+    "name": "Elegant Dining Table",
+    "file": "svgs/ElegantDiningTable.svg"
+  },
+  {
+    "name": "Elegant End Table",
+    "file": "svgs/ElegantEndTable.svg"
+  },
+  {
+    "name": "Elegant Hanging Rug",
+    "file": "svgs/ElegantHangingRug.svg"
+  },
+  {
+    "name": "Elegant Lamp",
+    "file": "svgs/ElegantLamp.svg"
+  },
+  {
+    "name": "Elegant Sconce",
+    "file": "svgs/ElegantSconce.svg"
+  },
+  {
+    "name": "Elegant Table",
+    "file": "svgs/ElegantTable.svg"
+  },
+  {
+    "name": "Elegant Table Clock",
+    "file": "svgs/ElegantTableClock.svg"
+  },
+  {
+    "name": "Elegant Vanity",
+    "file": "svgs/ElegantVanity.svg"
   },
   {
     "name": "Embroidered Stone Table",
@@ -650,6 +786,10 @@
   {
     "name": "Epic Spaceship Window",
     "file": "svgs/EpicSpaceshipWindow.svg"
+  },
+  {
+    "name": "Eyeballs Vase",
+    "file": "svgs/EyeballsVase.svg"
   },
   {
     "name": "Fancy Book Chair",
@@ -724,6 +864,14 @@
     "file": "svgs/FancyTelescope.svg"
   },
   {
+    "name": "Fantasy Chaise Lounge",
+    "file": "svgs/FantasyChaiseLounge.svg"
+  },
+  {
+    "name": "Fantasy Fireplace",
+    "file": "svgs/FantasyFireplace.svg"
+  },
+  {
     "name": "Fantasy Stepping Stones",
     "file": "svgs/FantasySteppingStones.svg"
   },
@@ -760,6 +908,46 @@
     "file": "svgs/FestiveJamaalidayFenceGate.svg"
   },
   {
+    "name": "Fire Barrel Blue",
+    "file": "svgs/FireBarrelBlue.svg"
+  },
+  {
+    "name": "Fire Pit",
+    "file": "svgs/FirePit.svg"
+  },
+  {
+    "name": "Fire Pit Ocean 1",
+    "file": "svgs/FirePitOcean1.svg"
+  },
+  {
+    "name": "Fire Pit Ocean 2",
+    "file": "svgs/FirePitOcean2.svg"
+  },
+  {
+    "name": "Fire Pit Ocean 3",
+    "file": "svgs/FirePitOcean3.svg"
+  },
+  {
+    "name": "Fire Pit Ocean 4",
+    "file": "svgs/FirePitOcean4.svg"
+  },
+  {
+    "name": "Fire Pit With Spit",
+    "file": "svgs/FirePitWithSpit.svg"
+  },
+  {
+    "name": "Fire Place",
+    "file": "svgs/FirePlace.svg"
+  },
+  {
+    "name": "Firepot Green",
+    "file": "svgs/FirepotGreen.svg"
+  },
+  {
+    "name": "Firework Stand",
+    "file": "svgs/FireworkStand.svg"
+  },
+  {
     "name": "Fishy20002s Succulent Garden Sphere",
     "file": "svgs/Fishy20002s-Succulent-Garden-Sphere.svg"
   },
@@ -770,6 +958,10 @@
   {
     "name": "Floating Lily Lantern",
     "file": "svgs/FloatingLilyLantern.svg"
+  },
+  {
+    "name": "Flowering Vase",
+    "file": "svgs/FloweringVase.svg"
   },
   {
     "name": "Flying Disc Stepping Stones",
@@ -802,6 +994,14 @@
   {
     "name": "Frog TV",
     "file": "svgs/FrogTV.svg"
+  },
+  {
+    "name": "Frozen Bouquet",
+    "file": "svgs/FrozenBouquet.svg"
+  },
+  {
+    "name": "Frozen Chaise Lounge",
+    "file": "svgs/FrozenChaiseLounge.svg"
   },
   {
     "name": "Frozen Stepping Stones",
@@ -844,8 +1044,20 @@
     "file": "svgs/GiftSteppingStones.svg"
   },
   {
+    "name": "Gilded Fireplace",
+    "file": "svgs/GildedFireplace.svg"
+  },
+  {
+    "name": "Gingerbread Chaise Lounge",
+    "file": "svgs/GingerbreadChaiseLounge.svg"
+  },
+  {
     "name": "Gingerbread Fence Gate",
     "file": "svgs/GingerbreadFenceGate.svg"
+  },
+  {
+    "name": "Gingerbread Fireplace",
+    "file": "svgs/GingerbreadFireplace.svg"
   },
   {
     "name": "Gingerbread Stepping Stones",
@@ -854,6 +1066,10 @@
   {
     "name": "Gingerbread Window",
     "file": "svgs/GingerbreadWindow.svg"
+  },
+  {
+    "name": "Gladiolus Bouquet",
+    "file": "svgs/GladiolusBouquet.svg"
   },
   {
     "name": "Glitch Bookshelf",
@@ -872,6 +1088,10 @@
     "file": "svgs/GoldenShamrockSteppingStones.svg"
   },
   {
+    "name": "Gothic Fireplace",
+    "file": "svgs/GothicFireplace.svg"
+  },
+  {
     "name": "Greely Bookshelf",
     "file": "svgs/GreelyBookshelf.svg"
   },
@@ -882,6 +1102,10 @@
   {
     "name": "HD Tv",
     "file": "svgs/HD-Tv.svg"
+  },
+  {
+    "name": "Hanging Firecracker Strand",
+    "file": "svgs/HangingFirecrackerStrand.svg"
   },
   {
     "name": "Hanging Vines",
@@ -908,12 +1132,24 @@
     "file": "svgs/HauntedTV.svg"
   },
   {
+    "name": "Heart Bouquet",
+    "file": "svgs/HeartBouquet.svg"
+  },
+  {
     "name": "Heart Fence",
     "file": "svgs/HeartFence.svg"
   },
   {
     "name": "Heart Fence Gate",
     "file": "svgs/HeartFenceGate.svg"
+  },
+  {
+    "name": "Heart Shaped Fire Pit",
+    "file": "svgs/HeartShapedFirePit.svg"
+  },
+  {
+    "name": "Heart Shaped Fireplace",
+    "file": "svgs/HeartShapedFireplace.svg"
   },
   {
     "name": "Heart Shaped Window",
@@ -1216,8 +1452,16 @@
     "file": "svgs/JollyMarshmallowFirePitSeat5.svg"
   },
   {
+    "name": "Junos Chaise Lounge",
+    "file": "svgs/JunosChaiseLounge.svg"
+  },
+  {
     "name": "Kimbara Doghouse",
     "file": "svgs/KimbaraDoghouse.svg"
+  },
+  {
+    "name": "Kingdom Chaise Lounge",
+    "file": "svgs/KingdomChaiseLounge.svg"
   },
   {
     "name": "Kingdom Window",
@@ -1264,6 +1508,10 @@
     "file": "svgs/LargeTV.svg"
   },
   {
+    "name": "Larkspur Bouquet",
+    "file": "svgs/LarkspurBouquet.svg"
+  },
+  {
     "name": "Lily Pad",
     "file": "svgs/LilyPad.svg"
   },
@@ -1300,8 +1548,24 @@
     "file": "svgs/LollipopFenceGate.svg"
   },
   {
+    "name": "Lounge Chair",
+    "file": "svgs/LoungeChair.svg"
+  },
+  {
     "name": "Lovely Rose Window",
     "file": "svgs/LovelyRoseWindow.svg"
+  },
+  {
+    "name": "Lucky Fireplace1Unreleased",
+    "file": "svgs/LuckyFireplace1Unreleased.svg"
+  },
+  {
+    "name": "Lucky Fireplace2Unreleased",
+    "file": "svgs/LuckyFireplace2Unreleased.svg"
+  },
+  {
+    "name": "Lucky Fireplace 3",
+    "file": "svgs/LuckyFireplace3.svg"
   },
   {
     "name": "Lucky Horseshoe Window",
@@ -1314,6 +1578,10 @@
   {
     "name": "Lucky Shooting Star Window",
     "file": "svgs/LuckyShootingStarWindow.svg"
+  },
+  {
+    "name": "Lucky Skunk Chaise Lounge",
+    "file": "svgs/LuckySkunkChaiseLounge.svg"
   },
   {
     "name": "Lucky Skunk Window",
@@ -1338,6 +1606,10 @@
   {
     "name": "Maple Leaf Window",
     "file": "svgs/MapleLeafWindow.svg"
+  },
+  {
+    "name": "Marigold Bouquet",
+    "file": "svgs/MarigoldBouquet.svg"
   },
   {
     "name": "Mechanical Window",
@@ -1532,6 +1804,10 @@
     "file": "svgs/PiggetFence.svg"
   },
   {
+    "name": "Pile Of Fireworks",
+    "file": "svgs/PileOfFireworks.svg"
+  },
+  {
     "name": "Pirate Flag",
     "file": "svgs/PirateFlag.svg"
   },
@@ -1572,6 +1848,14 @@
     "file": "svgs/PopUpCarnivalStoryBook.svg"
   },
   {
+    "name": "Primrose Bouquet",
+    "file": "svgs/PrimroseBouquet.svg"
+  },
+  {
+    "name": "Princess Chaise Lounge",
+    "file": "svgs/PrincessChaiseLounge.svg"
+  },
+  {
     "name": "Puddle Stepping Stones",
     "file": "svgs/PuddleSteppingStones.svg"
   },
@@ -1594,6 +1878,10 @@
   {
     "name": "Rare Music Sequencer",
     "file": "svgs/Rare-Music-Sequencer.svg"
+  },
+  {
+    "name": "Rat Fireworks Stand",
+    "file": "svgs/RatFireworksStand.svg"
   },
   {
     "name": "Rat Stepping Stones",
@@ -1864,6 +2152,10 @@
     "file": "svgs/ShamrockWallVines.svg"
   },
   {
+    "name": "Sheep Chaise Lounge",
+    "file": "svgs/SheepChaiseLounge.svg"
+  },
+  {
     "name": "Sheep Window",
     "file": "svgs/SheepWindow.svg"
   },
@@ -1874,6 +2166,10 @@
   {
     "name": "Skeleton Fence",
     "file": "svgs/SkeletonFence.svg"
+  },
+  {
+    "name": "Skull Fireplace",
+    "file": "svgs/SkullFireplace.svg"
   },
   {
     "name": "Slice Of Bread Stepping Stones",
@@ -1920,8 +2216,20 @@
     "file": "svgs/SpikedBirthdayWindow.svg"
   },
   {
+    "name": "Spooky Castle Chaise Lounge",
+    "file": "svgs/SpookyCastleChaiseLounge.svg"
+  },
+  {
+    "name": "Spooky Chaise Lounge",
+    "file": "svgs/SpookyChaiseLounge.svg"
+  },
+  {
     "name": "Spooky Fence",
     "file": "svgs/SpookyFence.svg"
+  },
+  {
+    "name": "Spooky Fireplace",
+    "file": "svgs/SpookyFireplace.svg"
   },
   {
     "name": "Spooky Stone Fence",
@@ -2128,6 +2436,10 @@
     "file": "svgs/ThreeHeartWindow.svg"
   },
   {
+    "name": "Trainset Fireplace",
+    "file": "svgs/TrainsetFireplace.svg"
+  },
+  {
     "name": "Trellis 1",
     "file": "svgs/Trellis1.svg"
   },
@@ -2152,6 +2464,10 @@
     "file": "svgs/TulipStonePathway.svg"
   },
   {
+    "name": "Umbrella Bouquet",
+    "file": "svgs/UmbrellaBouquet.svg"
+  },
+  {
     "name": "Underwater Pool Table",
     "file": "svgs/UnderwaterPoolTable.svg"
   },
@@ -2166,6 +2482,14 @@
   {
     "name": "Valentine Stepping Stones",
     "file": "svgs/ValentineSteppingStones.svg"
+  },
+  {
+    "name": "Vase 1",
+    "file": "svgs/Vase1.svg"
+  },
+  {
+    "name": "Vase 2",
+    "file": "svgs/Vase2.svg"
   },
   {
     "name": "Vet Examination Table",
@@ -2248,12 +2572,28 @@
     "file": "svgs/WindowWithFullMoon.svg"
   },
   {
+    "name": "Winter Firepit",
+    "file": "svgs/WinterFirepit.svg"
+  },
+  {
+    "name": "Winter Firepit Chair",
+    "file": "svgs/WinterFirepitChair.svg"
+  },
+  {
+    "name": "Winter Firepit Table",
+    "file": "svgs/WinterFirepitTable.svg"
+  },
+  {
     "name": "Wooden Burrow Window",
     "file": "svgs/WoodenBurrowWindow.svg"
   },
   {
     "name": "World Map",
     "file": "svgs/World-map.svg"
+  },
+  {
+    "name": "Yule Log Fireplace",
+    "file": "svgs/YuleLogFireplace.svg"
   },
   {
     "name": "Zios Window",
