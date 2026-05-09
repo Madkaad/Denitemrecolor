@@ -2184,6 +2184,10 @@
     "file": "svgs/MysticalIrishStandingStone.svg"
   },
   {
+    "name": "Narcissus Bouquet DEC",
+    "file": "svgs/NarcissusBouquetDEC.svg"
+  },
+  {
     "name": "Nautical Flags",
     "file": "svgs/NauticalFlags.svg"
   },
@@ -2450,6 +2454,10 @@
   {
     "name": "Root Lamp",
     "file": "svgs/RootLamp.svg"
+  },
+  {
+    "name": "Rose Bouquet JUN",
+    "file": "svgs/RoseBouquetJUN.svg"
   },
   {
     "name": "Round Celtic Window 1",
@@ -3074,6 +3082,10 @@
   {
     "name": "Sus Window",
     "file": "svgs/SusWindow.svg"
+  },
+  {
+    "name": "Sweet Pea Bouquet",
+    "file": "svgs/SweetPeaBouquet.svg"
   },
   {
     "name": "Sweet Window",
