@@ -174,6 +174,68 @@
     .dropdown-item:hover, .dropdown-item.highlighted { background: var(--blue-bg); color: var(--blue-dark); }
     .dropdown-empty { padding: 16px 18px; font-family: 'Nunito', sans-serif; font-size: 13px; color: #9bbbd4; text-align: center; }
 
+    .dropdown-item-btns {
+      display: none;
+      margin-left: auto;
+      gap: 5px;
+      flex-shrink: 0;
+      align-items: center;
+    }
+    .dropdown-item:hover .dropdown-item-btns { display: flex; }
+    .dropdown-item.highlighted .dropdown-item-btns { display: flex; }
+    .report-btn {
+      padding: 3px 7px;
+      border-radius: 5px;
+      border: 1.5px solid;
+      font-family: 'Nunito', sans-serif;
+      font-size: 10px;
+      font-weight: 800;
+      cursor: pointer;
+      line-height: 1.3;
+      white-space: nowrap;
+      transition: opacity 0.1s;
+    }
+    .report-btn:hover { opacity: 0.8; }
+    .report-btn.name-btn  { background: #fff8e1; border-color: #f0c040; color: #8a6000; }
+    .report-btn.broke-btn { background: #fff0f0; border-color: #e07070; color: #900; }
+
+    /* Report popup */
+    #report-popup {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.35);
+      z-index: 900;
+      align-items: center;
+      justify-content: center;
+    }
+    #report-popup.visible { display: flex; }
+    #report-popup-box {
+      background: #fff;
+      border-radius: 16px;
+      box-shadow: 0 8px 40px rgba(0,0,0,0.18);
+      padding: 24px 26px 20px;
+      width: 340px;
+      max-width: 90vw;
+      position: relative;
+      animation: popIn 0.18s cubic-bezier(.34,1.56,.64,1);
+    }
+    #report-popup-title { font-family: 'Fredoka One', cursive; font-size: 17px; margin-bottom: 6px; }
+    #report-popup-item  { font-family: 'Nunito', sans-serif; font-size: 12px; color: #7a9ab8; margin-bottom: 14px; }
+    #report-popup textarea {
+      width: 100%; box-sizing: border-box;
+      border: 1.5px solid #c0d8f0; border-radius: 9px;
+      padding: 9px 11px;
+      font-family: 'Nunito', sans-serif; font-size: 13px;
+      resize: none; outline: none; color: #334;
+      margin-bottom: 12px;
+    }
+    #report-popup textarea:focus { border-color: var(--blue); }
+    #report-popup-actions { display: flex; gap: 8px; }
+    #report-cancel-btn { flex:1; padding:9px; background:#eaf3ff; border:1.5px solid #c0d8f0; border-radius:9px; color:#336699; font-family:'Nunito',sans-serif; font-size:13px; font-weight:700; cursor:pointer; }
+    #report-submit-btn { flex:2; padding:9px; border:none; border-radius:9px; color:#fff; font-family:'Nunito',sans-serif; font-size:13px; font-weight:700; cursor:pointer; }
+    #report-popup-status { font-family:'Nunito',sans-serif; font-size:12px; text-align:center; margin-top:8px; min-height:16px; }
+
     #editor {
       width: 100%;
       display: none;
@@ -1456,9 +1518,29 @@
       img.alt = '';
       img.loading = 'lazy';
       const label = document.createElement('span');
+      label.style.flex = '1';
       label.textContent = item.name;
+
+      // Report buttons (shown on hover)
+      const btns = document.createElement('div');
+      btns.className = 'dropdown-item-btns';
+
+      const nameBtn = document.createElement('button');
+      nameBtn.className = 'report-btn name-btn';
+      nameBtn.textContent = '⚑ Wrong name';
+      nameBtn.addEventListener('mousedown', e => { e.stopPropagation(); e.preventDefault(); openReportPopup(item, 'name'); });
+
+      const brokeBtn = document.createElement('button');
+      brokeBtn.className = 'report-btn broke-btn';
+      brokeBtn.textContent = '⚠ Broken item';
+      brokeBtn.addEventListener('mousedown', e => { e.stopPropagation(); e.preventDefault(); openReportPopup(item, 'broken'); });
+
+      btns.appendChild(nameBtn);
+      btns.appendChild(brokeBtn);
+
       div.appendChild(img);
       div.appendChild(label);
+      div.appendChild(btns);
       div.addEventListener('mousedown', e => { e.preventDefault(); selectItem(item); });
       dropdownList.appendChild(div);
     });
@@ -3129,6 +3211,101 @@
   renderSaveSlots();
   if (designBank.length > 0) saveBankSection.classList.add('active');
   loadCatalog();
+
+  // ── REPORT SYSTEM ──────────────────────────────────────────────────────────
+  // Replace this URL with your Google Apps Script deployment URL
+  const REPORT_ENDPOINT = 'https://script.google.com/macros/s/AKfycbytjPj4CtApv4naC2RFu6TLnBpY6AA87H7M1fLh0WweQCXScOf8V5kycRa18Kd8Pq81hg/exec';
+
+  let _reportItem = null, _reportType = null;
+
+  function openReportPopup(item, type) {
+    _reportItem = item;
+    _reportType = type;
+    const popup = document.getElementById('report-popup');
+    const title = document.getElementById('report-popup-title');
+    const itemEl = document.getElementById('report-popup-item');
+    const submitBtn = document.getElementById('report-submit-btn');
+    const note = document.getElementById('report-note');
+    const status = document.getElementById('report-popup-status');
+
+    if (type === 'name') {
+      title.textContent = '⚑ Wrong Name';
+      title.style.color = '#8a6000';
+      submitBtn.style.background = '#e0a020';
+    } else {
+      title.textContent = '⚠ Broken Item';
+      title.style.color = '#900';
+      submitBtn.style.background = '#d04040';
+    }
+    itemEl.textContent = 'Item: ' + item.name;
+    note.value = '';
+    status.textContent = '';
+    status.style.color = '';
+    popup.classList.add('visible');
+    setTimeout(() => note.focus(), 100);
+  }
+
+  function closeReportPopup() {
+    document.getElementById('report-popup').classList.remove('visible');
+    _reportItem = null; _reportType = null;
+  }
+
+  async function submitReport() {
+    if (!_reportItem) return;
+    const note = document.getElementById('report-note').value.trim();
+    const status = document.getElementById('report-popup-status');
+    const submitBtn = document.getElementById('report-submit-btn');
+
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Sending…';
+    status.textContent = '';
+
+    try {
+      await fetch(REPORT_ENDPOINT, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          type: _reportType,
+          itemName: _reportItem.name,
+          itemFile: _reportItem.file,
+          note: note,
+          timestamp: new Date().toISOString()
+        })
+      });
+      status.textContent = '✓ Report sent! Thanks for the feedback.';
+      status.style.color = '#2a8a3a';
+      setTimeout(() => closeReportPopup(), 1800);
+    } catch(err) {
+      status.textContent = 'Failed to send — please try again.';
+      status.style.color = '#c03030';
+    }
+
+    submitBtn.disabled = false;
+    submitBtn.textContent = 'Send Report';
+  }
+
+  // Close popup on backdrop click
+  document.getElementById('report-popup').addEventListener('mousedown', e => {
+    if (e.target === document.getElementById('report-popup')) closeReportPopup();
+  });
+
+
 </script>
+  <!-- REPORT POPUP -->
+  <div id="report-popup">
+    <div id="report-popup-box">
+      <button onclick="closeReportPopup()" style="position:absolute;top:12px;right:12px;width:22px;height:22px;border-radius:50%;border:1.5px solid #c0d8f0;background:#eaf3ff;color:#336699;font-size:11px;cursor:pointer;line-height:1;">✕</button>
+      <div id="report-popup-title"></div>
+      <div id="report-popup-item"></div>
+      <textarea id="report-note" rows="3" placeholder="Optional: describe the issue or suggest the correct name…"></textarea>
+      <div id="report-popup-actions">
+        <button id="report-cancel-btn" onclick="closeReportPopup()">Cancel</button>
+        <button id="report-submit-btn" onclick="submitReport()">Send Report</button>
+      </div>
+      <div id="report-popup-status"></div>
+    </div>
+  </div>
+
 </body>
 </html>
