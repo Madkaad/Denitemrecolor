@@ -1400,6 +1400,9 @@
     svgEl.querySelectorAll('[data-cid]').forEach(el => {
       fills.push({ cid: el.getAttribute('data-cid'), fill: el.getAttribute('fill'), stopColor: el.getAttribute('stop-color'), fillOpacity: el.getAttribute('fill-opacity'), stopOpacity: el.getAttribute('stop-opacity') });
     });
+    svgEl.querySelectorAll('[data-stroke-cid]').forEach(el => {
+      fills.push({ cid: el.getAttribute('data-stroke-cid'), stroke: el.getAttribute('stroke'), strokeOpacity: el.getAttribute('stroke-opacity'), _isStroke: true });
+    });
     // Also snapshot per-wrap opacity values
     const opacities = [];
     document.getElementById('controls').querySelectorAll('.color-item').forEach(wrap => {
@@ -1408,6 +1411,10 @@
     const hiddenShapes = [];
     svgEl.querySelectorAll('path, rect, circle, ellipse, polygon, polyline').forEach((el, i) => {
       hiddenShapes.push({ idx: i, hidden: el.style.visibility === 'hidden' });
+    });
+    // Also snapshot stroke-element visibility by their data-stroke-cid
+    svgEl.querySelectorAll('[data-stroke-cid]').forEach(el => {
+      hiddenShapes.push({ strokeCid: el.getAttribute('data-stroke-cid'), hidden: el.style.visibility === 'hidden' });
     });
     return { fills, hiddenShapes, opacities };
   }
@@ -1423,7 +1430,15 @@
   function restoreMainSnapshot(snap) {
     if (!snap || !svgEl) return;
     // Restore fills and opacity attributes
-    snap.fills.forEach(({ cid, fill, stopColor, fillOpacity, stopOpacity }) => {
+    snap.fills.forEach(({ cid, fill, stopColor, fillOpacity, stopOpacity, stroke, strokeOpacity, _isStroke }) => {
+      if (_isStroke) {
+        const el = svgEl.querySelector(`[data-stroke-cid="${cid}"]`);
+        if (!el) return;
+        if (stroke !== null && stroke !== undefined) el.setAttribute('stroke', stroke);
+        if (strokeOpacity !== null && strokeOpacity !== undefined) el.setAttribute('stroke-opacity', strokeOpacity);
+        else el.removeAttribute('stroke-opacity');
+        return;
+      }
       const el = svgEl.querySelector(`[data-cid="${cid}"]`);
       if (!el) return;
       if (stopColor !== null && stopColor !== undefined) el.setAttribute('stop-color', stopColor);
@@ -1444,7 +1459,12 @@
     // Restore shape visibility
     if (snap.hiddenShapes) {
       const shapes = Array.from(svgEl.querySelectorAll('path, rect, circle, ellipse, polygon, polyline'));
-      snap.hiddenShapes.forEach(({ idx, hidden }) => {
+      snap.hiddenShapes.forEach(({ idx, hidden, strokeCid }) => {
+        if (strokeCid !== undefined) {
+          const el = svgEl.querySelector(`[data-stroke-cid="${strokeCid}"]`);
+          if (el) el.style.visibility = hidden ? 'hidden' : '';
+          return;
+        }
         if (shapes[idx]) shapes[idx].style.visibility = hidden ? 'hidden' : '';
       });
       hiddenColorIds.clear();
@@ -1461,10 +1481,9 @@
     }
     // Sync palette inputs to restored colors
     originalPaletteColors.forEach(({ ids, input, label }) => {
-      const el = svgEl.querySelector(`[data-cid="${ids[0]}"]`);
-      if (!el || !input) return;
-      const color = el.getAttribute('fill') || el.getAttribute('stop-color') || '';
-      if (color.startsWith('#')) { input.value = color; label.textContent = color.toUpperCase(); }
+      const color = getElColor(ids[0]);
+      if (!input || !color || !color.startsWith('#')) return;
+      input.value = color; label.textContent = color.toUpperCase();
     });
     // Sync opacity slider to show correct value for any selected items
     updateOpacitySliderDisplay();
@@ -1731,35 +1750,107 @@
   }
 
   function buildColorMap(svgNode, prefix) {
-    const elements = svgNode.querySelectorAll('[fill], stop');
     const colorMap = new Map();
-    elements.forEach((el, i) => {
+    let i = 0;
+
+    // ── fills and gradient stops (existing) ──────────────────────────────────
+    svgNode.querySelectorAll('[fill], stop').forEach(el => {
       const isStop = el.tagName === 'stop';
       const attr = isStop ? el.getAttribute('stop-color') : el.getAttribute('fill');
-      if (!attr || attr === 'none' || attr.includes('url')) return;
-      // Include semi-transparent blacks too — normalize them to solid color
+      if (!attr || attr === 'none' || attr.includes('url')) { i++; return; }
       const opacity = parseFloat(
         (isStop ? el.getAttribute('stop-opacity') : el.getAttribute('fill-opacity')) || '1'
       );
-      // Convert to hex — for low opacity treat as a visible tinted color
       let hex = rgbToHex(attr.toLowerCase());
-      if (!hex) return;
-      // If opacity is very low (effectively invisible) skip it
-      if (opacity < 0.05) return;
-      // Blend with white if semi-transparent so it shows as a real color
+      if (!hex) { i++; return; }
+      if (opacity < 0.05) { i++; return; }
       if (opacity < 1) {
         const r = parseInt(hex.slice(1,3),16), g = parseInt(hex.slice(3,5),16), b = parseInt(hex.slice(5,7),16);
-        const br = Math.round(r*opacity + 255*(1-opacity));
-        const bg = Math.round(g*opacity + 255*(1-opacity));
-        const bb = Math.round(b*opacity + 255*(1-opacity));
-        hex = '#' + [br,bg,bb].map(x=>x.toString(16).padStart(2,'0')).join('');
+        hex = '#' + [
+          Math.round(r*opacity + 255*(1-opacity)),
+          Math.round(g*opacity + 255*(1-opacity)),
+          Math.round(b*opacity + 255*(1-opacity))
+        ].map(x=>x.toString(16).padStart(2,'0')).join('');
       }
       const uid = `${prefix}-${i}`;
       el.setAttribute('data-cid', uid);
       if (!colorMap.has(hex)) colorMap.set(hex, []);
       colorMap.get(hex).push(uid);
+      i++;
     });
+
+    // ── strokes ──────────────────────────────────────────────────────────────
+    svgNode.querySelectorAll('[stroke]').forEach(el => {
+      const attr = el.getAttribute('stroke');
+      if (!attr || attr === 'none' || attr.includes('url')) { i++; return; }
+      const opacity = parseFloat(el.getAttribute('stroke-opacity') || '1');
+      let hex = rgbToHex(attr.toLowerCase());
+      if (!hex) { i++; return; }
+      if (opacity < 0.05) { i++; return; }
+      if (opacity < 1) {
+        const r = parseInt(hex.slice(1,3),16), g = parseInt(hex.slice(3,5),16), b = parseInt(hex.slice(5,7),16);
+        hex = '#' + [
+          Math.round(r*opacity + 255*(1-opacity)),
+          Math.round(g*opacity + 255*(1-opacity)),
+          Math.round(b*opacity + 255*(1-opacity))
+        ].map(x=>x.toString(16).padStart(2,'0')).join('');
+      }
+      const uid = `stroke-${prefix}-${i}`;
+      el.setAttribute('data-stroke-cid', uid);
+      if (!colorMap.has(hex)) colorMap.set(hex, []);
+      colorMap.get(hex).push(uid);
+      i++;
+    });
+
     return colorMap;
+  }
+
+  // ── ELEMENT LOOKUP + COLOR SETTER ────────────────────────────────────────
+  function svgElByUid(uid) {
+    if (uid.startsWith('stroke-')) return svgEl.querySelector(`[data-stroke-cid="${uid}"]`);
+    return svgEl.querySelector(`[data-cid="${uid}"]`);
+  }
+
+  function isStrokeUid(uid) { return uid.startsWith('stroke-'); }
+
+  function setElColor(uid, color) {
+    const el = svgElByUid(uid);
+    if (!el) return;
+    if (isStrokeUid(uid)) {
+      el.setAttribute('stroke', color);
+    } else if (el.tagName === 'stop') {
+      el.setAttribute('stop-color', color);
+    } else {
+      el.setAttribute('fill', color);
+    }
+  }
+
+  function setElOpacity(uid, value) {
+    const el = svgElByUid(uid);
+    if (!el) return;
+    if (isStrokeUid(uid)) {
+      el.setAttribute('stroke-opacity', value);
+    } else if (el.tagName === 'stop') {
+      el.setAttribute('stop-opacity', value);
+    } else {
+      el.setAttribute('fill-opacity', value);
+    }
+  }
+
+  function removeElOpacity(uid) {
+    const el = svgElByUid(uid);
+    if (!el) return;
+    if (isStrokeUid(uid)) el.removeAttribute('stroke-opacity');
+    else if (el.tagName === 'stop') el.removeAttribute('stop-opacity');
+    else el.removeAttribute('fill-opacity');
+  }
+
+  function getElColor(uid) {
+    const el = svgElByUid(uid);
+    if (!el) return null;
+    if (isStrokeUid(uid)) return el.getAttribute('stroke');
+    if (el.tagName === 'stop') return el.getAttribute('stop-color');
+    return el.getAttribute('fill');
   }
 
   let selectedColorItems = new Set(); // set of wrap elements
@@ -1775,8 +1866,10 @@
 
   function getHighlightEls(ids) {
     return ids.flatMap(id => {
-      const el = svgEl.querySelector(`[data-cid="${id}"]`);
+      const el = svgElByUid(id);
       if (!el) return [];
+      // stroke element — highlight the element itself
+      if (isStrokeUid(id)) return [el];
       if (el.tagName === 'stop') {
         const grad = el.closest('linearGradient, radialGradient');
         if (!grad) return [];
@@ -1878,11 +1971,7 @@
         const newColor = e.target.value;
         label.textContent = newColor.toUpperCase();
         const applyToIds = (applyIds) => {
-          applyIds.forEach(id => {
-            const el = svgEl.querySelector(`[data-cid="${id}"]`);
-            if (!el) return;
-            el.getAttribute('stop-color') !== null ? el.setAttribute('stop-color', newColor) : el.setAttribute('fill', newColor);
-          });
+          applyIds.forEach(id => { setElColor(id, newColor); });
         };
         applyToIds(ids);
         if (selectedColorItems.size > 1 && selectedColorItems.has(wrap)) {
@@ -1895,11 +1984,7 @@
             const shifted = hslToHex(wh+dh, ws+ds, wl+dl);
             w.querySelector('input[type="color"]').value = shifted;
             w.querySelector('.hex-text').textContent = shifted.toUpperCase();
-            w._ids.forEach(id => {
-              const el = svgEl.querySelector(`[data-cid="${id}"]`);
-              if (!el) return;
-              el.getAttribute('stop-color') !== null ? el.setAttribute('stop-color', shifted) : el.setAttribute('fill', shifted);
-            });
+            w._ids.forEach(id => { setElColor(id, shifted); });
           });
         }
         clearHighlight();
@@ -2080,11 +2165,7 @@
       const [h,s,l] = hexToHsl(hex);
       const newHex = hslToHex(h+dh, s+ds, l+db);
       if (input) { input.value = newHex; label.textContent = newHex.toUpperCase(); }
-      ids.forEach(id => {
-        const el = svgEl.querySelector(`[data-cid="${id}"]`);
-        if (!el) return;
-        el.getAttribute('stop-color') !== null ? el.setAttribute('stop-color', newHex) : el.setAttribute('fill', newHex);
-      });
+      ids.forEach(id => { setElColor(id, newHex); });
     });
     refreshPreview();
   }
@@ -2125,15 +2206,7 @@
     targets.forEach(({ ids, input }) => {
       const w = input && (input.closest('.color-item') || input.parentElement);
       if (w) w._opacity = opacityValue;
-      ids.forEach(id => {
-        const el = svgEl.querySelector(`[data-cid="${id}"]`);
-        if (!el) return;
-        if (el.tagName === 'stop') {
-          el.setAttribute('stop-opacity', opacityValue);
-        } else {
-          el.setAttribute('fill-opacity', opacityValue);
-        }
-      });
+      ids.forEach(id => { setElOpacity(id, opacityValue); });
     });
     refreshPreview();
   }
@@ -2173,12 +2246,8 @@
         const w = input && (input.closest('.color-item') || input.parentElement);
         if (w) w._opacity = 1;
         ids.forEach(id => {
-          const el = svgEl.querySelector(`[data-cid="${id}"]`);
-          if (!el) return;
-          el.getAttribute('stop-color') !== null ? el.setAttribute('stop-color', hex) : el.setAttribute('fill', hex);
-          // Reset opacity attributes
-          if (el.tagName === 'stop') el.removeAttribute('stop-opacity');
-          else el.removeAttribute('fill-opacity');
+          setElColor(id, hex);
+          removeElOpacity(id);
         });
       });
       refreshPreview();
@@ -2228,10 +2297,14 @@
       hiddenColorIds.delete(wrap);
       wrap.classList.remove('color-hidden');
       ids.forEach(id => {
+        if (isStrokeUid(id)) {
+          const el = svgEl.querySelector(`[data-stroke-cid="${id}"]`);
+          if (el) el.style.visibility = '';
+          return;
+        }
         const el = svgEl.querySelector(`[data-cid="${id}"]`);
         if (!el) return;
         el.style.visibility = '';
-        // Also restore any gradient shapes
         if (el.tagName === 'stop') {
           const grad = el.closest('linearGradient, radialGradient');
           if (!grad) return;
@@ -2246,6 +2319,11 @@
       hiddenColorIds.add(wrap);
       wrap.classList.add('color-hidden');
       ids.forEach(id => {
+        if (isStrokeUid(id)) {
+          const el = svgEl.querySelector(`[data-stroke-cid="${id}"]`);
+          if (el) el.style.visibility = 'hidden';
+          return;
+        }
         const el = svgEl.querySelector(`[data-cid="${id}"]`);
         if (!el) return;
         if (el.tagName !== 'stop') {
