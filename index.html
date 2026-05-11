@@ -2358,37 +2358,38 @@
 
   // Split SVG compound paths into individual subpath elements in the DOM.
   // Returns a flat list of all resulting individual shape elements.
+  // Properly split SVG path d attribute into individual subpaths
+  function splitPathD(d) {
+    // Tokenise: split at every letter that starts a new command
+    // M/m always starts a new subpath — split there (but not at first M)
+    const tokens = d.trim().split(/(?=[MmZzLlHhVvCcSsQqTtAa])/);
+    const subpaths = [];
+    let current = '';
+    for (const tok of tokens) {
+      const cmd = tok.trim()[0];
+      if ((cmd === 'M' || cmd === 'm') && current.trim().length > 0) {
+        subpaths.push(current.trim());
+        current = tok;
+      } else {
+        current += tok;
+      }
+    }
+    if (current.trim().length > 0) subpaths.push(current.trim());
+    return subpaths.filter(s => s.length > 1);
+  }
+
   function getIndividualShapes() {
     if (!svgEl) return [];
     const result = [];
-    const selector = 'path, rect, circle, ellipse, polygon, polyline';
-    svgEl.querySelectorAll(selector).forEach(el => {
+    svgEl.querySelectorAll('path, rect, circle, ellipse, polygon, polyline').forEach(el => {
       if (el.tagName !== 'path') { result.push(el); return; }
       const d = el.getAttribute('d') || '';
-      // Split on M/m that starts a new subpath (look-ahead on uppercase M or lowercase m)
-      // Convert relative m after first to absolute first
-      const raw = d.trim();
-      // Find all M/m command positions
-      const starts = [];
-      let inStr = raw;
-      let pos = 0;
-      // Walk through d to find M/m positions
-      for (let i = 0; i < raw.length; i++) {
-        if ((raw[i] === 'M' || raw[i] === 'm') && i > 0) starts.push(i);
-      }
-      if (starts.length === 0) { result.push(el); return; }
-      // Multiple subpaths — split and create clones
-      const subpaths = [];
-      let prev = 0;
-      for (const s of starts) { subpaths.push(raw.slice(prev, s)); prev = s; }
-      subpaths.push(raw.slice(prev));
-      // Remove empty
-      const valid = subpaths.filter(s => s.trim().length > 1);
-      if (valid.length <= 1) { result.push(el); return; }
-      valid.forEach((sub, i) => {
+      const subpaths = splitPathD(d);
+      if (subpaths.length <= 1) { result.push(el); return; }
+      // Multiple subpaths — split into separate elements in the DOM
+      subpaths.forEach((sub, i) => {
         if (i === 0) {
-          // Reuse original for first subpath
-          el.setAttribute('data-orig-d', raw);
+          el.setAttribute('data-orig-d', d);
           el.setAttribute('d', sub);
           result.push(el);
         } else {
@@ -2396,6 +2397,7 @@
           clone.setAttribute('d', sub);
           clone.setAttribute('data-compound-clone', '1');
           clone.removeAttribute('data-orig-d');
+          // Insert after original so z-order is preserved
           el.parentNode.insertBefore(clone, el.nextSibling);
           result.push(clone);
         }
@@ -2537,7 +2539,14 @@
     refreshPreview();
   }
 
+  let _advDragAbort = null; // AbortController for adv drag listener
+
   function setupAdvHideDrag(grid) {
+    // Remove any previous listener before adding a new one
+    if (_advDragAbort) { _advDragAbort.abort(); }
+    _advDragAbort = new AbortController();
+    const signal = _advDragAbort.signal;
+
     grid.addEventListener('pointerdown', e => {
       if (e.button !== 0) return;
       const wrap = e.target.closest('.color-item');
@@ -2563,7 +2572,7 @@
       };
       grid.addEventListener('pointermove', onMove);
       grid.addEventListener('pointerup', onUp);
-    });
+    }, { signal });
   }
 
   // ── END ADVANCED HIDE MODE ─────────────────────────────────────────────────
