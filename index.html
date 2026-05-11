@@ -714,7 +714,7 @@
 
     #controls-hide-mirror .color-item.color-hidden:hover,
     #controls-hide-advanced .color-item.color-hidden:hover {
-      opacity: 0.55;
+      opacity: 0.85;
     }
 
     #hide-colors-btn.active {
@@ -1691,10 +1691,6 @@
       else { const res = await fetch(item.file); svgText = await res.text(); }
       const parser = new DOMParser();
       svgEl = parser.parseFromString(svgText, 'image/svg+xml').querySelector('svg');
-      // Flatten <use> references and split compound paths ONCE at load time.
-      // Every tab (recolor, hide, advanced) then operates on the same DOM.
-      flattenSvgUses();
-      splitAllCompoundPaths();
       fixBlacks();
       initPalette();
       initLayers();
@@ -1767,6 +1763,7 @@
         target.setAttribute('stroke-linejoin', 'round');
         target.removeAttribute('display');
         target.style.display = '';
+        target.style.visibility = 'visible'; // show outline even if shape is hidden
       }
     });
     const xml = new XMLSerializer().serializeToString(clone);
@@ -1783,81 +1780,6 @@
   function clearHighlight() { highlightCanvas.style.opacity = '0'; }
 
   // ── FIX BLACKS ────────────────────────────────────────────────────────────
-  // ── FLATTEN <use> REFERENCES ───────────────────────────────────────────────
-  // SVGs from Flash/ffdec render via <use xlink:href="#shapeN"> in <defs>.
-  // We inline them as real DOM nodes at load time so every subsequent
-  // querySelectorAll call finds the actual visible elements.
-  function _flattenUses(container, svgRoot, depth) {
-    if (depth > 20) return;
-    Array.from(container.childNodes).forEach(child => {
-      if (child.nodeType !== 1) return;
-      if (child.tagName === 'use') {
-        const href = child.getAttribute('xlink:href') || child.getAttribute('href') || '';
-        const refId = href.startsWith('#') ? href.slice(1) : '';
-        const ref = refId ? svgRoot.getElementById(refId) : null;
-        if (!ref) return;
-        const g = document.createElementNS('http://www.w3.org/2000/svg', 'g');
-        const refT = ref.getAttribute('transform') || '';
-        const useT = child.getAttribute('transform') || '';
-        const combined = [refT, useT].filter(Boolean).join(' ');
-        if (combined) g.setAttribute('transform', combined);
-        g.setAttribute('data-flattened-use', '1');
-        Array.from(ref.childNodes).forEach(n => g.appendChild(n.cloneNode(true)));
-        child.parentNode.insertBefore(g, child);
-        child.parentNode.removeChild(child);
-        _flattenUses(g, svgRoot, depth + 1);
-      } else {
-        _flattenUses(child, svgRoot, depth + 1);
-      }
-    });
-  }
-  function flattenSvgUses() {
-    if (!svgEl || svgEl.getAttribute('data-uses-flattened')) return;
-    if (!svgEl.querySelector('use')) return;
-    _flattenUses(svgEl, svgEl, 0);
-    svgEl.setAttribute('data-uses-flattened', '1');
-  }
-
-  // ── SPLIT COMPOUND PATHS ─────────────────────────────────────────────────
-  // Split every compound path (multiple M commands) into individual <path>
-  // elements permanently at load time. Each split sibling gets
-  // data-compound-group="N" so the regular recolor tab can group them back
-  // together into one swatch, while advanced mode shows each individually.
-  function _splitPathD(d) {
-    const tokens = d.trim().split(/(?=[MmZzLlHhVvCcSsQqTtAa])/);
-    const subpaths = []; let current = '';
-    for (const tok of tokens) {
-      const cmd = tok.trim()[0];
-      if ((cmd === 'M' || cmd === 'm') && current.trim().length > 0) {
-        subpaths.push(current.trim()); current = tok;
-      } else { current += tok; }
-    }
-    if (current.trim().length > 0) subpaths.push(current.trim());
-    return subpaths.filter(s => s.length > 1);
-  }
-
-  let _compoundGroupCounter = 0;
-  function splitAllCompoundPaths() {
-    if (!svgEl || svgEl.getAttribute('data-paths-split')) return;
-    svgEl.querySelectorAll('path').forEach(el => {
-      if (el.closest('defs')) return;
-      const d = el.getAttribute('d') || '';
-      const subs = _splitPathD(d);
-      if (subs.length <= 1) return;
-      const groupId = ++_compoundGroupCounter;
-      el.setAttribute('d', subs[0]);
-      el.setAttribute('data-compound-group', groupId);
-      subs.slice(1).forEach(sub => {
-        const clone = el.cloneNode(true);
-        clone.setAttribute('d', sub);
-        clone.setAttribute('data-compound-group', groupId);
-        clone.removeAttribute('data-cid'); // will be assigned by buildColorMap
-        el.parentNode.insertBefore(clone, el.nextSibling);
-      });
-    });
-    svgEl.setAttribute('data-paths-split', '1');
-  }
-
   function fixBlacks() {
     const isBlack = v => v && ['#000000','#000','black'].includes(v.toLowerCase());
     svgEl.querySelectorAll('[fill]').forEach(el => { if (isBlack(el.getAttribute('fill'))) el.setAttribute('fill-opacity', '0.2'); });
@@ -1894,8 +1816,6 @@
     // ── fills and gradient stops (existing) ──────────────────────────────────
     svgNode.querySelectorAll('[fill], stop').forEach(el => {
       const isStop = el.tagName === 'stop';
-      // Skip template elements in <defs> (non-stops) — only live nodes get tagged
-      if (!isStop && el.closest('defs')) { i++; return; }
       const attr = isStop ? el.getAttribute('stop-color') : el.getAttribute('fill');
       if (!attr || attr === 'none' || attr.includes('url')) { i++; return; }
       const opacity = parseFloat(
@@ -1921,7 +1841,6 @@
 
     // ── strokes ──────────────────────────────────────────────────────────────
     svgNode.querySelectorAll('[stroke]').forEach(el => {
-      if (el.closest('defs')) { i++; return; }
       const attr = el.getAttribute('stroke');
       if (!attr || attr === 'none' || attr.includes('url')) { i++; return; }
       const opacity = parseFloat(el.getAttribute('stroke-opacity') || '1');
@@ -2438,12 +2357,65 @@
   let advHideMode = false;
   const hiddenShapeEls = new Set(); // individually hidden shape elements
 
-  // Individual shapes for advanced mode — paths are already split at load time
-  // by splitAllCompoundPaths(), so we just query the live DOM directly.
+  // Split SVG compound paths into individual subpath elements in the DOM.
+  // Returns a flat list of all resulting individual shape elements.
+  // Properly split SVG path d attribute into individual subpaths
+  function splitPathD(d) {
+    // Tokenise: split at every letter that starts a new command
+    // M/m always starts a new subpath — split there (but not at first M)
+    const tokens = d.trim().split(/(?=[MmZzLlHhVvCcSsQqTtAa])/);
+    const subpaths = [];
+    let current = '';
+    for (const tok of tokens) {
+      const cmd = tok.trim()[0];
+      if ((cmd === 'M' || cmd === 'm') && current.trim().length > 0) {
+        subpaths.push(current.trim());
+        current = tok;
+      } else {
+        current += tok;
+      }
+    }
+    if (current.trim().length > 0) subpaths.push(current.trim());
+    return subpaths.filter(s => s.length > 1);
+  }
+
   function getIndividualShapes() {
     if (!svgEl) return [];
-    return Array.from(svgEl.querySelectorAll('path, rect, circle, ellipse, polygon, polyline'))
-      .filter(el => !el.closest('defs'));
+    const result = [];
+    svgEl.querySelectorAll('path, rect, circle, ellipse, polygon, polyline').forEach(el => {
+      if (el.tagName !== 'path') { result.push(el); return; }
+      const d = el.getAttribute('d') || '';
+      const subpaths = splitPathD(d);
+      if (subpaths.length <= 1) { result.push(el); return; }
+      // Multiple subpaths — split into separate elements in the DOM
+      subpaths.forEach((sub, i) => {
+        if (i === 0) {
+          el.setAttribute('data-orig-d', d);
+          el.setAttribute('d', sub);
+          result.push(el);
+        } else {
+          const clone = el.cloneNode(true);
+          clone.setAttribute('d', sub);
+          clone.setAttribute('data-compound-clone', '1');
+          clone.removeAttribute('data-orig-d');
+          // Insert after original so z-order is preserved
+          el.parentNode.insertBefore(clone, el.nextSibling);
+          result.push(clone);
+        }
+      });
+    });
+    return result;
+  }
+
+  // Restore compound paths split by getIndividualShapes
+  function restoreCompoundPaths() {
+    // Restore original d on split originals
+    svgEl.querySelectorAll('[data-orig-d]').forEach(el => {
+      el.setAttribute('d', el.getAttribute('data-orig-d'));
+      el.removeAttribute('data-orig-d');
+    });
+    // Remove clones
+    svgEl.querySelectorAll('[data-compound-clone]').forEach(el => el.remove());
   }
 
   function toggleAdvHide() {
@@ -2484,8 +2456,9 @@
     if (hint) hint.textContent = '';
     mirror.style.display = '';
     advGrid.style.display = 'none';
-    // Paths are permanently split at load time — nothing to restore.
-    // Hidden shapes stay hidden; their visibility was already set on the element.
+    const stillHidden = new Set(hiddenShapeEls);
+    restoreCompoundPaths();
+    stillHidden.forEach(el => { if (el.parentNode) el.style.visibility = 'hidden'; });
     refreshPreview();
   }
 
@@ -2494,7 +2467,8 @@
     advGrid.innerHTML = '';
     if (!svgEl) return;
 
-    // Paths are already split at load time — just query them directly
+    // Split compound paths first
+    restoreCompoundPaths(); // clean up any previous split
     const shapes = getIndividualShapes();
 
     if (!shapes.length) {
@@ -2604,11 +2578,7 @@
 
   // ── END ADVANCED HIDE MODE ─────────────────────────────────────────────────
 
-  let _hideDragAbort = null;
   function setupHideDrag(grid) {
-    if (_hideDragAbort) _hideDragAbort.abort();
-    _hideDragAbort = new AbortController();
-    const signal = _hideDragAbort.signal;
     grid.addEventListener('pointerdown', e => {
       if (e.button !== 0) return;
       const mirrorWrap = e.target.closest('.color-item');
@@ -2630,7 +2600,7 @@
       const onUp = () => { grid.releasePointerCapture(e.pointerId); grid.removeEventListener('pointermove', onMove); grid.removeEventListener('pointerup', onUp); };
       grid.addEventListener('pointermove', onMove);
       grid.addEventListener('pointerup', onUp);
-    }, { signal });
+    });
   }
 
   function toggleHideColorByWrap(srcWrap, mirrorWrap) {
