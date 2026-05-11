@@ -702,15 +702,18 @@
       pointer-events: none;
     }
 
-    #controls-hide-mirror .color-item {
+    #controls-hide-mirror .color-item,
+    #controls-hide-advanced .color-item {
       cursor: crosshair;
     }
 
-    #controls-hide-mirror .color-item:hover {
+    #controls-hide-mirror .color-item:hover,
+    #controls-hide-advanced .color-item:hover {
       opacity: 0.6;
     }
 
-    #controls-hide-mirror .color-item.color-hidden:hover {
+    #controls-hide-mirror .color-item.color-hidden:hover,
+    #controls-hide-advanced .color-item.color-hidden:hover {
       opacity: 0.55;
     }
 
@@ -1261,9 +1264,20 @@
         </div>
 
         <div id="pane-hide" style="display:none;flex-direction:column;gap:10px;">
-          <div style="display:flex;gap:6px;align-items:center;margin-bottom:2px;">
-            <button id="adv-hide-btn" onclick="toggleAdvHide()" style="padding:5px 10px;background:rgba(255,255,255,0.1);border:1.5px solid rgba(255,255,255,0.2);border-radius:7px;color:rgba(255,255,255,0.6);font-family:'Nunito',sans-serif;font-size:11px;font-weight:700;cursor:pointer;transition:all 0.15s;">⚡ Advanced</button>
+          <div style="display:flex;gap:6px;align-items:center;margin-bottom:2px;flex-wrap:wrap;">
+            <button id="adv-hide-btn" onclick="toggleAdvHide()" style="padding:5px 10px;background:rgba(255,255,255,0.1);border:1.5px solid rgba(255,255,255,0.2);border-radius:7px;color:rgba(255,255,255,0.6);font-family:'Nunito',sans-serif;font-size:11px;font-weight:700;cursor:pointer;transition:all 0.15s;">Advanced: Hide layers individually</button>
             <span id="adv-hide-hint" style="font-family:'Nunito',sans-serif;font-size:10px;color:rgba(255,255,255,0.4);line-height:1.3;"></span>
+          </div>
+          <!-- Advanced warning popup -->
+          <div id="adv-warn-popup" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.4);z-index:800;align-items:center;justify-content:center;">
+            <div style="background:#fff;border-radius:14px;box-shadow:0 8px 32px rgba(0,0,0,0.18);padding:22px 24px 18px;max-width:320px;width:90%;position:relative;">
+              <div style="font-family:'Nunito',sans-serif;font-size:15px;font-weight:800;color:#c06000;margin-bottom:8px;">⚠ Heads up</div>
+              <div style="font-family:'Nunito',sans-serif;font-size:13px;color:#5a7a9a;line-height:1.6;margin-bottom:14px;">This mode splits compound paths to give you individual control over each shape. It may not work correctly on every item.</div>
+              <div style="display:flex;gap:8px;">
+                <button onclick="document.getElementById('adv-warn-popup').style.display='none';" style="flex:1;padding:8px;background:#eaf3ff;border:1.5px solid #c0d8f0;border-radius:8px;color:#336699;font-family:'Nunito',sans-serif;font-size:12px;font-weight:700;cursor:pointer;">Cancel</button>
+                <button onclick="document.getElementById('adv-warn-popup').style.display='none';activateAdvHide();" style="flex:2;padding:8px;background:#2a7ad4;border:none;border-radius:8px;color:#fff;font-family:'Nunito',sans-serif;font-size:12px;font-weight:700;cursor:pointer;">Got it, continue</button>
+              </div>
+            </div>
           </div>
           <div class="palette-grid hide-mode" id="controls-hide-mirror"></div>
           <div class="palette-grid hide-mode" id="controls-hide-advanced" style="display:none;"></div>
@@ -1663,19 +1677,12 @@
     clearColorSelection();
     hiddenColorIds = new Set();
     // Reset advanced hide
-    if (typeof advHideMode !== 'undefined') {
-      advHideMode = false;
-      if (typeof hiddenShapeEls !== 'undefined') hiddenShapeEls.clear();
-      if (svgEl && typeof restoreCompoundPaths === 'function') restoreCompoundPaths();
-      const _ag = document.getElementById('controls-hide-advanced');
-      const _m = document.getElementById('controls-hide-mirror');
-      if (_ag) { _ag.style.display = 'none'; _ag.innerHTML = ''; }
-      if (_m) _m.style.display = '';
-      const _b = document.getElementById('adv-hide-btn');
-      if (_b) { _b.textContent = '⚡ Advanced'; _b.style.background = 'rgba(255,255,255,0.1)'; _b.style.borderColor = 'rgba(255,255,255,0.2)'; _b.style.color = 'rgba(255,255,255,0.6)'; }
-      const _h = document.getElementById('adv-hide-hint');
-      if (_h) _h.textContent = '';
+    if (typeof advHideMode !== 'undefined' && advHideMode) {
+      deactivateAdvHide();
     }
+    if (typeof hiddenShapeEls !== 'undefined') hiddenShapeEls.clear();
+    const _ag = document.getElementById('controls-hide-advanced');
+    if (_ag) _ag.innerHTML = '';
     setColorTab('colors');
     try {
       let svgText;
@@ -2409,36 +2416,47 @@
   }
 
   function toggleAdvHide() {
-    advHideMode = !advHideMode;
+    if (!advHideMode) {
+      // Show warning first
+      document.getElementById('adv-warn-popup').style.display = 'flex';
+    } else {
+      deactivateAdvHide();
+    }
+  }
+
+  function activateAdvHide() {
+    advHideMode = true;
     const btn = document.getElementById('adv-hide-btn');
     const hint = document.getElementById('adv-hide-hint');
     const mirror = document.getElementById('controls-hide-mirror');
     const advGrid = document.getElementById('controls-hide-advanced');
-    if (advHideMode) {
-      btn.textContent = '⚡ Advanced ON';
-      btn.style.background = 'rgba(255,220,50,0.2)';
-      btn.style.borderColor = 'rgba(255,220,50,0.4)';
-      btn.style.color = '#ffe066';
-      if (hint) hint.textContent = 'every shape individually — splits compound paths';
-      mirror.style.display = 'none';
-      advGrid.style.display = '';
-      buildAdvHideGrid();
-    } else {
-      btn.textContent = '⚡ Advanced';
-      btn.style.background = 'rgba(255,255,255,0.1)';
-      btn.style.borderColor = 'rgba(255,255,255,0.2)';
-      btn.style.color = 'rgba(255,255,255,0.6)';
-      if (hint) hint.textContent = '';
-      mirror.style.display = '';
-      advGrid.style.display = 'none';
-      // Restore split paths but keep hidden state via visibility
-      // Hidden shapes stay hidden (tracked in hiddenShapeEls before restore)
-      const stillHidden = new Set(hiddenShapeEls);
-      restoreCompoundPaths();
-      // Re-hide anything that was hidden (by matching data-cid or position)
-      stillHidden.forEach(el => { if (el.parentNode) el.style.visibility = 'hidden'; });
-      refreshPreview();
-    }
+    btn.textContent = 'Advanced: Hide layers individually (ON)';
+    btn.style.background = 'rgba(255,220,50,0.2)';
+    btn.style.borderColor = 'rgba(255,220,50,0.4)';
+    btn.style.color = '#ffe066';
+    if (hint) hint.textContent = 'click or drag to hide/show individual shapes';
+    mirror.style.display = 'none';
+    advGrid.style.display = '';
+    buildAdvHideGrid();
+  }
+
+  function deactivateAdvHide() {
+    advHideMode = false;
+    const btn = document.getElementById('adv-hide-btn');
+    const hint = document.getElementById('adv-hide-hint');
+    const mirror = document.getElementById('controls-hide-mirror');
+    const advGrid = document.getElementById('controls-hide-advanced');
+    btn.textContent = 'Advanced: Hide layers individually';
+    btn.style.background = 'rgba(255,255,255,0.1)';
+    btn.style.borderColor = 'rgba(255,255,255,0.2)';
+    btn.style.color = 'rgba(255,255,255,0.6)';
+    if (hint) hint.textContent = '';
+    mirror.style.display = '';
+    advGrid.style.display = 'none';
+    const stillHidden = new Set(hiddenShapeEls);
+    restoreCompoundPaths();
+    stillHidden.forEach(el => { if (el.parentNode) el.style.visibility = 'hidden'; });
+    refreshPreview();
   }
 
   function buildAdvHideGrid() {
