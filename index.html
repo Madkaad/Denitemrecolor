@@ -2480,9 +2480,6 @@
     advGrid.innerHTML = '';
     if (!svgEl) return;
 
-    // Paths are already individually split at load time — just query them.
-    // Preserve DOM order (= z-order) rather than sorting by hue,
-    // so the grid reflects layer order and each shape is truly individual.
     const shapes = getIndividualShapes();
 
     if (!shapes.length) {
@@ -2490,7 +2487,14 @@
       return;
     }
 
-    shapes.forEach((shape, i) => {
+    const sorted = shapes.slice().sort((a, b) => {
+      const fa = a.getAttribute('fill') || '', fb = b.getAttribute('fill') || '';
+      const okA = fa.startsWith('#'), okB = fb.startsWith('#');
+      if (!okA && !okB) return 0; if (!okA) return 1; if (!okB) return -1;
+      try { return hexToHsl(fa)[0] - hexToHsl(fb)[0]; } catch(e) { return 0; }
+    });
+
+    sorted.forEach((shape, i) => {
       const fill = shape.getAttribute('fill') || '';
       const isHidden = shape.style.visibility === 'hidden' || hiddenShapeEls.has(shape);
 
