@@ -1754,7 +1754,6 @@
         const bb = Math.round(b*opacity + 255*(1-opacity));
         hex = '#' + [br,bg,bb].map(x=>x.toString(16).padStart(2,'0')).join('');
       }
-      if (hex === '#000000' || hex === '#ffffff') return;
       const uid = `${prefix}-${i}`;
       el.setAttribute('data-cid', uid);
       if (!colorMap.has(hex)) colorMap.set(hex, []);
