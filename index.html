@@ -1261,7 +1261,12 @@
         </div>
 
         <div id="pane-hide" style="display:none;flex-direction:column;gap:10px;">
+          <div style="display:flex;gap:6px;align-items:center;margin-bottom:2px;">
+            <button id="adv-hide-btn" onclick="toggleAdvHide()" style="flex:1;padding:5px 8px;background:rgba(255,255,255,0.1);border:1.5px solid rgba(255,255,255,0.2);border-radius:7px;color:rgba(255,255,255,0.6);font-family:'Nunito',sans-serif;font-size:11px;font-weight:700;cursor:pointer;transition:all 0.15s;">⚡ Advanced</button>
+            <span id="adv-hide-hint" style="font-family:'Nunito',sans-serif;font-size:10px;color:rgba(255,255,255,0.4);flex:2;line-height:1.3;"></span>
+          </div>
           <div class="palette-grid hide-mode" id="controls-hide-mirror"></div>
+          <div class="palette-grid hide-mode" id="controls-hide-advanced" style="display:none;"></div>
           <!-- Action buttons at bottom -->
           <div id="hide-action-btns" style="display:flex;gap:8px;margin-top:6px;padding-top:10px;border-top:1.5px solid rgba(255,255,255,0.15);">
             <button id="hide-all-btn" class="layer-action-btn">Hide All</button>
@@ -1658,6 +1663,17 @@
     mainUndoStack = []; mainRedoStack = [];
     clearColorSelection();
     hiddenColorIds = new Set();
+    // Reset advanced hide state
+    if (typeof hiddenShapeEls !== 'undefined') hiddenShapeEls.clear();
+    advHideMode = false;
+    const _advGrid = document.getElementById('controls-hide-advanced');
+    const _mirror = document.getElementById('controls-hide-mirror');
+    if (_advGrid) { _advGrid.style.display = 'none'; _advGrid.innerHTML = ''; }
+    if (_mirror) _mirror.style.display = '';
+    const _advBtn = document.getElementById('adv-hide-btn');
+    if (_advBtn) { _advBtn.textContent = '⚡ Advanced'; _advBtn.style.background = 'rgba(255,255,255,0.1)'; _advBtn.style.borderColor = 'rgba(255,255,255,0.2)'; _advBtn.style.color = 'rgba(255,255,255,0.6)'; }
+    const _hint = document.getElementById('adv-hide-hint');
+    if (_hint) _hint.textContent = '';
     setColorTab('colors');
     try {
       let svgText;
@@ -2307,6 +2323,135 @@
     setupHideDrag(dst);
   }
 
+  // ── ADVANCED HIDE MODE ────────────────────────────────────────────────────
+  let advHideMode = false;
+  // Maps individual shape element → its hidden state (separate from color-group hiding)
+  const hiddenShapeEls = new Set();
+
+  function toggleAdvHide() {
+    advHideMode = !advHideMode;
+    const btn = document.getElementById('adv-hide-btn');
+    const hint = document.getElementById('adv-hide-hint');
+    const mirror = document.getElementById('controls-hide-mirror');
+    const advGrid = document.getElementById('controls-hide-advanced');
+    if (advHideMode) {
+      btn.textContent = '⚡ Advanced ON';
+      btn.style.background = 'rgba(255,220,50,0.2)';
+      btn.style.borderColor = 'rgba(255,220,50,0.4)';
+      btn.style.color = '#ffe066';
+      if (hint) hint.textContent = 'individual shapes — same color ≠ same swatch';
+      mirror.style.display = 'none';
+      advGrid.style.display = '';
+      buildAdvHideGrid();
+    } else {
+      btn.textContent = '⚡ Advanced';
+      btn.style.background = 'rgba(255,255,255,0.1)';
+      btn.style.borderColor = 'rgba(255,255,255,0.2)';
+      btn.style.color = 'rgba(255,255,255,0.6)';
+      if (hint) hint.textContent = '';
+      mirror.style.display = '';
+      advGrid.style.display = 'none';
+    }
+  }
+
+  function buildAdvHideGrid() {
+    const advGrid = document.getElementById('controls-hide-advanced');
+    advGrid.innerHTML = '';
+    if (!svgEl) return;
+
+    // Get all individual shapes
+    const shapes = Array.from(svgEl.querySelectorAll('path, rect, circle, ellipse, polygon, polyline'));
+    if (!shapes.length) {
+      advGrid.innerHTML = '<div style="color:rgba(255,255,255,0.4);font-size:12px;padding:8px;font-family:Nunito,sans-serif;">No shapes found.</div>';
+      return;
+    }
+
+    // Sort by hue like the regular grid
+    const sorted = shapes.slice().sort((a, b) => {
+      const fa = a.getAttribute('fill') || '', fb = b.getAttribute('fill') || '';
+      const okA = fa.startsWith('#'), okB = fb.startsWith('#');
+      if (!okA && !okB) return 0; if (!okA) return 1; if (!okB) return -1;
+      try { return hexToHsl(fa)[0] - hexToHsl(fb)[0]; } catch(e) { return 0; }
+    });
+
+    sorted.forEach((shape, i) => {
+      const fill = shape.getAttribute('fill') || '';
+      const isHidden = shape.style.visibility === 'hidden' || hiddenShapeEls.has(shape);
+
+      const wrap = document.createElement('div');
+      wrap.className = 'color-item' + (isHidden ? ' color-hidden' : '');
+      wrap._shape = shape;
+      wrap._isHidden = isHidden;
+
+      const swatch = document.createElement('div');
+      const bg = (!fill || fill === 'none' || fill.startsWith('url'))
+        ? 'rgba(255,255,255,0.2)'
+        : fill;
+      swatch.style.cssText = `width:54px;height:54px;border-radius:12px;border:3px solid rgba(255,255,255,0.4);box-shadow:0 3px 0 rgba(0,0,0,0.15);background:${bg};`;
+
+      const label = document.createElement('span');
+      label.className = 'hex-text';
+      label.textContent = fill.startsWith('#') ? fill.toUpperCase() : `#${i+1}`;
+
+      wrap.appendChild(swatch);
+      wrap.appendChild(label);
+      advGrid.appendChild(wrap);
+    });
+
+    setupAdvHideDrag(advGrid);
+  }
+
+  function toggleAdvShape(wrap) {
+    const shape = wrap._shape;
+    if (!shape) return;
+    const willHide = !wrap._isHidden;
+    wrap._isHidden = willHide;
+    wrap.classList.toggle('color-hidden', willHide);
+    if (willHide) {
+      hiddenShapeEls.add(shape);
+      shape.style.visibility = 'hidden';
+    } else {
+      hiddenShapeEls.delete(shape);
+      // Only restore if not also hidden by color-group mode
+      const cid = shape.getAttribute('data-cid');
+      let blockedByGroup = false;
+      if (cid) {
+        document.querySelectorAll('#controls .color-item').forEach(w => {
+          if (hiddenColorIds.has(w) && w._ids && w._ids.includes(cid)) blockedByGroup = true;
+        });
+      }
+      if (!blockedByGroup) shape.style.visibility = '';
+    }
+    refreshPreview();
+  }
+
+  function setupAdvHideDrag(grid) {
+    grid.addEventListener('pointerdown', e => {
+      if (e.button !== 0) return;
+      const wrap = e.target.closest('.color-item');
+      if (!wrap || !wrap._shape) return;
+      e.preventDefault();
+      pushMainUndo();
+      toggleAdvShape(wrap);
+      const dragTarget = wrap._isHidden;
+      grid.setPointerCapture(e.pointerId);
+      const onMove = ev => {
+        for (const item of grid.querySelectorAll('.color-item')) {
+          const r = item.getBoundingClientRect();
+          if (ev.clientX >= r.left && ev.clientX <= r.right && ev.clientY >= r.top && ev.clientY <= r.bottom) {
+            if (item === wrap) continue;
+            if (item._isHidden !== dragTarget) toggleAdvShape(item);
+          }
+        }
+      };
+      const onUp = () => { grid.releasePointerCapture(e.pointerId); grid.removeEventListener('pointermove', onMove); grid.removeEventListener('pointerup', onUp); };
+      grid.addEventListener('pointermove', onMove);
+      grid.addEventListener('pointerup', onUp);
+    });
+  }
+
+  // ── END ADVANCED HIDE MODE ────────────────────────────────────────────────
+
   function setupHideDrag(grid) {
     grid.addEventListener('pointerdown', e => {
       if (e.button !== 0) return;
@@ -2339,6 +2484,10 @@
 
   document.getElementById('hide-all-btn').addEventListener('click', () => {
     pushMainUndo();
+    if (advHideMode) {
+      document.querySelectorAll('#controls-hide-advanced .color-item').forEach(w => { if (!w._isHidden) toggleAdvShape(w); });
+      return;
+    }
     const allSrc = Array.from(document.getElementById('controls').querySelectorAll('.color-item'));
     const allMirror = Array.from(document.getElementById('controls-hide-mirror').querySelectorAll('.color-item'));
     allSrc.forEach((wrap, i) => {
@@ -2351,6 +2500,10 @@
 
   document.getElementById('invert-colors-btn').addEventListener('click', () => {
     pushMainUndo();
+    if (advHideMode) {
+      document.querySelectorAll('#controls-hide-advanced .color-item').forEach(w => toggleAdvShape(w));
+      return;
+    }
     const allSrc = Array.from(document.getElementById('controls').querySelectorAll('.color-item'));
     const allMirror = Array.from(document.getElementById('controls-hide-mirror').querySelectorAll('.color-item'));
     allSrc.forEach((wrap, i) => {
@@ -2361,6 +2514,10 @@
 
   document.getElementById('unhide-all-btn').addEventListener('click', () => {
     pushMainUndo();
+    if (advHideMode) {
+      document.querySelectorAll('#controls-hide-advanced .color-item').forEach(w => { if (w._isHidden) toggleAdvShape(w); });
+      return;
+    }
     const allSrc = Array.from(document.getElementById('controls').querySelectorAll('.color-item'));
     const allMirror = Array.from(document.getElementById('controls-hide-mirror').querySelectorAll('.color-item'));
     allSrc.forEach((wrap, i) => {
