@@ -1691,7 +1691,10 @@
       else { const res = await fetch(item.file); svgText = await res.text(); }
       const parser = new DOMParser();
       svgEl = parser.parseFromString(svgText, 'image/svg+xml').querySelector('svg');
+      // Flatten <use> references and split compound paths ONCE at load time.
+      // Every tab (recolor, hide, advanced) then operates on the same DOM.
       flattenSvgUses();
+      splitAllCompoundPaths();
       fixBlacks();
       initPalette();
       initLayers();
@@ -1779,43 +1782,35 @@
 
   function clearHighlight() { highlightCanvas.style.opacity = '0'; }
 
-
-  // ── FLATTEN <use> REFERENCES ─────────────────────────────────────────────
-  // SVGs from Flash/ffdec use <use xlink:href="#shapeN"> referencing <defs>.
-  // We inline them as real DOM nodes at load time so that buildColorMap,
-  // fixBlacks, and all querySelectorAll calls operate on live visible elements
-  // rather than the <defs> templates. This also makes advanced hide work
-  // correctly without a separate flattening step there.
+  // ── FIX BLACKS ────────────────────────────────────────────────────────────
+  // ── FLATTEN <use> REFERENCES ───────────────────────────────────────────────
+  // SVGs from Flash/ffdec render via <use xlink:href="#shapeN"> in <defs>.
+  // We inline them as real DOM nodes at load time so every subsequent
+  // querySelectorAll call finds the actual visible elements.
   function _flattenUses(container, svgRoot, depth) {
     if (depth > 20) return;
     Array.from(container.childNodes).forEach(child => {
       if (child.nodeType !== 1) return;
       if (child.tagName === 'use') {
-        const hrefAttr = child.getAttribute('xlink:href') || child.getAttribute('href') || '';
-        const refId = hrefAttr.startsWith('#') ? hrefAttr.slice(1) : '';
+        const href = child.getAttribute('xlink:href') || child.getAttribute('href') || '';
+        const refId = href.startsWith('#') ? href.slice(1) : '';
         const ref = refId ? svgRoot.getElementById(refId) : null;
         if (!ref) return;
         const g = document.createElementNS('http://www.w3.org/2000/svg', 'g');
-        // Compose transforms: ref's own transform + the <use> element's transform
-        const refTransform = ref.getAttribute('transform') || '';
-        const useTransform = child.getAttribute('transform') || '';
-        const combined = [refTransform, useTransform].filter(Boolean).join(' ');
+        const refT = ref.getAttribute('transform') || '';
+        const useT = child.getAttribute('transform') || '';
+        const combined = [refT, useT].filter(Boolean).join(' ');
         if (combined) g.setAttribute('transform', combined);
         g.setAttribute('data-flattened-use', '1');
-        // Clone ref's *children* only (not the ref itself, to avoid duplicate ids)
         Array.from(ref.childNodes).forEach(n => g.appendChild(n.cloneNode(true)));
         child.parentNode.insertBefore(g, child);
         child.parentNode.removeChild(child);
-        // Recurse to resolve nested <use>s inside the newly inserted group
         _flattenUses(g, svgRoot, depth + 1);
       } else {
         _flattenUses(child, svgRoot, depth + 1);
       }
     });
   }
-
-  // Inline all <use> references in svgEl in-place (idempotent).
-  // Call once after parsing, before fixBlacks/buildColorMap.
   function flattenSvgUses() {
     if (!svgEl || svgEl.getAttribute('data-uses-flattened')) return;
     if (!svgEl.querySelector('use')) return;
@@ -1823,7 +1818,46 @@
     svgEl.setAttribute('data-uses-flattened', '1');
   }
 
-  // ── FIX BLACKS ────────────────────────────────────────────────────────────
+  // ── SPLIT COMPOUND PATHS ─────────────────────────────────────────────────
+  // Split every compound path (multiple M commands) into individual <path>
+  // elements permanently at load time. Each split sibling gets
+  // data-compound-group="N" so the regular recolor tab can group them back
+  // together into one swatch, while advanced mode shows each individually.
+  function _splitPathD(d) {
+    const tokens = d.trim().split(/(?=[MmZzLlHhVvCcSsQqTtAa])/);
+    const subpaths = []; let current = '';
+    for (const tok of tokens) {
+      const cmd = tok.trim()[0];
+      if ((cmd === 'M' || cmd === 'm') && current.trim().length > 0) {
+        subpaths.push(current.trim()); current = tok;
+      } else { current += tok; }
+    }
+    if (current.trim().length > 0) subpaths.push(current.trim());
+    return subpaths.filter(s => s.length > 1);
+  }
+
+  let _compoundGroupCounter = 0;
+  function splitAllCompoundPaths() {
+    if (!svgEl || svgEl.getAttribute('data-paths-split')) return;
+    svgEl.querySelectorAll('path').forEach(el => {
+      if (el.closest('defs')) return;
+      const d = el.getAttribute('d') || '';
+      const subs = _splitPathD(d);
+      if (subs.length <= 1) return;
+      const groupId = ++_compoundGroupCounter;
+      el.setAttribute('d', subs[0]);
+      el.setAttribute('data-compound-group', groupId);
+      subs.slice(1).forEach(sub => {
+        const clone = el.cloneNode(true);
+        clone.setAttribute('d', sub);
+        clone.setAttribute('data-compound-group', groupId);
+        clone.removeAttribute('data-cid'); // will be assigned by buildColorMap
+        el.parentNode.insertBefore(clone, el.nextSibling);
+      });
+    });
+    svgEl.setAttribute('data-paths-split', '1');
+  }
+
   function fixBlacks() {
     const isBlack = v => v && ['#000000','#000','black'].includes(v.toLowerCase());
     svgEl.querySelectorAll('[fill]').forEach(el => { if (isBlack(el.getAttribute('fill'))) el.setAttribute('fill-opacity', '0.2'); });
@@ -1860,9 +1894,7 @@
     // ── fills and gradient stops (existing) ──────────────────────────────────
     svgNode.querySelectorAll('[fill], stop').forEach(el => {
       const isStop = el.tagName === 'stop';
-      // Skip elements inside <defs> — those are templates; the flattened live
-      // copies outside <defs> are what we actually want to tag and recolor.
-      // Gradient stops inside <defs> ARE still needed for gradient recoloring.
+      // Skip template elements in <defs> (non-stops) — only live nodes get tagged
       if (!isStop && el.closest('defs')) { i++; return; }
       const attr = isStop ? el.getAttribute('stop-color') : el.getAttribute('fill');
       if (!attr || attr === 'none' || attr.includes('url')) { i++; return; }
@@ -2406,67 +2438,12 @@
   let advHideMode = false;
   const hiddenShapeEls = new Set(); // individually hidden shape elements
 
-  // Split SVG compound paths into individual subpath elements in the DOM.
-  // Returns a flat list of all resulting individual shape elements.
-  // Properly split SVG path d attribute into individual subpaths
-  function splitPathD(d) {
-    // Tokenise: split at every letter that starts a new command
-    // M/m always starts a new subpath — split there (but not at first M)
-    const tokens = d.trim().split(/(?=[MmZzLlHhVvCcSsQqTtAa])/);
-    const subpaths = [];
-    let current = '';
-    for (const tok of tokens) {
-      const cmd = tok.trim()[0];
-      if ((cmd === 'M' || cmd === 'm') && current.trim().length > 0) {
-        subpaths.push(current.trim());
-        current = tok;
-      } else {
-        current += tok;
-      }
-    }
-    if (current.trim().length > 0) subpaths.push(current.trim());
-    return subpaths.filter(s => s.length > 1);
-  }
-
+  // Individual shapes for advanced mode — paths are already split at load time
+  // by splitAllCompoundPaths(), so we just query the live DOM directly.
   function getIndividualShapes() {
     if (!svgEl) return [];
-    const result = [];
-    svgEl.querySelectorAll('path, rect, circle, ellipse, polygon, polyline').forEach(el => {
-      // Skip template elements still sitting in <defs>
-      if (el.closest('defs')) return;
-      if (el.tagName !== 'path') { result.push(el); return; }
-      const d = el.getAttribute('d') || '';
-      const subpaths = splitPathD(d);
-      if (subpaths.length <= 1) { result.push(el); return; }
-      // Multiple subpaths — split into separate elements in the DOM
-      subpaths.forEach((sub, i) => {
-        if (i === 0) {
-          el.setAttribute('data-orig-d', d);
-          el.setAttribute('d', sub);
-          result.push(el);
-        } else {
-          const clone = el.cloneNode(true);
-          clone.setAttribute('d', sub);
-          clone.setAttribute('data-compound-clone', '1');
-          clone.removeAttribute('data-orig-d');
-          // Insert after original so z-order is preserved
-          el.parentNode.insertBefore(clone, el.nextSibling);
-          result.push(clone);
-        }
-      });
-    });
-    return result;
-  }
-
-  // Restore compound paths split by getIndividualShapes
-  function restoreCompoundPaths() {
-    // Restore original d on split originals
-    svgEl.querySelectorAll('[data-orig-d]').forEach(el => {
-      el.setAttribute('d', el.getAttribute('data-orig-d'));
-      el.removeAttribute('data-orig-d');
-    });
-    // Remove clones
-    svgEl.querySelectorAll('[data-compound-clone]').forEach(el => el.remove());
+    return Array.from(svgEl.querySelectorAll('path, rect, circle, ellipse, polygon, polyline'))
+      .filter(el => !el.closest('defs'));
   }
 
   function toggleAdvHide() {
@@ -2507,9 +2484,8 @@
     if (hint) hint.textContent = '';
     mirror.style.display = '';
     advGrid.style.display = 'none';
-    const stillHidden = new Set(hiddenShapeEls);
-    restoreCompoundPaths();
-    stillHidden.forEach(el => { if (el.parentNode) el.style.visibility = 'hidden'; });
+    // Paths are permanently split at load time — nothing to restore.
+    // Hidden shapes stay hidden; their visibility was already set on the element.
     refreshPreview();
   }
 
@@ -2518,8 +2494,7 @@
     advGrid.innerHTML = '';
     if (!svgEl) return;
 
-    // Split compound paths first
-    restoreCompoundPaths(); // clean up any previous split
+    // Paths are already split at load time — just query them directly
     const shapes = getIndividualShapes();
 
     if (!shapes.length) {
