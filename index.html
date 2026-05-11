@@ -631,34 +631,60 @@
       box-shadow: 0 0 0 5px rgba(39,158,255,0.5);
     }
 
+    /* ── BROWSER-STYLE TABS ── */
+    .color-tab-bar {
+      display: flex;
+      align-items: flex-end;
+      gap: 0;
+      margin-bottom: 0;
+      padding: 0 2px;
+    }
+
     .layer-tab-btn {
       font-family: 'Fredoka One', cursive;
-      font-size: 12px;
-      padding: 4px 13px;
-      border-radius: 8px;
-      border: 2px solid rgba(255,255,255,0.3);
-      background: rgba(255,255,255,0.12);
-      color: rgba(255,255,255,0.7);
+      font-size: 14px;
+      padding: 8px 20px;
+      border-radius: 10px 10px 0 0;
+      border: 2px solid rgba(255,255,255,0.25);
+      border-bottom: none;
+      background: rgba(255,255,255,0.1);
+      color: rgba(255,255,255,0.55);
       cursor: pointer;
       transition: background 0.15s, color 0.15s;
+      position: relative;
+      letter-spacing: 0.03em;
     }
+
     .layer-tab-btn.active {
-      background: rgba(255,255,255,0.28);
+      background: rgba(255,255,255,0.22);
       color: #fff;
-      border-color: rgba(255,255,255,0.55);
+      border-color: rgba(255,255,255,0.45);
+      font-size: 15px;
     }
-    .layer-tab-btn:hover:not(.active) { background: rgba(255,255,255,0.2); color: #fff; }
+
+    .layer-tab-btn:hover:not(.active) {
+      background: rgba(255,255,255,0.17);
+      color: rgba(255,255,255,0.8);
+    }
+
+    .color-tab-body {
+      border: 2px solid rgba(255,255,255,0.25);
+      border-radius: 0 10px 10px 10px;
+      padding: 14px 12px 12px;
+      background: rgba(255,255,255,0.06);
+    }
 
     .layer-action-btn {
       font-family: 'Fredoka One', cursive;
-      font-size: 11px;
-      padding: 4px 10px;
-      border-radius: 7px;
+      font-size: 13px;
+      padding: 7px 16px;
+      border-radius: 9px;
       border: 2px solid rgba(255,255,255,0.3);
       background: rgba(255,255,255,0.15);
-      color: rgba(255,255,255,0.85);
+      color: rgba(255,255,255,0.9);
       cursor: pointer;
       transition: background 0.12s;
+      flex: 1;
     }
     .layer-action-btn:hover { background: rgba(255,255,255,0.28); }
 
@@ -676,15 +702,15 @@
       pointer-events: none;
     }
 
-    .palette-grid.hide-mode .color-item {
+    #controls-hide-mirror .color-item {
       cursor: crosshair;
     }
 
-    .palette-grid.hide-mode .color-item:hover {
+    #controls-hide-mirror .color-item:hover {
       opacity: 0.6;
     }
 
-    .palette-grid.hide-mode .color-item.color-hidden:hover {
+    #controls-hide-mirror .color-item.color-hidden:hover {
       opacity: 0.55;
     }
 
@@ -1193,46 +1219,54 @@
     </div>
 
     <div class="panel palette-panel">
-      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;gap:8px;flex-wrap:wrap;">
-        <span style="font-family:'Fredoka One',cursive;font-size:15px;color:rgba(255,255,255,0.85);letter-spacing:0.05em;">COLORS</span>
-        <div style="display:flex;gap:6px;align-items:center;">
-          <button id="tab-colors-btn" class="layer-tab-btn active" onclick="setColorTab('colors')">Colors</button>
-          <button id="tab-hide-btn" class="layer-tab-btn" onclick="setColorTab('hide')">Hide Colors</button>
-          <div id="hide-action-btns" style="display:none;gap:5px;display:none;">
-            <button id="invert-colors-btn" class="layer-action-btn">Invert</button>
-            <button id="unhide-all-btn" class="layer-action-btn">Unhide All</button>
+      <!-- Browser-style tab bar -->
+      <div class="color-tab-bar">
+        <button id="tab-colors-btn" class="layer-tab-btn active" onclick="setColorTab('colors')">Recolor</button>
+        <button id="tab-hide-btn" class="layer-tab-btn" onclick="setColorTab('hide')">Hide Layers</button>
+      </div>
+
+      <!-- Tab body -->
+      <div class="color-tab-body">
+        <div id="pane-recolor">
+          <div style="display:flex;flex-direction:column;">
+            <div class="palette-grid" id="controls"></div>
+            <div id="hsb-panel" style="padding:10px 4px 4px;border-top:1.5px solid rgba(255,255,255,0.15);margin-top:10px;display:flex;flex-direction:column;gap:7px;">
+              <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:2px;">
+                <span style="font-family:'Nunito',sans-serif;font-size:12px;font-weight:800;color:rgba(255,255,255,0.8);letter-spacing:0.5px;">ADJUST ALL COLORS</span>
+                <button id="reset-colors-btn" style="padding:3px 10px;background:rgba(255,255,255,0.15);border:1.5px solid rgba(255,255,255,0.3);border-radius:6px;color:#fff;font-family:'Nunito',sans-serif;font-size:11px;font-weight:700;cursor:pointer;">Reset</button>
+              </div>
+              <label style="font-family:'Nunito',sans-serif;font-size:11px;color:rgba(255,255,255,0.7);display:flex;align-items:center;gap:8px;">
+                <span style="width:16px;">H</span>
+                <input type="range" id="slider-hue" min="-180" max="180" value="0" style="flex:1;accent-color:#fff;">
+                <span id="val-hue" style="width:32px;text-align:right;font-size:11px;color:#fff;">0°</span>
+              </label>
+              <label style="font-family:'Nunito',sans-serif;font-size:11px;color:rgba(255,255,255,0.7);display:flex;align-items:center;gap:8px;">
+                <span style="width:16px;">S</span>
+                <input type="range" id="slider-sat" min="-100" max="100" value="0" style="flex:1;accent-color:#fff;">
+                <span id="val-sat" style="width:32px;text-align:right;font-size:11px;color:#fff;">0%</span>
+              </label>
+              <label style="font-family:'Nunito',sans-serif;font-size:11px;color:rgba(255,255,255,0.7);display:flex;align-items:center;gap:8px;">
+                <span style="width:16px;">B</span>
+                <input type="range" id="slider-bri" min="-100" max="100" value="0" style="flex:1;accent-color:#fff;">
+                <span id="val-bri" style="width:32px;text-align:right;font-size:11px;color:#fff;">0%</span>
+              </label>
+              <div style="height:1px;background:rgba(255,255,255,0.12);margin:2px 0;"></div>
+              <label style="font-family:'Nunito',sans-serif;font-size:11px;color:rgba(255,255,255,0.7);display:flex;align-items:center;gap:8px;">
+                <span style="width:16px;">A</span>
+                <input type="range" id="slider-opacity" min="0" max="100" value="100" style="flex:1;accent-color:#fff;">
+                <span id="val-opacity" style="width:32px;text-align:right;font-size:11px;color:#fff;">100%</span>
+              </label>
+            </div>
           </div>
         </div>
-      </div>
-      <div id="pane-recolor">
-        <div style="display:flex;flex-direction:column;">
-          <div class="palette-grid" id="controls"></div>
-          <div id="hsb-panel" style="padding:10px 12px;border-top:1.5px solid rgba(255,255,255,0.15);display:flex;flex-direction:column;gap:7px;">
-            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:2px;">
-              <span style="font-family:'Nunito',sans-serif;font-size:12px;font-weight:800;color:rgba(255,255,255,0.8);letter-spacing:0.5px;">ADJUST ALL COLORS</span>
-              <button id="reset-colors-btn" style="padding:3px 10px;background:rgba(255,255,255,0.15);border:1.5px solid rgba(255,255,255,0.3);border-radius:6px;color:#fff;font-family:'Nunito',sans-serif;font-size:11px;font-weight:700;cursor:pointer;">Reset</button>
-            </div>
-            <label style="font-family:'Nunito',sans-serif;font-size:11px;color:rgba(255,255,255,0.7);display:flex;align-items:center;gap:8px;">
-              <span style="width:16px;">H</span>
-              <input type="range" id="slider-hue" min="-180" max="180" value="0" style="flex:1;accent-color:#fff;">
-              <span id="val-hue" style="width:32px;text-align:right;font-size:11px;color:#fff;">0°</span>
-            </label>
-            <label style="font-family:'Nunito',sans-serif;font-size:11px;color:rgba(255,255,255,0.7);display:flex;align-items:center;gap:8px;">
-              <span style="width:16px;">S</span>
-              <input type="range" id="slider-sat" min="-100" max="100" value="0" style="flex:1;accent-color:#fff;">
-              <span id="val-sat" style="width:32px;text-align:right;font-size:11px;color:#fff;">0%</span>
-            </label>
-            <label style="font-family:'Nunito',sans-serif;font-size:11px;color:rgba(255,255,255,0.7);display:flex;align-items:center;gap:8px;">
-              <span style="width:16px;">B</span>
-              <input type="range" id="slider-bri" min="-100" max="100" value="0" style="flex:1;accent-color:#fff;">
-              <span id="val-bri" style="width:32px;text-align:right;font-size:11px;color:#fff;">0%</span>
-            </label>
-            <div style="height:1px;background:rgba(255,255,255,0.12);margin:2px 0;"></div>
-            <label style="font-family:'Nunito',sans-serif;font-size:11px;color:rgba(255,255,255,0.7);display:flex;align-items:center;gap:8px;">
-              <span style="width:16px;">A</span>
-              <input type="range" id="slider-opacity" min="0" max="100" value="100" style="flex:1;accent-color:#fff;">
-              <span id="val-opacity" style="width:32px;text-align:right;font-size:11px;color:#fff;">100%</span>
-            </label>
+
+        <div id="pane-hide" style="display:none;flex-direction:column;gap:10px;">
+          <div class="palette-grid hide-mode" id="controls-hide-mirror"></div>
+          <!-- Action buttons at bottom -->
+          <div id="hide-action-btns" style="display:flex;gap:8px;margin-top:6px;padding-top:10px;border-top:1.5px solid rgba(255,255,255,0.15);">
+            <button id="hide-all-btn" class="layer-action-btn">Hide All</button>
+            <button id="invert-colors-btn" class="layer-action-btn">Invert</button>
+            <button id="unhide-all-btn" class="layer-action-btn">Unhide All</button>
           </div>
         </div>
       </div>
@@ -2021,28 +2055,6 @@
       e.preventDefault();
       dragMoved = false;
 
-      // In hide mode: toggle visibility on click/drag
-      if (hideColorMode) {
-        pushMainUndo();
-        toggleHideColor(wrap);
-        const hideDragTarget = hiddenColorIds.has(wrap);
-        grid.setPointerCapture(e.pointerId);
-        const onHideMove = e => {
-          const item = hitItem(e.clientX, e.clientY);
-          if (!item || item === wrap) return;
-          const alreadyMatches = hiddenColorIds.has(item) === hideDragTarget;
-          if (!alreadyMatches) toggleHideColor(item);
-        };
-        const onHideUp = () => {
-          grid.releasePointerCapture(e.pointerId);
-          grid.removeEventListener('pointermove', onHideMove);
-          grid.removeEventListener('pointerup', onHideUp);
-        };
-        grid.addEventListener('pointermove', onHideMove);
-        grid.addEventListener('pointerup', onHideUp);
-        return;
-      }
-
       // Normal select mode
       const alreadySelected = selectedColorItems.has(wrap);
       colorDragging = true;
@@ -2261,31 +2273,101 @@
     hideColorMode = isHide;
     document.getElementById('tab-colors-btn').classList.toggle('active', !isHide);
     document.getElementById('tab-hide-btn').classList.toggle('active', isHide);
-    const grid = document.getElementById('controls');
-    const actionBtns = document.getElementById('hide-action-btns');
-    const hsbPanel = document.getElementById('hsb-panel');
-    if (isHide) {
-      grid.classList.add('hide-mode');
-      actionBtns.style.display = 'flex';
-      hsbPanel.style.display = 'none';
-    } else {
-      grid.classList.remove('hide-mode');
-      actionBtns.style.display = 'none';
-      hsbPanel.style.display = '';
-    }
+    document.getElementById('pane-recolor').style.display = isHide ? 'none' : '';
+    document.getElementById('pane-hide').style.display = isHide ? 'flex' : 'none';
+    document.getElementById('hsb-panel').style.display = isHide ? 'none' : '';
+    if (isHide) syncHidePane();
   }
+
+  // Sync the hide-pane mirror grid from the main controls
+  function syncHidePane() {
+    const src = document.getElementById('controls');
+    const dst = document.getElementById('controls-hide-mirror');
+    dst.innerHTML = '';
+    src.querySelectorAll('.color-item').forEach(srcWrap => {
+      const mirrorWrap = document.createElement('div');
+      mirrorWrap.className = 'color-item' + (srcWrap.classList.contains('color-hidden') ? ' color-hidden' : '');
+      mirrorWrap._ids = srcWrap._ids;
+      mirrorWrap._srcWrap = srcWrap;
+
+      // Swatch (display only, not interactive for color picking)
+      const swatch = document.createElement('div');
+      swatch.style.cssText = 'width:54px;height:54px;border-radius:12px;border:3px solid rgba(255,255,255,0.4);box-shadow:0 3px 0 rgba(0,0,0,0.15);background:' + srcWrap.querySelector('input[type="color"]').value + ';';
+
+      const label = document.createElement('span');
+      label.className = 'hex-text';
+      label.textContent = srcWrap.querySelector('.hex-text').textContent;
+
+      mirrorWrap.appendChild(swatch);
+      mirrorWrap.appendChild(label);
+      dst.appendChild(mirrorWrap);
+    });
+
+    // Set up drag-hide on the mirror grid
+    setupHideDrag(dst);
+  }
+
+  function setupHideDrag(grid) {
+    grid.addEventListener('pointerdown', e => {
+      if (e.button !== 0) return;
+      const mirrorWrap = e.target.closest('.color-item');
+      if (!mirrorWrap || !mirrorWrap._srcWrap) return;
+      e.preventDefault();
+      pushMainUndo();
+      toggleHideColorByWrap(mirrorWrap._srcWrap, mirrorWrap);
+      const hideDragTarget = hiddenColorIds.has(mirrorWrap._srcWrap);
+      grid.setPointerCapture(e.pointerId);
+      const onMove = e => {
+        for (const item of grid.querySelectorAll('.color-item')) {
+          const r = item.getBoundingClientRect();
+          if (e.clientX >= r.left && e.clientX <= r.right && e.clientY >= r.top && e.clientY <= r.bottom) {
+            if (!item._srcWrap || item === mirrorWrap) continue;
+            if (hiddenColorIds.has(item._srcWrap) !== hideDragTarget) toggleHideColorByWrap(item._srcWrap, item);
+          }
+        }
+      };
+      const onUp = () => { grid.releasePointerCapture(e.pointerId); grid.removeEventListener('pointermove', onMove); grid.removeEventListener('pointerup', onUp); };
+      grid.addEventListener('pointermove', onMove);
+      grid.addEventListener('pointerup', onUp);
+    });
+  }
+
+  function toggleHideColorByWrap(srcWrap, mirrorWrap) {
+    toggleHideColor(srcWrap);
+    if (mirrorWrap) mirrorWrap.classList.toggle('color-hidden', hiddenColorIds.has(srcWrap));
+  }
+
+  document.getElementById('hide-all-btn').addEventListener('click', () => {
+    pushMainUndo();
+    const allSrc = Array.from(document.getElementById('controls').querySelectorAll('.color-item'));
+    const allMirror = Array.from(document.getElementById('controls-hide-mirror').querySelectorAll('.color-item'));
+    allSrc.forEach((wrap, i) => {
+      if (!hiddenColorIds.has(wrap)) {
+        toggleHideColor(wrap);
+        if (allMirror[i]) allMirror[i].classList.add('color-hidden');
+      }
+    });
+  });
 
   document.getElementById('invert-colors-btn').addEventListener('click', () => {
     pushMainUndo();
-    const allWraps = Array.from(document.getElementById('controls').querySelectorAll('.color-item'));
-    allWraps.forEach(wrap => toggleHideColor(wrap));
+    const allSrc = Array.from(document.getElementById('controls').querySelectorAll('.color-item'));
+    const allMirror = Array.from(document.getElementById('controls-hide-mirror').querySelectorAll('.color-item'));
+    allSrc.forEach((wrap, i) => {
+      toggleHideColor(wrap);
+      if (allMirror[i]) allMirror[i].classList.toggle('color-hidden', hiddenColorIds.has(wrap));
+    });
   });
 
   document.getElementById('unhide-all-btn').addEventListener('click', () => {
     pushMainUndo();
-    const allWraps = Array.from(document.getElementById('controls').querySelectorAll('.color-item'));
-    allWraps.forEach(wrap => {
-      if (hiddenColorIds.has(wrap)) toggleHideColor(wrap);
+    const allSrc = Array.from(document.getElementById('controls').querySelectorAll('.color-item'));
+    const allMirror = Array.from(document.getElementById('controls-hide-mirror').querySelectorAll('.color-item'));
+    allSrc.forEach((wrap, i) => {
+      if (hiddenColorIds.has(wrap)) {
+        toggleHideColor(wrap);
+        if (allMirror[i]) allMirror[i].classList.remove('color-hidden');
+      }
     });
   });
 
