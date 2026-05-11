@@ -2356,6 +2356,59 @@
   let advHideMode = false;
   const hiddenShapeEls = new Set(); // individually hidden shape elements
 
+  // ── FLATTEN <use> ELEMENTS ───────────────────────────────────────────────
+  // SVGs exported from Flash/ffdec use <use xlink:href="#shapeN"> referencing
+  // <defs>. querySelectorAll('path,...') on the live DOM finds nothing in the
+  // main <g> because all real paths live inside <defs>. This recursively
+  // replaces every <use> with a deep clone of its referenced content,
+  // applying the accumulated transform chain, producing a flat DOM where
+  // every path/shape is a directly queryable node.
+
+  function _resolveHref(useEl, doc) {
+    const href = useEl.getAttribute('xlink:href') || useEl.getAttribute('href') || '';
+    if (!href.startsWith('#')) return null;
+    return doc.getElementById(href.slice(1));
+  }
+
+  function _flattenUseRecursive(container, doc, depth) {
+    if (depth > 20) return; // guard against circular refs
+    const children = Array.from(container.childNodes);
+    for (const child of children) {
+      if (child.nodeType !== 1) continue;
+      if (child.tagName === 'use') {
+        const ref = _resolveHref(child, doc);
+        if (!ref) continue;
+        const useTransform = child.getAttribute('transform') || '';
+        const g = doc.createElementNS('http://www.w3.org/2000/svg', 'g');
+        if (useTransform) g.setAttribute('transform', useTransform);
+        g.setAttribute('data-flattened-use', '1');
+        // Clone the referenced element's children (not the element itself,
+        // to avoid duplicate ids)
+        Array.from(ref.childNodes).forEach(n => g.appendChild(n.cloneNode(true)));
+        child.parentNode.insertBefore(g, child);
+        child.parentNode.removeChild(child);
+        // Recurse to resolve nested <use>s inside the newly injected group
+        _flattenUseRecursive(g, doc, depth + 1);
+      } else {
+        _flattenUseRecursive(child, doc, depth + 1);
+      }
+    }
+  }
+
+  function flattenSvgUses() {
+    if (!svgEl) return;
+    if (svgEl.getAttribute('data-uses-flattened')) return;
+    if (!svgEl.querySelector('use')) return;
+    _flattenUseRecursive(svgEl, svgEl.ownerDocument, 0);
+    svgEl.setAttribute('data-uses-flattened', '1');
+  }
+
+  function unflattenSvgUses() {
+    if (!svgEl) return;
+    svgEl.querySelectorAll('[data-flattened-use]').forEach(el => el.remove());
+    svgEl.removeAttribute('data-uses-flattened');
+  }
+
   // Split SVG compound paths into individual subpath elements in the DOM.
   // Returns a flat list of all resulting individual shape elements.
   // Properly split SVG path d attribute into individual subpaths
@@ -2457,7 +2510,10 @@
     advGrid.style.display = 'none';
     const stillHidden = new Set(hiddenShapeEls);
     restoreCompoundPaths();
-    stillHidden.forEach(el => { if (el.parentNode) el.style.visibility = 'hidden'; });
+    unflattenSvgUses();
+    // stillHidden elements were in the flattened DOM; they're now removed,
+    // so we can't re-hide them. Just clear the set and refresh.
+    hiddenShapeEls.clear();
     refreshPreview();
   }
 
@@ -2466,8 +2522,11 @@
     advGrid.innerHTML = '';
     if (!svgEl) return;
 
-    // Split compound paths first
+    // Flatten <use> references first so querySelectorAll finds all real shapes,
+    // then split compound paths
     restoreCompoundPaths(); // clean up any previous split
+    unflattenSvgUses();     // remove any previous flattening
+    flattenSvgUses();       // inline <use> elements into real DOM nodes
     const shapes = getIndividualShapes();
 
     if (!shapes.length) {
