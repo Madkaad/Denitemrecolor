@@ -1691,6 +1691,7 @@
       else { const res = await fetch(item.file); svgText = await res.text(); }
       const parser = new DOMParser();
       svgEl = parser.parseFromString(svgText, 'image/svg+xml').querySelector('svg');
+      flattenSvgUses();
       fixBlacks();
       initPalette();
       initLayers();
@@ -1778,6 +1779,50 @@
 
   function clearHighlight() { highlightCanvas.style.opacity = '0'; }
 
+
+  // ── FLATTEN <use> REFERENCES ─────────────────────────────────────────────
+  // SVGs from Flash/ffdec use <use xlink:href="#shapeN"> referencing <defs>.
+  // We inline them as real DOM nodes at load time so that buildColorMap,
+  // fixBlacks, and all querySelectorAll calls operate on live visible elements
+  // rather than the <defs> templates. This also makes advanced hide work
+  // correctly without a separate flattening step there.
+  function _flattenUses(container, svgRoot, depth) {
+    if (depth > 20) return;
+    Array.from(container.childNodes).forEach(child => {
+      if (child.nodeType !== 1) return;
+      if (child.tagName === 'use') {
+        const hrefAttr = child.getAttribute('xlink:href') || child.getAttribute('href') || '';
+        const refId = hrefAttr.startsWith('#') ? hrefAttr.slice(1) : '';
+        const ref = refId ? svgRoot.getElementById(refId) : null;
+        if (!ref) return;
+        const g = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+        // Compose transforms: ref's own transform + the <use> element's transform
+        const refTransform = ref.getAttribute('transform') || '';
+        const useTransform = child.getAttribute('transform') || '';
+        const combined = [refTransform, useTransform].filter(Boolean).join(' ');
+        if (combined) g.setAttribute('transform', combined);
+        g.setAttribute('data-flattened-use', '1');
+        // Clone ref's *children* only (not the ref itself, to avoid duplicate ids)
+        Array.from(ref.childNodes).forEach(n => g.appendChild(n.cloneNode(true)));
+        child.parentNode.insertBefore(g, child);
+        child.parentNode.removeChild(child);
+        // Recurse to resolve nested <use>s inside the newly inserted group
+        _flattenUses(g, svgRoot, depth + 1);
+      } else {
+        _flattenUses(child, svgRoot, depth + 1);
+      }
+    });
+  }
+
+  // Inline all <use> references in svgEl in-place (idempotent).
+  // Call once after parsing, before fixBlacks/buildColorMap.
+  function flattenSvgUses() {
+    if (!svgEl || svgEl.getAttribute('data-uses-flattened')) return;
+    if (!svgEl.querySelector('use')) return;
+    _flattenUses(svgEl, svgEl, 0);
+    svgEl.setAttribute('data-uses-flattened', '1');
+  }
+
   // ── FIX BLACKS ────────────────────────────────────────────────────────────
   function fixBlacks() {
     const isBlack = v => v && ['#000000','#000','black'].includes(v.toLowerCase());
@@ -1815,6 +1860,10 @@
     // ── fills and gradient stops (existing) ──────────────────────────────────
     svgNode.querySelectorAll('[fill], stop').forEach(el => {
       const isStop = el.tagName === 'stop';
+      // Skip elements inside <defs> — those are templates; the flattened live
+      // copies outside <defs> are what we actually want to tag and recolor.
+      // Gradient stops inside <defs> ARE still needed for gradient recoloring.
+      if (!isStop && el.closest('defs')) { i++; return; }
       const attr = isStop ? el.getAttribute('stop-color') : el.getAttribute('fill');
       if (!attr || attr === 'none' || attr.includes('url')) { i++; return; }
       const opacity = parseFloat(
@@ -1840,6 +1889,7 @@
 
     // ── strokes ──────────────────────────────────────────────────────────────
     svgNode.querySelectorAll('[stroke]').forEach(el => {
+      if (el.closest('defs')) { i++; return; }
       const attr = el.getAttribute('stroke');
       if (!attr || attr === 'none' || attr.includes('url')) { i++; return; }
       const opacity = parseFloat(el.getAttribute('stroke-opacity') || '1');
@@ -2356,56 +2406,12 @@
   let advHideMode = false;
   const hiddenShapeEls = new Set(); // individually hidden shape elements
 
-  // ── FLATTEN <use> REFERENCES ─────────────────────────────────────────────
-  // SVGs from Flash/ffdec use <use xlink:href="#shapeN"> referencing <defs>.
-  // querySelectorAll('path,...') on the live DOM skips those shadow references,
-  // so we inline them as real DOM nodes once when advanced mode activates.
-  // We never remove the flattened nodes — they render identically to the
-  // original <use> elements, and openEditor() replaces svgEl entirely anyway.
-
-  function _flattenUses(container, svgRoot, depth) {
-    if (depth > 20) return;
-    Array.from(container.childNodes).forEach(child => {
-      if (child.nodeType !== 1) return;
-      if (child.tagName === 'use') {
-        const hrefAttr = child.getAttribute('xlink:href') || child.getAttribute('href') || '';
-        const refId = hrefAttr.startsWith('#') ? hrefAttr.slice(1) : '';
-        const ref = refId ? svgRoot.getElementById(refId) : null;
-        if (!ref) return;
-        const g = svgRoot.ownerDocument
-          ? svgRoot.ownerDocument.createElementNS('http://www.w3.org/2000/svg', 'g')
-          : document.createElementNS('http://www.w3.org/2000/svg', 'g');
-        // Compose transforms: the referenced <g> in <defs> already has its own
-        // transform; the <use> element may add another on top.
-        const refTransform  = ref.getAttribute('transform') || '';
-        const useTransform  = child.getAttribute('transform') || '';
-        const combined = [refTransform, useTransform].filter(Boolean).join(' ');
-        if (combined) g.setAttribute('transform', combined);
-        g.setAttribute('data-flattened-use', '1');
-        // Clone ref's *children* (not the ref itself, to avoid duplicate ids)
-        Array.from(ref.childNodes).forEach(n => g.appendChild(n.cloneNode(true)));
-        child.parentNode.insertBefore(g, child);
-        child.parentNode.removeChild(child);
-        // Recurse to resolve nested <use>s inside the newly inserted group
-        _flattenUses(g, svgRoot, depth + 1);
-      } else {
-        _flattenUses(child, svgRoot, depth + 1);
-      }
-    });
-  }
-
-  // Inline all <use> references in svgEl in-place (idempotent).
-  function flattenSvgUses() {
-    if (!svgEl || svgEl.getAttribute('data-uses-flattened')) return;
-    if (!svgEl.querySelector('use')) return;
-    _flattenUses(svgEl, svgEl, 0);
-    svgEl.setAttribute('data-uses-flattened', '1');
-  }
-
   // Split SVG compound paths into individual subpath elements in the DOM.
   // Returns a flat list of all resulting individual shape elements.
+  // Properly split SVG path d attribute into individual subpaths
   function splitPathD(d) {
-    // M/m always starts a new subpath — split there (but not at the very first M)
+    // Tokenise: split at every letter that starts a new command
+    // M/m always starts a new subpath — split there (but not at first M)
     const tokens = d.trim().split(/(?=[MmZzLlHhVvCcSsQqTtAa])/);
     const subpaths = [];
     let current = '';
@@ -2426,7 +2432,7 @@
     if (!svgEl) return [];
     const result = [];
     svgEl.querySelectorAll('path, rect, circle, ellipse, polygon, polyline').forEach(el => {
-      // Skip anything inside <defs> — those are templates, not rendered shapes
+      // Skip template elements still sitting in <defs>
       if (el.closest('defs')) return;
       if (el.tagName !== 'path') { result.push(el); return; }
       const d = el.getAttribute('d') || '';
@@ -2443,6 +2449,7 @@
           clone.setAttribute('d', sub);
           clone.setAttribute('data-compound-clone', '1');
           clone.removeAttribute('data-orig-d');
+          // Insert after original so z-order is preserved
           el.parentNode.insertBefore(clone, el.nextSibling);
           result.push(clone);
         }
@@ -2453,16 +2460,18 @@
 
   // Restore compound paths split by getIndividualShapes
   function restoreCompoundPaths() {
-    if (!svgEl) return;
+    // Restore original d on split originals
     svgEl.querySelectorAll('[data-orig-d]').forEach(el => {
       el.setAttribute('d', el.getAttribute('data-orig-d'));
       el.removeAttribute('data-orig-d');
     });
+    // Remove clones
     svgEl.querySelectorAll('[data-compound-clone]').forEach(el => el.remove());
   }
 
   function toggleAdvHide() {
     if (!advHideMode) {
+      // Show warning first
       document.getElementById('adv-warn-popup').style.display = 'flex';
     } else {
       deactivateAdvHide();
@@ -2498,9 +2507,6 @@
     if (hint) hint.textContent = '';
     mirror.style.display = '';
     advGrid.style.display = 'none';
-    // Restore any compound paths that were split, and re-apply hidden state.
-    // The flattened <use> nodes stay in the DOM — they render identically and
-    // svgEl is replaced fresh on the next openEditor() call anyway.
     const stillHidden = new Set(hiddenShapeEls);
     restoreCompoundPaths();
     stillHidden.forEach(el => { if (el.parentNode) el.style.visibility = 'hidden'; });
@@ -2512,10 +2518,8 @@
     advGrid.innerHTML = '';
     if (!svgEl) return;
 
-    // Inline any <use> references so querySelectorAll can find all real shapes,
-    // then split compound paths. Both are idempotent.
-    flattenSvgUses();
-    restoreCompoundPaths(); // clean up any previous compound-path split
+    // Split compound paths first
+    restoreCompoundPaths(); // clean up any previous split
     const shapes = getIndividualShapes();
 
     if (!shapes.length) {
@@ -2625,7 +2629,11 @@
 
   // ── END ADVANCED HIDE MODE ─────────────────────────────────────────────────
 
+  let _hideDragAbort = null;
   function setupHideDrag(grid) {
+    if (_hideDragAbort) _hideDragAbort.abort();
+    _hideDragAbort = new AbortController();
+    const signal = _hideDragAbort.signal;
     grid.addEventListener('pointerdown', e => {
       if (e.button !== 0) return;
       const mirrorWrap = e.target.closest('.color-item');
@@ -2647,7 +2655,7 @@
       const onUp = () => { grid.releasePointerCapture(e.pointerId); grid.removeEventListener('pointermove', onMove); grid.removeEventListener('pointerup', onUp); };
       grid.addEventListener('pointermove', onMove);
       grid.addEventListener('pointerup', onUp);
-    });
+    }, { signal });
   }
 
   function toggleHideColorByWrap(srcWrap, mirrorWrap) {
