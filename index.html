@@ -1227,6 +1227,12 @@
               <input type="range" id="slider-bri" min="-100" max="100" value="0" style="flex:1;accent-color:#fff;">
               <span id="val-bri" style="width:32px;text-align:right;font-size:11px;color:#fff;">0%</span>
             </label>
+            <div style="height:1px;background:rgba(255,255,255,0.12);margin:2px 0;"></div>
+            <label style="font-family:'Nunito',sans-serif;font-size:11px;color:rgba(255,255,255,0.7);display:flex;align-items:center;gap:8px;">
+              <span style="width:16px;">A</span>
+              <input type="range" id="slider-opacity" min="0" max="100" value="100" style="flex:1;accent-color:#fff;">
+              <span id="val-opacity" style="width:32px;text-align:right;font-size:11px;color:#fff;">100%</span>
+            </label>
           </div>
         </div>
       </div>
@@ -1392,13 +1398,18 @@
     if (!svgEl) return null;
     const fills = [];
     svgEl.querySelectorAll('[data-cid]').forEach(el => {
-      fills.push({ cid: el.getAttribute('data-cid'), fill: el.getAttribute('fill'), stopColor: el.getAttribute('stop-color') });
+      fills.push({ cid: el.getAttribute('data-cid'), fill: el.getAttribute('fill'), stopColor: el.getAttribute('stop-color'), fillOpacity: el.getAttribute('fill-opacity'), stopOpacity: el.getAttribute('stop-opacity') });
+    });
+    // Also snapshot per-wrap opacity values
+    const opacities = [];
+    document.getElementById('controls').querySelectorAll('.color-item').forEach(wrap => {
+      opacities.push({ ids: wrap._ids ? [...wrap._ids] : [], opacity: wrap._opacity !== undefined ? wrap._opacity : 1 });
     });
     const hiddenShapes = [];
     svgEl.querySelectorAll('path, rect, circle, ellipse, polygon, polyline').forEach((el, i) => {
       hiddenShapes.push({ idx: i, hidden: el.style.visibility === 'hidden' });
     });
-    return { fills, hiddenShapes };
+    return { fills, hiddenShapes, opacities };
   }
 
   function pushMainUndo() {
@@ -1411,13 +1422,25 @@
 
   function restoreMainSnapshot(snap) {
     if (!snap || !svgEl) return;
-    // Restore fills
-    snap.fills.forEach(({ cid, fill, stopColor }) => {
+    // Restore fills and opacity attributes
+    snap.fills.forEach(({ cid, fill, stopColor, fillOpacity, stopOpacity }) => {
       const el = svgEl.querySelector(`[data-cid="${cid}"]`);
       if (!el) return;
       if (stopColor !== null && stopColor !== undefined) el.setAttribute('stop-color', stopColor);
       if (fill !== null && fill !== undefined) el.setAttribute('fill', fill);
+      if (fillOpacity !== null && fillOpacity !== undefined) el.setAttribute('fill-opacity', fillOpacity);
+      else el.removeAttribute('fill-opacity');
+      if (stopOpacity !== null && stopOpacity !== undefined) el.setAttribute('stop-opacity', stopOpacity);
+      else el.removeAttribute('stop-opacity');
     });
+    // Restore per-wrap opacity and slider
+    if (snap.opacities) {
+      snap.opacities.forEach(({ ids, opacity }) => {
+        const wrap = Array.from(document.getElementById('controls').querySelectorAll('.color-item'))
+          .find(w => w._ids && ids.length && w._ids[0] === ids[0]);
+        if (wrap) wrap._opacity = opacity;
+      });
+    }
     // Restore shape visibility
     if (snap.hiddenShapes) {
       const shapes = Array.from(svgEl.querySelectorAll('path, rect, circle, ellipse, polygon, polyline'));
@@ -1443,6 +1466,8 @@
       const color = el.getAttribute('fill') || el.getAttribute('stop-color') || '';
       if (color.startsWith('#')) { input.value = color; label.textContent = color.toUpperCase(); }
     });
+    // Sync opacity slider to show correct value for any selected items
+    updateOpacitySliderDisplay();
     refreshPreview();
   }
 
@@ -1744,6 +1769,7 @@
     selectedColorItems.forEach(w => w.classList.remove('multi-selected'));
     selectedColorItems.clear();
     clearHighlight();
+    updateOpacitySliderDisplay();
   }
 
   let colorDragging = false, colorDragAdding = true;
@@ -1777,6 +1803,7 @@
     const els = [];
     selectedColorItems.forEach(w => { if (w._ids) els.push(...getHighlightEls(w._ids)); });
     if (!els.length) { clearHighlight(); return; }
+    updateOpacitySliderDisplay();
     const w = previewCanvas.width, h = previewCanvas.height;
     highlightCanvas.width = w; highlightCanvas.height = h;
     const clone = svgEl.cloneNode(true);
@@ -1812,6 +1839,10 @@
     colorDragging = false;
     ['slider-hue','slider-sat','slider-bri'].forEach(id => { const el = document.getElementById(id); if (el) el.value = 0; });
     ['val-hue','val-sat','val-bri'].forEach((id, i) => { const el = document.getElementById(id); if (el) el.textContent = i === 0 ? '0°' : '0%'; });
+    const opSlider = document.getElementById('slider-opacity');
+    const opVal = document.getElementById('val-opacity');
+    if (opSlider) opSlider.value = 100;
+    if (opVal) opVal.textContent = '100%';
 
     const colorMap = buildColorMap(svgEl, 'main');
 
@@ -1825,6 +1856,7 @@
       wrap.className = 'color-item';
       wrap._ids = ids;
       wrap._originalHex = originalHex;
+      wrap._opacity = 1; // default full opacity
 
       const input = document.createElement('input');
       input.type = 'color';
@@ -1983,6 +2015,7 @@
       if (!dragMoved && wrap) {
         if (selectedColorItems.has(wrap)) {
           // Click on selected item (no drag) → open picker, keep selection
+          updateOpacitySliderDisplay();
           const inp = wrap.querySelector('input[type="color"]');
           if (inp) inp.click();
         }
@@ -2059,6 +2092,53 @@
 
   let originalPaletteColors = [];
 
+  // Update the opacity slider to reflect the current selection (or all if none)
+  function updateOpacitySliderDisplay() {
+    const opSlider = document.getElementById('slider-opacity');
+    const opVal = document.getElementById('val-opacity');
+    if (!opSlider || !opVal) return;
+    const targets = selectedColorItems.size > 0
+      ? originalPaletteColors.filter(e => {
+          const w = e.input && (e.input.closest('.color-item') || e.input.parentElement);
+          return w && selectedColorItems.has(w);
+        })
+      : originalPaletteColors;
+    if (!targets.length) { opSlider.value = 100; opVal.textContent = '100%'; return; }
+    // Show average opacity of targets
+    const avg = targets.reduce((sum, e) => {
+      const w = e.input && (e.input.closest('.color-item') || e.input.parentElement);
+      return sum + (w && w._opacity !== undefined ? w._opacity : 1);
+    }, 0) / targets.length;
+    const pct = Math.round(avg * 100);
+    opSlider.value = pct;
+    opVal.textContent = pct + '%';
+  }
+
+  function applyOpacity(opacityValue) {
+    // Apply only to selected colors if any, otherwise all
+    const targets = selectedColorItems.size > 0
+      ? originalPaletteColors.filter(e => {
+          const w = e.input && (e.input.closest('.color-item') || e.input.parentElement);
+          return w && selectedColorItems.has(w);
+        })
+      : originalPaletteColors;
+
+    targets.forEach(({ ids, input }) => {
+      const w = input && (input.closest('.color-item') || input.parentElement);
+      if (w) w._opacity = opacityValue;
+      ids.forEach(id => {
+        const el = svgEl.querySelector(`[data-cid="${id}"]`);
+        if (!el) return;
+        if (el.tagName === 'stop') {
+          el.setAttribute('stop-opacity', opacityValue);
+        } else {
+          el.setAttribute('fill-opacity', opacityValue);
+        }
+      });
+    });
+    refreshPreview();
+  }
+
   function initHsbSliders() {
     let _hsbPushedUndo = false;
     ['slider-hue','slider-sat','slider-bri'].forEach(id => {
@@ -2067,16 +2147,39 @@
       el.addEventListener('mousedown', () => { _hsbPushedUndo = false; });
       el.addEventListener('input', () => { if (!_hsbPushedUndo) { pushMainUndo(); _hsbPushedUndo = true; } applyHsbAdjust(); });
     });
+
+    // Opacity slider
+    let _opPushedUndo = false;
+    const opSlider = document.getElementById('slider-opacity');
+    const opVal = document.getElementById('val-opacity');
+    if (opSlider) {
+      opSlider.addEventListener('mousedown', () => { _opPushedUndo = false; });
+      opSlider.addEventListener('input', () => {
+        if (!_opPushedUndo) { pushMainUndo(); _opPushedUndo = true; }
+        const v = parseFloat(opSlider.value) / 100;
+        opVal.textContent = opSlider.value + '%';
+        applyOpacity(v);
+      });
+    }
+
     document.getElementById('reset-colors-btn').addEventListener('click', () => {
       pushMainUndo();
       ['slider-hue','slider-sat','slider-bri'].forEach(id => { const el = document.getElementById(id); if (el) el.value = 0; });
       ['val-hue','val-sat','val-bri'].forEach((id,i) => { const el = document.getElementById(id); if (el) el.textContent = i===0?'0°':'0%'; });
+      // Reset opacity slider
+      if (opSlider) opSlider.value = 100;
+      if (opVal) opVal.textContent = '100%';
       originalPaletteColors.forEach(({ids, hex, input, label}) => {
         if (input) { input.value = hex; label.textContent = hex.toUpperCase(); }
+        const w = input && (input.closest('.color-item') || input.parentElement);
+        if (w) w._opacity = 1;
         ids.forEach(id => {
           const el = svgEl.querySelector(`[data-cid="${id}"]`);
           if (!el) return;
           el.getAttribute('stop-color') !== null ? el.setAttribute('stop-color', hex) : el.setAttribute('fill', hex);
+          // Reset opacity attributes
+          if (el.tagName === 'stop') el.removeAttribute('stop-opacity');
+          else el.removeAttribute('fill-opacity');
         });
       });
       refreshPreview();
