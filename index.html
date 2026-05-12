@@ -222,7 +222,7 @@
       grid-template-columns: repeat(10, 1fr);
       gap: 4px;
       padding: 8px;
-      max-height: 320px;
+      max-height: 576px;
       overflow-y: auto;
     }
     .dropdown-grid::-webkit-scrollbar { width: 5px; }
@@ -1769,7 +1769,7 @@
     } else {
       dropdownList.classList.remove('grid-view');
       const listWrap = document.createElement('div');
-      listWrap.style.cssText = 'overflow-y:auto;max-height:260px;';
+      listWrap.style.cssText = 'overflow-y:auto;max-height:468px;';
       items.forEach(item => {
         const div = document.createElement('div');
         div.className = 'dropdown-item';
