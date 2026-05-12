@@ -152,6 +152,7 @@
     }
 
     .select-wrap.open #dropdown-list { display: block; }
+    .select-wrap.open #dropdown-list.grid-view { display: flex; flex-direction: column; }
     #dropdown-list::-webkit-scrollbar { width: 5px; }
     #dropdown-list::-webkit-scrollbar-thumb { background: var(--blue-light); border-radius: 4px; }
 
@@ -1762,7 +1763,7 @@
         name.textContent = item.name;
         cell.appendChild(img);
         cell.appendChild(name);
-        cell.addEventListener('mousedown', e => { e.preventDefault(); selectItem(item); closeDropdown(); });
+        cell.addEventListener('mousedown', e => { e.preventDefault(); selectItem(item); });
         grid.appendChild(cell);
       });
       dropdownList.appendChild(grid);
