@@ -512,6 +512,138 @@
     "file": "svgs/CloverWindow.svg"
   },
   {
+    "name": "Clutter Aloe",
+    "file": "svgs/ClutterAloe.svg"
+  },
+  {
+    "name": "Clutter Binder",
+    "file": "svgs/ClutterBinder.svg"
+  },
+  {
+    "name": "Clutter Books And Jar",
+    "file": "svgs/ClutterBooksAndJar.svg"
+  },
+  {
+    "name": "Clutter Camping Pot Dish",
+    "file": "svgs/ClutterCampingPotDish.svg"
+  },
+  {
+    "name": "Clutter Candle",
+    "file": "svgs/ClutterCandle.svg"
+  },
+  {
+    "name": "Clutter Candle Cluster",
+    "file": "svgs/ClutterCandleCluster.svg"
+  },
+  {
+    "name": "Clutter Cauldron DIsh",
+    "file": "svgs/ClutterCauldronDIsh.svg"
+  },
+  {
+    "name": "Clutter Clock",
+    "file": "svgs/ClutterClock.svg"
+  },
+  {
+    "name": "Clutter Cup Dish",
+    "file": "svgs/ClutterCupDish.svg"
+  },
+  {
+    "name": "Clutter Cup Dish 2",
+    "file": "svgs/ClutterCupDish2.svg"
+  },
+  {
+    "name": "Clutter Cupsdish",
+    "file": "svgs/ClutterCupsdish.svg"
+  },
+  {
+    "name": "Clutter Cutlery Fork Dish",
+    "file": "svgs/ClutterCutleryForkDish.svg"
+  },
+  {
+    "name": "Clutter Cutlery Knife Dish",
+    "file": "svgs/ClutterCutleryKnifeDish.svg"
+  },
+  {
+    "name": "Clutter Dessert Dish",
+    "file": "svgs/ClutterDessertDish.svg"
+  },
+  {
+    "name": "Clutter Dessert Tower Dish",
+    "file": "svgs/ClutterDessertTowerDish.svg"
+  },
+  {
+    "name": "Clutter Fountain Pen",
+    "file": "svgs/ClutterFountainPen.svg"
+  },
+  {
+    "name": "Clutter Magazine",
+    "file": "svgs/ClutterMagazine.svg"
+  },
+  {
+    "name": "Clutter Magazines",
+    "file": "svgs/ClutterMagazines.svg"
+  },
+  {
+    "name": "Clutter Mixing Bowl Dish",
+    "file": "svgs/ClutterMixingBowlDish.svg"
+  },
+  {
+    "name": "Clutter Pillows",
+    "file": "svgs/ClutterPillows.svg"
+  },
+  {
+    "name": "Clutter Plant",
+    "file": "svgs/ClutterPlant.svg"
+  },
+  {
+    "name": "Clutter Plant 2",
+    "file": "svgs/ClutterPlant2.svg"
+  },
+  {
+    "name": "Clutter Plant 3",
+    "file": "svgs/ClutterPlant3.svg"
+  },
+  {
+    "name": "Clutter Plate Dish",
+    "file": "svgs/ClutterPlateDish.svg"
+  },
+  {
+    "name": "Clutter Plate Dish 2",
+    "file": "svgs/ClutterPlateDish2.svg"
+  },
+  {
+    "name": "Clutter Sauce Pan Dish",
+    "file": "svgs/ClutterSaucePanDish.svg"
+  },
+  {
+    "name": "Clutter Small Bowl",
+    "file": "svgs/ClutterSmallBowl.svg"
+  },
+  {
+    "name": "Clutter Spices",
+    "file": "svgs/ClutterSpices.svg"
+  },
+  {
+    "name": "Clutter Spoon Dish",
+    "file": "svgs/ClutterSpoonDish.svg"
+  },
+  {
+    "name": "Clutter Sticky Notes",
+    "file": "svgs/ClutterStickyNotes.svg"
+  },
+  {
+    "name": "Clutter Toast Dish",
+    "file": "svgs/ClutterToastDish.svg"
+  },
+  {
+    "name": "Clutterglue",
+    "file": "svgs/Clutterglue.svg"
+  },
+  {
+    "name": "Clutterscissors",
+    "file": "svgs/Clutterscissors.svg"
+  },
+  {
     "name": "Coral Fence",
     "file": "svgs/CoralFence.svg"
   },
