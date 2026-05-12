@@ -304,6 +304,14 @@
     "file": "svgs/Beta-Zios-Statue.svg"
   },
   {
+    "name": "Beta Kitchen Counter Top Blank",
+    "file": "svgs/BetaKitchenCounterTopBlank.svg"
+  },
+  {
+    "name": "Beta Kitchen Faucet Blank",
+    "file": "svgs/BetaKitchenFaucetBlank.svg"
+  },
+  {
     "name": "Big Stump",
     "file": "svgs/BigStump.svg"
   },
@@ -524,6 +532,10 @@
     "file": "svgs/ClutterBooksAndJar.svg"
   },
   {
+    "name": "Clutter Bowl With Spoon Dish",
+    "file": "svgs/ClutterBowlWithSpoonDish.svg"
+  },
+  {
     "name": "Clutter Camping Pot Dish",
     "file": "svgs/ClutterCampingPotDish.svg"
   },
@@ -564,12 +576,24 @@
     "file": "svgs/ClutterCutleryKnifeDish.svg"
   },
   {
+    "name": "Clutter Cutting Board Dish",
+    "file": "svgs/ClutterCuttingBoardDish.svg"
+  },
+  {
     "name": "Clutter Dessert Dish",
     "file": "svgs/ClutterDessertDish.svg"
   },
   {
     "name": "Clutter Dessert Tower Dish",
     "file": "svgs/ClutterDessertTowerDish.svg"
+  },
+  {
+    "name": "Clutter Dish Rack",
+    "file": "svgs/ClutterDishRack.svg"
+  },
+  {
+    "name": "Clutter Food",
+    "file": "svgs/ClutterFood.svg"
   },
   {
     "name": "Clutter Fountain Pen",
@@ -586,6 +610,10 @@
   {
     "name": "Clutter Mixing Bowl Dish",
     "file": "svgs/ClutterMixingBowlDish.svg"
+  },
+  {
+    "name": "Clutter Paper Towels",
+    "file": "svgs/ClutterPaperTowels.svg"
   },
   {
     "name": "Clutter Pillows",
@@ -620,6 +648,10 @@
     "file": "svgs/ClutterSmallBowl.svg"
   },
   {
+    "name": "Clutter Spice",
+    "file": "svgs/ClutterSpice.svg"
+  },
+  {
     "name": "Clutter Spices",
     "file": "svgs/ClutterSpices.svg"
   },
@@ -636,11 +668,11 @@
     "file": "svgs/ClutterToastDish.svg"
   },
   {
-    "name": "Clutter Glue",
+    "name": "Clutterglue",
     "file": "svgs/Clutterglue.svg"
   },
   {
-    "name": "Clutter Scissors",
+    "name": "Clutterscissors",
     "file": "svgs/Clutterscissors.svg"
   },
   {
