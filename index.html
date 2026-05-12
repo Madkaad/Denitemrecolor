@@ -2374,6 +2374,7 @@
 
   // Sync the hide-pane mirror grid from the main controls
   function syncHidePane() {
+    if (advHideMode) { refreshAdvSwatchColors(); return; }
     const src = document.getElementById('controls');
     const dst = document.getElementById('controls-hide-mirror');
     dst.innerHTML = '';
@@ -2473,6 +2474,22 @@
     // DOM is permanently split — nothing to restore.
     // Shape visibility is already set directly on each element.
     refreshPreview();
+  }
+
+  function refreshAdvSwatchColors() {
+    // Update swatch backgrounds + labels to match current shape fill,
+    // without rebuilding the grid (preserves hide state).
+    document.querySelectorAll('#controls-hide-advanced .color-item').forEach(wrap => {
+      const shape = wrap._shape;
+      if (!shape) return;
+      const fill = shape.getAttribute('fill') || '';
+      const bg = (!fill || fill === 'none' || fill.startsWith('url'))
+        ? 'rgba(255,255,255,0.2)' : fill;
+      const swatch = wrap.querySelector('div');
+      if (swatch) swatch.style.background = bg;
+      const label = wrap.querySelector('.hex-text');
+      if (label) label.textContent = fill.startsWith('#') ? fill.toUpperCase() : label.textContent;
+    });
   }
 
   function buildAdvHideGrid() {
