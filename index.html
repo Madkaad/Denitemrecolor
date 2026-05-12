@@ -3879,11 +3879,10 @@
   }
 
   // Close popup on backdrop click
-  document.getElementById('report-popup').addEventListener('mousedown', e => {
-    if (e.target === document.getElementById('report-popup')) closeReportPopup();
-  });
-
-
+  document.addEventListener('DOMContentLoaded', () => {
+    document.getElementById('report-popup').addEventListener('mousedown', e => {
+      if (e.target === document.getElementById('report-popup')) closeReportPopup();
+    });
 
   // ── ADV WARN POPUP BUTTON HOVER STATES ───────────────────────────────────
   (function() {
@@ -3902,6 +3901,7 @@
     wire('adv-warn-yolo', 'adv-warn-yolo-img', yoloD, yoloA);
     console.log('adv-warn hover wired');
   })();
+  }); // end DOMContentLoaded
 
 </script>
   <!-- REPORT POPUP -->
