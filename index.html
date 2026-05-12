@@ -1271,11 +1271,11 @@
           <!-- Advanced warning popup -->
           <div id="adv-warn-popup" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.4);z-index:800;align-items:center;justify-content:center;">
             <div style="background:#fff;border-radius:14px;box-shadow:0 8px 32px rgba(0,0,0,0.18);padding:22px 24px 18px;max-width:320px;width:90%;position:relative;">
-              <div style="font-family:'Nunito',sans-serif;font-size:15px;font-weight:800;color:#c06000;margin-bottom:8px;">Heads up diva</div>
-              <div style="font-family:'Nunito',sans-serif;font-size:13px;color:#5a7a9a;line-height:1.6;margin-bottom:14px;">This mode gives you individual control over each shape. It may not work correctly on every item.</div>
+              <div style="font-family:'Nunito',sans-serif;font-size:15px;font-weight:800;color:#c06000;margin-bottom:8px;">⚠ Heads up</div>
+              <div style="font-family:'Nunito',sans-serif;font-size:13px;color:#5a7a9a;line-height:1.6;margin-bottom:14px;">This mode splits compound paths to give you individual control over each shape. It may not work correctly on every item.</div>
               <div style="display:flex;gap:8px;">
                 <button onclick="document.getElementById('adv-warn-popup').style.display='none';" style="flex:1;padding:8px;background:#eaf3ff;border:1.5px solid #c0d8f0;border-radius:8px;color:#336699;font-family:'Nunito',sans-serif;font-size:12px;font-weight:700;cursor:pointer;">Cancel</button>
-                <button onclick="document.getElementById('adv-warn-popup').style.display='none';activateAdvHide();" style="flex:2;padding:8px;background:#2a7ad4;border:none;border-radius:8px;color:#fff;font-family:'Nunito',sans-serif;font-size:12px;font-weight:700;cursor:pointer;">Okurr period</button>
+                <button onclick="document.getElementById('adv-warn-popup').style.display='none';activateAdvHide();" style="flex:2;padding:8px;background:#2a7ad4;border:none;border-radius:8px;color:#fff;font-family:'Nunito',sans-serif;font-size:12px;font-weight:700;cursor:pointer;">Got it, continue</button>
               </div>
             </div>
           </div>
@@ -1691,8 +1691,7 @@
       else { const res = await fetch(item.file); svgText = await res.text(); }
       const parser = new DOMParser();
       svgEl = parser.parseFromString(svgText, 'image/svg+xml').querySelector('svg');
-      flattenSvgUses();        // inline <use> refs → real DOM nodes
-      splitAllCompoundPaths(); // split compound paths permanently
+      flattenSvgUses(); // inline <use> refs → real DOM nodes
       fixBlacks();
       initPalette();
       initLayers();
@@ -1809,40 +1808,6 @@
     if (!svgEl) return;
     if (!svgEl.querySelector('use')) return;
     _flattenUses(svgEl, svgEl, 0);
-  }
-
-  // ── SPLIT COMPOUND PATHS (permanent, at load time) ───────────────────────
-  // Splits every multi-M path into individual <path> siblings.
-  // Tags each with data-compound-group so regular recolor can group them,
-  // and advanced mode can show each individually.
-  function _splitD(d) {
-    const subs = []; let cur = '';
-    for (const tok of d.trim().split(/(?=[MmZzLlHhVvCcSsQqTtAa])/)) {
-      const cmd = tok.trim()[0];
-      if ((cmd === 'M' || cmd === 'm') && cur.trim()) { subs.push(cur.trim()); cur = tok; }
-      else cur += tok;
-    }
-    if (cur.trim()) subs.push(cur.trim());
-    return subs.filter(s => s.length > 1);
-  }
-  function splitAllCompoundPaths() {
-    if (!svgEl) return;
-    let groupId = 0;
-    // snapshot so we don't iterate over newly inserted clones
-    Array.from(svgEl.querySelectorAll('path')).forEach(el => {
-      if (el.closest('defs')) return;
-      const subs = _splitD(el.getAttribute('d') || '');
-      if (subs.length <= 1) return;
-      groupId++;
-      el.setAttribute('d', subs[0]);
-      el.setAttribute('data-compound-group', groupId);
-      subs.slice(1).forEach(sub => {
-        const clone = el.cloneNode(true);
-        clone.setAttribute('d', sub);
-        clone.setAttribute('data-compound-group', groupId);
-        el.parentNode.insertBefore(clone, el.nextSibling);
-      });
-    });
   }
 
   function fixBlacks() {
