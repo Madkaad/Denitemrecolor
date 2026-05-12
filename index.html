@@ -145,14 +145,13 @@
       border-top: none;
       border-bottom-left-radius: 12px;
       border-bottom-right-radius: 12px;
-      max-height: 620px;
-      overflow: hidden;
+      max-height: 260px;
+      overflow-y: auto;
       z-index: 100;
       box-shadow: 0 8px 20px rgba(0,0,0,0.15);
     }
 
     .select-wrap.open #dropdown-list { display: block; }
-    .select-wrap.open #dropdown-list.grid-view { display: flex; flex-direction: column; }
     #dropdown-list::-webkit-scrollbar { width: 5px; }
     #dropdown-list::-webkit-scrollbar-thumb { background: var(--blue-light); border-radius: 4px; }
 
@@ -174,91 +173,6 @@
     .dropdown-item:last-child { border-bottom: none; }
     .dropdown-item:hover, .dropdown-item.highlighted { background: var(--blue-bg); color: var(--blue-dark); }
     .dropdown-empty { padding: 16px 18px; font-family: 'Nunito', sans-serif; font-size: 13px; color: #9bbbd4; text-align: center; }
-
-    /* ── VIEW TOGGLE ── */
-    .view-toggle-bar {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      padding: 6px 10px 5px;
-      border-bottom: 2px solid #ddeeff;
-      background: #f5faff;
-    }
-    .view-toggle-btn {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 28px;
-      height: 28px;
-      border-radius: 7px;
-      border: 2px solid #c8dff5;
-      background: #fff;
-      cursor: pointer;
-      color: var(--blue-dark);
-      transition: background 0.12s, border-color 0.12s;
-      flex-shrink: 0;
-    }
-    .view-toggle-btn.active {
-      background: var(--blue);
-      border-color: var(--blue-dark);
-      color: #fff;
-    }
-    .view-toggle-btn:hover:not(.active) { background: #e4f0ff; }
-    .view-toggle-label {
-      font-family: 'Nunito', sans-serif;
-      font-size: 11px;
-      font-weight: 700;
-      color: #9bbbd4;
-      margin-left: auto;
-    }
-
-    /* ── GRID VIEW ── */
-    #dropdown-list.grid-view {
-      display: flex;
-      flex-direction: column;
-    }
-    #dropdown-list.grid-view .view-toggle-bar { display: flex; }
-    .dropdown-grid {
-      display: grid;
-      grid-template-columns: repeat(10, 1fr);
-      gap: 4px;
-      padding: 8px;
-      max-height: 576px;
-      overflow-y: auto;
-    }
-    .dropdown-grid::-webkit-scrollbar { width: 5px; }
-    .dropdown-grid::-webkit-scrollbar-thumb { background: var(--blue-light); border-radius: 4px; }
-    .grid-item {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 3px;
-      padding: 5px 3px 4px;
-      border-radius: 9px;
-      border: 2px solid transparent;
-      cursor: pointer;
-      transition: background 0.1s, border-color 0.1s;
-    }
-    .grid-item:hover { background: var(--blue-bg); border-color: var(--blue-light); }
-    .grid-item img {
-      width: 52px;
-      height: 52px;
-      object-fit: contain;
-      display: block;
-    }
-    .grid-item-name {
-      font-family: 'Nunito', sans-serif;
-      font-size: 8px;
-      font-weight: 700;
-      color: var(--text-dark);
-      text-align: center;
-      line-height: 1.2;
-      max-width: 100%;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-      width: 54px;
-    }
 
     .dropdown-item-btns {
       display: none;
@@ -1552,7 +1466,6 @@
   let selectedItem = null;
   let highlightIndex = -1;
   let filteredItems = [];
-  let dropdownView = 'grid'; // 'grid' | 'list'
   let designBank = [];
 
   // ── MAIN PAGE UNDO / REDO ──────────────────────────────────────────────────
@@ -1714,100 +1627,47 @@
     highlightIndex = -1;
   }
 
-  function buildToggleBar() {
-    const bar = document.createElement('div');
-    bar.className = 'view-toggle-bar';
-
-    const gridBtn = document.createElement('button');
-    gridBtn.className = 'view-toggle-btn' + (dropdownView === 'grid' ? ' active' : '');
-    gridBtn.title = 'Grid view';
-    gridBtn.innerHTML = '<svg width="14" height="14" viewBox="0 0 14 14" fill="none"><rect x="1" y="1" width="5" height="5" rx="1" fill="currentColor"/><rect x="8" y="1" width="5" height="5" rx="1" fill="currentColor"/><rect x="1" y="8" width="5" height="5" rx="1" fill="currentColor"/><rect x="8" y="8" width="5" height="5" rx="1" fill="currentColor"/></svg>';
-    gridBtn.addEventListener('mousedown', e => { e.preventDefault(); dropdownView = 'grid'; renderDropdown(filteredItems); });
-
-    const listBtn = document.createElement('button');
-    listBtn.className = 'view-toggle-btn' + (dropdownView === 'list' ? ' active' : '');
-    listBtn.title = 'List view';
-    listBtn.innerHTML = '<svg width="14" height="14" viewBox="0 0 14 14" fill="none"><rect x="1" y="2" width="12" height="2" rx="1" fill="currentColor"/><rect x="1" y="6" width="12" height="2" rx="1" fill="currentColor"/><rect x="1" y="10" width="12" height="2" rx="1" fill="currentColor"/></svg>';
-    listBtn.addEventListener('mousedown', e => { e.preventDefault(); dropdownView = 'list'; renderDropdown(filteredItems); });
-
-    const lbl = document.createElement('span');
-    lbl.className = 'view-toggle-label';
-    lbl.textContent = filteredItems.length + ' items';
-
-    bar.appendChild(gridBtn);
-    bar.appendChild(listBtn);
-    bar.appendChild(lbl);
-    return bar;
-  }
-
   function renderDropdown(items) {
     dropdownList.innerHTML = '';
     if (!items.length) { dropdownList.innerHTML = '<div class="dropdown-empty">No items found.</div>'; return; }
+    items.forEach(item => {
+      const div = document.createElement('div');
+      div.className = 'dropdown-item';
+      const img = document.createElement('img');
+      img.className = 'dropdown-thumb';
+      img.src = item.file;
+      img.alt = '';
+      img.loading = 'lazy';
+      const label = document.createElement('span');
+      label.style.flex = '1';
+      label.textContent = item.name;
 
-    // Always show the toggle bar at the top
-    dropdownList.appendChild(buildToggleBar());
+      // Report buttons (shown on hover)
+      const btns = document.createElement('div');
+      btns.className = 'dropdown-item-btns';
 
-    if (dropdownView === 'grid') {
-      dropdownList.classList.add('grid-view');
-      const grid = document.createElement('div');
-      grid.className = 'dropdown-grid';
-      items.forEach(item => {
-        const cell = document.createElement('div');
-        cell.className = 'grid-item';
-        const img = document.createElement('img');
-        img.src = item.file;
-        img.alt = '';
-        img.loading = 'lazy';
-        const name = document.createElement('div');
-        name.className = 'grid-item-name';
-        name.textContent = item.name;
-        cell.appendChild(img);
-        cell.appendChild(name);
-        cell.addEventListener('mousedown', e => { e.preventDefault(); selectItem(item); });
-        grid.appendChild(cell);
-      });
-      dropdownList.appendChild(grid);
-    } else {
-      dropdownList.classList.remove('grid-view');
-      const listWrap = document.createElement('div');
-      listWrap.style.cssText = 'overflow-y:auto;max-height:468px;';
-      items.forEach(item => {
-        const div = document.createElement('div');
-        div.className = 'dropdown-item';
-        const img = document.createElement('img');
-        img.className = 'dropdown-thumb';
-        img.src = item.file;
-        img.alt = '';
-        img.loading = 'lazy';
-        const label = document.createElement('span');
-        label.style.flex = '1';
-        label.textContent = item.name;
+      const nameBtn = document.createElement('button');
+      nameBtn.className = 'report-btn name-btn';
+      nameBtn.textContent = '⚑ Wrong name';
+      nameBtn.addEventListener('mousedown', e => { e.stopPropagation(); e.preventDefault(); openReportPopup(item, 'name'); });
 
-        const btns = document.createElement('div');
-        btns.className = 'dropdown-item-btns';
-        const nameBtn = document.createElement('button');
-        nameBtn.className = 'report-btn name-btn';
-        nameBtn.textContent = '⚑ Wrong name';
-        nameBtn.addEventListener('mousedown', e => { e.stopPropagation(); e.preventDefault(); openReportPopup(item, 'name'); });
-        const brokeBtn = document.createElement('button');
-        brokeBtn.className = 'report-btn broke-btn';
-        brokeBtn.textContent = '⚠ Broken item';
-        brokeBtn.addEventListener('mousedown', e => { e.stopPropagation(); e.preventDefault(); openReportPopup(item, 'broken'); });
-        btns.appendChild(nameBtn);
-        btns.appendChild(brokeBtn);
+      const brokeBtn = document.createElement('button');
+      brokeBtn.className = 'report-btn broke-btn';
+      brokeBtn.textContent = '⚠ Broken item';
+      brokeBtn.addEventListener('mousedown', e => { e.stopPropagation(); e.preventDefault(); openReportPopup(item, 'broken'); });
 
-        div.appendChild(img);
-        div.appendChild(label);
-        div.appendChild(btns);
-        div.addEventListener('mousedown', e => { e.preventDefault(); selectItem(item); });
-        listWrap.appendChild(div);
-      });
-      dropdownList.appendChild(listWrap);
-    }
+      btns.appendChild(nameBtn);
+      btns.appendChild(brokeBtn);
+
+      div.appendChild(img);
+      div.appendChild(label);
+      div.appendChild(btns);
+      div.addEventListener('mousedown', e => { e.preventDefault(); selectItem(item); });
+      dropdownList.appendChild(div);
+    });
   }
 
   function updateHighlight() {
-    if (dropdownView !== 'list') return;
     dropdownList.querySelectorAll('.dropdown-item').forEach((el, i) => {
       el.classList.toggle('highlighted', i === highlightIndex);
       if (i === highlightIndex) el.scrollIntoView({ block: 'nearest' });
