@@ -2338,6 +2338,39 @@
   }
 
   // Sync the hide-pane mirror grid from the main controls
+  // Resolve a fill attribute value to a CSS background string.
+  // Handles plain hex, url(#gradientId) → CSS linear-gradient from stops,
+  // and falls back to a neutral colour for anything else.
+  function fillToCssBg(fill) {
+    if (!fill || fill === 'none') return 'rgba(255,255,255,0.15)';
+    if (fill.startsWith('url(')) {
+      const id = fill.match(/url\(#([^)]+)\)/)?.[1];
+      const grad = id && svgEl && svgEl.getElementById(id);
+      if (grad) {
+        const stops = Array.from(grad.querySelectorAll('stop'));
+        if (stops.length) {
+          const parts = stops.map((st, i) => {
+            const color = st.getAttribute('stop-color') || '#000';
+            const opacity = st.getAttribute('stop-opacity');
+            const pct = Math.round((i / Math.max(stops.length - 1, 1)) * 100);
+            // Apply stop-opacity if present
+            if (opacity !== null && opacity !== '1') {
+              // Convert hex + opacity to rgba
+              const r = parseInt(color.slice(1,3)||'00',16);
+              const g = parseInt(color.slice(3,5)||'00',16);
+              const b = parseInt(color.slice(5,7)||'00',16);
+              return `rgba(${r},${g},${b},${opacity}) ${pct}%`;
+            }
+            return `${color} ${pct}%`;
+          });
+          return `linear-gradient(135deg, ${parts.join(', ')})`;
+        }
+      }
+      return 'rgba(255,255,255,0.15)';
+    }
+    return fill;
+  }
+
   function syncHidePane() {
     if (advHideMode) { refreshAdvSwatchColors(); return; }
     const src = document.getElementById('controls');
@@ -2349,9 +2382,24 @@
       mirrorWrap._ids = srcWrap._ids;
       mirrorWrap._srcWrap = srcWrap;
 
-      // Swatch (display only, not interactive for color picking)
+      // Swatch — resolve fill including gradients
       const swatch = document.createElement('div');
-      swatch.style.cssText = 'width:54px;height:54px;border-radius:12px;border:3px solid rgba(255,255,255,0.4);box-shadow:0 3px 0 rgba(0,0,0,0.15);background:' + srcWrap.querySelector('input[type="color"]').value + ';';
+      const _ids0 = srcWrap._ids || [];
+      let _swatchBg = 'rgba(255,255,255,0.15)';
+      if (_ids0.length && svgEl) {
+        const _el0 = svgEl.querySelector(`[data-cid="${_ids0[0]}"]`);
+        if (_el0) {
+          const _isStop = _el0.tagName === 'stop';
+          if (_isStop) {
+            // It's a gradient stop — find the gradient and build the CSS bg
+            const _grad = _el0.closest('linearGradient, radialGradient');
+            if (_grad) _swatchBg = fillToCssBg(`url(#${_grad.getAttribute('id')})`);
+          } else {
+            _swatchBg = fillToCssBg(_el0.getAttribute('fill') || '');
+          }
+        }
+      }
+      swatch.style.cssText = `width:54px;height:54px;border-radius:12px;border:3px solid rgba(255,255,255,0.4);box-shadow:0 3px 0 rgba(0,0,0,0.15);background:${_swatchBg};`;
 
       const label = document.createElement('span');
       label.className = 'hex-text';
@@ -2448,8 +2496,7 @@
       const shape = wrap._shape;
       if (!shape) return;
       const fill = shape.getAttribute('fill') || '';
-      const bg = (!fill || fill === 'none' || fill.startsWith('url'))
-        ? 'rgba(255,255,255,0.2)' : fill;
+      const bg = fillToCssBg(fill);
       const swatch = wrap.querySelector('div');
       if (swatch) swatch.style.background = bg;
       const label = wrap.querySelector('.hex-text');
@@ -2485,8 +2532,7 @@
       wrap._shape = shape;
       wrap._isHidden = isHidden;
 
-      const bg = (!fill || fill === 'none' || fill.startsWith('url'))
-        ? 'rgba(255,255,255,0.2)' : fill;
+      const bg = fillToCssBg(fill);
       const swatch = document.createElement('div');
       swatch.style.cssText = `width:54px;height:54px;border-radius:12px;border:3px solid rgba(255,255,255,0.4);box-shadow:0 3px 0 rgba(0,0,0,0.15);background:${bg};`;
 
