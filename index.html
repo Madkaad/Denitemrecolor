@@ -145,8 +145,8 @@
       border-top: none;
       border-bottom-left-radius: 12px;
       border-bottom-right-radius: 12px;
-      max-height: 260px;
-      overflow-y: auto;
+      max-height: 620px;
+      overflow: hidden;
       z-index: 100;
       box-shadow: 0 8px 20px rgba(0,0,0,0.15);
     }
@@ -1762,7 +1762,7 @@
         name.textContent = item.name;
         cell.appendChild(img);
         cell.appendChild(name);
-        cell.addEventListener('mousedown', e => { e.preventDefault(); selectItem(item); });
+        cell.addEventListener('mousedown', e => { e.preventDefault(); selectItem(item); closeDropdown(); });
         grid.appendChild(cell);
       });
       dropdownList.appendChild(grid);
