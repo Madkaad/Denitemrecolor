@@ -175,93 +175,70 @@
     .dropdown-empty { padding: 16px 18px; font-family: 'Nunito', sans-serif; font-size: 13px; color: #9bbbd4; text-align: center; }
 
     /* ── VIEW TOGGLE ── */
-    .view-toggle-wrap {
-      display: flex;
-      gap: 6px;
-      margin-bottom: 10px;
-    }
-    .view-toggle-btn {
-      font-family: 'Fredoka One', cursive;
-      font-size: 13px;
-      padding: 6px 14px;
-      border-radius: 9px;
-      border: 2px solid rgba(255,255,255,0.35);
-      background: rgba(255,255,255,0.15);
-      color: rgba(255,255,255,0.7);
-      cursor: pointer;
-      transition: background 0.15s, color 0.15s, border-color 0.15s;
+    .view-toggle-bar {
       display: flex;
       align-items: center;
       gap: 6px;
-      letter-spacing: 0.03em;
+      padding: 6px 10px 5px;
+      border-bottom: 2px solid #ddeeff;
+      background: #f5faff;
+    }
+    .view-toggle-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 28px;
+      height: 28px;
+      border-radius: 7px;
+      border: 2px solid #c8dff5;
+      background: #fff;
+      cursor: pointer;
+      color: var(--blue-dark);
+      transition: background 0.12s, border-color 0.12s;
+      flex-shrink: 0;
     }
     .view-toggle-btn.active {
-      background: rgba(255,255,255,0.95);
-      color: var(--blue-dark);
-      border-color: rgba(255,255,255,0.95);
-    }
-    .view-toggle-btn:hover:not(.active) {
-      background: rgba(255,255,255,0.25);
+      background: var(--blue);
+      border-color: var(--blue-dark);
       color: #fff;
+    }
+    .view-toggle-btn:hover:not(.active) { background: #e4f0ff; }
+    .view-toggle-label {
+      font-family: 'Nunito', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      color: #9bbbd4;
+      margin-left: auto;
     }
 
     /* ── GRID VIEW ── */
-    #grid-search-input {
-      width: 100%;
-      background: #fff;
-      border: 3px solid var(--blue-dark);
-      border-radius: 12px;
-      padding: 13px 18px;
-      color: var(--text-dark);
-      font-family: 'Nunito', sans-serif;
-      font-size: 15px;
-      font-weight: 700;
-      outline: none;
-      box-shadow: inset 0 2px 6px rgba(0,0,0,0.08), 0 3px 0 var(--blue-dark);
-      transition: box-shadow 0.15s;
-      margin-bottom: 12px;
-      display: none;
+    #dropdown-list.grid-view {
+      display: flex;
+      flex-direction: column;
     }
-    #grid-search-input:focus {
-      box-shadow: inset 0 2px 6px rgba(0,0,0,0.08), 0 3px 0 var(--blue-dark), 0 0 0 3px rgba(39,158,255,0.3);
-    }
-    #grid-search-input::placeholder { color: #9bbbd4; }
-
-    #grid-view {
-      display: none;
-      grid-template-columns: repeat(10, 1fr);
-      gap: 6px;
-      max-height: calc(9 * (72px + 6px));
-      overflow-y: auto;
-      padding: 4px 2px;
-    }
-    #grid-view.active {
+    #dropdown-list.grid-view .view-toggle-bar { display: flex; }
+    .dropdown-grid {
       display: grid;
+      grid-template-columns: repeat(10, 1fr);
+      gap: 4px;
+      padding: 8px;
+      max-height: 320px;
+      overflow-y: auto;
     }
-    #grid-view::-webkit-scrollbar { width: 6px; }
-    #grid-view::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.35); border-radius: 4px; }
-
+    .dropdown-grid::-webkit-scrollbar { width: 5px; }
+    .dropdown-grid::-webkit-scrollbar-thumb { background: var(--blue-light); border-radius: 4px; }
     .grid-item {
-      background: rgba(255,255,255,0.15);
-      border: 2px solid rgba(255,255,255,0.2);
-      border-radius: 10px;
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
-      padding: 5px 3px 4px;
-      cursor: pointer;
-      transition: background 0.12s, border-color 0.12s, transform 0.1s;
       gap: 3px;
-      min-width: 0;
+      padding: 5px 3px 4px;
+      border-radius: 9px;
+      border: 2px solid transparent;
+      cursor: pointer;
+      transition: background 0.1s, border-color 0.1s;
     }
-    .grid-item:hover {
-      background: rgba(255,255,255,0.9);
-      border-color: rgba(255,255,255,0.9);
-      transform: scale(1.06);
-      z-index: 2;
-      position: relative;
-    }
+    .grid-item:hover { background: var(--blue-bg); border-color: var(--blue-light); }
     .grid-item img {
       width: 52px;
       height: 52px;
@@ -271,18 +248,16 @@
     .grid-item-name {
       font-family: 'Nunito', sans-serif;
       font-size: 8px;
-      font-weight: 800;
-      color: rgba(255,255,255,0.85);
+      font-weight: 700;
+      color: var(--text-dark);
       text-align: center;
       line-height: 1.2;
       max-width: 100%;
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;
-      width: 100%;
+      width: 54px;
     }
-    .grid-item:hover .grid-item-name { color: var(--blue-dark); }
-    .grid-empty { grid-column: 1 / -1; padding: 24px; font-family: 'Nunito', sans-serif; font-size: 13px; color: rgba(255,255,255,0.6); text-align: center; }
 
     .dropdown-item-btns {
       display: none;
@@ -1309,28 +1284,12 @@
 
   <!-- PICKER -->
   <div class="panel">
-    <div class="panel-title" style="display:flex;align-items:center;justify-content:space-between;gap:10px;">
-      <span style="display:flex;align-items:center;gap:10px;">Choose a Den Item <span id="item-count" style="font-family:'Nunito',sans-serif;font-size:13px;font-weight:700;color:var(--blue-light);opacity:0.8;"></span></span>
-      <div class="view-toggle-wrap">
-        <button class="view-toggle-btn active" id="btn-list-view" onclick="setPickerView('list')" title="List view">
-          <svg width="13" height="13" viewBox="0 0 16 16" fill="currentColor"><rect x="0" y="1" width="16" height="2.5" rx="1"/><rect x="0" y="6.75" width="16" height="2.5" rx="1"/><rect x="0" y="12.5" width="16" height="2.5" rx="1"/></svg>
-          List
-        </button>
-        <button class="view-toggle-btn" id="btn-grid-view" onclick="setPickerView('grid')" title="Grid view">
-          <svg width="13" height="13" viewBox="0 0 16 16" fill="currentColor"><rect x="0" y="0" width="4.5" height="4.5" rx="1"/><rect x="5.75" y="0" width="4.5" height="4.5" rx="1"/><rect x="11.5" y="0" width="4.5" height="4.5" rx="1"/><rect x="0" y="5.75" width="4.5" height="4.5" rx="1"/><rect x="5.75" y="5.75" width="4.5" height="4.5" rx="1"/><rect x="11.5" y="5.75" width="4.5" height="4.5" rx="1"/><rect x="0" y="11.5" width="4.5" height="4.5" rx="1"/><rect x="5.75" y="11.5" width="4.5" height="4.5" rx="1"/><rect x="11.5" y="11.5" width="4.5" height="4.5" rx="1"/></svg>
-          Grid
-        </button>
-      </div>
-    </div>
-    <!-- LIST VIEW -->
+    <div class="panel-title" style="display:flex;align-items:center;gap:10px;">Choose a Den Item <span id="item-count" style="font-family:'Nunito',sans-serif;font-size:13px;font-weight:700;color:var(--blue-light);opacity:0.8;"></span></div>
     <div class="select-wrap" id="select-wrap">
       <input id="search-input" type="text" placeholder="Search for a den item…" autocomplete="off" readonly/>
       <svg class="select-arrow" width="16" height="16" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
       <div id="dropdown-list"></div>
     </div>
-    <!-- GRID VIEW -->
-    <input id="grid-search-input" type="text" placeholder="Search for a den item…" autocomplete="off"/>
-    <div id="grid-view"></div>
   </div>
 
   <!-- EDITOR -->
@@ -1592,6 +1551,7 @@
   let selectedItem = null;
   let highlightIndex = -1;
   let filteredItems = [];
+  let dropdownView = 'grid'; // 'grid' | 'list'
   let designBank = [];
 
   // ── MAIN PAGE UNDO / REDO ──────────────────────────────────────────────────
@@ -1731,10 +1691,6 @@
       const countEl = document.getElementById('item-count');
       if (countEl) countEl.textContent = `(${catalog.length} items)`;
       filteredItems = [...catalog];
-      // Pre-populate grid if user already switched to it before catalog loaded
-      if (typeof pickerView !== 'undefined' && pickerView === 'grid') {
-        gridFilteredItems = [...catalog]; renderGrid(gridFilteredItems);
-      }
     } catch (e) {
       dropdownList.innerHTML = '<div class="dropdown-empty">Could not load catalog.json</div>';
     }
@@ -1757,47 +1713,100 @@
     highlightIndex = -1;
   }
 
+  function buildToggleBar() {
+    const bar = document.createElement('div');
+    bar.className = 'view-toggle-bar';
+
+    const gridBtn = document.createElement('button');
+    gridBtn.className = 'view-toggle-btn' + (dropdownView === 'grid' ? ' active' : '');
+    gridBtn.title = 'Grid view';
+    gridBtn.innerHTML = '<svg width="14" height="14" viewBox="0 0 14 14" fill="none"><rect x="1" y="1" width="5" height="5" rx="1" fill="currentColor"/><rect x="8" y="1" width="5" height="5" rx="1" fill="currentColor"/><rect x="1" y="8" width="5" height="5" rx="1" fill="currentColor"/><rect x="8" y="8" width="5" height="5" rx="1" fill="currentColor"/></svg>';
+    gridBtn.addEventListener('mousedown', e => { e.preventDefault(); dropdownView = 'grid'; renderDropdown(filteredItems); });
+
+    const listBtn = document.createElement('button');
+    listBtn.className = 'view-toggle-btn' + (dropdownView === 'list' ? ' active' : '');
+    listBtn.title = 'List view';
+    listBtn.innerHTML = '<svg width="14" height="14" viewBox="0 0 14 14" fill="none"><rect x="1" y="2" width="12" height="2" rx="1" fill="currentColor"/><rect x="1" y="6" width="12" height="2" rx="1" fill="currentColor"/><rect x="1" y="10" width="12" height="2" rx="1" fill="currentColor"/></svg>';
+    listBtn.addEventListener('mousedown', e => { e.preventDefault(); dropdownView = 'list'; renderDropdown(filteredItems); });
+
+    const lbl = document.createElement('span');
+    lbl.className = 'view-toggle-label';
+    lbl.textContent = filteredItems.length + ' items';
+
+    bar.appendChild(gridBtn);
+    bar.appendChild(listBtn);
+    bar.appendChild(lbl);
+    return bar;
+  }
+
   function renderDropdown(items) {
     dropdownList.innerHTML = '';
     if (!items.length) { dropdownList.innerHTML = '<div class="dropdown-empty">No items found.</div>'; return; }
-    items.forEach(item => {
-      const div = document.createElement('div');
-      div.className = 'dropdown-item';
-      const img = document.createElement('img');
-      img.className = 'dropdown-thumb';
-      img.src = item.file;
-      img.alt = '';
-      img.loading = 'lazy';
-      const label = document.createElement('span');
-      label.style.flex = '1';
-      label.textContent = item.name;
 
-      // Report buttons (shown on hover)
-      const btns = document.createElement('div');
-      btns.className = 'dropdown-item-btns';
+    // Always show the toggle bar at the top
+    dropdownList.appendChild(buildToggleBar());
 
-      const nameBtn = document.createElement('button');
-      nameBtn.className = 'report-btn name-btn';
-      nameBtn.textContent = '⚑ Wrong name';
-      nameBtn.addEventListener('mousedown', e => { e.stopPropagation(); e.preventDefault(); openReportPopup(item, 'name'); });
+    if (dropdownView === 'grid') {
+      dropdownList.classList.add('grid-view');
+      const grid = document.createElement('div');
+      grid.className = 'dropdown-grid';
+      items.forEach(item => {
+        const cell = document.createElement('div');
+        cell.className = 'grid-item';
+        const img = document.createElement('img');
+        img.src = item.file;
+        img.alt = '';
+        img.loading = 'lazy';
+        const name = document.createElement('div');
+        name.className = 'grid-item-name';
+        name.textContent = item.name;
+        cell.appendChild(img);
+        cell.appendChild(name);
+        cell.addEventListener('mousedown', e => { e.preventDefault(); selectItem(item); });
+        grid.appendChild(cell);
+      });
+      dropdownList.appendChild(grid);
+    } else {
+      dropdownList.classList.remove('grid-view');
+      const listWrap = document.createElement('div');
+      listWrap.style.cssText = 'overflow-y:auto;max-height:260px;';
+      items.forEach(item => {
+        const div = document.createElement('div');
+        div.className = 'dropdown-item';
+        const img = document.createElement('img');
+        img.className = 'dropdown-thumb';
+        img.src = item.file;
+        img.alt = '';
+        img.loading = 'lazy';
+        const label = document.createElement('span');
+        label.style.flex = '1';
+        label.textContent = item.name;
 
-      const brokeBtn = document.createElement('button');
-      brokeBtn.className = 'report-btn broke-btn';
-      brokeBtn.textContent = '⚠ Broken item';
-      brokeBtn.addEventListener('mousedown', e => { e.stopPropagation(); e.preventDefault(); openReportPopup(item, 'broken'); });
+        const btns = document.createElement('div');
+        btns.className = 'dropdown-item-btns';
+        const nameBtn = document.createElement('button');
+        nameBtn.className = 'report-btn name-btn';
+        nameBtn.textContent = '⚑ Wrong name';
+        nameBtn.addEventListener('mousedown', e => { e.stopPropagation(); e.preventDefault(); openReportPopup(item, 'name'); });
+        const brokeBtn = document.createElement('button');
+        brokeBtn.className = 'report-btn broke-btn';
+        brokeBtn.textContent = '⚠ Broken item';
+        brokeBtn.addEventListener('mousedown', e => { e.stopPropagation(); e.preventDefault(); openReportPopup(item, 'broken'); });
+        btns.appendChild(nameBtn);
+        btns.appendChild(brokeBtn);
 
-      btns.appendChild(nameBtn);
-      btns.appendChild(brokeBtn);
-
-      div.appendChild(img);
-      div.appendChild(label);
-      div.appendChild(btns);
-      div.addEventListener('mousedown', e => { e.preventDefault(); selectItem(item); });
-      dropdownList.appendChild(div);
-    });
+        div.appendChild(img);
+        div.appendChild(label);
+        div.appendChild(btns);
+        div.addEventListener('mousedown', e => { e.preventDefault(); selectItem(item); });
+        listWrap.appendChild(div);
+      });
+      dropdownList.appendChild(listWrap);
+    }
   }
 
   function updateHighlight() {
+    if (dropdownView !== 'list') return;
     dropdownList.querySelectorAll('.dropdown-item').forEach((el, i) => {
       el.classList.toggle('highlighted', i === highlightIndex);
       if (i === highlightIndex) el.scrollIntoView({ block: 'nearest' });
@@ -1805,73 +1814,6 @@
   }
 
   function selectItem(item) { selectedItem = item; closeDropdown(); openEditor(item); }
-
-  // ── PICKER VIEW TOGGLE ────────────────────────────────────────────────────
-  let pickerView = 'list'; // 'list' | 'grid'
-  let gridFilteredItems = [];
-
-  function setPickerView(mode) {
-    pickerView = mode;
-    const listWrap = document.getElementById('select-wrap');
-    const gridEl   = document.getElementById('grid-view');
-    const gridSrch = document.getElementById('grid-search-input');
-    const btnList  = document.getElementById('btn-list-view');
-    const btnGrid  = document.getElementById('btn-grid-view');
-
-    if (mode === 'grid') {
-      listWrap.style.display = 'none';
-      gridSrch.style.display = 'block';
-      gridEl.classList.add('active');
-      btnList.classList.remove('active');
-      btnGrid.classList.add('active');
-      if (catalog.length) {
-        gridFilteredItems = [...catalog];
-        renderGrid(gridFilteredItems);
-      }
-      gridSrch.focus();
-    } else {
-      listWrap.style.display = '';
-      gridSrch.style.display = 'none';
-      gridEl.classList.remove('active');
-      btnList.classList.add('active');
-      btnGrid.classList.remove('active');
-    }
-  }
-
-  function renderGrid(items) {
-    const gridEl = document.getElementById('grid-view');
-    gridEl.innerHTML = '';
-    if (!items.length) {
-      gridEl.innerHTML = '<div class="grid-empty">No items found.</div>';
-      return;
-    }
-    items.forEach(item => {
-      const cell = document.createElement('div');
-      cell.className = 'grid-item';
-      cell.title = item.name;
-
-      const img = document.createElement('img');
-      img.src = item.file;
-      img.alt = '';
-      img.loading = 'lazy';
-
-      const name = document.createElement('div');
-      name.className = 'grid-item-name';
-      name.textContent = item.name;
-
-      cell.appendChild(img);
-      cell.appendChild(name);
-      cell.addEventListener('click', () => { selectItem(item); });
-      gridEl.appendChild(cell);
-    });
-  }
-
-  const gridSearchInput = document.getElementById('grid-search-input');
-  gridSearchInput.addEventListener('input', () => {
-    const q = gridSearchInput.value.toLowerCase();
-    gridFilteredItems = catalog.filter(i => i.name.toLowerCase().includes(q));
-    renderGrid(gridFilteredItems);
-  });
 
   searchInput.addEventListener('click', openDropdown);
   searchInput.addEventListener('input', () => {
