@@ -168,6 +168,10 @@
     "file": "svgs/AutumnSteppingStones.svg"
   },
   {
+    "name": "BBQFeast Table",
+    "file": "svgs/BBQFeastTable.svg"
+  },
+  {
     "name": "Backyard Fire Pit",
     "file": "svgs/BackyardFirePit.svg"
   },
@@ -346,6 +350,10 @@
   {
     "name": "Black Cat Window",
     "file": "svgs/BlackCatWindow.svg"
+  },
+  {
+    "name": "Block Party Grill",
+    "file": "svgs/BlockPartyGrill.svg"
   },
   {
     "name": "Blooming Lily",
@@ -908,6 +916,10 @@
     "file": "svgs/DenPortalOcean02.svg"
   },
   {
+    "name": "Dessert Table",
+    "file": "svgs/DessertTable.svg"
+  },
+  {
     "name": "Dig Site Canopy",
     "file": "svgs/Dig Site Canopy.svg"
   },
@@ -1160,6 +1172,10 @@
     "file": "svgs/FantasyChaiseLounge.svg"
   },
   {
+    "name": "Fantasy Feast Table",
+    "file": "svgs/FantasyFeastTable.svg"
+  },
+  {
     "name": "Fantasy Fireplace",
     "file": "svgs/FantasyFireplace.svg"
   },
@@ -1176,6 +1192,14 @@
     "file": "svgs/FantasyWindow.svg"
   },
   {
+    "name": "Feast Of Thanks Table",
+    "file": "svgs/FeastOfThanksTable.svg"
+  },
+  {
+    "name": "Feast Table",
+    "file": "svgs/FeastTable.svg"
+  },
+  {
     "name": "Felinegalaxys Garden Stake",
     "file": "svgs/Felinegalaxys-Garden-Stake.svg"
   },
@@ -1190,6 +1214,10 @@
   {
     "name": "Fence Sand Sculpture",
     "file": "svgs/FenceSandSculpture.svg"
+  },
+  {
+    "name": "Ferocious Feline Feast Table",
+    "file": "svgs/FerociousFelineFeastTable.svg"
   },
   {
     "name": "Ferocious Feline Window",
@@ -1336,6 +1364,10 @@
     "file": "svgs/FrozenChaiseLounge.svg"
   },
   {
+    "name": "Frozen Feast Table",
+    "file": "svgs/FrozenFeastTable.svg"
+  },
+  {
     "name": "Frozen Stepping Stones",
     "file": "svgs/FrozenSteppingStones.svg"
   },
@@ -1432,6 +1464,10 @@
     "file": "svgs/GingerbreadChaiseLounge.svg"
   },
   {
+    "name": "Gingerbread Feast Table",
+    "file": "svgs/GingerbreadFeastTable.svg"
+  },
+  {
     "name": "Gingerbread Fence Gate",
     "file": "svgs/GingerbreadFenceGate.svg"
   },
@@ -1520,6 +1556,10 @@
     "file": "svgs/GreenhouseWindow.svg"
   },
   {
+    "name": "Grill",
+    "file": "svgs/Grill.svg"
+  },
+  {
     "name": "HD Tv",
     "file": "svgs/HD-Tv.svg"
   },
@@ -1578,6 +1618,10 @@
   {
     "name": "Heart Shaped Window",
     "file": "svgs/HeartShapedWindow.svg"
+  },
+  {
+    "name": "Hibiscus Flower Temple Of Zios",
+    "file": "svgs/Hibiscus-flower-temple-of-zios.svg"
   },
   {
     "name": "Hippo Fountain",
@@ -1914,6 +1958,10 @@
   {
     "name": "Kingdom Chaise Lounge",
     "file": "svgs/KingdomChaiseLounge.svg"
+  },
+  {
+    "name": "Kingdom Feast Table",
+    "file": "svgs/KingdomFeastTable.svg"
   },
   {
     "name": "Kingdom Window",
@@ -2348,6 +2396,14 @@
     "file": "svgs/MechanizedWindow.svg"
   },
   {
+    "name": "Medieval Feast Table",
+    "file": "svgs/MedievalFeastTable.svg"
+  },
+  {
+    "name": "Medieval Feast Table Empty",
+    "file": "svgs/MedievalFeastTableEmpty.svg"
+  },
+  {
     "name": "Medieval Stained Glass Window",
     "file": "svgs/MedievalStainedGlassWindow.svg"
   },
@@ -2568,6 +2624,10 @@
     "file": "svgs/PetWildWaterSlide.svg"
   },
   {
+    "name": "Phantom Feast Table",
+    "file": "svgs/PhantomFeastTable.svg"
+  },
+  {
     "name": "Phantom Stepping Stone",
     "file": "svgs/PhantomSteppingStone.svg"
   },
@@ -2602,6 +2662,10 @@
   {
     "name": "Picket Fence",
     "file": "svgs/PicketFence.svg"
+  },
+  {
+    "name": "Picnic Feast Table",
+    "file": "svgs/PicnicFeastTable.svg"
   },
   {
     "name": "Pig Pool",
@@ -2872,6 +2936,10 @@
     "file": "svgs/RusticStoneFence2.svg"
   },
   {
+    "name": "Sand Feast Table Sculpture",
+    "file": "svgs/SandFeastTableSculpture.svg"
+  },
+  {
     "name": "Sand TV",
     "file": "svgs/SandTV.svg"
   },
@@ -3104,6 +3172,10 @@
     "file": "svgs/SirGilbertsBookshelf.svg"
   },
   {
+    "name": "Sir Gilberts Feast Table",
+    "file": "svgs/SirGilbertsFeastTable.svg"
+  },
+  {
     "name": "Skeleton Fence",
     "file": "svgs/SkeletonFence.svg"
   },
@@ -3166,6 +3238,10 @@
   {
     "name": "Spiked Birthday Doghouse",
     "file": "svgs/SpikedBirthdayDoghouse.svg"
+  },
+  {
+    "name": "Spiked Birthday Feast Table",
+    "file": "svgs/SpikedBirthdayFeastTable.svg"
   },
   {
     "name": "Spiked Birthday Window",
@@ -3612,6 +3688,114 @@
     "file": "svgs/UnderwaterPoolTable.svg"
   },
   {
+    "name": "Unreleased Bush",
+    "file": "svgs/Unreleased-bush.svg"
+  },
+  {
+    "name": "Unreleased Cave Mushroom",
+    "file": "svgs/Unreleased-cave-mushroom.svg"
+  },
+  {
+    "name": "Unreleased Cave Mushroom2",
+    "file": "svgs/Unreleased-cave-mushroom2.svg"
+  },
+  {
+    "name": "Unreleased Crystal Fissure Large",
+    "file": "svgs/Unreleased-crystal-fissure-large.svg"
+  },
+  {
+    "name": "Unreleased Crystal Fissure Small",
+    "file": "svgs/Unreleased-crystal-fissure-small.svg"
+  },
+  {
+    "name": "Unreleased Crystals Large 2",
+    "file": "svgs/Unreleased-crystals-large-2.svg"
+  },
+  {
+    "name": "Unreleased Crystals Small",
+    "file": "svgs/Unreleased-crystals-small.svg"
+  },
+  {
+    "name": "Unreleased Grass Light Rock Path1",
+    "file": "svgs/Unreleased-grass-light-rock-path1.svg"
+  },
+  {
+    "name": "Unreleased Grass Light Rock Path2",
+    "file": "svgs/Unreleased-grass-light-rock-path2.svg"
+  },
+  {
+    "name": "Unreleased Grass Light Rock Path3",
+    "file": "svgs/Unreleased-grass-light-rock-path3.svg"
+  },
+  {
+    "name": "Unreleased Grass Light Rock Path4",
+    "file": "svgs/Unreleased-grass-light-rock-path4.svg"
+  },
+  {
+    "name": "Unreleased Himilayan Blue Poppy",
+    "file": "svgs/Unreleased-himilayan-blue-poppy.svg"
+  },
+  {
+    "name": "Unreleased Hotspring",
+    "file": "svgs/Unreleased-hotspring.svg"
+  },
+  {
+    "name": "Unreleased Huckleberry Plant",
+    "file": "svgs/Unreleased-huckleberry-plant.svg"
+  },
+  {
+    "name": "Unreleased Cave Clearing",
+    "file": "svgs/UnreleasedCaveClearing.svg"
+  },
+  {
+    "name": "Unreleased Cave Clearing 2",
+    "file": "svgs/UnreleasedCaveClearing2.svg"
+  },
+  {
+    "name": "Unreleased Cave Rock",
+    "file": "svgs/UnreleasedCaveRock.svg"
+  },
+  {
+    "name": "Unreleased Cave Rock 2",
+    "file": "svgs/UnreleasedCaveRock2.svg"
+  },
+  {
+    "name": "Unreleased_corn_maze_tree",
+    "file": "svgs/Unreleased_corn_maze_tree.svg"
+  },
+  {
+    "name": "Unreleased_house_front_blue",
+    "file": "svgs/Unreleased_house_front_blue.svg"
+  },
+  {
+    "name": "Unreleased_house_front_purple",
+    "file": "svgs/Unreleased_house_front_purple.svg"
+  },
+  {
+    "name": "Unreleased_moss_ 1",
+    "file": "svgs/Unreleased_moss_1.svg"
+  },
+  {
+    "name": "Unreleased_moss_ 2",
+    "file": "svgs/Unreleased_moss_2.svg"
+  },
+  {
+    "name": "Unreleased_moss_ 3",
+    "file": "svgs/Unreleased_moss_3.svg"
+  },
+  {
+    "name": "Unreleased_moss_ 4",
+    "file": "svgs/Unreleased_moss_4.svg"
+  },
+  {
+    "name": "Unreleased_straw_sourge_garden_patch",
+    "file": "svgs/Unreleased_straw_sourge_garden_patch.svg"
+  },
+  {
+    "name": "Unreleased_wood_trunk",
+    "file": "svgs/Unreleased_wood_trunk.svg"
+  },
+  {
     "name": "Upside Down Heart Window",
     "file": "svgs/UpsideDownHeartWindow.svg"
   },
@@ -3702,6 +3886,10 @@
   {
     "name": "Wacky Table",
     "file": "svgs/WackyTable.svg"
+  },
+  {
+    "name": "Waffle Feast Table",
+    "file": "svgs/WaffleFeastTable.svg"
   },
   {
     "name": "Waffle Table",
@@ -3856,6 +4044,10 @@
     "file": "svgs/YuleLogArmchair.svg"
   },
   {
+    "name": "Yule Log Cookie Feast Table",
+    "file": "svgs/YuleLogCookieFeastTable.svg"
+  },
+  {
     "name": "Yule Log Fireplace",
     "file": "svgs/YuleLogFireplace.svg"
   },
@@ -3910,6 +4102,10 @@
   {
     "name": "Beta Kitchen Shelves",
     "file": "svgs/beta-kitchen-shelves.svg"
+  },
+  {
+    "name": "Block Party Grill Empty",
+    "file": "svgs/blockPartyGrillEmpty.svg"
   },
   {
     "name": "Crystal Waterfall Archway",
@@ -4116,6 +4312,162 @@
     "file": "svgs/tiki-torch.svg"
   },
   {
+    "name": "Unreleased Bamboo Baskets Grahams Workshop",
+    "file": "svgs/unreleased-bamboo-baskets-grahams-workshop.svg"
+  },
+  {
+    "name": "Unreleased Bamboo Trees 5",
+    "file": "svgs/unreleased-bamboo-trees-5.svg"
+  },
+  {
+    "name": "Unreleased Bamboo Trees 6",
+    "file": "svgs/unreleased-bamboo-trees-6.svg"
+  },
+  {
+    "name": "Unreleased Bamboo Trees3",
+    "file": "svgs/unreleased-bamboo-trees3.svg"
+  },
+  {
+    "name": "Unreleased Bamboo Trees4",
+    "file": "svgs/unreleased-bamboo-trees4.svg"
+  },
+  {
+    "name": "Unreleased Bamboo_trees1",
+    "file": "svgs/unreleased-bamboo_trees1.svg"
+  },
+  {
+    "name": "Unreleased Bamboo_trees2",
+    "file": "svgs/unreleased-bamboo_trees2.svg"
+  },
+  {
+    "name": "Unreleased Benches_right",
+    "file": "svgs/unreleased-benches_right.svg"
+  },
+  {
+    "name": "Unreleased Blocker_mausoleum_bitter_sweets",
+    "file": "svgs/unreleased-blocker_mausoleum_bitter_sweets.svg"
+  },
+  {
+    "name": "Unreleased Blocker_mausoleum_door_bitter_sweets",
+    "file": "svgs/unreleased-blocker_mausoleum_door_bitter_sweets.svg"
+  },
+  {
+    "name": "Unreleased Cat Tails2",
+    "file": "svgs/unreleased-cat-Tails2.svg"
+  },
+  {
+    "name": "Unreleased Cat Tails3",
+    "file": "svgs/unreleased-cat-Tails3.svg"
+  },
+  {
+    "name": "Unreleased Cat Tails",
+    "file": "svgs/unreleased-cat-tails.svg"
+  },
+  {
+    "name": "Unreleased Cave Ground",
+    "file": "svgs/unreleased-cave-ground.svg"
+  },
+  {
+    "name": "Unreleased Dirtclearing",
+    "file": "svgs/unreleased-dirtclearing.svg"
+  },
+  {
+    "name": "Unreleased Dirtclearing2",
+    "file": "svgs/unreleased-dirtclearing2.svg"
+  },
+  {
+    "name": "Unreleased Flax",
+    "file": "svgs/unreleased-flax.svg"
+  },
+  {
+    "name": "Unreleased Hammers Grahams Workshop",
+    "file": "svgs/unreleased-hammers-grahams-workshop.svg"
+  },
+  {
+    "name": "Unreleased Health Fountain",
+    "file": "svgs/unreleased-health-Fountain.svg"
+  },
+  {
+    "name": "Unreleased Health Fountain2",
+    "file": "svgs/unreleased-health-fountain2.svg"
+  },
+  {
+    "name": "Unreleased House Back Grahams Workshop",
+    "file": "svgs/unreleased-house-back-grahams-workshop.svg"
+  },
+  {
+    "name": "Unreleased Pans Grahams Workshop",
+    "file": "svgs/unreleased-pans-grahams-workshop.svg"
+  },
+  {
+    "name": "Unreleased Rock",
+    "file": "svgs/unreleased-rock.svg"
+  },
+  {
+    "name": "Unreleased Rock2",
+    "file": "svgs/unreleased-rock2.svg"
+  },
+  {
+    "name": "Unreleased Rock3",
+    "file": "svgs/unreleased-rock3.svg"
+  },
+  {
+    "name": "Unreleased Ruin Wall1",
+    "file": "svgs/unreleased-ruin-wall1.svg"
+  },
+  {
+    "name": "Unreleased Ruin Wall2",
+    "file": "svgs/unreleased-ruin-wall2.svg"
+  },
+  {
+    "name": "Unreleased Ruins",
+    "file": "svgs/unreleased-ruins.svg"
+  },
+  {
+    "name": "Unreleased Table Grahams Workshop",
+    "file": "svgs/unreleased-table-grahams-workshop.svg"
+  },
+  {
+    "name": "Unreleased Table Grahams Workshop2",
+    "file": "svgs/unreleased-table-grahams-workshop2.svg"
+  },
+  {
+    "name": "Unreleased Table Grahams Workshop3",
+    "file": "svgs/unreleased-table-grahams-workshop3.svg"
+  },
+  {
+    "name": "Unreleased Tree Cluster",
+    "file": "svgs/unreleased-tree-cluster.svg"
+  },
+  {
+    "name": "Unreleased_house_small_blue",
+    "file": "svgs/unreleased_house_small_blue.svg"
+  },
+  {
+    "name": "Unreleased_pile_of_pitchforks",
+    "file": "svgs/unreleased_pile_of_pitchforks.svg"
+  },
+  {
+    "name": "Unreleased_pile_of_wheelbarrows",
+    "file": "svgs/unreleased_pile_of_wheelbarrows.svg"
+  },
+  {
+    "name": "Unreleased_rock_large",
+    "file": "svgs/unreleased_rock_large.svg"
+  },
+  {
+    "name": "Unreleased_rocks_small",
+    "file": "svgs/unreleased_rocks_small.svg"
+  },
+  {
+    "name": "Unreleased_round_window_house",
+    "file": "svgs/unreleased_round_window_house.svg"
+  },
+  {
+    "name": "Unreleased_ruin_block",
+    "file": "svgs/unreleased_ruin_block.svg"
+  },
+  {
     "name": "Wall Garden",
     "file": "svgs/wall-garden.svg"
   },
@@ -4138,6 +4490,10 @@
   {
     "name": "Waterfall Arch5",
     "file": "svgs/waterfall-arch5.svg"
+  },
+  {
+    "name": "White_flower_temple_of_zios",
+    "file": "svgs/white_flower_temple_of_zios.svg"
   },
   {
     "name": "Window",
