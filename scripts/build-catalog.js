@@ -8,27 +8,38 @@ if (fs.existsSync('names.json')) {
 
 function nameFromFile(filename) {
   if (filename.includes('-')) {
-    // kebab-case: school-desk → School Desk
     return filename
       .replace(/-/g, ' ')
       .replace(/\b\w/g, c => c.toUpperCase());
   }
-  // PascalCase: SchoolDesk1 → School Desk 1
   return filename
-    .replace(/(\D)(\d+)$/, '$1 $2')         // trailing number: Desk1 → Desk 1
-    .replace(/(?<=[a-z])(?=[A-Z])/g, ' ')   // split on case boundary
-    .replace(/\b\w/g, c => c.toUpperCase()); // capitalize each word
+    .replace(/(\D)(\d+)$/, '$1 $2')
+    .replace(/(?<=[a-z])(?=[A-Z])/g, ' ')
+    .replace(/\b\w/g, c => c.toUpperCase());
 }
 
-const files = fs.readdirSync('svgs')
-  .filter(f => f.endsWith('.svg'))
-  .sort();
+// Scan svgs, svgs2, svgs3 ... svgs9 — whichever exist
+const folders = ['svgs'];
+for (let i = 2; i <= 9; i++) {
+  folders.push(`svgs${i}`);
+}
 
-const catalog = files.map(f => {
-  const key = path.basename(f, '.svg');
-  const name = customNames[key] || nameFromFile(key);
-  return { name, file: `svgs/${f}` };
+const catalog = [];
+
+folders.forEach(folder => {
+  if (!fs.existsSync(folder)) return;
+  const files = fs.readdirSync(folder)
+    .filter(f => f.endsWith('.svg'))
+    .sort();
+  files.forEach(f => {
+    const key = path.basename(f, '.svg');
+    const name = customNames[key] || nameFromFile(key);
+    catalog.push({ name, file: `${folder}/${f}` });
+  });
 });
 
+// Sort everything alphabetically by name across all folders
+catalog.sort((a, b) => a.name.localeCompare(b.name));
+
 fs.writeFileSync('catalog.json', JSON.stringify(catalog, null, 2));
-console.log(`Built catalog with ${catalog.length} items.`);
+console.log(`Built catalog with ${catalog.length} items from: ${folders.filter(f => fs.existsSync(f)).join(', ')}`);
