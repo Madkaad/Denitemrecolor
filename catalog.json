@@ -1008,7 +1008,7 @@
     "file": "svgs/CrystalZiosOrnamentNM.svg"
   },
   {
-    "name": "Crystals2Decor Pink 2",
+    "name": "Crystals2Decor Pink_ 2",
     "file": "svgs/Crystals2DecorPink_2.svg"
   },
   {
@@ -3584,11 +3584,11 @@
     "file": "svgs/StoneCarvedCouch.svg"
   },
   {
-    "name": "Stone Carved Oven 2",
+    "name": "Stone Carved Oven_ 2",
     "file": "svgs/StoneCarvedOven_2.svg"
   },
   {
-    "name": "Stone Carved Table 2",
+    "name": "Stone Carved Table_ 2",
     "file": "svgs/StoneCarvedTable_2.svg"
   },
   {
@@ -3956,55 +3956,55 @@
     "file": "svgs/UnreleasedCaveRock2.svg"
   },
   {
-    "name": "Unreleased Dirt Path Battle For The Beacon",
+    "name": "Unreleased Dirt Path Battle Of The Beacon",
     "file": "svgs/UnreleasedDirtPathBattleOfTheBeacon.svg"
   },
   {
-    "name": "Unreleased Dirt Path 1 Battle For The Beacon",
+    "name": "Unreleased Dirt Path_1Battle Of The Beacon",
     "file": "svgs/UnreleasedDirtPath_1BattleOfTheBeacon.svg"
   },
   {
-    "name": "Unreleased Dirt Path 2 Battle For The Beacon",
+    "name": "Unreleased Dirt Path_2Battle Of The Beacon",
     "file": "svgs/UnreleasedDirtPath_2BattleOfTheBeacon.svg"
   },
   {
-    "name": "Unreleased Dirt Path 3 Battle For The Beacon",
+    "name": "Unreleased Dirt Path_3Battle Of The Beacon",
     "file": "svgs/UnreleasedDirtPath_3BattleOfTheBeacon.svg"
   },
   {
-    "name": "Unreleased Dirt Path 4 Battle For The Beacon",
+    "name": "Unreleased Dirt Path_4Battle Of The Beacon",
     "file": "svgs/UnreleasedDirtPath_4BattleOfTheBeacon.svg"
   },
   {
-    "name": "Unreleased Dirt Path 5 Battle For The Beacon",
+    "name": "Unreleased Dirt Path_5Battle Of The Beacon",
     "file": "svgs/UnreleasedDirtPath_5BattleOfTheBeacon.svg"
   },
   {
-    "name": "Unreleased Dirt Path 6 Battle For The Beacon",
+    "name": "Unreleased Dirt Path_6Battle Of The Beacon",
     "file": "svgs/UnreleasedDirtPath_6BattleOfTheBeacon.svg"
   },
   {
-    "name": "Unreleased Dirt Path 7 Battle For The Beacon",
+    "name": "Unreleased Dirt Path_7Battle Of The Beacon",
     "file": "svgs/UnreleasedDirtPath_7BattleOfTheBeacon.svg"
   },
   {
-    "name": "Unreleased Dirt Path 8 Battle For The Beacon",
+    "name": "Unreleased Dirt Path_8Battle Of The Beacon",
     "file": "svgs/UnreleasedDirtPath_8BattleOfTheBeacon.svg"
   },
   {
-    "name": "Unreleased House Fascade Battle For The Beacon",
+    "name": "Unreleased House Fascade Battle Of The Beacon",
     "file": "svgs/UnreleasedHouseFascadeBattleOfTheBeacon.svg"
   },
   {
-    "name": "Unreleased House Fascade 1 Battle For The Beacon",
+    "name": "Unreleased House Fascade_1Battle Of The Beacon",
     "file": "svgs/UnreleasedHouseFascade_1BattleOfTheBeacon.svg"
   },
   {
-    "name": "Unreleased House Fascade 2 Battle For The Beacon",
+    "name": "Unreleased House Fascade_2Battle Of The Beacon",
     "file": "svgs/UnreleasedHouseFascade_2BattleOfTheBeacon.svg"
   },
   {
-    "name": "Unreleased Irish Spring Cottage Battle For The Beacon",
+    "name": "Unreleased Irish Spring Cottage Battle Of The Beacon",
     "file": "svgs/UnreleasedIrishSpringCottageBattleOfTheBeacon.svg"
   },
   {
@@ -4012,7 +4012,7 @@
     "file": "svgs/UnreleasedOceanArch.svg"
   },
   {
-    "name": "Unreleased Ocean Checkpoint 1",
+    "name": "UnreleasedOceanCheckpoint 1",
     "file": "svgs/UnreleasedOceanCheckpoint-1.svg"
   },
   {
@@ -4020,11 +4020,11 @@
     "file": "svgs/UnreleasedOceanCheckpoint.svg"
   },
   {
-    "name": "Unreleased Ocean Pillar 1",
+    "name": "UnreleasedOceanPillar 1",
     "file": "svgs/UnreleasedOceanPillar-1.svg"
   },
   {
-    "name": "Unreleased Ocean Pillar 2",
+    "name": "UnreleasedOceanPillar 2",
     "file": "svgs/UnreleasedOceanPillar-2.svg"
   },
   {
@@ -4032,19 +4032,23 @@
     "file": "svgs/UnreleasedOceanPillar.svg"
   },
   {
-    "name": "Unreleased Ocean Rock 1",
+    "name": "Unreleased Ocean Pillar Building",
+    "file": "svgs/UnreleasedOceanPillarBuilding.svg"
+  },
+  {
+    "name": "UnreleasedOceanRock 1",
     "file": "svgs/UnreleasedOceanRock-1.svg"
   },
   {
-    "name": "Unreleased Ocean Rock 2",
+    "name": "UnreleasedOceanRock 2",
     "file": "svgs/UnreleasedOceanRock-2.svg"
   },
   {
-    "name": "Unreleased Ocean Rock 3",
+    "name": "UnreleasedOceanRock 3",
     "file": "svgs/UnreleasedOceanRock-3.svg"
   },
   {
-    "name": "Unreleased Ocean Rock 4",
+    "name": "UnreleasedOceanRock 4",
     "file": "svgs/UnreleasedOceanRock-4.svg"
   },
   {
@@ -4052,59 +4056,59 @@
     "file": "svgs/UnreleasedOceanRock.svg"
   },
   {
-    "name": "Unreleased Small Shop Battle For The Beacon",
+    "name": "Unreleased Small Shop Battle Of The Beacon",
     "file": "svgs/UnreleasedSmallShopBattleOfTheBeacon.svg"
   },
   {
-    "name": "Unreleased Swamp Fireflies Battle For The Beacon",
+    "name": "Unreleased Swamp Fireflies Battle Of The Beacon",
     "file": "svgs/UnreleasedSwampFirefliesBattleOfTheBeacon.svg"
   },
   {
-    "name": "Unreleased Vines Blocker Object Battle For The Beacon",
+    "name": "Unreleased Vines Blocker Object Battle Of The Beacon",
     "file": "svgs/UnreleasedVinesBlockerObjectBattleOfTheBeacon.svg"
   },
   {
-    "name": "Unreleased Watch Tower Battle For The Beacon",
+    "name": "Unreleased Watch Tower Battle Of The Beacon",
     "file": "svgs/UnreleasedWatchTowerBattleOfTheBeacon.svg"
   },
   {
-    "name": "Unreleased Watch Tower Bush Battle For The Beacon",
+    "name": "Unreleased Watch Tower Bush Battle Of The Beacon",
     "file": "svgs/UnreleasedWatchTowerBushBattleOfTheBeacon.svg"
   },
   {
-    "name": "Unreleased corn maze tree",
+    "name": "Unreleased_corn_maze_tree",
     "file": "svgs/Unreleased_corn_maze_tree.svg"
   },
   {
-    "name": "Unreleased house front blue",
+    "name": "Unreleased_house_front_blue",
     "file": "svgs/Unreleased_house_front_blue.svg"
   },
   {
-    "name": "Unreleased house front purple",
+    "name": "Unreleased_house_front_purple",
     "file": "svgs/Unreleased_house_front_purple.svg"
   },
   {
-    "name": "Unreleased moss 1",
+    "name": "Unreleased_moss_ 1",
     "file": "svgs/Unreleased_moss_1.svg"
   },
   {
-    "name": "Unreleased moss 2",
+    "name": "Unreleased_moss_ 2",
     "file": "svgs/Unreleased_moss_2.svg"
   },
   {
-    "name": "Unreleased moss 3",
+    "name": "Unreleased_moss_ 3",
     "file": "svgs/Unreleased_moss_3.svg"
   },
   {
-    "name": "Unreleased moss 4",
+    "name": "Unreleased_moss_ 4",
     "file": "svgs/Unreleased_moss_4.svg"
   },
   {
-    "name": "Unreleased straw sourge garden patch",
+    "name": "Unreleased_straw_sourge_garden_patch",
     "file": "svgs/Unreleased_straw_sourge_garden_patch.svg"
   },
   {
-    "name": "Unreleased wood trunk",
+    "name": "Unreleased_wood_trunk",
     "file": "svgs/Unreleased_wood_trunk.svg"
   },
   {
@@ -4648,23 +4652,23 @@
     "file": "svgs/unreleased-bamboo-trees4.svg"
   },
   {
-    "name": "Unreleased Bamboo trees 1",
+    "name": "Unreleased Bamboo_trees1",
     "file": "svgs/unreleased-bamboo_trees1.svg"
   },
   {
-    "name": "Unreleased Bamboo trees 2",
+    "name": "Unreleased Bamboo_trees2",
     "file": "svgs/unreleased-bamboo_trees2.svg"
   },
   {
-    "name": "Unreleased Benches right",
+    "name": "Unreleased Benches_right",
     "file": "svgs/unreleased-benches_right.svg"
   },
   {
-    "name": "Unreleased Blocker mausoleum bitter sweets",
+    "name": "Unreleased Blocker_mausoleum_bitter_sweets",
     "file": "svgs/unreleased-blocker_mausoleum_bitter_sweets.svg"
   },
   {
-    "name": "Unreleased Blocker mausoleum door bitter sweets",
+    "name": "Unreleased Blocker_mausoleum_door_bitter_sweets",
     "file": "svgs/unreleased-blocker_mausoleum_door_bitter_sweets.svg"
   },
   {
@@ -4756,31 +4760,31 @@
     "file": "svgs/unreleased-tree-cluster.svg"
   },
   {
-    "name": "Unreleased house small blue",
+    "name": "Unreleased_house_small_blue",
     "file": "svgs/unreleased_house_small_blue.svg"
   },
   {
-    "name": "Unreleased pile of pitchforks",
+    "name": "Unreleased_pile_of_pitchforks",
     "file": "svgs/unreleased_pile_of_pitchforks.svg"
   },
   {
-    "name": "Unreleased pile of wheelbarrows",
+    "name": "Unreleased_pile_of_wheelbarrows",
     "file": "svgs/unreleased_pile_of_wheelbarrows.svg"
   },
   {
-    "name": "Unreleased rock large",
+    "name": "Unreleased_rock_large",
     "file": "svgs/unreleased_rock_large.svg"
   },
   {
-    "name": "Unreleased rocks small",
+    "name": "Unreleased_rocks_small",
     "file": "svgs/unreleased_rocks_small.svg"
   },
   {
-    "name": "Unreleased round window house",
+    "name": "Unreleased_round_window_house",
     "file": "svgs/unreleased_round_window_house.svg"
   },
   {
-    "name": "Unreleased ruin block",
+    "name": "Unreleased_ruin_block",
     "file": "svgs/unreleased_ruin_block.svg"
   },
   {
@@ -4808,7 +4812,7 @@
     "file": "svgs/waterfall-arch5.svg"
   },
   {
-    "name": "White flower temple of zios",
+    "name": "White_flower_temple_of_zios",
     "file": "svgs/white_flower_temple_of_zios.svg"
   },
   {
