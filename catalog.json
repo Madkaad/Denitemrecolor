@@ -24,6 +24,10 @@
     "file": "svgs/2025SnakeSteppingStones.svg"
   },
   {
+    "name": "2Water Trough",
+    "file": "svgs/2WaterTrough.svg"
+  },
+  {
     "name": "8Bit Bookshelf",
     "file": "svgs/8BitBookshelf.svg"
   },
@@ -206,6 +210,10 @@
   {
     "name": "Bamboo Fence",
     "file": "svgs/BambooFence.svg"
+  },
+  {
+    "name": "Bananas",
+    "file": "svgs/Bananas.svg"
   },
   {
     "name": "Banner Arctic Fox",
@@ -412,6 +420,14 @@
     "file": "svgs/CactusFence.svg"
   },
   {
+    "name": "Cafe Counter",
+    "file": "svgs/CafeCounter.svg"
+  },
+  {
+    "name": "Cafe Prep Counter",
+    "file": "svgs/CafePrepCounter.svg"
+  },
+  {
     "name": "Candy Cane Chaise Lounge",
     "file": "svgs/CandyCaneChaiseLounge.svg"
   },
@@ -422,6 +438,10 @@
   {
     "name": "Candy Cane Window",
     "file": "svgs/CandyCaneWindow.svg"
+  },
+  {
+    "name": "Candy Counter",
+    "file": "svgs/CandyCounter.svg"
   },
   {
     "name": "Candy Fireplace",
@@ -1464,6 +1484,10 @@
     "file": "svgs/GoldenEggPrize.svg"
   },
   {
+    "name": "Golden Key",
+    "file": "svgs/GoldenKey.svg"
+  },
+  {
     "name": "Golden Shamrock Stepping Stones",
     "file": "svgs/GoldenShamrockSteppingStones.svg"
   },
@@ -1474,6 +1498,18 @@
   {
     "name": "Grahams Throne",
     "file": "svgs/GrahamsThrone.svg"
+  },
+  {
+    "name": "Grahams Workshop Basket",
+    "file": "svgs/GrahamsWorkshopBasket.svg"
+  },
+  {
+    "name": "Grahams Workshop Bowl",
+    "file": "svgs/GrahamsWorkshopBowl.svg"
+  },
+  {
+    "name": "Grahams Workshop Pitchfork",
+    "file": "svgs/GrahamsWorkshopPitchfork.svg"
   },
   {
     "name": "Greely Bookshelf",
@@ -1548,6 +1584,10 @@
     "file": "svgs/HippoFountain.svg"
   },
   {
+    "name": "Honey",
+    "file": "svgs/Honey.svg"
+  },
+  {
     "name": "Horseshoe Doghouse",
     "file": "svgs/HorseshoeDoghouse.svg"
   },
@@ -1574,6 +1614,10 @@
   {
     "name": "Ice Pop Window",
     "file": "svgs/IcePopWindow.svg"
+  },
+  {
+    "name": "Icy Willow",
+    "file": "svgs/IcyWillow.svg"
   },
   {
     "name": "Igloo",
@@ -2484,6 +2528,10 @@
     "file": "svgs/PawOrnament.svg"
   },
   {
+    "name": "Peach",
+    "file": "svgs/Peach.svg"
+  },
+  {
     "name": "Peach Tree",
     "file": "svgs/PeachTree.svg"
   },
@@ -2578,6 +2626,10 @@
   {
     "name": "Pirate Flag",
     "file": "svgs/PirateFlag.svg"
+  },
+  {
+    "name": "Pizza Counter",
+    "file": "svgs/PizzaCounter.svg"
   },
   {
     "name": "Pizza Neon Sign",
@@ -2682,6 +2734,10 @@
   {
     "name": "Rat Zhangzi Fence",
     "file": "svgs/RatZhangziFence.svg"
+  },
+  {
+    "name": "Ray Plushie",
+    "file": "svgs/RayPlushie.svg"
   },
   {
     "name": "Replica Portrait Graham",
@@ -3116,12 +3172,28 @@
     "file": "svgs/SpikedBirthdayWindow.svg"
   },
   {
+    "name": "Spooky Castle Archway",
+    "file": "svgs/SpookyCastleArchway.svg"
+  },
+  {
     "name": "Spooky Castle Chair",
     "file": "svgs/SpookyCastleChair.svg"
   },
   {
     "name": "Spooky Castle Chaise Lounge",
     "file": "svgs/SpookyCastleChaiseLounge.svg"
+  },
+  {
+    "name": "Spooky Castle Hearse Carriage",
+    "file": "svgs/SpookyCastleHearseCarriage.svg"
+  },
+  {
+    "name": "Spooky Castle Ottoman",
+    "file": "svgs/SpookyCastleOttoman.svg"
+  },
+  {
+    "name": "Spooky Castle Sofa",
+    "file": "svgs/SpookyCastleSofa.svg"
   },
   {
     "name": "Spooky Chaise Lounge",
@@ -3364,6 +3436,30 @@
     "file": "svgs/TVandSpeakers.svg"
   },
   {
+    "name": "Table Microphone",
+    "file": "svgs/TableMicrophone.svg"
+  },
+  {
+    "name": "Tablet",
+    "file": "svgs/Tablet.svg"
+  },
+  {
+    "name": "Tall Tiki Table 1",
+    "file": "svgs/TallTikiTable1.svg"
+  },
+  {
+    "name": "Tall Tiki Table 2",
+    "file": "svgs/TallTikiTable2.svg"
+  },
+  {
+    "name": "Tall Tiki Table 3",
+    "file": "svgs/TallTikiTable3.svg"
+  },
+  {
+    "name": "Team Dire Wolf Tapestry",
+    "file": "svgs/TeamDireWolfTapestry.svg"
+  },
+  {
     "name": "Team Juno Flag",
     "file": "svgs/TeamJunoFlag.svg"
   },
@@ -3376,12 +3472,80 @@
     "file": "svgs/TestTubes.svg"
   },
   {
+    "name": "Tetherball",
+    "file": "svgs/Tetherball.svg"
+  },
+  {
+    "name": "Theshadyraccoon Plushie",
+    "file": "svgs/TheshadyraccoonPlushie.svg"
+  },
+  {
     "name": "Three Heart Window",
     "file": "svgs/ThreeHeartWindow.svg"
   },
   {
+    "name": "Tiki Chair 1",
+    "file": "svgs/TikiChair1.svg"
+  },
+  {
+    "name": "Tiki Chair 2",
+    "file": "svgs/TikiChair2.svg"
+  },
+  {
+    "name": "Tiki Chair 3",
+    "file": "svgs/TikiChair3.svg"
+  },
+  {
+    "name": "Tiki Chair 4",
+    "file": "svgs/TikiChair4.svg"
+  },
+  {
+    "name": "Tiki Chair 5",
+    "file": "svgs/TikiChair5.svg"
+  },
+  {
+    "name": "Tiki Chair 6",
+    "file": "svgs/TikiChair6.svg"
+  },
+  {
+    "name": "Tombstone",
+    "file": "svgs/Tombstone.svg"
+  },
+  {
+    "name": "Topiary Arctic Wolf",
+    "file": "svgs/TopiaryArcticWolf.svg"
+  },
+  {
+    "name": "Topiary Fox",
+    "file": "svgs/TopiaryFox.svg"
+  },
+  {
+    "name": "Topiary Snow Leopard",
+    "file": "svgs/TopiarySnowLeopard.svg"
+  },
+  {
+    "name": "Toy Coyote",
+    "file": "svgs/ToyCoyote.svg"
+  },
+  {
+    "name": "Toy Deer",
+    "file": "svgs/ToyDeer.svg"
+  },
+  {
+    "name": "Toy Eagle",
+    "file": "svgs/ToyEagle.svg"
+  },
+  {
+    "name": "Toy Phantom",
+    "file": "svgs/ToyPhantom.svg"
+  },
+  {
     "name": "Tp Hermit Plushie",
     "file": "svgs/TpHermitPlushie.svg"
+  },
+  {
+    "name": "Tractor Beam",
+    "file": "svgs/TractorBeam.svg"
   },
   {
     "name": "Trainset Fireplace",
@@ -3428,6 +3592,18 @@
     "file": "svgs/TulipStonePathway.svg"
   },
   {
+    "name": "Turkey Rug",
+    "file": "svgs/TurkeyRug.svg"
+  },
+  {
+    "name": "Turkey Streamer",
+    "file": "svgs/TurkeyStreamer.svg"
+  },
+  {
+    "name": "Tyrannosaurus Rex Plushie",
+    "file": "svgs/TyrannosaurusRexPlushie.svg"
+  },
+  {
     "name": "Umbrella Bouquet",
     "file": "svgs/UmbrellaBouquet.svg"
   },
@@ -3438,6 +3614,10 @@
   {
     "name": "Upside Down Heart Window",
     "file": "svgs/UpsideDownHeartWindow.svg"
+  },
+  {
+    "name": "Upside Down Ice Cream Cone",
+    "file": "svgs/UpsideDownIceCreamCone.svg"
   },
   {
     "name": "Upside Down Sconce",
@@ -3458,6 +3638,10 @@
   {
     "name": "Vase 2",
     "file": "svgs/Vase2.svg"
+  },
+  {
+    "name": "Vat Of Toxic Goop",
+    "file": "svgs/VatOfToxicGoop.svg"
   },
   {
     "name": "Vet Examination Table",
@@ -3516,8 +3700,48 @@
     "file": "svgs/VineRug.svg"
   },
   {
+    "name": "Wacky Table",
+    "file": "svgs/WackyTable.svg"
+  },
+  {
     "name": "Waffle Table",
     "file": "svgs/WaffleTable.svg"
+  },
+  {
+    "name": "Wagon Wheel",
+    "file": "svgs/WagonWheel.svg"
+  },
+  {
+    "name": "Warm Sands Sconce",
+    "file": "svgs/WarmSandsSconce.svg"
+  },
+  {
+    "name": "Warm Sands Sofa",
+    "file": "svgs/WarmSandsSofa.svg"
+  },
+  {
+    "name": "Water Basketball Hoop",
+    "file": "svgs/WaterBasketballHoop.svg"
+  },
+  {
+    "name": "Water Canteen",
+    "file": "svgs/WaterCanteen.svg"
+  },
+  {
+    "name": "Water Park Sub",
+    "file": "svgs/WaterParkSub.svg"
+  },
+  {
+    "name": "Watering Pail Planter",
+    "file": "svgs/WateringPailPlanter.svg"
+  },
+  {
+    "name": "Waterlogged Compass",
+    "file": "svgs/WaterloggedCompass.svg"
+  },
+  {
+    "name": "Weeping Willow",
+    "file": "svgs/WeepingWillow.svg"
   },
   {
     "name": "Whimsical Lights Mushrooms",
@@ -3596,16 +3820,36 @@
     "file": "svgs/WinterFirepitTable.svg"
   },
   {
+    "name": "Wolf Mannequin",
+    "file": "svgs/WolfMannequin.svg"
+  },
+  {
+    "name": "Wood Table",
+    "file": "svgs/WoodTable.svg"
+  },
+  {
     "name": "Wooden Burrow Window",
     "file": "svgs/WoodenBurrowWindow.svg"
+  },
+  {
+    "name": "Wooden Mailbox",
+    "file": "svgs/WoodenMailbox.svg"
   },
   {
     "name": "World Map",
     "file": "svgs/World-map.svg"
   },
   {
+    "name": "Woven Pot",
+    "file": "svgs/WovenPot.svg"
+  },
+  {
     "name": "Writing Desk",
     "file": "svgs/WritingDesk.svg"
+  },
+  {
+    "name": "Year Of The Snake Plushie",
+    "file": "svgs/YearOfTheSnakePlushie.svg"
   },
   {
     "name": "Yule Log Armchair",
@@ -3614,6 +3858,22 @@
   {
     "name": "Yule Log Fireplace",
     "file": "svgs/YuleLogFireplace.svg"
+  },
+  {
+    "name": "Zios Potted Plant",
+    "file": "svgs/ZiosPottedPlant.svg"
+  },
+  {
+    "name": "Zios Rug",
+    "file": "svgs/ZiosRug.svg"
+  },
+  {
+    "name": "Zios Tapestry",
+    "file": "svgs/ZiosTapestry.svg"
+  },
+  {
+    "name": "Zios Wall Fountain",
+    "file": "svgs/ZiosWallFountain.svg"
   },
   {
     "name": "Zios Window",
@@ -3820,6 +4080,10 @@
     "file": "svgs/postal-drop-box.svg"
   },
   {
+    "name": "Potion",
+    "file": "svgs/potion.svg"
+  },
+  {
     "name": "Rectangular Garden Hedge",
     "file": "svgs/rectangular-garden-hedge.svg"
   },
@@ -3838,6 +4102,10 @@
   {
     "name": "Stone Column",
     "file": "svgs/stone-column.svg"
+  },
+  {
+    "name": "Strawberry",
+    "file": "svgs/strawberry.svg"
   },
   {
     "name": "Sturdy Table",
