@@ -12,27 +12,35 @@
     "file": "svgs/2021Rug.svg"
   },
   {
-    "name": "Rabbit Stepping Stones",
+    "name": "2023Rabbit Stepping Stones",
     "file": "svgs/2023RabbitSteppingStones.svg"
   },
   {
-    "name": "Water Trough",
+    "name": "2024Dragon Stepping Stones",
+    "file": "svgs/2024DragonSteppingStones.svg"
+  },
+  {
+    "name": "2025Snake Stepping Stones",
+    "file": "svgs/2025SnakeSteppingStones.svg"
+  },
+  {
+    "name": "2Water Trough",
     "file": "svgs/2WaterTrough.svg"
   },
   {
-    "name": "8 Bit Bookshelf",
+    "name": "8Bit Bookshelf",
     "file": "svgs/8BitBookshelf.svg"
   },
   {
-    "name": "8 Bit Fence",
+    "name": "8Bit Fence",
     "file": "svgs/8BitFence.svg"
   },
   {
-    "name": "8 Bit Window",
+    "name": "8Bit Window",
     "file": "svgs/8BitWindow.svg"
   },
   {
-    "name": "Alpha Flag",
+    "name": "AJAlpha Flag",
     "file": "svgs/AJAlphaFlag.svg"
   },
   {
@@ -160,7 +168,7 @@
     "file": "svgs/AutumnSteppingStones.svg"
   },
   {
-    "name": "BBQ Feast Table",
+    "name": "BBQFeast Table",
     "file": "svgs/BBQFeastTable.svg"
   },
   {
@@ -844,7 +852,7 @@
     "file": "svgs/CrystalZiosOrnamentNM.svg"
   },
   {
-    "name": "Crystals2Decor Pink 2",
+    "name": "Crystals2Decor Pink_ 2",
     "file": "svgs/Crystals2DecorPink_2.svg"
   },
   {
@@ -3344,6 +3352,22 @@
     "file": "svgs/SquareStonePlanter.svg"
   },
   {
+    "name": "Stack Of Books 1",
+    "file": "svgs/StackOfBooks1.svg"
+  },
+  {
+    "name": "Stack Of Books 3",
+    "file": "svgs/StackOfBooks3.svg"
+  },
+  {
+    "name": "Stack Of Books 4",
+    "file": "svgs/StackOfBooks4.svg"
+  },
+  {
+    "name": "Stack Of Books 5",
+    "file": "svgs/StackOfBooks5.svg"
+  },
+  {
     "name": "Stain Glass Window",
     "file": "svgs/StainGlassWindow.svg"
   },
@@ -3384,11 +3408,11 @@
     "file": "svgs/StoneCarvedCouch.svg"
   },
   {
-    "name": "Stone Carved Oven 2",
+    "name": "Stone Carved Oven_ 2",
     "file": "svgs/StoneCarvedOven_2.svg"
   },
   {
-    "name": "Stone Carved Table  2",
+    "name": "Stone Carved Table_ 2",
     "file": "svgs/StoneCarvedTable_2.svg"
   },
   {
@@ -3752,39 +3776,39 @@
     "file": "svgs/UnreleasedCaveRock2.svg"
   },
   {
-    "name": "Unreleased corn maze tree",
+    "name": "Unreleased_corn_maze_tree",
     "file": "svgs/Unreleased_corn_maze_tree.svg"
   },
   {
-    "name": "Unreleased house front blue",
+    "name": "Unreleased_house_front_blue",
     "file": "svgs/Unreleased_house_front_blue.svg"
   },
   {
-    "name": "Unreleased house front purple",
+    "name": "Unreleased_house_front_purple",
     "file": "svgs/Unreleased_house_front_purple.svg"
   },
   {
-    "name": "Unreleased moss  1",
+    "name": "Unreleased_moss_ 1",
     "file": "svgs/Unreleased_moss_1.svg"
   },
   {
-    "name": "Unreleased moss  2",
+    "name": "Unreleased_moss_ 2",
     "file": "svgs/Unreleased_moss_2.svg"
   },
   {
-    "name": "Unreleased moss  3",
+    "name": "Unreleased_moss_ 3",
     "file": "svgs/Unreleased_moss_3.svg"
   },
   {
-    "name": "Unreleased moss  4",
+    "name": "Unreleased_moss_ 4",
     "file": "svgs/Unreleased_moss_4.svg"
   },
   {
-    "name": "Unreleased straw sourge garden patch",
+    "name": "Unreleased_straw_sourge_garden_patch",
     "file": "svgs/Unreleased_straw_sourge_garden_patch.svg"
   },
   {
-    "name": "Unreleased wood trunk",
+    "name": "Unreleased_wood_trunk",
     "file": "svgs/Unreleased_wood_trunk.svg"
   },
   {
@@ -3960,7 +3984,7 @@
     "file": "svgs/WildWaterSlideStraight.svg"
   },
   {
-    "name": "Blinky Plushie",
+    "name": "Wild Works Mascot Plushie",
     "file": "svgs/WildWorksMascotPlushie.svg"
   },
   {
@@ -4324,23 +4348,23 @@
     "file": "svgs/unreleased-bamboo-trees4.svg"
   },
   {
-    "name": "Unreleased Bamboo trees1",
+    "name": "Unreleased Bamboo_trees1",
     "file": "svgs/unreleased-bamboo_trees1.svg"
   },
   {
-    "name": "Unreleased Bamboo trees2",
+    "name": "Unreleased Bamboo_trees2",
     "file": "svgs/unreleased-bamboo_trees2.svg"
   },
   {
-    "name": "Unreleased Benches right",
+    "name": "Unreleased Benches_right",
     "file": "svgs/unreleased-benches_right.svg"
   },
   {
-    "name": "Unreleased Blocker mausoleum bitter sweets",
+    "name": "Unreleased Blocker_mausoleum_bitter_sweets",
     "file": "svgs/unreleased-blocker_mausoleum_bitter_sweets.svg"
   },
   {
-    "name": "Unreleased Blocker mausoleum door bitter sweets",
+    "name": "Unreleased Blocker_mausoleum_door_bitter_sweets",
     "file": "svgs/unreleased-blocker_mausoleum_door_bitter_sweets.svg"
   },
   {
@@ -4432,31 +4456,31 @@
     "file": "svgs/unreleased-tree-cluster.svg"
   },
   {
-    "name": "Unreleased house small blue",
+    "name": "Unreleased_house_small_blue",
     "file": "svgs/unreleased_house_small_blue.svg"
   },
   {
-    "name": "Unreleased pile of pitchforks",
+    "name": "Unreleased_pile_of_pitchforks",
     "file": "svgs/unreleased_pile_of_pitchforks.svg"
   },
   {
-    "name": "Unreleased pile of wheelbarrows",
+    "name": "Unreleased_pile_of_wheelbarrows",
     "file": "svgs/unreleased_pile_of_wheelbarrows.svg"
   },
   {
-    "name": "Unreleased rock large",
+    "name": "Unreleased_rock_large",
     "file": "svgs/unreleased_rock_large.svg"
   },
   {
-    "name": "Unreleased rocks small",
+    "name": "Unreleased_rocks_small",
     "file": "svgs/unreleased_rocks_small.svg"
   },
   {
-    "name": "Unreleased round window house",
+    "name": "Unreleased_round_window_house",
     "file": "svgs/unreleased_round_window_house.svg"
   },
   {
-    "name": "Unreleased ruin block",
+    "name": "Unreleased_ruin_block",
     "file": "svgs/unreleased_ruin_block.svg"
   },
   {
@@ -4484,7 +4508,7 @@
     "file": "svgs/waterfall-arch5.svg"
   },
   {
-    "name": "White flower temple of zios",
+    "name": "White_flower_temple_of_zios",
     "file": "svgs/white_flower_temple_of_zios.svg"
   },
   {
