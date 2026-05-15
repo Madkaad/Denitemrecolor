@@ -92,6 +92,10 @@
     "file": "svgs/AncientSteppingStones.svg"
   },
   {
+    "name": "Angelfish",
+    "file": "svgs/Angelfish.svg"
+  },
+  {
     "name": "Antique Chair",
     "file": "svgs/AntiqueChair.svg"
   },
@@ -178,6 +182,150 @@
   {
     "name": "Bag Of Dog Food",
     "file": "svgs/BagOfDogFood.svg"
+  },
+  {
+    "name": "Bahar Bay Door",
+    "file": "svgs/BaharBayDoor.svg"
+  },
+  {
+    "name": "Bahar Bay Door 2",
+    "file": "svgs/BaharBayDoor2.svg"
+  },
+  {
+    "name": "Bahari Bay Compass",
+    "file": "svgs/BahariBayCompass.svg"
+  },
+  {
+    "name": "Bahari Bay Phantom Sign",
+    "file": "svgs/BahariBayPhantomSign.svg"
+  },
+  {
+    "name": "Bahari Bay Wheel",
+    "file": "svgs/BahariBayWheel.svg"
+  },
+  {
+    "name": "Bahari Bay Wheel 2",
+    "file": "svgs/BahariBayWheel2.svg"
+  },
+  {
+    "name": "Bahari Bay Wildlife 1",
+    "file": "svgs/BahariBayWildlife1.svg"
+  },
+  {
+    "name": "Bahari Bay Wildlife 11",
+    "file": "svgs/BahariBayWildlife11.svg"
+  },
+  {
+    "name": "Bahari Bay Wildlife 12",
+    "file": "svgs/BahariBayWildlife12.svg"
+  },
+  {
+    "name": "Bahari Bay Wildlife 13",
+    "file": "svgs/BahariBayWildlife13.svg"
+  },
+  {
+    "name": "Bahari Bay Wildlife 14",
+    "file": "svgs/BahariBayWildlife14.svg"
+  },
+  {
+    "name": "Bahari Bay Wildlife 16",
+    "file": "svgs/BahariBayWildlife16.svg"
+  },
+  {
+    "name": "Bahari Bay Wildlife 17",
+    "file": "svgs/BahariBayWildlife17.svg"
+  },
+  {
+    "name": "Bahari Bay Wildlife 18",
+    "file": "svgs/BahariBayWildlife18.svg"
+  },
+  {
+    "name": "Bahari Bay Wildlife 19",
+    "file": "svgs/BahariBayWildlife19.svg"
+  },
+  {
+    "name": "Bahari Bay Wildlife 2",
+    "file": "svgs/BahariBayWildlife2.svg"
+  },
+  {
+    "name": "Bahari Bay Wildlife 20",
+    "file": "svgs/BahariBayWildlife20.svg"
+  },
+  {
+    "name": "Bahari Bay Wildlife 21",
+    "file": "svgs/BahariBayWildlife21.svg"
+  },
+  {
+    "name": "Bahari Bay Wildlife 22",
+    "file": "svgs/BahariBayWildlife22.svg"
+  },
+  {
+    "name": "Bahari Bay Wildlife 23",
+    "file": "svgs/BahariBayWildlife23.svg"
+  },
+  {
+    "name": "Bahari Bay Wildlife 24",
+    "file": "svgs/BahariBayWildlife24.svg"
+  },
+  {
+    "name": "Bahari Bay Wildlife 25",
+    "file": "svgs/BahariBayWildlife25.svg"
+  },
+  {
+    "name": "Bahari Bay Wildlife 27",
+    "file": "svgs/BahariBayWildlife27.svg"
+  },
+  {
+    "name": "Bahari Bay Wildlife 28",
+    "file": "svgs/BahariBayWildlife28.svg"
+  },
+  {
+    "name": "Bahari Bay Wildlife 29",
+    "file": "svgs/BahariBayWildlife29.svg"
+  },
+  {
+    "name": "Bahari Bay Wildlife 30",
+    "file": "svgs/BahariBayWildlife30.svg"
+  },
+  {
+    "name": "Bahari Bay Wildlife 31",
+    "file": "svgs/BahariBayWildlife31.svg"
+  },
+  {
+    "name": "Bahari Bay Wildlife 32",
+    "file": "svgs/BahariBayWildlife32.svg"
+  },
+  {
+    "name": "Bahari Bay Wildlife 33",
+    "file": "svgs/BahariBayWildlife33.svg"
+  },
+  {
+    "name": "Bahari Bay Wildlife 34",
+    "file": "svgs/BahariBayWildlife34.svg"
+  },
+  {
+    "name": "Bahari Bay Wildlife 4",
+    "file": "svgs/BahariBayWildlife4.svg"
+  },
+  {
+    "name": "Bahari Bay Wildlife 5",
+    "file": "svgs/BahariBayWildlife5.svg"
+  },
+  {
+    "name": "Bahari Bay Wildlife 6",
+    "file": "svgs/BahariBayWildlife6.svg"
+  },
+  {
+    "name": "Bahari Bay Wildlife 7",
+    "file": "svgs/BahariBayWildlife7.svg"
+  },
+  {
+    "name": "Bahari Bay Wildlife 8",
+    "file": "svgs/BahariBayWildlife8.svg"
+  },
+  {
+    "name": "Bahari Bay Wildlife 9",
+    "file": "svgs/BahariBayWildlife9.svg"
   },
   {
     "name": "Bakers Oven",
@@ -358,6 +506,10 @@
   {
     "name": "Blooming Lily",
     "file": "svgs/BloomingLily.svg"
+  },
+  {
+    "name": "Blue Thingy",
+    "file": "svgs/Blue Thingy.svg"
   },
   {
     "name": "Blue Fire Brazier",
@@ -550,6 +702,10 @@
   {
     "name": "Clover Window",
     "file": "svgs/CloverWindow.svg"
+  },
+  {
+    "name": "Clown FIsh",
+    "file": "svgs/ClownFIsh.svg"
   },
   {
     "name": "Clutter Aloe",
@@ -852,8 +1008,8 @@
     "file": "svgs/CrystalZiosOrnamentNM.svg"
   },
   {
-    "name": "Crystals2Decor Pink  2",
-    "file": "svgs/Crystals2DecorPink 2.svg"
+    "name": "Crystals2Decor Pink_ 2",
+    "file": "svgs/Crystals2DecorPink_2.svg"
   },
   {
     "name": "Cupid Flag",
@@ -2756,6 +2912,10 @@
     "file": "svgs/PuddleSteppingStones.svg"
   },
   {
+    "name": "Puffer Fish",
+    "file": "svgs/PufferFish.svg"
+  },
+  {
     "name": "Pumpkin Stepping Stones",
     "file": "svgs/PumpkinSteppingStones.svg"
   },
@@ -3036,6 +3196,14 @@
     "file": "svgs/SchoolLockers.svg"
   },
   {
+    "name": "School Of Fish Blue",
+    "file": "svgs/SchoolOfFishBlue.svg"
+  },
+  {
+    "name": "School Of Fish Yellow",
+    "file": "svgs/SchoolOfFishYellow.svg"
+  },
+  {
     "name": "School Rug",
     "file": "svgs/SchoolRug.svg"
   },
@@ -3236,6 +3404,10 @@
     "file": "svgs/SnowyStumpDen.svg"
   },
   {
+    "name": "Sonic Shrub",
+    "file": "svgs/Sonic Shrub.svg"
+  },
+  {
     "name": "Spiked Birthday Doghouse",
     "file": "svgs/SpikedBirthdayDoghouse.svg"
   },
@@ -3396,6 +3568,10 @@
     "file": "svgs/SteampunkWindow.svg"
   },
   {
+    "name": "Stingray",
+    "file": "svgs/Stingray.svg"
+  },
+  {
     "name": "Stone Bench",
     "file": "svgs/StoneBench.svg"
   },
@@ -3408,11 +3584,11 @@
     "file": "svgs/StoneCarvedCouch.svg"
   },
   {
-    "name": "Stone Carved Oven  2",
+    "name": "Stone Carved Oven_ 2",
     "file": "svgs/StoneCarvedOven_2.svg"
   },
   {
-    "name": "Stone Carved Table  2",
+    "name": "Stone Carved Table_ 2",
     "file": "svgs/StoneCarvedTable_2.svg"
   },
   {
@@ -3522,6 +3698,10 @@
   {
     "name": "Sweet Window",
     "file": "svgs/SweetWindow.svg"
+  },
+  {
+    "name": "Swordfish",
+    "file": "svgs/Swordfish.svg"
   },
   {
     "name": "TVand Speakers",
@@ -3776,39 +3956,39 @@
     "file": "svgs/UnreleasedCaveRock2.svg"
   },
   {
-    "name": "Unreleased corn maze tree",
+    "name": "Unreleased_corn_maze_tree",
     "file": "svgs/Unreleased_corn_maze_tree.svg"
   },
   {
-    "name": "Unreleased house front blue",
+    "name": "Unreleased_house_front_blue",
     "file": "svgs/Unreleased_house_front_blue.svg"
   },
   {
-    "name": "Unreleased house front purple",
+    "name": "Unreleased_house_front_purple",
     "file": "svgs/Unreleased_house_front_purple.svg"
   },
   {
-    "name": "Unreleased moss  1",
+    "name": "Unreleased_moss_ 1",
     "file": "svgs/Unreleased_moss_1.svg"
   },
   {
-    "name": "Unreleased moss  2",
+    "name": "Unreleased_moss_ 2",
     "file": "svgs/Unreleased_moss_2.svg"
   },
   {
-    "name": "Unreleased moss  3",
+    "name": "Unreleased_moss_ 3",
     "file": "svgs/Unreleased_moss_3.svg"
   },
   {
-    "name": "Unreleased moss  4",
+    "name": "Unreleased_moss_ 4",
     "file": "svgs/Unreleased_moss_4.svg"
   },
   {
-    "name": "Unreleased straw sourge garden patch",
+    "name": "Unreleased_straw_sourge_garden_patch",
     "file": "svgs/Unreleased_straw_sourge_garden_patch.svg"
   },
   {
-    "name": "Unreleased wood trunk",
+    "name": "Unreleased_wood_trunk",
     "file": "svgs/Unreleased_wood_trunk.svg"
   },
   {
@@ -4124,6 +4304,10 @@
     "file": "svgs/blockPartyGrillEmpty.svg"
   },
   {
+    "name": "Coral",
+    "file": "svgs/coral.svg"
+  },
+  {
     "name": "Crystal Waterfall Archway",
     "file": "svgs/crystal-waterfall-archway.svg"
   },
@@ -4348,23 +4532,23 @@
     "file": "svgs/unreleased-bamboo-trees4.svg"
   },
   {
-    "name": "Unreleased Bamboo trees1",
-    "file": "svgs/unreleased-bamboo trees1.svg"
+    "name": "Unreleased Bamboo_trees1",
+    "file": "svgs/unreleased-bamboo_trees1.svg"
   },
   {
-    "name": "Unreleased Bamboo trees2",
+    "name": "Unreleased Bamboo_trees2",
     "file": "svgs/unreleased-bamboo_trees2.svg"
   },
   {
-    "name": "Unreleased Benches right",
+    "name": "Unreleased Benches_right",
     "file": "svgs/unreleased-benches_right.svg"
   },
   {
-    "name": "Unreleased Blocker mausoleum bitter sweets",
+    "name": "Unreleased Blocker_mausoleum_bitter_sweets",
     "file": "svgs/unreleased-blocker_mausoleum_bitter_sweets.svg"
   },
   {
-    "name": "Unreleased Blocker mausoleum door bitter sweets",
+    "name": "Unreleased Blocker_mausoleum_door_bitter_sweets",
     "file": "svgs/unreleased-blocker_mausoleum_door_bitter_sweets.svg"
   },
   {
@@ -4456,31 +4640,31 @@
     "file": "svgs/unreleased-tree-cluster.svg"
   },
   {
-    "name": "Unreleased house small blue",
+    "name": "Unreleased_house_small_blue",
     "file": "svgs/unreleased_house_small_blue.svg"
   },
   {
-    "name": "Unreleased pile of pitchforks",
+    "name": "Unreleased_pile_of_pitchforks",
     "file": "svgs/unreleased_pile_of_pitchforks.svg"
   },
   {
-    "name": "Unreleased pile of wheelbarrows",
+    "name": "Unreleased_pile_of_wheelbarrows",
     "file": "svgs/unreleased_pile_of_wheelbarrows.svg"
   },
   {
-    "name": "Unreleased rock large",
+    "name": "Unreleased_rock_large",
     "file": "svgs/unreleased_rock_large.svg"
   },
   {
-    "name": "Unreleased rocks small",
+    "name": "Unreleased_rocks_small",
     "file": "svgs/unreleased_rocks_small.svg"
   },
   {
-    "name": "Unreleased round window house",
+    "name": "Unreleased_round_window_house",
     "file": "svgs/unreleased_round_window_house.svg"
   },
   {
-    "name": "Unreleased ruin block",
+    "name": "Unreleased_ruin_block",
     "file": "svgs/unreleased_ruin_block.svg"
   },
   {
@@ -4508,7 +4692,7 @@
     "file": "svgs/waterfall-arch5.svg"
   },
   {
-    "name": "White flower temple of zios",
+    "name": "White_flower_temple_of_zios",
     "file": "svgs/white_flower_temple_of_zios.svg"
   },
   {
