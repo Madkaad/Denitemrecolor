@@ -1,0 +1,279 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ffdec="https://www.free-decompiler.com/flash" version="1.1" viewBox="0 0 188.6 243.1">
+  <!-- Generator: Adobe Illustrator 30.4.0, SVG Export Plug-In . SVG Version: 2.1.4 Build 226)  -->
+  <defs>
+    <style>
+      .st0 {
+        fill: #de4b4b;
+      }
+
+      .st0, .st1, .st2, .st3, .st4, .st5, .st6, .st7, .st8, .st9, .st10, .st11, .st12, .st13, .st14, .st15, .st16, .st17, .st18, .st19, .st20, .st21, .st22, .st23, .st24, .st25, .st26 {
+        fill-rule: evenodd;
+      }
+
+      .st1 {
+        fill: #f35252;
+      }
+
+      .st2 {
+        fill: #b44cbb;
+      }
+
+      .st3 {
+        fill: #938e82;
+      }
+
+      .st4 {
+        fill: #8954cc;
+      }
+
+      .st5 {
+        fill: #aaa497;
+      }
+
+      .st6 {
+        fill: #4cb4bb;
+      }
+
+      .st7 {
+        fill: #7e4cbb;
+      }
+
+      .st8 {
+        fill: #51bfc6;
+      }
+
+      .st9 {
+        fill: #965ce0;
+      }
+
+      .st10 {
+        fill: #c554cc;
+      }
+
+      .st11 {
+        fill: #6c42a1;
+      }
+
+      .st12 {
+        fill: #429ba1;
+      }
+
+      .st13 {
+        fill: #cb4444;
+      }
+
+      .st14 {
+        fill: #9b42a1;
+      }
+
+      .st15 {
+        fill: #af3b3b;
+      }
+
+      .st16 {
+        fill: url(#linear-gradient);
+      }
+
+      .st17 {
+        fill: url(#linear-gradient1);
+      }
+
+      .st18 {
+        fill: url(#linear-gradient2);
+      }
+
+      .st19 {
+        fill: url(#linear-gradient7);
+      }
+
+      .st20 {
+        fill: url(#linear-gradient4);
+      }
+
+      .st21 {
+        fill: url(#linear-gradient5);
+      }
+
+      .st22 {
+        fill: url(#linear-gradient3);
+      }
+
+      .st23 {
+        fill: url(#linear-gradient6);
+      }
+
+      .st24 {
+        fill: #5cd8e0;
+      }
+
+      .st25 {
+        fill-opacity: .3;
+      }
+
+      .st26 {
+        fill: #d85ce0;
+      }
+    </style>
+    <linearGradient id="linear-gradient" x1="-11285.8" y1="-28681.3" x2="-9675.2" y2="-28681.3" gradientTransform="translate(-727.8 -173.5) rotate(-75.4) scale(0 0) skewX(.3)" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#e7dcbe"/>
+      <stop offset="1" stop-color="#938e82"/>
+    </linearGradient>
+    <linearGradient id="linear-gradient1" x1="-89417.7" y1="-7129.5" x2="-86838.6" y2="-7129.5" gradientTransform="translate(-697.1 -189.1) rotate(-135) scale(0 0) skewX(.8)" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#e7dcbe"/>
+      <stop offset="1" stop-color="#938e82"/>
+    </linearGradient>
+    <linearGradient id="linear-gradient2" x1="-91638.5" y1="-19081.9" x2="-89800.8" y2="-19081.9" gradientTransform="translate(-699.1 -214.8) rotate(-125.5) scale(0 0) skewX(.8)" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#e7dcbe"/>
+      <stop offset="1" stop-color="#938e82"/>
+    </linearGradient>
+    <linearGradient id="linear-gradient3" x1="74621.1" y1="-24266.4" x2="77151.7" y2="-24266.4" gradientTransform="translate(-730.2 -187.5) rotate(225.1) scale(0 0) skewY(0)" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#e7dcbe"/>
+      <stop offset="1" stop-color="#938e82"/>
+    </linearGradient>
+    <linearGradient id="linear-gradient4" x1="-50183.8" y1="-12861.9" x2="-48033.4" y2="-12861.9" gradientTransform="translate(-709.5 -272.3) rotate(-119.6) scale(0 0) skewX(-.5)" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#e7dcbe"/>
+      <stop offset="1" stop-color="#938e82"/>
+    </linearGradient>
+    <linearGradient id="linear-gradient5" x1="7298.9" y1="-30802.4" x2="8872.9" y2="-30802.4" gradientTransform="translate(-744.9 -244.3) rotate(-59.9) scale(0 0) skewX(0)" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#e7dcbe"/>
+      <stop offset="1" stop-color="#938e82"/>
+    </linearGradient>
+    <linearGradient id="linear-gradient6" x1="-1421.1" y1="67.6" x2="1421" y2="67.6" gradientTransform="translate(-703.4 -300.3) rotate(44.8) scale(0 0) skewY(0)" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#e7dcbe"/>
+      <stop offset="1" stop-color="#938e82"/>
+    </linearGradient>
+    <linearGradient id="linear-gradient7" x1="14013.3" y1="-30640.6" x2="16025" y2="-30640.6" gradientTransform="translate(-726.8 -284.1) rotate(-60.1) scale(0 0) skewX(.6)" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#e7dcbe"/>
+      <stop offset="1" stop-color="#938e82"/>
+    </linearGradient>
+  </defs>
+  <g ffdec:characterId="2">
+    <g id="sprite0">
+      <g ffdec:characterId="1">
+        <g id="shape0">
+          <path class="st25" d="M97.4,164.3l89.5,26.7-92.3,52-70.8-42.3,73.5-36.4"/>
+        </g>
+      </g>
+    </g>
+  </g>
+  <g ffdec:characterId="4">
+    <g id="sprite1">
+      <g ffdec:characterId="3">
+        <g id="shape1">
+          <path class="st3" d="M173.3,169.6v1.4c0,0,.3,1.7.3,1.7l-29.6,15.8,29.2-18.9M27.4,180.7l-5.2-15.2,7.1,10.7,31.7,18.8-31.7-15.7h0c0,.1-1.9,1.3-1.9,1.3"/>
+          <path class="st16" d="M94.3,229.9l-62.4-36-4.5-13.3,1.9-1.2h0c0-.1,31.7,15.6,31.7,15.6l-31.7-18.8-7.1-10.7,62.4-1,4.2,41.1c-1.2,3.4-1.1,7.6.3,12.6l-40.2-23.2,41.5,26.5,2.9,4.8,1,3.6"/>
+          <path class="st17" d="M173.3,169.6l-29.2,18.9,29.6-15.8h0c0,0,0,.1,0,.1l8.6,6.2-88.1,50.9-1-3.6-2.9-4.8,28-15.2-29.3,11.9c-1.4-5-1.6-9.2-.3-12.6l-4.2-41.1,90.7-1.5c-1.3,2.3-1.9,4.5-2,6.5"/>
+          <path class="st5" d="M89.2,218.2l29.3-11.9-28,15.2-41.5-26.5,40.2,23.2"/>
+        </g>
+      </g>
+    </g>
+  </g>
+  <g ffdec:characterId="6">
+    <g id="sprite2">
+      <g ffdec:characterId="5">
+        <g id="shape2">
+          <path class="st15" d="M30.7,171.8c-.8,1.3-1.2,2.8-1.4,4.4v3.1c.2,3.4,1.5,7.3,3.9,11.7l-4.9,3.6c-5.3-10.7-6.8-19.7-4.5-26.9l6.9,4.1"/>
+          <path class="st13" d="M94.8,209l-64.1-37.2-6.9-4.1c-2.3,7.2-.8,16.1,4.5,26.9l66.5,38.4.3,5.4-69.8-41.5-3.8-6.1h0c-5.4-11.5-5.4-21.5,0-30.1l73.4,42.3v6"/>
+          <path class="st0" d="M188.6,148.9l-1.6,7.5-92.3,52.7v-6l93.8-54.1M188.6,178.9l-.7,6.2-92.8,53.2-.3-5.4,93.8-54.1"/>
+          <path class="st1" d="M33.2,191l60.2,35.3,85.2-47.1c-1.6-1.3-3.2-3.5-4.8-6.5h0s-.3-1.6-.3-1.6l15.2,7.9h0s-93.8,54.1-93.8,54.1l-66.5-38.4,4.9-3.6M21.4,160.7l93.8-54.1,73.4,42.3-93.8,54.1-73.4-42.3"/>
+        </g>
+      </g>
+    </g>
+  </g>
+  <g ffdec:characterId="8">
+    <g id="sprite3">
+      <g ffdec:characterId="7">
+        <g id="shape3">
+          <path class="st25" d="M184,146.3l-77.2,44.7-68.2-40.4,76.7-43.7,68.7,39.4"/>
+        </g>
+      </g>
+    </g>
+  </g>
+  <g ffdec:characterId="10">
+    <g id="sprite4">
+      <g ffdec:characterId="9">
+        <g id="shape4">
+          <path class="st18" d="M106.9,130l56.5,5.1h0s.2,7.6.2,7.6l-4.4,10.3-49.8,29.4.4-9,2.3-8.7h0c0,0-5.3-34.7-5.3-34.7"/>
+          <path class="st22" d="M109.4,182.4l-68.9-39.1-5.8-13.9.3-6,71.8,6.6,5.3,34.6h0c0,0-2.3,8.8-2.3,8.8l-.4,9"/>
+        </g>
+      </g>
+    </g>
+  </g>
+  <g ffdec:characterId="12">
+    <g id="sprite5">
+      <g ffdec:characterId="11">
+        <g id="shape5">
+          <path class="st7" d="M163.6,142.7l-.2-7.6,4.9-2.8c2.4,3.6,2.6,8.1.5,13.4l-5.2-3"/>
+          <path class="st4" d="M109.4,166.2l-.4-5.4,62-35.5c4.8,5.5,5,13.5.7,24.1l-62.3,35.9v-5.8l59.4-33.8c2.1-5.3,1.9-9.8-.5-13.4l-4.9,2.8-54,31.2"/>
+          <path class="st11" d="M109.4,166.2L29.4,120.1l.2-6.5,79.4,47.2.4,5.4M109.4,185.3l-80-46.1h0l-.8-6.9,80.7,47.2v5.8"/>
+          <path class="st9" d="M109,160.9L29.6,113.6l62-35.1,79.4,46.8-62,35.5M28.8,132.3l6-2.8,75.1,44,53.8-30.8,5.2,3-59.4,33.8-80.7-47.2"/>
+        </g>
+      </g>
+    </g>
+  </g>
+  <g ffdec:characterId="14">
+    <g id="sprite6">
+      <g ffdec:characterId="13">
+        <g id="shape6">
+          <path class="st25" d="M91.7,78.6l73,43-71.1,30.1-63.8-38.1,61.9-35"/>
+        </g>
+      </g>
+    </g>
+  </g>
+  <g ffdec:characterId="16">
+    <g id="sprite7">
+      <g ffdec:characterId="15">
+        <g id="shape7">
+          <path class="st20" d="M50.2,76.7l108.7,4.4-1.1,3.2-56.1,24.3,55.6-20.1,7.9,11-105.1,41.6-1.4-4.3c-5-7.8-5.8-14.1-2.6-18.8l-5.8-41.4"/>
+          <path class="st3" d="M157.2,88.6l-55.6,20.1,56.1-24.3c-.3,1.4-.5,2.8-.5,4.2M12.4,102.4l1.1-7.9,2.8,2.9-.3-1.5,17.3,15.7-16.1-10.9h0c0,0-4.8,1.7-4.8,1.7"/>
+          <path class="st21" d="M50.2,76.7l5.8,41.4c-3.2,4.7-2.4,11,2.6,18.8l1.4,4.3L12.4,102.4l4.8-1.8h0c0,0,16.1,11,16.1,11l-17.3-15.7.3,1.5-2.8-2.9,2.7-19.2,33.9,1.4"/>
+        </g>
+      </g>
+    </g>
+  </g>
+  <g ffdec:characterId="18">
+    <g id="sprite8">
+      <g ffdec:characterId="17">
+        <g id="shape8">
+          <path class="st10" d="M171.7,69.1l-1.1,7.2-110.6,45v-6.2c0,0,111.7-46,111.7-46M171.9,98.9l-.2,8.4-111.8,46-.2-9.3,112.1-45.1"/>
+          <path class="st26" d="M171.7,69.1l-111.8,46L5,70.8,116.8,24.8l54.9,44.3M18.3,103.5l40.2,33.4,100.6-39.9c-1.3-2.8-2-5.6-2-8.4l14.7,10.3-112.1,45.1L11.3,106.4l7-2.9"/>
+          <path class="st2" d="M59.9,115.2v6.2c0,0-41.8-34.7-41.8-34.7l-6.7-5.5c-4.2,5.9-4.2,14.3,0,25.2l48.4,37.6.2,9.3L5,109c-6.6-16.3-6.6-29.1,0-38.2l54.9,44.3"/>
+          <path class="st14" d="M18.1,86.7c-1.8,2.5-2.5,5.5-2,9.2l1.1,4.8,1.1,2.8-7,2.9c-4.1-11-4.1-19.4,0-25.2l6.7,5.5"/>
+        </g>
+      </g>
+    </g>
+  </g>
+  <g ffdec:characterId="20">
+    <g id="sprite9">
+      <g ffdec:characterId="19">
+        <g id="shape9">
+          <path class="st25" d="M117,24.8l47.6,38.6-20.4,17.2h0c0,0-8,9.5-8,9.5l-6.2,2.6-2.8,16.9-14.7,10.6-15,1.1-6-13.2,3.5-1.2-.2-6.4L15,66.5,117,24.8"/>
+        </g>
+      </g>
+    </g>
+  </g>
+  <g ffdec:characterId="22">
+    <g id="sprite10">
+      <g ffdec:characterId="21">
+        <g id="shape10">
+          <path class="st23" d="M97.2,44l61.3-4.2.3,14.9-45.5,40.9-1.1-7.7v-2.4l23.9-20.2-23.9,17.1v-2.9l-15-35.3"/>
+          <path class="st19" d="M97.2,44l15,35.3v2.9l-38.4-12.5,38.4,15.6v2.4l1.1,7.7-74.8-28.8-6.6-11-.5-7.2,65.8-4.5"/>
+          <path class="st5" d="M112.2,82.3l23.9-17.1-23.9,20.2-38.4-15.6,38.4,12.5"/>
+        </g>
+      </g>
+    </g>
+  </g>
+  <g ffdec:characterId="24">
+    <g id="sprite11">
+      <g ffdec:characterId="23">
+        <g id="shape11">
+          <path class="st12" d="M152.2,46.5l3.3-2.8c2.4,1.9,2.5,5.2.5,9.8h0c0,0-2.6-1.2-2.6-1.2h0c.8-2.9.4-4.9-1.2-5.8"/>
+          <path class="st8" d="M156,53.6h0c2-4.7,1.9-8-.5-9.9l-3.3,2.8-38.5,33.4v-6.1l46.8-40.6c3.1,6,3.1,14.4,0,25.2l-46.8,40.7-.6-6.9,42.9-38.5"/>
+          <path class="st24" d="M153.4,52.2l2.6,1.3-42.9,38.5L27.5,58.2l4.3-2.6,80.3,32.1,41.2-35.5M160.5,33.1l-46.8,40.6L26.9,40.7h0c0,0,46.8-40.7,46.8-40.7l86.8,33.1"/>
+          <path class="st6" d="M113.1,92l.6,6.9L26.8,65.8l.7-7.5,85.5,33.8M113.7,73.8v6.1L26.8,46.7v-6c0,0,86.8,33.1,86.8,33.1"/>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>
