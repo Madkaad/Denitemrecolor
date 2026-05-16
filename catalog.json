@@ -3888,6 +3888,298 @@
     "file": "svgs/UnderwaterPoolTable.svg"
   },
   {
+    "name": "Unreleased Adventure Part CaveClearing",
+    "file": "svgs/Unreleased-Adventure-Part-CaveClearing.svg"
+  },
+  {
+    "name": "Unreleased Adventure Part CaveClearing2",
+    "file": "svgs/Unreleased-Adventure-Part-CaveClearing2.svg"
+  },
+  {
+    "name": "Unreleased Adventure Part CaveRock",
+    "file": "svgs/Unreleased-Adventure-Part-CaveRock.svg"
+  },
+  {
+    "name": "Unreleased Adventure Part CaveRock2",
+    "file": "svgs/Unreleased-Adventure-Part-CaveRock2.svg"
+  },
+  {
+    "name": "Unreleased Adventure Part Dirt Path 2 BattleForTheBeacon",
+    "file": "svgs/Unreleased-Adventure-Part-Dirt-Path-2-BattleForTheBeacon.svg"
+  },
+  {
+    "name": "Unreleased Adventure Part DirtPath 3 BattleForTheBeacon",
+    "file": "svgs/Unreleased-Adventure-Part-DirtPath-3-BattleForTheBeacon.svg"
+  },
+  {
+    "name": "Unreleased Adventure Part DirtPath 4 BattleForTheBeacon",
+    "file": "svgs/Unreleased-Adventure-Part-DirtPath-4-BattleForTheBeacon.svg"
+  },
+  {
+    "name": "Unreleased Adventure Part DirtPath 5 BattleForTheBeacon",
+    "file": "svgs/Unreleased-Adventure-Part-DirtPath-5-BattleForTheBeacon.svg"
+  },
+  {
+    "name": "Unreleased Adventure Part DirtPath 6 BattleForTheBeacon",
+    "file": "svgs/Unreleased-Adventure-Part-DirtPath-6-BattleForTheBeacon.svg"
+  },
+  {
+    "name": "Unreleased Adventure Part DirtPath 7 BattleForTheBeacon",
+    "file": "svgs/Unreleased-Adventure-Part-DirtPath-7-BattleForTheBeacon.svg"
+  },
+  {
+    "name": "Unreleased Adventure Part DirtPath 8 BattleForTheBeacon",
+    "file": "svgs/Unreleased-Adventure-Part-DirtPath-8-BattleForTheBeacon.svg"
+  },
+  {
+    "name": "Unreleased Adventure Part DirtPath BattleForTheBeacon",
+    "file": "svgs/Unreleased-Adventure-Part-DirtPath-BattleForTheBeacon.svg"
+  },
+  {
+    "name": "Unreleased Adventure Part DirtPathBattleForTheBeacon",
+    "file": "svgs/Unreleased-Adventure-Part-DirtPathBattleForTheBeacon.svg"
+  },
+  {
+    "name": "Unreleased Adventure Part HouseFascade 1 BattleForTheBeacon",
+    "file": "svgs/Unreleased-Adventure-Part-HouseFascade-1-BattleForTheBeacon.svg"
+  },
+  {
+    "name": "Unreleased Adventure Part HouseFascade 2 BattleForTheBeacon",
+    "file": "svgs/Unreleased-Adventure-Part-HouseFascade-2-BattleForTheBeacon.svg"
+  },
+  {
+    "name": "Unreleased Adventure Part HouseFascadeBattleForTheBeacon",
+    "file": "svgs/Unreleased-Adventure-Part-HouseFascadeBattleForTheBeacon.svg"
+  },
+  {
+    "name": "Unreleased Adventure Part IrishSpringCottageBattleForTheBeacon",
+    "file": "svgs/Unreleased-Adventure-Part-IrishSpringCottageBattleForTheBeacon.svg"
+  },
+  {
+    "name": "Unreleased Adventure Part OceanArch",
+    "file": "svgs/Unreleased-Adventure-Part-OceanArch.svg"
+  },
+  {
+    "name": "Unreleased Adventure Part OceanCheckpoint 1",
+    "file": "svgs/Unreleased-Adventure-Part-OceanCheckpoint-1.svg"
+  },
+  {
+    "name": "Unreleased Adventure Part OceanCheckpoint",
+    "file": "svgs/Unreleased-Adventure-Part-OceanCheckpoint.svg"
+  },
+  {
+    "name": "Unreleased Adventure Part OceanPillar 1",
+    "file": "svgs/Unreleased-Adventure-Part-OceanPillar-1.svg"
+  },
+  {
+    "name": "Unreleased Adventure Part OceanPillar 2",
+    "file": "svgs/Unreleased-Adventure-Part-OceanPillar-2.svg"
+  },
+  {
+    "name": "Unreleased Adventure Part OceanPillar",
+    "file": "svgs/Unreleased-Adventure-Part-OceanPillar.svg"
+  },
+  {
+    "name": "Unreleased Adventure Part OceanPillarBuilding",
+    "file": "svgs/Unreleased-Adventure-Part-OceanPillarBuilding.svg"
+  },
+  {
+    "name": "Unreleased Adventure Part OceanRock 1",
+    "file": "svgs/Unreleased-Adventure-Part-OceanRock-1.svg"
+  },
+  {
+    "name": "Unreleased Adventure Part OceanRock 2",
+    "file": "svgs/Unreleased-Adventure-Part-OceanRock-2.svg"
+  },
+  {
+    "name": "Unreleased Adventure Part OceanRock 3",
+    "file": "svgs/Unreleased-Adventure-Part-OceanRock-3.svg"
+  },
+  {
+    "name": "Unreleased Adventure Part OceanRock 4",
+    "file": "svgs/Unreleased-Adventure-Part-OceanRock-4.svg"
+  },
+  {
+    "name": "Unreleased Adventure Part OceanRock",
+    "file": "svgs/Unreleased-Adventure-Part-OceanRock.svg"
+  },
+  {
+    "name": "Unreleased Adventure Part SmallShopBattleForTheBeacon",
+    "file": "svgs/Unreleased-Adventure-Part-SmallShopBattleForTheBeacon.svg"
+  },
+  {
+    "name": "Unreleased Adventure Part SwampFirefliesBattleForTheBeacon",
+    "file": "svgs/Unreleased-Adventure-Part-SwampFirefliesBattleForTheBeacon.svg"
+  },
+  {
+    "name": "Unreleased Adventure Part VinesBlockerObjectBattleForTheBeacon",
+    "file": "svgs/Unreleased-Adventure-Part-VinesBlockerObjectBattleForTheBeacon.svg"
+  },
+  {
+    "name": "Unreleased Adventure Part WatchTowerBattleForTheBeacon",
+    "file": "svgs/Unreleased-Adventure-Part-WatchTowerBattleForTheBeacon.svg"
+  },
+  {
+    "name": "Unreleased Adventure Part WatchTowerBushBattleForTheBeacon",
+    "file": "svgs/Unreleased-Adventure-Part-WatchTowerBushBattleForTheBeacon.svg"
+  },
+  {
+    "name": "Unreleased Adventure Part Blocker Mausoleum Bitter Sweets",
+    "file": "svgs/Unreleased-Adventure-Part-blocker-mausoleum-bitter-sweets.svg"
+  },
+  {
+    "name": "Unreleased Adventure Part Bush",
+    "file": "svgs/Unreleased-Adventure-Part-bush.svg"
+  },
+  {
+    "name": "Unreleased Adventure Part Cat Tails 2 Bitter Sweets",
+    "file": "svgs/Unreleased-Adventure-Part-cat-Tails-2-bitter-sweets.svg"
+  },
+  {
+    "name": "Unreleased Adventure Part Cat Tails 3 Bitter Sweets",
+    "file": "svgs/Unreleased-Adventure-Part-cat-Tails-3-bitter-sweets.svg"
+  },
+  {
+    "name": "Unreleased Adventure Part Cat Tails Bitter Sweets",
+    "file": "svgs/Unreleased-Adventure-Part-cat-tails-bitter-sweets.svg"
+  },
+  {
+    "name": "Unreleased Adventure Part Cave Ground",
+    "file": "svgs/Unreleased-Adventure-Part-cave-ground.svg"
+  },
+  {
+    "name": "Unreleased Adventure Part Cave Mushroom",
+    "file": "svgs/Unreleased-Adventure-Part-cave-mushroom.svg"
+  },
+  {
+    "name": "Unreleased Adventure Part Cave Mushroom2",
+    "file": "svgs/Unreleased-Adventure-Part-cave-mushroom2.svg"
+  },
+  {
+    "name": "Unreleased Adventure Part Corn Maze Tree Twists And Turns",
+    "file": "svgs/Unreleased-Adventure-Part-corn-maze-tree-twists-and-turns.svg"
+  },
+  {
+    "name": "Unreleased Adventure Part Crystal Fissure Large",
+    "file": "svgs/Unreleased-Adventure-Part-crystal-fissure-large.svg"
+  },
+  {
+    "name": "Unreleased Adventure Part Crystal Fissure Small",
+    "file": "svgs/Unreleased-Adventure-Part-crystal-fissure-small.svg"
+  },
+  {
+    "name": "Unreleased Adventure Part Crystals Large 2",
+    "file": "svgs/Unreleased-Adventure-Part-crystals-large-2.svg"
+  },
+  {
+    "name": "Unreleased Adventure Part Crystals Small",
+    "file": "svgs/Unreleased-Adventure-Part-crystals-small.svg"
+  },
+  {
+    "name": "Unreleased Adventure Part Dirtclearing 2",
+    "file": "svgs/Unreleased-Adventure-Part-dirtclearing-2.svg"
+  },
+  {
+    "name": "Unreleased Adventure Part Dirtclearing",
+    "file": "svgs/Unreleased-Adventure-Part-dirtclearing.svg"
+  },
+  {
+    "name": "Unreleased Adventure Part Grass Light Rock Path1",
+    "file": "svgs/Unreleased-Adventure-Part-grass-light-rock-path1.svg"
+  },
+  {
+    "name": "Unreleased Adventure Part Grass Light Rock Path2",
+    "file": "svgs/Unreleased-Adventure-Part-grass-light-rock-path2.svg"
+  },
+  {
+    "name": "Unreleased Adventure Part Grass Light Rock Path3",
+    "file": "svgs/Unreleased-Adventure-Part-grass-light-rock-path3.svg"
+  },
+  {
+    "name": "Unreleased Adventure Part Grass Light Rock Path4",
+    "file": "svgs/Unreleased-Adventure-Part-grass-light-rock-path4.svg"
+  },
+  {
+    "name": "Unreleased Adventure Part Hammers Grahams Workshop",
+    "file": "svgs/Unreleased-Adventure-Part-hammers-grahams-workshop.svg"
+  },
+  {
+    "name": "Unreleased Adventure Part Health Fountain",
+    "file": "svgs/Unreleased-Adventure-Part-health-Fountain.svg"
+  },
+  {
+    "name": "Unreleased Adventure Part Health Fountain2",
+    "file": "svgs/Unreleased-Adventure-Part-health-fountain2.svg"
+  },
+  {
+    "name": "Unreleased Adventure Part Himilayan Blue Poppy",
+    "file": "svgs/Unreleased-Adventure-Part-himilayan-blue-poppy.svg"
+  },
+  {
+    "name": "Unreleased Adventure Part Hotspring",
+    "file": "svgs/Unreleased-Adventure-Part-hotspring.svg"
+  },
+  {
+    "name": "Unreleased Adventure Part House Back Grahams Workshop",
+    "file": "svgs/Unreleased-Adventure-Part-house-back-grahams-workshop.svg"
+  },
+  {
+    "name": "Unreleased Adventure Part Huckleberry Plant",
+    "file": "svgs/Unreleased-Adventure-Part-huckleberry-plant.svg"
+  },
+  {
+    "name": "Unreleased Adventure Part Pans Grahams Workshop",
+    "file": "svgs/Unreleased-Adventure-Part-pans-grahams-workshop.svg"
+  },
+  {
+    "name": "Unreleased Adventure Part Rock Large",
+    "file": "svgs/Unreleased-Adventure-Part-rock-large.svg"
+  },
+  {
+    "name": "Unreleased Adventure Part Rock",
+    "file": "svgs/Unreleased-Adventure-Part-rock.svg"
+  },
+  {
+    "name": "Unreleased Adventure Part Rock2",
+    "file": "svgs/Unreleased-Adventure-Part-rock2.svg"
+  },
+  {
+    "name": "Unreleased Adventure Part Rock3",
+    "file": "svgs/Unreleased-Adventure-Part-rock3.svg"
+  },
+  {
+    "name": "Unreleased Adventure Part Rocks Small",
+    "file": "svgs/Unreleased-Adventure-Part-rocks-small.svg"
+  },
+  {
+    "name": "Unreleased Adventure Part Ruin Block",
+    "file": "svgs/Unreleased-Adventure-Part-ruin-block.svg"
+  },
+  {
+    "name": "Unreleased Adventure Part Ruin Wall1",
+    "file": "svgs/Unreleased-Adventure-Part-ruin-wall1.svg"
+  },
+  {
+    "name": "Unreleased Adventure Part Ruin Wall2",
+    "file": "svgs/Unreleased-Adventure-Part-ruin-wall2.svg"
+  },
+  {
+    "name": "Unreleased Adventure Part Ruins",
+    "file": "svgs/Unreleased-Adventure-Part-ruins.svg"
+  },
+  {
+    "name": "Unreleased Adventure Part Table Grahams Workshop",
+    "file": "svgs/Unreleased-Adventure-Part-table-grahams-workshop.svg"
+  },
+  {
+    "name": "Unreleased Adventure Part Tree Cluster",
+    "file": "svgs/Unreleased-Adventure-Part-tree-cluster.svg"
+  },
+  {
+    "name": "Unreleased Adventure Part Unreleased Flax",
+    "file": "svgs/Unreleased-Adventure-Part-unreleased-flax.svg"
+  },
+  {
     "name": "Unreleased Den Part Atlantis Columns 1",
     "file": "svgs/Unreleased-Den-Part-Atlantis-Columns-1.svg"
   },
@@ -3988,232 +4280,36 @@
     "file": "svgs/Unreleased-Den-Part-Sunken-Ship-Stairs.svg"
   },
   {
-    "name": "Unreleased Bush",
-    "file": "svgs/Unreleased-bush.svg"
+    "name": "Unreleased House Front Purple Grahams Workshop",
+    "file": "svgs/Unreleased-house-front-purple-grahams-workshop.svg"
   },
   {
-    "name": "Unreleased Cave Mushroom",
-    "file": "svgs/Unreleased-cave-mushroom.svg"
+    "name": "Unreleased House_front_blue Grahams Workshop",
+    "file": "svgs/Unreleased-house_front_blue-grahams-workshop.svg"
   },
   {
-    "name": "Unreleased Cave Mushroom2",
-    "file": "svgs/Unreleased-cave-mushroom2.svg"
+    "name": "Unreleased Moss 1 Grahams Workshop",
+    "file": "svgs/Unreleased-moss-1-grahams-workshop.svg"
   },
   {
-    "name": "Unreleased Corn Maze Tree",
-    "file": "svgs/Unreleased-corn-maze-tree.svg"
+    "name": "Unreleased Moss 2 Grahams Workshop",
+    "file": "svgs/Unreleased-moss-2-grahams-workshop.svg"
   },
   {
-    "name": "Unreleased Crystal Fissure Large",
-    "file": "svgs/Unreleased-crystal-fissure-large.svg"
+    "name": "Unreleased Moss 3 Grahams Workshop",
+    "file": "svgs/Unreleased-moss-3-grahams-workshop.svg"
   },
   {
-    "name": "Unreleased Crystal Fissure Small",
-    "file": "svgs/Unreleased-crystal-fissure-small.svg"
+    "name": "Unreleased Moss 4 Grahams Workshop",
+    "file": "svgs/Unreleased-moss-4-grahams-workshop.svg"
   },
   {
-    "name": "Unreleased Crystals Large 2",
-    "file": "svgs/Unreleased-crystals-large-2.svg"
+    "name": "Unreleased Straw Sourge Garden Patch Grahams Workshop",
+    "file": "svgs/Unreleased-straw-sourge-garden-patch-grahams-workshop.svg"
   },
   {
-    "name": "Unreleased Crystals Small",
-    "file": "svgs/Unreleased-crystals-small.svg"
-  },
-  {
-    "name": "Unreleased Grass Light Rock Path1",
-    "file": "svgs/Unreleased-grass-light-rock-path1.svg"
-  },
-  {
-    "name": "Unreleased Grass Light Rock Path2",
-    "file": "svgs/Unreleased-grass-light-rock-path2.svg"
-  },
-  {
-    "name": "Unreleased Grass Light Rock Path3",
-    "file": "svgs/Unreleased-grass-light-rock-path3.svg"
-  },
-  {
-    "name": "Unreleased Grass Light Rock Path4",
-    "file": "svgs/Unreleased-grass-light-rock-path4.svg"
-  },
-  {
-    "name": "Unreleased Himilayan Blue Poppy",
-    "file": "svgs/Unreleased-himilayan-blue-poppy.svg"
-  },
-  {
-    "name": "Unreleased Hotspring",
-    "file": "svgs/Unreleased-hotspring.svg"
-  },
-  {
-    "name": "Unreleased House Front Purple",
-    "file": "svgs/Unreleased-house-front-purple.svg"
-  },
-  {
-    "name": "Unreleased House_front_blue",
-    "file": "svgs/Unreleased-house_front_blue.svg"
-  },
-  {
-    "name": "Unreleased Huckleberry Plant",
-    "file": "svgs/Unreleased-huckleberry-plant.svg"
-  },
-  {
-    "name": "Unreleased Moss 1",
-    "file": "svgs/Unreleased-moss-1.svg"
-  },
-  {
-    "name": "Unreleased Moss 2",
-    "file": "svgs/Unreleased-moss-2.svg"
-  },
-  {
-    "name": "Unreleased Moss 3",
-    "file": "svgs/Unreleased-moss-3.svg"
-  },
-  {
-    "name": "Unreleased Moss 4",
-    "file": "svgs/Unreleased-moss-4.svg"
-  },
-  {
-    "name": "Unreleased Straw Sourge Garden Patch",
-    "file": "svgs/Unreleased-straw-sourge-garden-patch.svg"
-  },
-  {
-    "name": "Unreleased Wood Trunk",
-    "file": "svgs/Unreleased-wood-trunk.svg"
-  },
-  {
-    "name": "Unreleased Cave Clearing",
-    "file": "svgs/UnreleasedCaveClearing.svg"
-  },
-  {
-    "name": "Unreleased Cave Clearing 2",
-    "file": "svgs/UnreleasedCaveClearing2.svg"
-  },
-  {
-    "name": "Unreleased Cave Rock",
-    "file": "svgs/UnreleasedCaveRock.svg"
-  },
-  {
-    "name": "Unreleased Cave Rock 2",
-    "file": "svgs/UnreleasedCaveRock2.svg"
-  },
-  {
-    "name": "UnreleasedDirtPath 3 BattleForTheBeacon",
-    "file": "svgs/UnreleasedDirtPath-3-BattleForTheBeacon.svg"
-  },
-  {
-    "name": "UnreleasedDirtPath 4 BattleForTheBeacon",
-    "file": "svgs/UnreleasedDirtPath-4-BattleForTheBeacon.svg"
-  },
-  {
-    "name": "UnreleasedDirtPath 5 BattleForTheBeacon",
-    "file": "svgs/UnreleasedDirtPath-5-BattleForTheBeacon.svg"
-  },
-  {
-    "name": "UnreleasedDirtPath 6 BattleForTheBeacon",
-    "file": "svgs/UnreleasedDirtPath-6-BattleForTheBeacon.svg"
-  },
-  {
-    "name": "UnreleasedDirtPath 7 BattleForTheBeacon",
-    "file": "svgs/UnreleasedDirtPath-7-BattleForTheBeacon.svg"
-  },
-  {
-    "name": "UnreleasedDirtPath 8 BattleForTheBeacon",
-    "file": "svgs/UnreleasedDirtPath-8-BattleForTheBeacon.svg"
-  },
-  {
-    "name": "UnreleasedDirtPath BattleForTheBeacon",
-    "file": "svgs/UnreleasedDirtPath-BattleForTheBeacon.svg"
-  },
-  {
-    "name": "Unreleased Dirt Path Battle For The Beacon",
-    "file": "svgs/UnreleasedDirtPathBattleForTheBeacon.svg"
-  },
-  {
-    "name": "UnreleasedDirtPath_ 2 BattleForTheBeacon",
-    "file": "svgs/UnreleasedDirtPath_-2-BattleForTheBeacon.svg"
-  },
-  {
-    "name": "UnreleasedHouseFascade 1 BattleForTheBeacon",
-    "file": "svgs/UnreleasedHouseFascade-1-BattleForTheBeacon.svg"
-  },
-  {
-    "name": "UnreleasedHouseFascade 2 BattleForTheBeacon",
-    "file": "svgs/UnreleasedHouseFascade-2-BattleForTheBeacon.svg"
-  },
-  {
-    "name": "Unreleased House Fascade Battle For The Beacon",
-    "file": "svgs/UnreleasedHouseFascadeBattleForTheBeacon.svg"
-  },
-  {
-    "name": "Unreleased Irish Spring Cottage Battle For The Beacon",
-    "file": "svgs/UnreleasedIrishSpringCottageBattleForTheBeacon.svg"
-  },
-  {
-    "name": "Unreleased Ocean Arch",
-    "file": "svgs/UnreleasedOceanArch.svg"
-  },
-  {
-    "name": "UnreleasedOceanCheckpoint 1",
-    "file": "svgs/UnreleasedOceanCheckpoint-1.svg"
-  },
-  {
-    "name": "Unreleased Ocean Checkpoint",
-    "file": "svgs/UnreleasedOceanCheckpoint.svg"
-  },
-  {
-    "name": "UnreleasedOceanPillar 1",
-    "file": "svgs/UnreleasedOceanPillar-1.svg"
-  },
-  {
-    "name": "UnreleasedOceanPillar 2",
-    "file": "svgs/UnreleasedOceanPillar-2.svg"
-  },
-  {
-    "name": "Unreleased Ocean Pillar",
-    "file": "svgs/UnreleasedOceanPillar.svg"
-  },
-  {
-    "name": "Unreleased Ocean Pillar Building",
-    "file": "svgs/UnreleasedOceanPillarBuilding.svg"
-  },
-  {
-    "name": "UnreleasedOceanRock 1",
-    "file": "svgs/UnreleasedOceanRock-1.svg"
-  },
-  {
-    "name": "UnreleasedOceanRock 2",
-    "file": "svgs/UnreleasedOceanRock-2.svg"
-  },
-  {
-    "name": "UnreleasedOceanRock 3",
-    "file": "svgs/UnreleasedOceanRock-3.svg"
-  },
-  {
-    "name": "UnreleasedOceanRock 4",
-    "file": "svgs/UnreleasedOceanRock-4.svg"
-  },
-  {
-    "name": "Unreleased Ocean Rock",
-    "file": "svgs/UnreleasedOceanRock.svg"
-  },
-  {
-    "name": "Unreleased Small Shop Battle For The Beacon",
-    "file": "svgs/UnreleasedSmallShopBattleForTheBeacon.svg"
-  },
-  {
-    "name": "Unreleased Swamp Fireflies Battle For The Beacon",
-    "file": "svgs/UnreleasedSwampFirefliesBattleForTheBeacon.svg"
-  },
-  {
-    "name": "Unreleased Vines Blocker Object Battle For The Beacon",
-    "file": "svgs/UnreleasedVinesBlockerObjectBattleForTheBeacon.svg"
-  },
-  {
-    "name": "Unreleased Watch Tower Battle For The Beacon",
-    "file": "svgs/UnreleasedWatchTowerBattleForTheBeacon.svg"
-  },
-  {
-    "name": "Unreleased Watch Tower Bush Battle For The Beacon",
-    "file": "svgs/UnreleasedWatchTowerBushBattleForTheBeacon.svg"
+    "name": "Unreleased Wood Trunk Grahams Workshop",
+    "file": "svgs/Unreleased-wood-trunk-grahams-workshop.svg"
   },
   {
     "name": "Upside Down Heart Window",
@@ -4736,156 +4832,60 @@
     "file": "svgs/unreleased-bamboo-baskets-grahams-workshop.svg"
   },
   {
-    "name": "Unreleased Bamboo Trees 1",
-    "file": "svgs/unreleased-bamboo-trees-1.svg"
+    "name": "Unreleased Bamboo Trees 1 Grahams Workshop",
+    "file": "svgs/unreleased-bamboo-trees-1-grahams-workshop.svg"
   },
   {
-    "name": "Unreleased Bamboo Trees 2",
-    "file": "svgs/unreleased-bamboo-trees-2.svg"
+    "name": "Unreleased Bamboo Trees 2 Grahams Workshop",
+    "file": "svgs/unreleased-bamboo-trees-2-grahams-workshop.svg"
   },
   {
-    "name": "Unreleased Bamboo Trees 5",
-    "file": "svgs/unreleased-bamboo-trees-5.svg"
+    "name": "Unreleased Bamboo Trees 5 Grahams Workshop",
+    "file": "svgs/unreleased-bamboo-trees-5-grahams-workshop.svg"
   },
   {
-    "name": "Unreleased Bamboo Trees 6",
-    "file": "svgs/unreleased-bamboo-trees-6.svg"
+    "name": "Unreleased Bamboo Trees 6 Grahams Workshop",
+    "file": "svgs/unreleased-bamboo-trees-6-grahams-workshop.svg"
   },
   {
-    "name": "Unreleased Bamboo Trees3",
-    "file": "svgs/unreleased-bamboo-trees3.svg"
+    "name": "Unreleased Bamboo Trees3 Grahams Workshop",
+    "file": "svgs/unreleased-bamboo-trees3-grahams-workshop.svg"
   },
   {
-    "name": "Unreleased Bamboo Trees4",
-    "file": "svgs/unreleased-bamboo-trees4.svg"
+    "name": "Unreleased Bamboo Trees4 Grahams Workshop",
+    "file": "svgs/unreleased-bamboo-trees4-grahams-workshop.svg"
   },
   {
-    "name": "Unreleased Benches Right",
-    "file": "svgs/unreleased-benches-right.svg"
+    "name": "Unreleased Benches Right Grahams Workshop",
+    "file": "svgs/unreleased-benches-right-grahams-workshop.svg"
   },
   {
-    "name": "Unreleased Blocker_mausoleum_bitter_sweets",
-    "file": "svgs/unreleased-blocker_mausoleum_bitter_sweets.svg"
+    "name": "Unreleased Blocker Mausoleum Door Bitter Sweets",
+    "file": "svgs/unreleased-blocker-mausoleum-door-bitter-sweets.svg"
   },
   {
-    "name": "Unreleased Blocker_mausoleum_door_bitter_sweets",
-    "file": "svgs/unreleased-blocker_mausoleum_door_bitter_sweets.svg"
+    "name": "Unreleased House Small Blue Grahams Workshop",
+    "file": "svgs/unreleased-house-small-blue-grahams-workshop.svg"
   },
   {
-    "name": "Unreleased Cat Tails2",
-    "file": "svgs/unreleased-cat-Tails2.svg"
+    "name": "Unreleased Pile Of Pitchforks Grahams Workshop",
+    "file": "svgs/unreleased-pile-of-pitchforks-grahams-workshop.svg"
   },
   {
-    "name": "Unreleased Cat Tails3",
-    "file": "svgs/unreleased-cat-Tails3.svg"
+    "name": "Unreleased Pile Of Wheelbarrows Grahams Workshop",
+    "file": "svgs/unreleased-pile-of-wheelbarrows-grahams-workshop.svg"
   },
   {
-    "name": "Unreleased Cat Tails",
-    "file": "svgs/unreleased-cat-tails.svg"
+    "name": "Unreleased Round Window House Grahams Workshop",
+    "file": "svgs/unreleased-round-window-house-grahams-workshop.svg"
   },
   {
-    "name": "Unreleased Cave Ground",
-    "file": "svgs/unreleased-cave-ground.svg"
+    "name": "Unreleased Table Grahams Workshop 2",
+    "file": "svgs/unreleased-table-grahams-workshop-2.svg"
   },
   {
-    "name": "Unreleased Dirtclearing",
-    "file": "svgs/unreleased-dirtclearing.svg"
-  },
-  {
-    "name": "Unreleased Dirtclearing2",
-    "file": "svgs/unreleased-dirtclearing2.svg"
-  },
-  {
-    "name": "Unreleased Flax",
-    "file": "svgs/unreleased-flax.svg"
-  },
-  {
-    "name": "Unreleased Hammers Grahams Workshop",
-    "file": "svgs/unreleased-hammers-grahams-workshop.svg"
-  },
-  {
-    "name": "Unreleased Health Fountain",
-    "file": "svgs/unreleased-health-Fountain.svg"
-  },
-  {
-    "name": "Unreleased Health Fountain2",
-    "file": "svgs/unreleased-health-fountain2.svg"
-  },
-  {
-    "name": "Unreleased House Back Grahams Workshop",
-    "file": "svgs/unreleased-house-back-grahams-workshop.svg"
-  },
-  {
-    "name": "Unreleased House Small Blue",
-    "file": "svgs/unreleased-house-small-blue.svg"
-  },
-  {
-    "name": "Unreleased Pans Grahams Workshop",
-    "file": "svgs/unreleased-pans-grahams-workshop.svg"
-  },
-  {
-    "name": "Unreleased Pile Of Pitchforks",
-    "file": "svgs/unreleased-pile-of-pitchforks.svg"
-  },
-  {
-    "name": "Unreleased Pile Of Wheelbarrows",
-    "file": "svgs/unreleased-pile-of-wheelbarrows.svg"
-  },
-  {
-    "name": "Unreleased Rock Large",
-    "file": "svgs/unreleased-rock-large.svg"
-  },
-  {
-    "name": "Unreleased Rock",
-    "file": "svgs/unreleased-rock.svg"
-  },
-  {
-    "name": "Unreleased Rock2",
-    "file": "svgs/unreleased-rock2.svg"
-  },
-  {
-    "name": "Unreleased Rock3",
-    "file": "svgs/unreleased-rock3.svg"
-  },
-  {
-    "name": "Unreleased Rocks Small",
-    "file": "svgs/unreleased-rocks-small.svg"
-  },
-  {
-    "name": "Unreleased Round Window House",
-    "file": "svgs/unreleased-round-window-house.svg"
-  },
-  {
-    "name": "Unreleased Ruin Block",
-    "file": "svgs/unreleased-ruin-block.svg"
-  },
-  {
-    "name": "Unreleased Ruin Wall1",
-    "file": "svgs/unreleased-ruin-wall1.svg"
-  },
-  {
-    "name": "Unreleased Ruin Wall2",
-    "file": "svgs/unreleased-ruin-wall2.svg"
-  },
-  {
-    "name": "Unreleased Ruins",
-    "file": "svgs/unreleased-ruins.svg"
-  },
-  {
-    "name": "Unreleased Table Grahams Workshop",
-    "file": "svgs/unreleased-table-grahams-workshop.svg"
-  },
-  {
-    "name": "Unreleased Table Grahams Workshop2",
-    "file": "svgs/unreleased-table-grahams-workshop2.svg"
-  },
-  {
-    "name": "Unreleased Table Grahams Workshop3",
-    "file": "svgs/unreleased-table-grahams-workshop3.svg"
-  },
-  {
-    "name": "Unreleased Tree Cluster",
-    "file": "svgs/unreleased-tree-cluster.svg"
+    "name": "Unreleased Table Grahams Workshop 3",
+    "file": "svgs/unreleased-table-grahams-workshop-3.svg"
   },
   {
     "name": "Wall Garden",
@@ -4912,8 +4912,8 @@
     "file": "svgs/waterfall-arch5.svg"
   },
   {
-    "name": "White_flower_temple_of_zios",
-    "file": "svgs/white_flower_temple_of_zios.svg"
+    "name": "White Flower Temple Of Zios",
+    "file": "svgs/white-flower-temple-of-zios.svg"
   },
   {
     "name": "Window",
