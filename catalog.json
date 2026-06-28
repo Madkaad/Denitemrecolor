@@ -40,6 +40,10 @@
     "file": "svgs/8BitWindow.svg"
   },
   {
+    "name": "AJ Backpack",
+    "file": "svgs/AJ-Backpack.svg"
+  },
+  {
     "name": "AJAlpha Flag",
     "file": "svgs/AJAlphaFlag.svg"
   },
@@ -174,6 +178,10 @@
   {
     "name": "BBQFeast Table",
     "file": "svgs/BBQFeastTable.svg"
+  },
+  {
+    "name": "Backpack Cubby",
+    "file": "svgs/BackpackCubby.svg"
   },
   {
     "name": "Backyard Fire Pit",
@@ -684,6 +692,26 @@
     "file": "svgs/ChrysanthemumBouquet.svg"
   },
   {
+    "name": "Circular Chair",
+    "file": "svgs/CircularChair.svg"
+  },
+  {
+    "name": "CircularHedge 2",
+    "file": "svgs/CircularHedge-2.svg"
+  },
+  {
+    "name": "Circular Hedge",
+    "file": "svgs/CircularHedge.svg"
+  },
+  {
+    "name": "CircularWindChime 1",
+    "file": "svgs/CircularWindChime-1.svg"
+  },
+  {
+    "name": "Circular Wind Chime 1",
+    "file": "svgs/CircularWindChime1.svg"
+  },
+  {
     "name": "Classic Pink Jar",
     "file": "svgs/ClassicPinkJar.svg"
   },
@@ -1160,6 +1188,10 @@
     "file": "svgs/EagleWindow.svg"
   },
   {
+    "name": "Eco Wood Ceiling Fan",
+    "file": "svgs/EcoWoodCeilingFan.svg"
+  },
+  {
     "name": "Eel Lamp",
     "file": "svgs/EelLamp.svg"
   },
@@ -1244,6 +1276,10 @@
     "file": "svgs/EpicWildWaterslideFinish.svg"
   },
   {
+    "name": "Expanding Wood Table",
+    "file": "svgs/ExpandingWoodTable.svg"
+  },
+  {
     "name": "Eyeballs Vase",
     "file": "svgs/EyeballsVase.svg"
   },
@@ -1326,6 +1362,10 @@
   {
     "name": "Fancy Telescope",
     "file": "svgs/FancyTelescope.svg"
+  },
+  {
+    "name": "Fancy Wood And Silver Dresser",
+    "file": "svgs/FancyWoodAndSilverDresser.svg"
   },
   {
     "name": "Fantasy Chaise Lounge",
@@ -1648,6 +1688,10 @@
     "file": "svgs/GladiolusBouquet.svg"
   },
   {
+    "name": "Glass Parlor Display",
+    "file": "svgs/GlassParlorDisplay.svg"
+  },
+  {
     "name": "Glitch Bookshelf",
     "file": "svgs/GlitchBookshelf.svg"
   },
@@ -1806,6 +1850,18 @@
   {
     "name": "Ice Block",
     "file": "svgs/IceBlock.svg"
+  },
+  {
+    "name": "IceCreamParlorChair 2",
+    "file": "svgs/IceCreamParlorChair-2.svg"
+  },
+  {
+    "name": "Ice Cream Parlor Chair",
+    "file": "svgs/IceCreamParlorChair.svg"
+  },
+  {
+    "name": "Ice Cream Parlor Table",
+    "file": "svgs/IceCreamParlorTable.svg"
   },
   {
     "name": "Ice Fence",
@@ -2708,6 +2764,10 @@
     "file": "svgs/OrigamiWindow.svg"
   },
   {
+    "name": "Overstuffed Backpack",
+    "file": "svgs/OverstuffedBackpack.svg"
+  },
+  {
     "name": "Ox Stepping Stones",
     "file": "svgs/OxSteppingStones.svg"
   },
@@ -2732,12 +2792,32 @@
     "file": "svgs/PaintersWindow.svg"
   },
   {
+    "name": "PaintersWoodenStool 1",
+    "file": "svgs/PaintersWoodenStool-1.svg"
+  },
+  {
+    "name": "Panda Backpack",
+    "file": "svgs/PandaBackpack.svg"
+  },
+  {
     "name": "Panda Window",
     "file": "svgs/PandaWindow.svg"
   },
   {
     "name": "Paradise Window",
     "file": "svgs/ParadiseWindow.svg"
+  },
+  {
+    "name": "Parlor High Table",
+    "file": "svgs/ParlorHighTable.svg"
+  },
+  {
+    "name": "Parlor Juke Box",
+    "file": "svgs/ParlorJukeBox.svg"
+  },
+  {
+    "name": "Parlor Stool",
+    "file": "svgs/ParlorStool.svg"
   },
   {
     "name": "Paw Ornament",
@@ -2766,6 +2846,10 @@
   {
     "name": "Penguin TV",
     "file": "svgs/PenguinTV.svg"
+  },
+  {
+    "name": "Pet Backpack",
+    "file": "svgs/PetBackpack.svg"
   },
   {
     "name": "Pet Pool Party",
@@ -2848,6 +2932,10 @@
     "file": "svgs/PileOfFireworks.svg"
   },
   {
+    "name": "Pile Of Wood",
+    "file": "svgs/PileOfWood.svg"
+  },
+  {
     "name": "Pirate Flag",
     "file": "svgs/PirateFlag.svg"
   },
@@ -2858,6 +2946,22 @@
   {
     "name": "Pizza Neon Sign",
     "file": "svgs/PizzaNeonSign.svg"
+  },
+  {
+    "name": "PizzaParlorBooth 2",
+    "file": "svgs/PizzaParlorBooth-2.svg"
+  },
+  {
+    "name": "Pizza Parlor Booth",
+    "file": "svgs/PizzaParlorBooth.svg"
+  },
+  {
+    "name": "Pizza Parlor Statue",
+    "file": "svgs/PizzaParlorStatue.svg"
+  },
+  {
+    "name": "Pizza Parlor Table",
+    "file": "svgs/PizzaParlorTable.svg"
   },
   {
     "name": "Poinsettia",
@@ -3380,6 +3484,10 @@
     "file": "svgs/SmallWindow.svg"
   },
   {
+    "name": "Small Wood Step Ladder",
+    "file": "svgs/SmallWoodStepLadder.svg"
+  },
+  {
     "name": "Snow Covered Fence",
     "file": "svgs/SnowCoveredFence.svg"
   },
@@ -3542,6 +3650,10 @@
   {
     "name": "Stack Of Books 5",
     "file": "svgs/StackOfBooks5.svg"
+  },
+  {
+    "name": "Stacked Wood Pile",
+    "file": "svgs/StackedWoodPile.svg"
   },
   {
     "name": "Stain Glass Window",
@@ -4552,6 +4664,74 @@
     "file": "svgs/Unreleased-Den-Part-Sunken-Ship-Stairs.svg"
   },
   {
+    "name": "Unreleased Tree 1",
+    "file": "svgs/Unreleased-Tree-1.svg"
+  },
+  {
+    "name": "Unreleased Tree 2",
+    "file": "svgs/Unreleased-Tree-2.svg"
+  },
+  {
+    "name": "Unreleased Tree 3",
+    "file": "svgs/Unreleased-Tree-3.svg"
+  },
+  {
+    "name": "Unreleased Tree 4",
+    "file": "svgs/Unreleased-Tree-4.svg"
+  },
+  {
+    "name": "Unreleased Tree 5",
+    "file": "svgs/Unreleased-Tree-5.svg"
+  },
+  {
+    "name": "Unreleased Tree 6",
+    "file": "svgs/Unreleased-Tree-6.svg"
+  },
+  {
+    "name": "Unreleased Tree 7",
+    "file": "svgs/Unreleased-Tree-7.svg"
+  },
+  {
+    "name": "Unreleased Egg 1",
+    "file": "svgs/Unreleased-egg-1.svg"
+  },
+  {
+    "name": "Unreleased Egg 10",
+    "file": "svgs/Unreleased-egg-10.svg"
+  },
+  {
+    "name": "Unreleased Egg 2",
+    "file": "svgs/Unreleased-egg-2.svg"
+  },
+  {
+    "name": "Unreleased Egg 3",
+    "file": "svgs/Unreleased-egg-3.svg"
+  },
+  {
+    "name": "Unreleased Egg 4",
+    "file": "svgs/Unreleased-egg-4.svg"
+  },
+  {
+    "name": "Unreleased Egg 5",
+    "file": "svgs/Unreleased-egg-5.svg"
+  },
+  {
+    "name": "Unreleased Egg 6",
+    "file": "svgs/Unreleased-egg-6.svg"
+  },
+  {
+    "name": "Unreleased Egg 7",
+    "file": "svgs/Unreleased-egg-7.svg"
+  },
+  {
+    "name": "Unreleased Egg 8",
+    "file": "svgs/Unreleased-egg-8.svg"
+  },
+  {
+    "name": "Unreleased Egg 9",
+    "file": "svgs/Unreleased-egg-9.svg"
+  },
+  {
     "name": "Unreleased House Front Purple Grahams Workshop",
     "file": "svgs/Unreleased-house-front-purple-grahams-workshop.svg"
   },
@@ -4582,6 +4762,10 @@
   {
     "name": "Unreleased Wood Trunk Grahams Workshop",
     "file": "svgs/Unreleased-wood-trunk-grahams-workshop.svg"
+  },
+  {
+    "name": "Unreleased Flower Petals",
+    "file": "svgs/UnreleasedFlowerPetals.svg"
   },
   {
     "name": "Upside Down Heart Window",
@@ -4796,16 +4980,96 @@
     "file": "svgs/WolfMannequin.svg"
   },
   {
+    "name": "Wood And Silver Chest",
+    "file": "svgs/WoodAndSilverChest.svg"
+  },
+  {
+    "name": "Wood And Silver Corner Table",
+    "file": "svgs/WoodAndSilverCorner Table.svg"
+  },
+  {
+    "name": "Wood Bird Bath",
+    "file": "svgs/WoodBirdBath.svg"
+  },
+  {
+    "name": "WoodChair 1",
+    "file": "svgs/WoodChair-1.svg"
+  },
+  {
+    "name": "WoodCouch 1",
+    "file": "svgs/WoodCouch-1.svg"
+  },
+  {
+    "name": "Wood Crates",
+    "file": "svgs/WoodCrates.svg"
+  },
+  {
+    "name": "Wood Eco Plaque",
+    "file": "svgs/WoodEcoPlaque.svg"
+  },
+  {
+    "name": "Wood Framed Chair",
+    "file": "svgs/WoodFramedChair.svg"
+  },
+  {
+    "name": "Wood Framed Couch",
+    "file": "svgs/WoodFramedCouch.svg"
+  },
+  {
+    "name": "Wood Jewelry Box",
+    "file": "svgs/WoodJewelryBox.svg"
+  },
+  {
+    "name": "Wood Lawn Chair",
+    "file": "svgs/WoodLawnChair.svg"
+  },
+  {
+    "name": "Wood Log Planter",
+    "file": "svgs/WoodLogPlanter.svg"
+  },
+  {
+    "name": "Wood Plank Lower Curve",
+    "file": "svgs/WoodPlankLowerCurve.svg"
+  },
+  {
+    "name": "Wood Plank Path",
+    "file": "svgs/WoodPlankPath.svg"
+  },
+  {
+    "name": "Wood Plank Side Curve",
+    "file": "svgs/WoodPlankSideCurve.svg"
+  },
+  {
+    "name": "Wood Plank Upper Curve",
+    "file": "svgs/WoodPlankUpperCurve.svg"
+  },
+  {
     "name": "Wood Table",
     "file": "svgs/WoodTable.svg"
+  },
+  {
+    "name": "Woodburning Stove",
+    "file": "svgs/WoodburningStove.svg"
   },
   {
     "name": "Wooden Burrow Window",
     "file": "svgs/WoodenBurrowWindow.svg"
   },
   {
+    "name": "Wooden Cart",
+    "file": "svgs/WoodenCart.svg"
+  },
+  {
     "name": "Wooden Mailbox",
     "file": "svgs/WoodenMailbox.svg"
+  },
+  {
+    "name": "Wooden Tombstone",
+    "file": "svgs/WoodenTombstone.svg"
+  },
+  {
+    "name": "WoodenToyBox 1",
+    "file": "svgs/WoodenToyBox-1.svg"
   },
   {
     "name": "World Map",
