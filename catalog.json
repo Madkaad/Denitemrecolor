@@ -1816,6 +1816,10 @@
     "file": "svgs/HippoFountain.svg"
   },
   {
+    "name": "Honey",
+    "file": "svgs/Honey.svg"
+  },
+  {
     "name": "Horseshoe Doghouse",
     "file": "svgs/HorseshoeDoghouse.svg"
   },
@@ -2630,6 +2634,10 @@
   {
     "name": "Misshaped Window",
     "file": "svgs/MisshapedWindow.svg"
+  },
+  {
+    "name": "Mocking Crow Bookcase",
+    "file": "svgs/MockingCrowBookcase.svg"
   },
   {
     "name": "Mossy Ruins",
